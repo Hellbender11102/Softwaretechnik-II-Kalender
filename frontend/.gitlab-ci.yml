@@ -1,7 +1,6 @@
 image: google/dart:2.1
 
 before_script:
-  - export PATH="$PATH":"$HOME/.pub-cache/bin"
   - pub global activate webdev
 
 pages:

@@ -1,6 +1,6 @@
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
-import 'package:demo/view/main_component.template.dart' as ng;
+import 'package:demo/view/inner_component.template.dart' as ng;
 
 import 'package:http/browser_client.dart';
 import 'package:http/http.dart';

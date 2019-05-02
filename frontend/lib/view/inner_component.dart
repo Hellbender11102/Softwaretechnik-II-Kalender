@@ -5,14 +5,12 @@ import 'package:demo/view/routes/routes.dart';
 import 'package:demo/view/services/sample_service.dart';
 
 @Component(
-
-  selector: 'innerContainer',
-  templateUrl: 'main_component.html',
-  styleUrls: ['main_component.css'],
+  selector: 'my-cal',
+  templateUrl: 'inner_component.html',
   directives: [routerDirectives],
   providers: [ClassProvider(SampleService)],
   exports: [RoutePaths, Routes],
 )
 class AppComponent {
-  final title = 'Main Componten';
+  final title = 'innerComponent';
 }
