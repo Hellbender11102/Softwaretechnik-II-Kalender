@@ -1,0 +1,6 @@
+<h1>{{title}}</h1>
+<nav>
+    <a [routerLink]="RoutePaths.sample.toUrl()"
+       [routerLinkActive]="'active'">Sample</a>
+</nav>
+<router-outlet [routes]="Routes.all"></router-outlet>

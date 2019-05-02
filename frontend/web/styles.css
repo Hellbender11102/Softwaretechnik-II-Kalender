@@ -50,7 +50,7 @@ colors to use if possible (descending) :
     background: #8A5082;
 }
 
-#innerContainer{
+innerContainer{
     float: left;
     padding: 0px;
     height: 100%;
