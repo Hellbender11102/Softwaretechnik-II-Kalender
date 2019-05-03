@@ -1,13 +1,16 @@
 <div id="outerContainer">
-    <div id="buttons"></div>
-    <div id="leftContainer"></div>
-    <div id="rightContainer"></div>
-    <innerContainer>
-        <h1>{{title}}</h1>
+    <div id="buttons">
         <nav>
             <a [routerLink]="RoutePaths.sample.toUrl()"
                [routerLinkActive]="'active'">Sample</a>
+            <a [routerLink]="RoutePaths.dashboard.toUrl()"
+               [routerLinkActive]="'active'">Dashboard</a>
         </nav>
+
+    </div>
+    <div id="leftContainer"></div>
+    <div id="rightContainer"></div>
+    <innerContainer>
         <router-outlet [routes]="Routes.all"></router-outlet>
     </innerContainer>
     <div id="impressum"><p>Erstellt von Daniel Waage, Lennard Siedschlag, Marius Mauritz, Marcel Azadi, Olliver Wosiek
