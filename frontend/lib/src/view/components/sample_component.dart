@@ -11,10 +11,10 @@ import 'package:demo/src/view/services/sample_service.dart';
   directives: [coreDirectives, routerDirectives],
 )
 class SampleComponent implements OnInit {
-
-  final SampleService _sampleService;
   // service Klasse für ORM
   SampleComponent(this._sampleService);
+  final SampleService _sampleService;
+
 
   @override
   void ngOnInit() async {

@@ -13,5 +13,5 @@ import 'package:demo/src/view/services/sample_service.dart';
   exports: [RoutePaths, Routes],
 )
 class AppComponent {
-  final title = 'innerComponent';
+  final String title = 'innerComponent';
 }

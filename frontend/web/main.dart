@@ -13,7 +13,7 @@ import 'main.template.dart' as self;
   // Import 'package:http/browser_client.dlart' and change the above to:
   //   ClassProvider(Client, useClass: BrowserClient),
 ])
-final InjectorFactory injector = self.injector$Injector;
+const InjectorFactory injector = self.injector$Injector;
 void main() {
   runApp(ng.AppComponentNgFactory, createInjector: injector);
 }

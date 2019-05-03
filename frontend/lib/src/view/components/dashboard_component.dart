@@ -12,9 +12,11 @@ import 'package:demo/src/view/services/dashboard_service.dart';
 )
 class DashboardComponent implements OnInit {
 
-  final DashboardService _dashboardService;
   // service Klasse für ORM
   DashboardComponent(this._dashboardService);
+
+  final DashboardService _dashboardService;
+
 
   @override
   void ngOnInit() async {
