@@ -1,7 +1,28 @@
 <h3>Monat,Jahr</h3>
 <table>
-    <tr *ngFor="let number of [1,2,3,4,5,6]">
+    <tr>
         <th *ngFor="let day of week">{{day}}</th>
+    </tr>
+    <tr>
+        <td *ngFor="let i of weekOfMonth(0)">{{i}}</td>
+    </tr>
+    <tr>
+        <td *ngFor="let i of weekOfMonth(1)">{{i}}</td>
+    </tr>
+    <tr>
+        <td *ngFor="let i of weekOfMonth(2)">{{i}}</td>
+    </tr>
+    <tr>
+        <td *ngFor="let i of weekOfMonth(3)">{{i}}</td>
+    </tr>
+    <tr>
+        <td *ngFor="let i of weekOfMonth(4)">{{i}}</td>
+    </tr>
+    <tr>
+        <td *ngFor="let i of weekOfMonth(5)">{{i}}</td>
     </tr>
 
 </table>
+<p>Weekday:{{firstWeekDayOfMonth}}</p>
+<p>prevMonthLenght:{{prevMonthLength}}</p>
+<p>curMonthLenght:{{currentMonthLength}}</p>
