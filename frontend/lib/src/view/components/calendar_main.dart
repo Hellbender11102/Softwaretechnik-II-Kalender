@@ -1,5 +1,6 @@
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
+import 'package:demo/src/model/week.dart';
 import 'package:demo/src/view/services/calendar_service.dart';
 
 
@@ -20,4 +21,12 @@ class CalendarComponent implements OnInit {
     // do something when drawn
     // like DB connections
   }
+  static const List<String> week =[
+    "Montag",
+    "Dienstag",
+    "Mittwoch",
+    "Donnerstag",
+    "Freitag",
+    "Samstag",
+    "Sonntag"];
 }

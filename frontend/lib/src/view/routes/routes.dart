@@ -28,7 +28,7 @@ class Routes {
     dashboard,
     calendarMain,
     RouteDefinition.redirect(
-      path: 'sample',
+      path: '1234',
       redirectTo: RoutePaths.sample.toUrl(),
     ),
     RouteDefinition.redirect(

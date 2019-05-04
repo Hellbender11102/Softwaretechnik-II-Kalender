@@ -1,13 +1,7 @@
 <h3>Monat,Jahr</h3>
-    <table id="calendar">
-        <tr>
-            <th>Montag</th>
-            <th>Dienstag</th>
-            <th>Mittwoch</th>
-            <th>Donnerstag</th>
-            <th>Freitag</th>
-            <th>Smanstag</th>
-            <th>Sonntag</th>
-        </tr>
-        <tr *ngFor="  "></tr>
-    </table>
+<table>
+    <tr *ngFor="let number of [1,2,3,4,5,6]">
+        <th *ngFor="let day of week">{{day}}</th>
+    </tr>
+
+</table>
