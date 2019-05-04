@@ -1,6 +1,7 @@
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/routes/routes.dart';
+import 'package:demo/src/view/services/calendar_service.dart';
 import 'package:demo/src/view/services/dashboard_service.dart';
 import 'package:demo/src/view/services/sample_service.dart';
 
@@ -9,7 +10,10 @@ import 'package:demo/src/view/services/sample_service.dart';
   selector: 'my-cal',
   templateUrl: 'main_component.html',
   directives: [routerDirectives],
-  providers: [ClassProvider(SampleService),ClassProvider(DashboardService)],
+  providers: [
+    ClassProvider(SampleService),
+    ClassProvider(DashboardService),
+    ClassProvider(CalendarService)],
   exports: [RoutePaths, Routes],
 )
 class AppComponent {
