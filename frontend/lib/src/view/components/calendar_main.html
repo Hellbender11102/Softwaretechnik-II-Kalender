@@ -1,28 +1,26 @@
-<h3>Monat,Jahr</h3>
-<table>
-    <tr>
-        <th *ngFor="let day of week">{{day}}</th>
-    </tr>
-    <tr>
-        <td *ngFor="let i of weekOfMonth(0)">{{i}}</td>
-    </tr>
-    <tr>
-        <td *ngFor="let i of weekOfMonth(1)">{{i}}</td>
-    </tr>
-    <tr>
-        <td *ngFor="let i of weekOfMonth(2)">{{i}}</td>
-    </tr>
-    <tr>
-        <td *ngFor="let i of weekOfMonth(3)">{{i}}</td>
-    </tr>
-    <tr>
-        <td *ngFor="let i of weekOfMonth(4)">{{i}}</td>
-    </tr>
-    <tr>
-        <td *ngFor="let i of weekOfMonth(5)">{{i}}</td>
-    </tr>
-
-</table>
-<p>Weekday:{{firstWeekDayOfMonth}}</p>
-<p>prevMonthLenght:{{prevMonthLength}}</p>
-<p>curMonthLenght:{{currentMonthLength}}</p>
+<h3>{{monthClass.toString()}} {{year}}</h3>
+<h4>Previous</h4>
+    <table>
+        <tr>
+            <th *ngFor="let day of week">{{day}}</th>
+        </tr>
+        <tr>
+            <td *ngFor="let i of monthClass.weekOfMonth(0)">{{i}}</td>
+        </tr>
+        <tr>
+            <td *ngFor="let i of monthClass.weekOfMonth(1)">{{i}}</td>
+        </tr>
+        <tr>
+            <td *ngFor="let i of monthClass.weekOfMonth(2)">{{i}}</td>
+        </tr>
+        <tr>
+            <td *ngFor="let i of monthClass.weekOfMonth(3)">{{i}}</td>
+        </tr>
+        <tr>
+            <td *ngFor="let i of monthClass.weekOfMonth(4)">{{i}}</td>
+        </tr>
+        <tr>
+            <td *ngFor="let i of monthClass.weekOfMonth(5)">{{i}}</td>
+        </tr>
+    </table>
+<h4>Next</h4>

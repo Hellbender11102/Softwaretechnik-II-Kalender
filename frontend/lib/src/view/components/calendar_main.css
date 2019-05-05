@@ -1,0 +1,16 @@
+
+td{
+    border-width:5px;
+    border-style:outset;
+    border-color: black;
+}
+h3,h4{
+    text-align: center;
+}
+
+table{
+    table-layout: fixed;
+    align-content: center;
+    width: 100%;
+    height: 70%;
+}
