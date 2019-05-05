@@ -9,15 +9,11 @@ class Month {
   int month;
   int year;
 
-  int monthLength(){
-    return DateTime.utc(DateTime.now().year, month + 1).day;
-  }
-
   Iterable weekOfMonth(int n) sync* {
-    int currentMonthLength = DateTime.utc(year, month + 1, 0).day;
-    int prevMonthLength = DateTime.utc(year, month , 0).day;
-    int firstWeekDayOfMonth = DateTime.utc(year, month, 1).weekday;
-    int weekOffSet = prevMonthLength - firstWeekDayOfMonth;
+    final int currentMonthLength = DateTime.utc(year, month + 1, 0).day;
+    final int prevMonthLength = DateTime.utc(year, month , 0).day;
+    final int firstWeekDayOfMonth = DateTime.utc(year, month, 1).weekday;
+    final int weekOffSet = prevMonthLength - firstWeekDayOfMonth + 1;
 
     int k = n * 7 - firstWeekDayOfMonth + 1;
     int count = 0;
@@ -27,11 +23,11 @@ class Month {
     while (count < 7) {
       count++;
       k++;
-      if (k >= prevMonthLength && n == 0) {
+      if (k > prevMonthLength && n == 0) {
         k = 1;
       }
-      if (k >= currentMonthLength && n != 0) {
-        k = 1;
+      if (k > currentMonthLength && n != 0) {
+        k = k-currentMonthLength;
       }
       yield k;
     }
