@@ -33,5 +33,6 @@ class CalendarComponent implements OnInit {
   ];
   static var month = DateTime.now().month;
   static var year = DateTime.now().year;
+  //kann mit monat +1 oder -1 auch andere monate anzeigen
   Month monthClass = Month(year,month);
 }

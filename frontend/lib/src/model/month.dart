@@ -9,11 +9,10 @@ class Month {
   int month;
   int year;
 
-
-
   int monthLength(){
     return DateTime.utc(DateTime.now().year, month + 1).day;
   }
+
   Iterable weekOfMonth(int n) sync* {
     int currentMonthLength = DateTime.utc(year, month + 1, 0).day;
     int prevMonthLength = DateTime.utc(year, month , 0).day;
@@ -54,5 +53,25 @@ class Month {
       case 12: return "December";
       default: return month.toString();
     }
+  }
+
+  String previus(){
+    if(month -1 > 0) {
+      month = month - 1;
+    }else {
+      month = 12;
+      year = year - 1;
+    }
+    return "";
+  }
+  String next(){
+    if(month +1 < 13){
+      month = month +1;
+    }
+    else{
+      year = year +1;
+      month =1;
+    }
+    return "";
   }
 }

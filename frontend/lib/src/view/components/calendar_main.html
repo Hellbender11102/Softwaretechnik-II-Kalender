@@ -1,5 +1,5 @@
-<h3>{{monthClass.toString()}} {{year}}</h3>
-<h4>Previous</h4>
+<h3>{{monthClass.toString()}} {{monthClass.year}}</h3>
+<h4 (click)="monthClass.previus()">Previous</h4>
     <table>
         <tr>
             <th *ngFor="let day of week">{{day}}</th>
@@ -23,4 +23,4 @@
             <td *ngFor="let i of monthClass.weekOfMonth(5)">{{i}}</td>
         </tr>
     </table>
-<h4>Next</h4>
+<h4 (click)="monthClass.next()">Next</h4>
