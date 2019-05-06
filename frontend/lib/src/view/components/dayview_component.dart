@@ -1,21 +1,21 @@
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
-import 'package:demo/src/view/services/dashboard_service.dart';
+import 'package:demo/src/view/services/dayview_service.dart';
 
 
 @Component(
-  selector: 'dash',
-  templateUrl: 'dashboard_component.html',
-  styleUrls: ['dashboard_component.css'],
+  selector: 'dayview',
+  templateUrl: 'dayview_component.html',
+  styleUrls: ['dayview_component.css'],
   directives: [coreDirectives, routerDirectives],
 )
-class DashboardComponent implements OnInit {
+class DayviewComponent implements OnInit {
 
   // service Klasse für ORM
-  DashboardComponent(this._dashboardService);
+  DayviewComponent(this._dayviewService);
 
-  final DashboardService _dashboardService;
+  final DayviewComponent _dayviewService;
 
 
   @override

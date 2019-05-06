@@ -5,6 +5,7 @@ const String idParam = 'id';
 class RoutePaths {
   static final RoutePath sample = RoutePath(path: 'sample');
   static final RoutePath dashboard = RoutePath(path: 'dashboard');
+  static final RoutePath dayview = RoutePath(path: 'dayview');
 }
 
 int getId(Map<String, String> parameters) {
