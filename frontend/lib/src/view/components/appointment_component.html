@@ -1,0 +1,28 @@
+
+    <h1>Appointment</h1>
+    <form>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="dateTime">Datum</label>
+            <input type="text" class="form-control" id="dateTime" required>
+        </div>
+
+        <div class="form-group">
+            <label for="duration">Dauer</label>
+            <input type="text" class="form-control" id="duration" required>
+        </div>
+
+        <div class="form-group">
+            <label for="location">Ort</label>
+            <input type="text" class="form-control" id="location">
+        </div>
+
+        <button type="submit" class="btn btn-success" (click)="save()">Save</button>
+
+        <button type="button" class="btn btn-default" (click)="delete()">Delete</button>
+
+    </form>
