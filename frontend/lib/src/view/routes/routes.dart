@@ -18,7 +18,7 @@ class Routes {
   );
   static final RouteDefinition dayview = RouteDefinition(
     routePath: RoutePaths.dayview,
-    component: dayview_template.DayviewComponentNgFactory;
+    component: dayview_template.DayviewComponentNgFactory,
   );
 
   // routing auf diese Component
