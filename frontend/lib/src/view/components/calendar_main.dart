@@ -18,32 +18,30 @@ import 'package:demo/src/view/services/calendar_service.dart';
 class CalendarComponent implements OnInit {
   CalendarComponent(this._calendarService, this._router, this._location);
 
-  Location _location;
-
-  Month get month => _calendarService.getMonth();
-
-  final Router _router;
-  int _month;
-  int _year;
-
+  bool call = true;
   final CalendarService _calendarService;
-  List<Appointment> appointments;
+  final Router _router;
+  final Location _location;
+
+  // as variable but on call get month from service routine
+  Month get month => _calendarService.getMonth();
+  // as variable but on call get appointments from service routine
+  List<Appointment> get appointments  => _calendarService.getAllAppointments();
+
+
+
 
   @override
   ngOnInit() {
-
-    // irgendwas hier bugged noch rum ggf kann das sein das die seite 2mal geladen wird durch die url
-    //todo hübsch coden....
-    String path = _location.path();
-    print(path);
-    var arr = path.split("/");
-    print(arr.length);
-    if (arr.length > 1) {
-      print(arr[1]+" spacer "+arr[2]);
+    // still weirdo bug
+    RegExp exp = RegExp( r"(\/)(calendar)(\/)(\d+)(\/)(\d+)");
+    // gets the path
+    final String path = _location.path();
+    if(exp.firstMatch(path) != null && call){
+      print("dudude");
+      var arr = path.split("/");
       _calendarService.setMonth(int.tryParse(arr[2]), int.tryParse(arr[3]));
-    }
-
-    getThemall();
+    };
   }
 
   static const List<String> week = [
@@ -60,18 +58,19 @@ class CalendarComponent implements OnInit {
       .toUrl(parameters: {yearParam: year, monthParam: month});
 
   void next() {
-    month.next();
+    call =false;
+    _calendarService.getMonth().next();
     _router.navigate(monthURL(month.year.toString(), month.month.toString()));
   }
 
   void previus() {
-    month.previus();
+    call = false;
+    _calendarService.getMonth().previus();
     _router.navigate(monthURL(month.year.toString(), month.month.toString()));
+
   }
 
-  Future<List<Appointment>> getThemall() async {
-    appointments = mockAppointments;
-  }
+
   void getDay(int Year, int month,int day){
 
     print("Year: "+Year.toString() +" Month: "+month.toString()+" Day: "+day.toString());

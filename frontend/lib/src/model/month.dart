@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:demo/src/model/day.dart';
 
 class Month {
@@ -8,6 +10,7 @@ class Month {
 
   int month;
   int year;
+
 
   Iterable weekOfMonth(int n) sync* {
     final int currentMonthLength = DateTime.utc(year, month + 1, 0).day;
@@ -68,5 +71,28 @@ class Month {
       year = year +1;
       month =1;
     }
+  }
+  List<int> nextM(){
+    int yearOut = year;
+    int monthOut;
+    if(month + 1 <= 12) {
+      monthOut = month + 1;
+    }else {
+      monthOut = 1;
+      yearOut = year + 1;
+    }
+    return [monthOut,yearOut];
+
+  }
+  List<int> prevM(){
+    int yearOut = year;
+    int monthOut;
+    if(month -1 > 0) {
+      monthOut = month - 1;
+    }else {
+      month = 12;
+      yearOut = year - 1;
+    }
+    return [monthOut,yearOut];
   }
 }

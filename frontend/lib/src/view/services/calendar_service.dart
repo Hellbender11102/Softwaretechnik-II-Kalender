@@ -13,9 +13,6 @@ class CalendarService {
   final Client _http;
 
   // Implementation ORM below
-  Future <List<Appointment>> getAllAppointmentsOfMonth(int year, int month) async {
-    return mockAppointments;
-  }
 
   Month getMonth() {
     return _month;
@@ -23,5 +20,9 @@ class CalendarService {
 
   void setMonth(int year,int month){
     _month = Month(year,month);
+  }
+
+  List<Appointment> getAllAppointments() {
+    return mockAppointments;
   }
 }
