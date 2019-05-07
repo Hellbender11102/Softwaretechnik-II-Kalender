@@ -31,10 +31,10 @@ class CalendarComponent implements OnInit {
     "Samstag",
     "Sonntag"
   ];
-  static var month = DateTime.now().month;
-  static var year = DateTime.now().year;
+  var month = DateTime.now().month;
+  var year = DateTime.now().year;
   //kann mit monat +1 oder -1 auch andere monate anzeigen
-  static Month monthClass = Month(year,month);
+  Month monthClass = Month(DateTime.now().year, DateTime.now().month);
 
   void next(){
     if(monthClass.next() >13){
@@ -52,7 +52,10 @@ class CalendarComponent implements OnInit {
       month -=1;
     }
   }
-  void getMonthYear(){
-
+  void getMonthYear(int year, int month){
+    this.month = month;
+    this.year = year;
+    monthClass.year = year;
+    monthClass.month= month;
   }
 }
