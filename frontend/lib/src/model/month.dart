@@ -80,7 +80,7 @@ class Month {
       monthOut = 1;
       yearOut = year + 1;
     }
-    return [monthOut,yearOut];
+    return [yearOut,monthOut];
 
   }
   List<int> prevM(){
@@ -92,6 +92,6 @@ class Month {
       month = 12;
       yearOut = year - 1;
     }
-    return [monthOut,yearOut];
+    return [yearOut,monthOut];
   }
 }

@@ -15,50 +15,61 @@ import 'package:demo/src/view/services/calendar_service.dart';
   styleUrls: ['calendar_main.css'],
   directives: [coreDirectives, routerDirectives],
 )
-class CalendarComponent implements OnActivate {
+class CalendarComponent implements OnActivate, OnInit {
   CalendarComponent(this._calendarService, this._router, this._location);
 
-  Month month;
+  Month month = Month(DateTime.now().year, DateTime.now().month);
   bool call = true;
   final CalendarService _calendarService;
   final Router _router;
   final Location _location;
 
-  // as variable but on call get month from service routine
-  //Month get month => _calendarService.initMonth();
   // as variable but on call get appointments from service routine
   List<Appointment> get appointments => _calendarService.getAllAppointments();
 
+  @override
+  void ngOnInit() {
+    // TODO: implement ngOnInit
+  }
 
   @override
-  void onActivate(RouterState previous, RouterState current) {
+  void onActivate(RouterState previous, RouterState current) async {
+    print(current.path.toString());
     final int yearInt = getYear(current.parameters);
     final int monthInt = getMonth(current.parameters);
     if (yearInt != null && monthInt != null) {
       month = _calendarService.getSpecificMonth(yearInt, monthInt);
+    } else {
+      month = _calendarService.initMonth();
     }
+  }
 
-    String monthURL(String year, String month) =>
-        RoutePaths.calendar
-            .toUrl(parameters: {yearParam: year, monthParam: month});
+  String monthURL(String year, String month) => RoutePaths.calendar
+      .toUrl(parameters: {yearParam: year, monthParam: month});
 
-    void next() {
-      call = false;
-      //_calendarService.getMonth().next();
-      _router.navigate(monthURL(month.year.toString(), month.month.toString()));
-    }
+  // ignore: unused_element
+  void next() {
+    call = false;
+    //_calendarService.getMonth().next();
+    _router.navigate(monthURL(
+        month.nextM().first.toString(), month.nextM().last.toString()));
+  }
 
-    void previus() {
-      call = false;
-      //_calendarService.getMonth().previus();
-      _router.navigate(monthURL(month.year.toString(), month.month.toString()));
-    }
+  // ignore: unused_element
+  void previus() {
+    call = false;
+    _router.navigate(monthURL(
+        month.prevM().first.toString(), month.prevM().last.toString()));
+  }
 
-
-    void getDay(int Year, int month, int day) {
-      print("Year: " + Year.toString() + " Month: " + month.toString() +
-          " Day: " + day.toString());
-    }
+  void getDay(int Year, int month, int day) {
+    // ignore: prefer_interpolation_to_compose_strings
+    print("Year: " +
+        Year.toString() +
+        " Month: " +
+        month.toString() +
+        " Day: " +
+        day.toString());
   }
 
   static const List<String> week = [
@@ -70,5 +81,4 @@ class CalendarComponent implements OnActivate {
     "Samstag",
     "Sonntag"
   ];
-
 }
