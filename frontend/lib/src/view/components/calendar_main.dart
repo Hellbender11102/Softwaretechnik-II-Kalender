@@ -72,4 +72,8 @@ class CalendarComponent implements OnInit {
   Future<List<Appointment>> getThemall() async {
     appointments = mockAppointments;
   }
+  void getDay(int Year, int month,int day){
+
+    print("Year: "+Year.toString() +" Month: "+month.toString()+" Day: "+day.toString());
+  }
 }
