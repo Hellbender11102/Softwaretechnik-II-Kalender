@@ -7,42 +7,35 @@ import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
 
+import 'mock_appointments.dart';
 
 
 
 @Component(
-  selector: 'appointment',
-  templateUrl: 'appointment_component.html',
+  selector: 'appointmentNew',
+  templateUrl: 'appointment_new_component.html',
   styleUrls: ['appointment_component.css'],
   directives: [coreDirectives, routerDirectives, formDirectives],
 )
 
-class AppointmentComponent implements OnActivate {
+class AppointmentNewComponent implements OnActivate {
 
   // service Klasse für ORM
-  AppointmentComponent(this._appointmentService, this._location);
+  AppointmentNewComponent(this._appointmentService, this._location);
 
-  Appointment appointment = Appointment(1, "Uni", "2019-05-07", "12:00", "04:00", "Technischehochschule Lübeck");
+  static int id = mockAppointments.last.id +1;
+  Appointment appointment = Appointment(id, "", "", "", "", "");
   final Location _location;
-
   final AppointmentService _appointmentService;
 
   @override
   void onActivate(_, RouterState current) async {
-
-
-    final id = getId(current.parameters);
-    if (id != null) appointment = await (_appointmentService.get(id));
+    mockAppointments.add(appointment);
   }
 
-  Future<void> save() async {
+  Future<void> create() async {
     await _appointmentService.update(appointment);
     goBack();
-  }
-
-  Future<void> delete() async {
-    await _appointmentService.delete(appointment.id);
-   goBack();
   }
 
   void goBack() => _location.back();

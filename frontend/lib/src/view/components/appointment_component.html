@@ -9,14 +9,14 @@
 
         <div class="form-group">
             <label for="date">Datum</label>
-            <input type="text" class="form-control" id="date" required
+            <input type="text" class="form-control" id="date" required placeholder="Year-Month-Day"
                    [(ngModel)]="appointment.date" ngControl="date">
         </div>
 
         <div class="form-group">
             <label for="time">Uhrzeit</label>
             <input type="text" class="form-control" id="time" placeholder="00:00"
-                   [(ngModel)]="appointment.time" ngControl="time">
+                   [(ngModel)]="appointment.time" ngControl="time" >
         </div>
 
         <div class="form-group">

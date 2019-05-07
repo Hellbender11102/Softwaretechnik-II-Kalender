@@ -50,7 +50,6 @@ class AppointmentService {
   }
 
   Future<Appointment> get(int id) async {
-    print(id);
     for (var appointment in mockAppointments) {
       print(appointment);
       if (appointment.id == id) return appointment;
@@ -75,11 +74,17 @@ class AppointmentService {
   }
 
   Future<void> delete(int id) async {
+    for (var appointment in mockAppointments) {
+      print(appointment);
+      if (appointment.id == id) mockAppointments.removeWhere((element) => element.id == id);
+    }
+
+    /*
     try {
       final url = '$_appointmentUrl/$id';
       await _http.delete(url, headers: _headers);
     } catch (e) {
       throw _handleError(e);
-    }
+    }*/
   }
 }
