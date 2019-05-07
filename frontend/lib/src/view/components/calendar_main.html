@@ -5,24 +5,34 @@
         <th *ngFor="let day of week">{{day}}</th>
     </tr>
     <tr>
-        <td *ngFor="let i of monthClass.weekOfMonth(0)">{{i}}
-            <ul *ngFor="let appointment of appointments">{{appointment.id}}</ul>
+        <td *ngFor="let i of monthClass.weekOfMonth(0)" (click)="getDay(monthClass.year,monthClass.month,i)">{{i}}
+            <div>{{appointments.length}}</div>
         </td>
     </tr>
     <tr>
-        <td *ngFor="let i of monthClass.weekOfMonth(1)" (click)="previus()">{{i}}</td>
+        <td *ngFor="let i of monthClass.weekOfMonth(1)" (click)="getDay(monthClass.year,monthClass.month,i)">{{i}}
+        <div>{{appointments.length}}</div>
+        </td>
     </tr>
     <tr>
-        <td *ngFor="let i of monthClass.weekOfMonth(2)" (click)="previus()">{{i}}</td>
+        <td *ngFor="let i of monthClass.weekOfMonth(2)" (click)="getDay(monthClass.year,monthClass.month,i)">{{i}}
+        <div>{{appointments.length}}</div>
+        </td>
     </tr>
     <tr>
-        <td *ngFor="let i of monthClass.weekOfMonth(3)" (click)="previus()">{{i}}</td>
+        <td *ngFor="let i of monthClass.weekOfMonth(3)" (click)="getDay(monthClass.year,monthClass.month,i)">{{i}}
+        <div>{{appointments.length}}</div>
+        </td>
     </tr>
     <tr>
-        <td *ngFor="let i of monthClass.weekOfMonth(4)" (click)="previus()">{{i}}</td>
+        <td *ngFor="let i of monthClass.weekOfMonth(4)" (click)="getDay(monthClass.year,monthClass.month,i)">{{i}}
+        <div>{{appointments.length}}</div>
+        </td>
     </tr>
     <tr>
-        <td *ngFor="let i of monthClass.weekOfMonth(5)" (click)="previus()">{{i}}</td>
+        <td *ngFor="let i of monthClass.weekOfMonth(5)" (click)="getDay(monthClass.year,monthClass.month,i)">{{i}}
+        <div>{{appointments.length}}</div>
+        </td>
     </tr>
 </table>
 <div id="month">

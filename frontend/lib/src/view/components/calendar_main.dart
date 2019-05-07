@@ -51,4 +51,8 @@ import 'package:demo/src/view/services/calendar_service.dart';
   Future <List<Appointment>> getThemall() async{
    appointments = mockAppointments;
   }
+  void getDay(int Year, int month,int day){
+
+    print("Year: "+Year.toString() +" Month: "+month.toString()+" Day: "+day.toString());
+  }
 }
