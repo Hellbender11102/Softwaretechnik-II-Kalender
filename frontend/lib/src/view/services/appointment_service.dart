@@ -12,6 +12,13 @@ class AppointmentService {
 
 // Implementation ORM below
 // ···
+
+  dynamic _extractData(Response resp) => json.decode(resp.body);
+  Exception _handleError(dynamic e) {
+    print(e); // for demo purposes only
+    return Exception('Server error; cause: $e');
+  }
+
   Future<Appointment> update(Appointment appointment) async {
     try {
       final url = '$_appointmentUrl/${appointment.id}';
@@ -21,12 +28,6 @@ class AppointmentService {
     } catch (e) {
       throw _handleError(e);
     }
-  }
-
-  dynamic _extractData(Response resp) => json.decode(resp.body);
-  Exception _handleError(dynamic e) {
-    print(e); // for demo purposes only
-    return Exception('Server error; cause: $e');
   }
 
   Future<Appointment> get(int id) async {

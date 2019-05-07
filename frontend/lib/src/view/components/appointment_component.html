@@ -2,27 +2,37 @@
     <h1>Appointment</h1>
     <form>
         <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" required>
+            <label for="name">Terminname</label>
+            <input type="text" class="form-control" id="name" required placeholder="Name"
+                   [(ngModel)]="appointment.name" name="name">
         </div>
 
         <div class="form-group">
-            <label for="dateTime">Datum</label>
-            <input type="text" class="form-control" id="dateTime" required>
+            <label for="date">Datum</label>
+            <input type="text" class="form-control" id="date" required
+                   [(ngModel)]="appointment.date" ngControl="date">
+        </div>
+
+        <div class="form-group">
+            <label for="time">Uhrzeit</label>
+            <input type="text" class="form-control" id="time" placeholder="00:00"
+                   [(ngModel)]="appointment.time" ngControl="time">
         </div>
 
         <div class="form-group">
             <label for="duration">Dauer</label>
-            <input type="text" class="form-control" id="duration" required>
+            <input type="text" class="form-control" id="duration" required placeholder="00:00"
+                   [(ngModel)]="appointment.duration" ngControl="duration">
         </div>
 
         <div class="form-group">
             <label for="location">Ort</label>
-            <input type="text" class="form-control" id="location">
+            <input type="text" class="form-control" id="location" placeholder="Ort"
+                   [(ngModel)]="appointment.location" ngControl="location">
         </div>
 
         <button type="submit" class="btn btn-success" (click)="save()">Save</button>
 
-        <button type="button" class="btn btn-default" (click)="delete()">Delete</button>
+        <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
 
     </form>
