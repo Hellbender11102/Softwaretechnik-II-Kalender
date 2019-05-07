@@ -8,7 +8,7 @@ class AppointmentService {
   AppointmentService(this._http);
 
   static final _headers = {'Content-Type': 'application/json'};
-  static const _appointmentUrl = 'http://localhost:8080/calendar/appointment'; // URL to web API
+  static const _appointmentUrl = 'http://localhost:8080/#/appointments'; // URL to web API
   final Client _http;
 
 // Implementation ORM below
@@ -40,10 +40,10 @@ class AppointmentService {
     try {
       final response = await _http.get(_appointmentUrl);
       print(response.body);
-      final heroes = (_extractData(response) as List)
+      final appointments = (_extractData(response) as List)
           .map((value) => Appointment.fromJson(value))
           .toList();
-      return heroes;
+      return appointments;
     } catch (e) {
       throw _handleError(e);
     }

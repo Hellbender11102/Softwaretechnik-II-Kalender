@@ -3,11 +3,12 @@ import 'dart:async';
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 
-import 'appointment_component.dart';
-import 'mock_appointments.dart';
 import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
+
+import 'appointment_component.dart';
+import 'mock_appointments.dart';
 
 @Component(
   selector: 'appointments',
@@ -30,12 +31,12 @@ class AppointmentListComponent implements OnInit {
     appointments = mockAppointments;
   }
 
-  Future<void> add(String name) async {
+  /*Future<void> add(String name) async {
     name = name.trim();
     if (name.isEmpty) return null;
     appointments.add(await _appointmentService.create(name));
     selected = null;
-  }
+  }*/
 
   void ngOnInit() => _getAppointments();
 
