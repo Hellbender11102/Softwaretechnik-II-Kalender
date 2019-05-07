@@ -94,4 +94,13 @@ class Month {
     }
     return [yearOut,monthOut];
   }
+  final List<String> week = [
+    "Montag",
+    "Dienstag",
+    "Mittwoch",
+    "Donnerstag",
+    "Freitag",
+    "Samstag",
+    "Sonntag"
+  ];
 }
