@@ -30,7 +30,7 @@ class Routes {
     component: calendar_template.CalendarComponentNgFactory,
   );
   static final RouteDefinition calendarDay = RouteDefinition(
-    routePath: RoutePaths.calendarMain,
+    routePath: RoutePaths.calendarMain,  //Must link to a day
     component: calendar_template.CalendarComponentNgFactory,
   );
 

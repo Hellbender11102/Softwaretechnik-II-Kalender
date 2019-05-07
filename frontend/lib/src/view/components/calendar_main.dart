@@ -10,16 +10,15 @@ import 'package:demo/src/view/services/calendar_service.dart';
   styleUrls: ['calendar_main.css'],
   directives: [coreDirectives, routerDirectives],
 )
-class CalendarComponent implements OnInit {
+  class CalendarComponent implements OnInit {
   // service Klasse für ORM
   CalendarComponent(this._calendarService);
 
   final CalendarService _calendarService;
 
-  @override
-  void ngOnInit() async {
-    // do something when drawn
-    // like DB connections
+
+  ngOnInit() {
+
   }
 
   static const List<String> week = [
@@ -31,31 +30,19 @@ class CalendarComponent implements OnInit {
     "Samstag",
     "Sonntag"
   ];
-  var month = DateTime.now().month;
-  var year = DateTime.now().year;
   //kann mit monat +1 oder -1 auch andere monate anzeigen
   Month monthClass = Month(DateTime.now().year, DateTime.now().month);
 
   void next(){
-    if(monthClass.next() >13){
-      year = year+1;
-      month = 1;
-    }else{
-      month +=1;
-    }
+   monthClass.next();
   }
   void previus(){
-    if(monthClass.previus()< 1){
-      year -=1;
-      month = 12;
-    }else{
-      month -=1;
-    }
+   monthClass.previus();
   }
   void getMonthYear(int year, int month){
-    this.month = month;
-    this.year = year;
     monthClass.year = year;
     monthClass.month= month;
   }
+
+
 }

@@ -6,9 +6,9 @@ class RoutePaths {
   static final RoutePath sample = RoutePath(path: 'sample');
   static final RoutePath dashboard = RoutePath(path: 'dashboard');
   static final RoutePath calendarMain = RoutePath(path: 'calendar');
-  static RoutePath calendarYear = RoutePath(path: 'calendar/Year');
-  static RoutePath calendarMonth = RoutePath(path: 'calendar/Year/Month');
-  static RoutePath calendarDay = RoutePath(path: 'calendar/Year/Month/Day');
+  static RoutePath calendarYear = RoutePath(path: 'calendar/:Year');
+  static RoutePath calendarMonth = RoutePath(path: 'calendar/:Year/:Month');
+  static RoutePath calendarDay = RoutePath(path: 'calendar/:Year/:Month/:Day');
 }
 
 int getId(Map<String, String> parameters) {
