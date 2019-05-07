@@ -33,3 +33,8 @@ h4:nth-child(1n){
 h4:nth-child(2n){
     float: right;
 }
+td > div {
+    alignment: right;
+    text-align: right;
+    font-size: small;
+}
