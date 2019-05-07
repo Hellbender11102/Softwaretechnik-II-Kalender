@@ -12,9 +12,19 @@ table{
     table-layout: fixed;
     align-content: center;
     width: 100%;
-    height: 68%;
+    height: 75%;
 }
 h4:hover {
     color: #039be5;
     background-position: center;
+}
+.month{
+    align-content: center;
+}
+
+h4:nth-child(1n){
+    float: left;
+}
+h4:nth-child(2n){
+    float: right;
 }

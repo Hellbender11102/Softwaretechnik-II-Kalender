@@ -1,7 +1,7 @@
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/model/month.dart';
-import 'package:demo/src/view/routes/route_paths.dart';
+import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/services/calendar_service.dart';
 
 @Component(
@@ -35,4 +35,24 @@ class CalendarComponent implements OnInit {
   static var year = DateTime.now().year;
   //kann mit monat +1 oder -1 auch andere monate anzeigen
   static Month monthClass = Month(year,month);
+
+  void next(){
+    if(monthClass.next() >13){
+      year = year+1;
+      month = 1;
+    }else{
+      month +=1;
+    }
+  }
+  void previus(){
+    if(monthClass.previus()< 1){
+      year -=1;
+      month = 12;
+    }else{
+      month -=1;
+    }
+  }
+  void getMonthYear(){
+
+  }
 }

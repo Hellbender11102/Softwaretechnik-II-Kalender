@@ -51,16 +51,16 @@ class Month {
     }
   }
 
-  String previus(){
+  int previus(){
     if(month -1 > 0) {
       month = month - 1;
     }else {
       month = 12;
       year = year - 1;
     }
-    return "";
+    return month;
   }
-  String next(){
+  int next(){
     if(month +1 < 13){
       month = month +1;
     }
@@ -68,6 +68,6 @@ class Month {
       year = year +1;
       month =1;
     }
-    return "";
+    return year;
   }
 }
