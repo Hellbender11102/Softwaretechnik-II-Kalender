@@ -7,6 +7,8 @@ import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
 
+import 'mock_appointments.dart';
+
 
 
 @Component(
@@ -21,13 +23,15 @@ class AppointmentComponent implements OnActivate {
   // service Klasse für ORM
   AppointmentComponent(this._appointmentService/*, this._location*/);
 
-  Appointment appointment /*= Appointment(1, "Uni", "2019-05-07", "12:00", "04:00", "Technischehochschule Lübeck")*/;
+  Appointment appointment = Appointment(1, "Uni", "2019-05-07", "12:00", "04:00", "Technischehochschule Lübeck");
   //final Location _location;
 
   final AppointmentService _appointmentService;
 
   @override
   void onActivate(_, RouterState current) async {
+
+
     final id = getId(current.parameters);
     if (id != null) appointment = await (_appointmentService.get(id));
   }
