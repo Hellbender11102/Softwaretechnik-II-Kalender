@@ -21,10 +21,10 @@ class AppointmentService {
   }
 
   Future<Appointment> update(Appointment appointment) async {
-   /* for (var mockAppointment in mockAppointments) {
+    for (var mockAppointment in mockAppointments) {
       if (mockAppointment.id == appointment.id) mockAppointment = appointment;
         return mockAppointment;
-    }*/
+    }
     /*
     try {
       final url = '$_appointmentUrl/${appointment.id}';
@@ -34,6 +34,19 @@ class AppointmentService {
     } catch (e) {
       throw _handleError(e);
     }*/
+  }
+
+  Future<List<Appointment>> getAll() async {
+    try {
+      final response = await _http.get(_appointmentUrl);
+      print(response.body);
+      final heroes = (_extractData(response) as List)
+          .map((value) => Appointment.fromJson(value))
+          .toList();
+      return heroes;
+    } catch (e) {
+      throw _handleError(e);
+    }
   }
 
   Future<Appointment> get(int id) async {
