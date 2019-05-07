@@ -3,6 +3,7 @@ import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/model/month.dart';
 import 'package:angular_router/angular_router.dart';
+import 'package:demo/src/view/components/mock_appointments.dart';
 import 'package:demo/src/view/services/calendar_service.dart';
 
 @Component(
@@ -16,9 +17,11 @@ import 'package:demo/src/view/services/calendar_service.dart';
   CalendarComponent(this._calendarService);
 
   final CalendarService _calendarService;
+  List<Appointment> appointments;
 
 
   ngOnInit() {
+    getThemall();
 
   }
 
@@ -46,6 +49,6 @@ import 'package:demo/src/view/services/calendar_service.dart';
   }
 
   Future <List<Appointment>> getThemall() async{
-   return _calendarService.getAllAppointmentsOfMonth(monthClass.year, monthClass.month);
+   appointments = mockAppointments;
   }
 }

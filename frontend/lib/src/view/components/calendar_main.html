@@ -1,30 +1,31 @@
-
 <a routerLink="/year"></a>
 <h3>{{monthClass.toString()}} {{monthClass.year}}</h3>
-    <table>
-        <tr>
-            <th *ngFor="let day of week">{{day}}</th>
-        </tr>
-        <tr>
-            <td *ngFor="let i of monthClass.weekOfMonth(0)" (click)="next()">{{i}}<li *ngFor="let appointment of appointment">{{appointment.id}}</li></td>
-        </tr>
-        <tr>
-            <td *ngFor="let i of monthClass.weekOfMonth(1)" (click)="previus()">{{i}}</td>
-        </tr>
-        <tr>
-            <td *ngFor="let i of monthClass.weekOfMonth(2)" (click)="previus()">{{i}}</td>
-        </tr>
-        <tr>
-            <td *ngFor="let i of monthClass.weekOfMonth(3)" (click)="previus()">{{i}}</td>
-        </tr>
-        <tr>
-            <td *ngFor="let i of monthClass.weekOfMonth(4)" (click)="previus()">{{i}}</td>
-        </tr>
-        <tr>
-            <td *ngFor="let i of monthClass.weekOfMonth(5)" (click)="previus()">{{i}}</td>
-        </tr>
-    </table>
+<table>
+    <tr>
+        <th *ngFor="let day of week">{{day}}</th>
+    </tr>
+    <tr>
+        <td *ngFor="let i of monthClass.weekOfMonth(0)">{{i}}
+            <ul *ngFor="let appointment of appointments">{{appointment.id}}</ul>
+        </td>
+    </tr>
+    <tr>
+        <td *ngFor="let i of monthClass.weekOfMonth(1)" (click)="previus()">{{i}}</td>
+    </tr>
+    <tr>
+        <td *ngFor="let i of monthClass.weekOfMonth(2)" (click)="previus()">{{i}}</td>
+    </tr>
+    <tr>
+        <td *ngFor="let i of monthClass.weekOfMonth(3)" (click)="previus()">{{i}}</td>
+    </tr>
+    <tr>
+        <td *ngFor="let i of monthClass.weekOfMonth(4)" (click)="previus()">{{i}}</td>
+    </tr>
+    <tr>
+        <td *ngFor="let i of monthClass.weekOfMonth(5)" (click)="previus()">{{i}}</td>
+    </tr>
+</table>
 <div id="month">
-<h4 (click)="previus()">&lt;- Previous</h4>
-<h4 (click)="next()">Next -&gt;</h4>
+    <h4 (click)="previus()">&lt;- Previous</h4>
+    <h4 (click)="next()">Next -&gt;</h4>
 </div>
