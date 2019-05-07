@@ -3,6 +3,9 @@ import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/dayview_service.dart';
 
+import 'appointment.dart';
+import 'mock_appointments.dart';
+
 
 @Component(
   selector: 'dayview',
@@ -17,15 +20,11 @@ class DayviewComponent implements OnInit {
 
   final DayviewService _dayviewService;
 
-
+  List<Appointment> appointments = mockAppointments;
+  // List<Appointment> appointments = mockAppointments.sort((a, b) => a.date.compareTo(b.date));
   @override
   void ngOnInit() async {
     // do something when drawn
     // like DB connections
   }
-}
-class Appointment {
-  int id = 10;
-  String name ="zuviel";
-  Appointment(this.id,this.name);
 }
