@@ -1,5 +1,6 @@
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
+import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/model/month.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/services/calendar_service.dart';
@@ -44,8 +45,7 @@ import 'package:demo/src/view/services/calendar_service.dart';
     monthClass.month= month;
   }
 
-  String getDay(){
-    return "";
+  Future <List<Appointment>> getThemall() async{
+   return _calendarService.getAllAppointmentsOfMonth(monthClass.year, monthClass.month);
   }
-
 }

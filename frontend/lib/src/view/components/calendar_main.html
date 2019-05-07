@@ -6,7 +6,7 @@
             <th *ngFor="let day of week">{{day}}</th>
         </tr>
         <tr>
-            <td *ngFor="let i of monthClass.weekOfMonth(0)" (click)="next()">{{i}}</td>
+            <td *ngFor="let i of monthClass.weekOfMonth(0)" (click)="next()">{{i}}<li *ngFor="let appointment of appointment">{{appointment.id}}</li></td>
         </tr>
         <tr>
             <td *ngFor="let i of monthClass.weekOfMonth(1)" (click)="previus()">{{i}}</td>
