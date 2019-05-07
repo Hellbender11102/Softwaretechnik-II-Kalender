@@ -92,3 +92,8 @@ nav a:hover {
 nav a.active {
     color: #039be5;
 }
+#buttons > nav {
+    position: relative;
+    left: 1%;
+    top: 25%;
+}

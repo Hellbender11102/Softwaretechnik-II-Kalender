@@ -11,7 +11,12 @@ class RoutePaths {
   static final RoutePath calendar = RoutePath(path: '${calendarMain.path}/:$yearParam/:$monthParam');
 }
 
-int getId(Map<String, String> parameters) {
-  final id = parameters[idParam];
+
+int getYear(Map<String, String> parameters) {
+  final id = parameters[yearParam];
+  return id == null ? null : int.tryParse(id);
+}
+int getMonth(Map<String, String> parameters) {
+  final id = parameters[monthParam];
   return id == null ? null : int.tryParse(id);
 }

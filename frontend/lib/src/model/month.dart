@@ -3,10 +3,9 @@ import 'dart:js';
 import 'package:demo/src/model/day.dart';
 
 class Month {
-  Month(int year,int month){
-    this.month = month;
-    this.year = year;
-  }
+  // Constructor
+  Month(this.year,this.month);
+
 
   int month;
   int year;
