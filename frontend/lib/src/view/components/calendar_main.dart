@@ -44,5 +44,8 @@ import 'package:demo/src/view/services/calendar_service.dart';
     monthClass.month= month;
   }
 
+  String getDay(){
+    return "";
+  }
 
 }

@@ -1,3 +1,4 @@
+import 'package:demo/src/model/appointment.dart';
 import 'package:http/http.dart';
 class CalendarService {
   // request to middlemand
@@ -8,4 +9,5 @@ class CalendarService {
   final Client _http;
 
   // Implementation ORM below
+
 }
