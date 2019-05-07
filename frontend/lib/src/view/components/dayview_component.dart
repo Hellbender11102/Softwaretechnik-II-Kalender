@@ -15,7 +15,7 @@ class DayviewComponent implements OnInit {
   // service Klasse für ORM
   DayviewComponent(this._dayviewService);
 
-  final DayviewComponent _dayviewService;
+  final DayviewService _dayviewService;
 
 
   @override
