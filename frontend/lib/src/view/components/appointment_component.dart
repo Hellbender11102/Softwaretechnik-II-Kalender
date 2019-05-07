@@ -21,7 +21,7 @@ class AppointmentComponent implements OnActivate {
   // service Klasse für ORM
   AppointmentComponent(this._appointmentService/*, this._location*/);
 
-  Appointment appointment = Appointment(1, "Uni", "2019-05-07", "12:00", "04:00", "Technischehochschule Lübeck");
+  Appointment appointment;
   //final Location _location;
 
   final AppointmentService _appointmentService;

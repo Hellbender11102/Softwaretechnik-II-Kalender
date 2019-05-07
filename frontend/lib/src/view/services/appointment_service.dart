@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:demo/src/model/appointment.dart';
+import '../components/mock_appointments.dart';
 class AppointmentService {
   // request to middlemand
   AppointmentService(this._http);
@@ -20,6 +21,11 @@ class AppointmentService {
   }
 
   Future<Appointment> update(Appointment appointment) async {
+    for (var mockAppointment in mockAppointments) {
+      if (mockAppointment.id == appointment.id) mockAppointment = appointment;
+        return appointment;
+    }
+    /*
     try {
       final url = '$_appointmentUrl/${appointment.id}';
       final response =
@@ -27,16 +33,20 @@ class AppointmentService {
       return Appointment.fromJson(_extractData(response));
     } catch (e) {
       throw _handleError(e);
-    }
+    }*/
   }
 
   Future<Appointment> get(int id) async {
+    for (var appointment in mockAppointments) {
+      if (appointment.id == id) return appointment;
+    }
+    /*
     try {
       final response = await _http.get('$_appointmentUrl/$id');
       return Appointment.fromJson(_extractData(response));
     } catch (e) {
       throw _handleError(e);
-    }
+    }*/
   }
 
   Future<Appointment> create(String name) async {
