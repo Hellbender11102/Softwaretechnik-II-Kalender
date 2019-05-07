@@ -11,5 +11,12 @@ table{
 }
 
 ul {
-    font-size: 1.2em;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-left: 2.5%;
+}
+
+li {
+    font-weight: normal;
+    margin-left: 2.5%;
 }

@@ -1,6 +1,9 @@
 <h3>Dayview</h3>
     <table>
         <tr>
-            <ul *ngFor="let appointment of appointments">{{appointment.time}} - {{appointment.name}} ({{appointment.location}})</ul>
+            <ul *ngFor="let appointment of appointments">{{appointment.time}} - {{appointment.name}}
+                    <li>Ort: {{appointment.location}}</li>
+                    <li>Dauer: {{appointment.duration}}</li>
+            </ul>
         </tr>
     </table>
