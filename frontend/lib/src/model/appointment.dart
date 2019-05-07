@@ -10,14 +10,6 @@ class Appointment {
     this.location = location;
   }
 
-  int id;
-  String name;
-  String date;
-  String time;
-  String duration;
-  String location;
-
-
   factory Appointment.fromJson(Map<int, String> appointment) =>
       Appointment(_toInt(appointment['id']),
           appointment['name'],
@@ -25,6 +17,13 @@ class Appointment {
           appointment['time'],
           appointment['duration'],
           appointment['location']);
+
+  int id;
+  String name;
+  String date;
+  String time;
+  String duration;
+  String location;
 
   Map toJson() => {'id': id, 'name': name, 'date': date, 'time': time, 'duration': duration, 'location': location};
 }

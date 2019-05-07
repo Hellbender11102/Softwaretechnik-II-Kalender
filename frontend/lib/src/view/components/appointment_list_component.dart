@@ -43,6 +43,7 @@ class AppointmentListComponent implements OnInit {
   }*/
 
   ///Nachfolgender Code wird bei der inizialisierung der Klasse ausgeführt
+  @override
   void ngOnInit() => _getAppointments();
 
 

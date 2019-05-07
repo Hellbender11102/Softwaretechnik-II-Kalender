@@ -1,6 +1,5 @@
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
-import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/dashboard_service.dart';
 
 

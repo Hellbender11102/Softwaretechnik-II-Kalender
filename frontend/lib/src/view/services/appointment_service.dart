@@ -62,7 +62,9 @@ class AppointmentService {
   Future<Appointment> get(int id) async {
     for (var appointment in mockAppointments) {
       print(appointment);
-      if (appointment.id == id) return appointment;
+      if (appointment.id == id) {
+        return appointment;
+      }
     }
 
     /*try {

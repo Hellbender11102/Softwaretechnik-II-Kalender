@@ -32,7 +32,9 @@ class AppointmentComponent implements OnActivate {
 
 
     final id = getId(current.parameters);
-    if (id != null) appointment = await (_appointmentService.get(id));
+    if (id != null) {
+      appointment = await (_appointmentService.get(id));
+    }
   }
 
   /// Methode zum speichern, der änderungen die man im Termin vorgenommen hat
