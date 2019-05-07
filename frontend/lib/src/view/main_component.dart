@@ -3,6 +3,7 @@ import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/routes/routes.dart';
 import 'package:demo/src/view/services/calendar_service.dart';
 import 'package:demo/src/view/services/dashboard_service.dart';
+import 'package:demo/src/view/services/dayview_service.dart';
 import 'package:demo/src/view/services/sample_service.dart';
 
 
@@ -13,7 +14,8 @@ import 'package:demo/src/view/services/sample_service.dart';
   providers: [
     ClassProvider(SampleService),
     ClassProvider(DashboardService),
-    ClassProvider(CalendarService)],
+    ClassProvider(CalendarService),
+    ClassProvider(DayviewService)],
   exports: [RoutePaths, Routes],
 )
 class AppComponent {

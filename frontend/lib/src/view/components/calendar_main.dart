@@ -8,6 +8,7 @@ import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/components/mock_appointments.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/calendar_service.dart';
+import 'package:demo/src/model/day.dart';
 
 @Component(
   selector: 'calendarMain',
@@ -18,6 +19,7 @@ import 'package:demo/src/view/services/calendar_service.dart';
 class CalendarComponent implements OnActivate, OnInit {
   CalendarComponent(this._calendarService, this._router, this._location);
 
+
  //Month month = Month(DateTime.now().year, DateTime.now().month);
   Month month = Month(DateTime.now().year, DateTime.now().month);
   final CalendarService _calendarService;
@@ -27,6 +29,11 @@ class CalendarComponent implements OnActivate, OnInit {
 
   // as variable but on call get appointments from service routine
   List<Appointment> get appointments => _calendarService.getAllAppointments();
+
+  // auswählen des Tages
+  Future<NavigationResult> gotoDetail(Day day) =>
+      _router.navigate(dayUrl(day.year,day.month,day.day));
+
 
   @override
   void ngOnInit() {
@@ -40,10 +47,16 @@ class CalendarComponent implements OnActivate, OnInit {
     if (yearInt != null && monthInt != null) {
       month = _calendarService.getSpecificMonth(yearInt, monthInt);
     }
+    print(month.fullMonth().toString());
   }
 
   String monthURL(String year, String month) => RoutePaths.calendar
       .toUrl(parameters: {yParam: year, mParam: month});
+
+  String dayUrl(int yearInt,int monthInt,int dayInt) =>
+      RoutePaths.dayview.toUrl(parameters: {yParam: "$yearInt", mParam: "$monthInt", dParam: "$dayInt"});
+
+
 
   // ignore: unused_element
   void next() {
@@ -56,4 +69,5 @@ class CalendarComponent implements OnActivate, OnInit {
     _router.navigate(monthURL(
         month.prevM().first.toString(), month.prevM().last.toString()));
   }
+
 }

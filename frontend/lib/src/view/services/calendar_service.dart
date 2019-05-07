@@ -8,7 +8,7 @@ class CalendarService {
   CalendarService(this._http);
 
   static final _headers = {'Content-Type': 'application/json'};
-  static const _sampleUrl = 'http://localhost:8888/calendar'; // URL to web API
+  static const _calendarUrl = 'http://localhost:8888/calendar'; // URL to web API
   final Client _http;
 
   Month month;

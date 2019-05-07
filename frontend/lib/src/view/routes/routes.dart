@@ -2,6 +2,7 @@ import 'package:angular_router/angular_router.dart';
 import '../components/calendar_main.template.dart' as calendar_template;
 import '../components/dashboard_component.template.dart' as dashboard_template;
 import '../components/sample_component.template.dart' as sample_template;
+import '../components/dayview_component.template.dart' as dayview_template;
 
 import 'route_paths.dart';
 
@@ -26,16 +27,19 @@ class Routes {
     component: calendar_template.CalendarComponentNgFactory,
   );
 
+  static final RouteDefinition dayview = RouteDefinition(
+    routePath: RoutePaths.dayview,
+    component: dayview_template.DayviewComponentNgFactory,
+  );
+
+
   // routing auf diese Component
   static final List<RouteDefinition> all = <RouteDefinition>[
     sample,
     dashboard,
     calendarMain,
     calendar,
-    RouteDefinition.redirect(
-      path: '1234',
-      redirectTo: RoutePaths.sample.toUrl(),
-    ),
+    dayview,
     RouteDefinition.redirect(
       path: '',
       redirectTo: RoutePaths.dashboard.toUrl(),
