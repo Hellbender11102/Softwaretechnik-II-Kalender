@@ -18,26 +18,28 @@ import 'mock_appointments.dart';
   directives: [coreDirectives, routerDirectives, formDirectives],
 )
 
-class AppointmentNewComponent implements OnActivate {
+///Klasse zum erstellen eines neuen Termins
+class AppointmentNewComponent {
 
-  // service Klasse für ORM
   AppointmentNewComponent(this._appointmentService, this._location);
 
-  static int id = mockAppointments.last.id +1;
-  Appointment appointment = Appointment(id, "", "", "", "", "");
+  //Später löschen
+  Appointment appointment = Appointment(1, "", "", "", "", ""); //Später verändern
   final Location _location;
   final AppointmentService _appointmentService;
 
-  @override
-  void onActivate(_, RouterState current) async {
-    mockAppointments.add(appointment);
-  }
 
-  Future<void> create() async {
-    await _appointmentService.update(appointment);
+
+  ///Methode zum erstellen des neuen Termins
+  Future<void> create() async { //Später in richtiges create umwandeln
+    final int id = mockAppointments.last.id +1;
+    appointment.id = id;
+    mockAppointments.add(appointment);
+    await _appointmentService.update(appointment); //.create()
     goBack();
   }
 
+  ///Methode, die die übergeordnete ansicht anzeigt
   void goBack() => _location.back();
 
 

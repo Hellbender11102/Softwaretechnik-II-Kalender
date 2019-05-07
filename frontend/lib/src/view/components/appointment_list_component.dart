@@ -8,7 +8,6 @@ import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
 
 import 'appointment_component.dart';
-import 'mock_appointments.dart';
 
 @Component(
   selector: 'appointments',
@@ -17,6 +16,8 @@ import 'mock_appointments.dart';
   directives: [coreDirectives, routerDirectives, AppointmentComponent],
   pipes: [commonPipes],
 )
+
+///Klasse zum anzeigen aller Termine
 class AppointmentListComponent implements OnInit {
   AppointmentListComponent(this._appointmentService, this._router);
 
@@ -24,11 +25,14 @@ class AppointmentListComponent implements OnInit {
   final Router _router;
   List<Appointment> appointments;
   Appointment selected;
+
+  ///Methode zum auswählen eines Termins
   void onSelect(Appointment appointment) => selected = appointment;
 
+  ///Methode die eine Liste aller appointments zurückgibt
   Future<void> _getAppointments() async {
-   // appointments = await _appointmentService.getAll();
-    appointments = mockAppointments;
+    appointments = await _appointmentService.getAll();
+    //appointments = mockAppointments;
   }
 
   /*Future<void> add(String name) async {
@@ -38,13 +42,16 @@ class AppointmentListComponent implements OnInit {
     selected = null;
   }*/
 
+  ///Nachfolgender Code wird bei der inizialisierung der Klasse ausgeführt
   void ngOnInit() => _getAppointments();
 
 
 
+  ///Methode die die URL von dem Termin mit gegebener id als String zurückgibt
   String _appointmentUrl(int id) =>
       RoutePaths.appointment.toUrl(parameters: {idParam: '$id'});
 
+  ///Methode die den ausgewählten Termin aufruft
   Future<NavigationResult> gotoDetail() =>
       _router.navigate(_appointmentUrl(selected.id));
 }

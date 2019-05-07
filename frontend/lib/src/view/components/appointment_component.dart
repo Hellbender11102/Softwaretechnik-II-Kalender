@@ -16,17 +16,17 @@ import 'package:demo/src/view/services/appointment_service.dart';
   styleUrls: ['appointment_component.css'],
   directives: [coreDirectives, routerDirectives, formDirectives],
 )
-
+/// Klasse zur verwaltung der Termine
 class AppointmentComponent implements OnActivate {
 
-  // service Klasse für ORM
   AppointmentComponent(this._appointmentService, this._location);
 
-  Appointment appointment = Appointment(1, "Uni", "2019-05-07", "12:00", "04:00", "Technischehochschule Lübeck");
+  Appointment appointment = Appointment(1, "Test Termin", "", "", "", "");
   final Location _location;
 
   final AppointmentService _appointmentService;
 
+  /// Folgender Code wird immer bei der Aktivierung der Klasse aufgerufen
   @override
   void onActivate(_, RouterState current) async {
 
@@ -35,16 +35,19 @@ class AppointmentComponent implements OnActivate {
     if (id != null) appointment = await (_appointmentService.get(id));
   }
 
+  /// Methode zum speichern, der änderungen die man im Termin vorgenommen hat
   Future<void> save() async {
     await _appointmentService.update(appointment);
     goBack();
   }
 
+  ///Methode zum löschen von Terminen
   Future<void> delete() async {
     await _appointmentService.delete(appointment.id);
    goBack();
   }
 
+  ///Methode, die die übergeordnete ansicht anzeigt
   void goBack() => _location.back();
 
 
