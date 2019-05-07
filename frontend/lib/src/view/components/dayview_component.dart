@@ -24,3 +24,8 @@ class DayviewComponent implements OnInit {
     // like DB connections
   }
 }
+class Appointment {
+  int id = 10;
+  String name ="zuviel";
+  Appointment(this.id,this.name);
+}
