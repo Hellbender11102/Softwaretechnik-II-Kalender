@@ -33,6 +33,7 @@ class Month {
     }
   }
 
+  @override
   String toString(){
     switch(month){
       case 1: return "January";
@@ -51,16 +52,15 @@ class Month {
     }
   }
 
-  int previus(){
+  void previus(){
     if(month -1 > 0) {
       month = month - 1;
     }else {
       month = 12;
       year = year - 1;
     }
-    return month;
   }
-  int next(){
+  void next(){
     if(month +1 < 13){
       month = month +1;
     }
@@ -68,6 +68,5 @@ class Month {
       year = year +1;
       month =1;
     }
-    return year;
   }
 }

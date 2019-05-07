@@ -13,6 +13,10 @@ class Routes {
     routePath: RoutePaths.sample,
     component: sample_template.SampleComponentNgFactory,
   );
+  static final RouteDefinition calendar = RouteDefinition(
+    routePath: RoutePaths.calendar,
+    component: calendar_template.CalendarComponentNgFactory,
+  );
   static final RouteDefinition dashboard = RouteDefinition(
     routePath: RoutePaths.dashboard,
     component: dashboard_template.DashboardComponentNgFactory,
@@ -21,26 +25,13 @@ class Routes {
     routePath: RoutePaths.calendarMain,
     component: calendar_template.CalendarComponentNgFactory,
   );
-  static final RouteDefinition calendarYear = RouteDefinition(
-    routePath: RoutePaths.calendarMain,
-    component: calendar_template.CalendarComponentNgFactory,
-  );
-  static final RouteDefinition calendarMonth = RouteDefinition(
-    routePath: RoutePaths.calendarMain,
-    component: calendar_template.CalendarComponentNgFactory,
-  );
-  static final RouteDefinition calendarDay = RouteDefinition(
-    routePath: RoutePaths.calendarMain,  //Must link to a day
-    component: calendar_template.CalendarComponentNgFactory,
-  );
 
   // routing auf diese Component
   static final List<RouteDefinition> all = <RouteDefinition>[
     sample,
     dashboard,
     calendarMain,
-    calendarYear,
-    calendarMonth,
+    calendar,
     RouteDefinition.redirect(
       path: '1234',
       redirectTo: RoutePaths.sample.toUrl(),

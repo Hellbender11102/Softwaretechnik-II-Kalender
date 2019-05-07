@@ -12,6 +12,7 @@ class Day{
   String day = toString();
 
   //todo just current month
+  @override
   static String toString(){
    switch (DateTime(DateTime.now().month,dayOfMonth).weekday){
      case 1: return "Monday";
