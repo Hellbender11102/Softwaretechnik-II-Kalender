@@ -1,7 +1,7 @@
 
 class Appointment {
 
-  Appointment(int id, String name, var date, String time, String duration, String location) {
+  Appointment(int id, String name, String date, String time, String duration, String location) {
     this.id = id;
     this.name = name;
     this.date = date;
@@ -12,13 +12,13 @@ class Appointment {
 
   int id;
   String name;
-  var date;
+  String date;
   String time;
   String duration;
   String location;
 
 
-  factory Appointment.fromJson(Map<String, dynamic> appointment) =>
+  factory Appointment.fromJson(Map<int, String> appointment) =>
       Appointment(_toInt(appointment['id']),
           appointment['name'],
           appointment['date'],
@@ -29,5 +29,5 @@ class Appointment {
   Map toJson() => {'id': id, 'name': name, 'date': date, 'time': time, 'duration': duration, 'location': location};
 }
 
-int _toInt(id) => id is int ? id : int.parse(id);
+int _toInt(id) => id is int ? id : int.parse(id as String);
 
