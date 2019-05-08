@@ -27,7 +27,10 @@ class Appointment {
           appointment['location']);
 
   Map toJson() => {'id': id, 'name': name, 'date': date, 'time': time, 'duration': duration, 'location': location};
+
+  String toString(){
+    return date.substring(7,8)+" "+date.substring(5,6)+" "+date.substring(0,3);
+  }
 }
 
 int _toInt(id) => id is int ? id : int.parse(id as String);
-
