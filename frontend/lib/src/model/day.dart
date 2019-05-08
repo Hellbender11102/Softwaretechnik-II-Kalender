@@ -1,7 +1,8 @@
 import 'package:demo/src/model/appointment.dart';
 
 class Day {
-  Day(this.order,this.year, this.month, this.day);
+  Day(this.order, this.year, this.month, this.day);
+
   int order;
   int year;
   int month;
@@ -11,22 +12,33 @@ class Day {
 
   @override
   String toString() {
-    String pre = order.toString() + ":" + year.toString() + "," + month.toString() + "," + day.toString();
+    // ignore: prefer_interpolation_to_compose_strings
+    return order.toString() +
+        ":" +
+        year.toString() +
+        "," +
+        month.toString() +
+        "," +
+        day.toString() +
+        weekday();
+  }
+
+  String weekday() {
     switch (DateTime(year, month, day).weekday) {
       case 1:
-        return pre + ", Monday \n";
+        return "Monday \n";
       case 2:
-        return pre + ", Tuesday \n";
+        return "Tuesday \n";
       case 3:
-        return pre + ", Wednesday \n";
+        return "Wednesday \n";
       case 4:
-        return pre + ", Thursday \n";
+        return "Thursday \n";
       case 5:
-        return pre + ", Friday \n";
+        return "Friday \n";
       case 6:
-        return pre + ", Saturday \n";
-      case 7:
-        return pre + ", Sunday \n";
+        return "Saturday \n";
+      default:
+        return "Sunday \n";
     }
   }
 }
