@@ -20,22 +20,14 @@ table{
     height: 100%;
     child-align: bottom;
     border-collapse: collapse;
-    padding-left: 30px;
-    padding-right: 30px;
 }
 h4:hover {
     color: #039be5;
     background-position: center;
 }
 .calendar{
-    float: left;
     width: 100%;
     height: 100%;
-}
-.month{
-    float: left;
-    width: 100%;
-    align-content: center;
 }
 
 h4:nth-child(1n){
@@ -49,7 +41,6 @@ h4:nth-child(2n){
 }
 
 td > div {
-    alignment: right;
     text-align: right;
     font-size: small;
 }
