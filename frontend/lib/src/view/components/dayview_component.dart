@@ -19,10 +19,11 @@ class DayviewComponent implements OnInit {
 
   final DayviewService _dayviewService;
 
-  List<Appointment> appointments = mockAppointments;
-  // List<Appointment> appointments = mockAppointments.sort((a, b) => a.date.compareTo(b.date));
+  static List<Appointment> appointments = mockAppointments;
+
   @override
   void ngOnInit() async {
+    appointments.sort((a, b) => a.time.compareTo(b.time));
     // do something when drawn
     // like DB connections
   }

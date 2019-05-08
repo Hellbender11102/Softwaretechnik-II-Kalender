@@ -67,6 +67,8 @@ class AppointmentService {
       }
     }
 
+
+
     /*try {
       final response = await _http.get('$_appointmentUrl/$id');
       return Appointment.fromJson(_extractData(response) as Map<int, String>);
