@@ -13,7 +13,7 @@ import 'appointment_component.dart';
   selector: 'appointments',
   templateUrl: 'appointment_list_component.html',
   styleUrls: ['appointment_list_component.css'],
-  directives: [coreDirectives, routerDirectives, AppointmentComponent],
+  directives: [coreDirectives, routerDirectives],
   pipes: [commonPipes],
 )
 

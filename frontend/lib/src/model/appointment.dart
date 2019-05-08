@@ -10,6 +10,10 @@ class Appointment {
     this.location = location;
   }
 
+  void empty() {
+
+  }
+
   int id;
   String name;
   String date;
