@@ -9,6 +9,7 @@ import 'package:demo/src/view/services/sample_service.dart';
 
 @Component(
   selector: 'my-cal',
+  styleUrls:['default.css','theme-672-1024.css'],
   templateUrl: 'main_component.html',
   directives: [routerDirectives],
   providers: [

@@ -1,0 +1,93 @@
+@media only screen and (min-width: 42em) and (max-width: 64em) {
+    /* min-width 672px / max-width 1024px */
+    /* hier vermuten wir Tabletts         */
+    /*
+    /* em hat de wenigsten nebenwirkungen bei Browsern daher em nutzen!!!!
+    /* wird als einziges auch von Safari unterstützt, Alle Apple devices sind somit included
+    colors to use if possible (descending) :
+    #FF7B89
+    #8A5082
+    #6F5F90
+    #758EB7 - base
+    #A5CAD2
+    */
+    #outerContainer {
+        width: 100vw;
+        height: 85vh;
+        box-sizing: content-box;
+        background: #758EB7;
+        /* border-radius: 10px; */
+    }
+
+    #buttons {
+        float: left;
+        width: 100vw;
+        height: 5vh;
+        min-height: 50px;
+        background: #8A5082;
+    }
+
+    #leftContainer {
+        float: left;
+        height: 100vh;
+        background: #8A5082;
+        display: none;
+    }
+
+    #rightContainer {
+        float: left;
+        height: 100vh;
+        background: #8A5082;
+        display: none;
+    }
+
+    innerContainer {
+        float: left;
+        height: 85vh;
+        min-height: 400px;
+        width: 100vw;
+        box-sizing: content-box;
+        background: #A5CAD2;
+        /* border-radius: 10px; */
+    }
+
+    #impressum {
+        float: left;
+        width: 100vw;
+        height: 10vh;
+        min-height: 50px;
+        background: #8A5082;
+    }
+
+    #impressum > p {
+        font-family: "Lucida Console", monospace;
+        text-align: center;
+        font-size: 15px;
+    }
+    nav {
+        display:table;
+        width:100vw;
+        height: 100%;
+    }
+    li {
+        float:none;
+        display:table-cell;
+        text-align:center;
+        vertical-align: middle;
+        text-decoration: none;
+        background-color: #eee;;
+    }
+
+    li:visited, li:link {
+        color: #607D8B;
+    }
+
+    li:hover {
+        color: #039be5;
+        background-color: #CFD8DC;
+    }
+
+    li.active {
+        color: #039be5;
+    }
+}
