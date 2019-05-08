@@ -47,7 +47,7 @@ class CalendarComponent implements OnActivate, OnInit {
     if (yearInt != null && monthInt != null) {
       month = _calendarService.getSpecificMonth(yearInt, monthInt);
     }
-    print(month.fullMonth().toString());
+    //print(month.weekOfMonth(0).toString());
   }
 
   String monthURL(String year, String month) => RoutePaths.calendar

@@ -36,15 +36,15 @@ class Month {
   }
   */
 
-  Iterable fullMonth() sync* {
+  Iterable weekOfMonth(int week) sync* {
     final int firstWeekDayOfMonth = DateTime.utc(year, month, 1).weekday;
     final int weekOffSet = -firstWeekDayOfMonth+2;
     print(firstWeekDayOfMonth);
 
-    int k = weekOffSet;
+    int k = weekOffSet + 7 * week;
     int count = 0;
     // 6 * 7 Tage
-    while (count < 42) {
+    while (count < 7) {
       // adds a day on top now again from top
       DateTime time = DateTime.utc(year, month , k);
       count++;
