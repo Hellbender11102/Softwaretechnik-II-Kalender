@@ -52,7 +52,7 @@ colors to use if possible (descending) :
 
 innerContainer{
     float: left;
-    padding: 0px;
+    padding: 10px;
     height: 100%;
     width: 100%;
     box-sizing: content-box;
@@ -91,4 +91,9 @@ nav a:hover {
 }
 nav a.active {
     color: #039be5;
+}
+#buttons > nav {
+    position: relative;
+    left: 1%;
+    top: 25%;
 }

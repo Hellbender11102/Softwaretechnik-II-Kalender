@@ -7,6 +7,12 @@
                [routerLinkActive]="'active'">Dashboard</a>
             <a [routerLink]="RoutePaths.dayview.toUrl()"
                [routerLinkActive]="'active'">Dayview</a>
+            <a [routerLink]="RoutePaths.appointments.toUrl()"
+               [routerLinkActive]="'active'">Appointments</a>
+            <a [routerLink]="RoutePaths.appointmentNew.toUrl()"
+               [routerLinkActive]="'active'">New Appointment</a>
+            <a [routerLink]="RoutePaths.calendarMain.toUrl()"
+               [routerLinkActive]="'active'">Calendar</a>
         </nav>
 
     </div>
@@ -15,7 +21,7 @@
     <innerContainer>
         <router-outlet [routes]="Routes.all"></router-outlet>
     </innerContainer>
-    <div id="impressum"><p>Erstellt von Daniel Waage, Lennard Siedschlag, Marius Mauritz, Marcel Azadi, Olliver Wosiek
+    <div id="impressum"><p>Erstellt von Daniel Waage, Lennart Siedschlag, Marius Mauritz, Marcel Azadi, Olliver Wosiek
         und Laurenz Schindler</p></div>
 </div>
 
