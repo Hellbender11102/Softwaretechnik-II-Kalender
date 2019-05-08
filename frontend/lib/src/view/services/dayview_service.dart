@@ -1,9 +1,9 @@
 import 'package:http/http.dart';
-class DashboardService {
+class DayviewService {
   // request to middlemand
-  DashboardService(this._http);
+  DayviewService(this._http);
   static final _headers = {'Content-Type': 'application/json'};
-  static const _dashboardUrl = 'http://localhost:8888/dashboard'; // URL to web API
+  static const _dayViewUrl = 'http://localhost:8888/dayview'; // URL to web API
   final Client _http;
 
 
