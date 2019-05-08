@@ -8,7 +8,6 @@ const String dParam ="day";
 
 
 class RoutePaths {
-  static final RoutePath sample = RoutePath(path: 'sample');
   static final RoutePath dashboard = RoutePath(path: 'dashboard');
   static final RoutePath appointments = RoutePath(path: 'appointments');
   static final RoutePath appointmentNew = RoutePath(path: 'appointmentNew');

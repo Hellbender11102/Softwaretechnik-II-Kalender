@@ -5,7 +5,6 @@ import 'package:demo/src/view/services/appointment_service.dart';
 import 'package:demo/src/view/services/calendar_service.dart';
 import 'package:demo/src/view/services/dashboard_service.dart';
 import 'package:demo/src/view/services/dayview_service.dart';
-import 'package:demo/src/view/services/sample_service.dart';
 
 
 @Component(
@@ -14,7 +13,6 @@ import 'package:demo/src/view/services/sample_service.dart';
   templateUrl: 'main_component.html',
   directives: [routerDirectives],
   providers: [
-    ClassProvider(SampleService),
     ClassProvider(DashboardService),
     ClassProvider(AppointmentService),
     ClassProvider(CalendarService),
