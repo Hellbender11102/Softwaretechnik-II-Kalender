@@ -35,8 +35,24 @@ h4:nth-child(1n){
 h4:nth-child(2n){
     float: right;
 }
+table{
+    padding: 5px;
+}
 td > div {
     alignment: right;
     text-align: right;
     font-size: small;
 }
+th{
+    text-align: center;
+}
+
+/*
+colors to use if possible (descending) :
+#FF7B89
+#8A5082
+#6F5F90
+#758EB7 - base
+#A5CAD2
+*/
+
