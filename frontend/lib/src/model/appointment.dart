@@ -30,7 +30,7 @@ class Appointment {
 
   String toString(){
     // ignore: prefer_interpolation_to_compose_strings
-    return date.substring(7,8)+" "+date.substring(5,6)+" "+date.substring(0,3);
+    return date.substring(8,10)+"/"+date.substring(5,7)+"/"+date.substring(0,4) + ": " + time;
   }
 }
 
