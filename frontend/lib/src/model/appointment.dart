@@ -29,6 +29,7 @@ class Appointment {
   Map toJson() => {'id': id, 'name': name, 'date': date, 'time': time, 'duration': duration, 'location': location};
 
   String toString(){
+    // ignore: prefer_interpolation_to_compose_strings
     return date.substring(7,8)+" "+date.substring(5,6)+" "+date.substring(0,3);
   }
 }
