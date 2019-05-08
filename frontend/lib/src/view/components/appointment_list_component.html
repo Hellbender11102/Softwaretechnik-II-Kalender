@@ -3,7 +3,7 @@
     <li *ngFor="let appointment of appointments"
         [class.selected]="appointment === selected"
         (click)="onSelect(appointment)">
-        <span class="badge">{{appointment.id}}</span>
+        <span class="badge">{{appointment.date}}: {{appointment.time}}</span>
         <span>{{appointment.name}}</span>
     </li>
 </ul>
