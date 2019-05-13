@@ -12,8 +12,10 @@ class User extends Person {
   // ggf persistente Daten von einer Service Routine
   List<Contact> _contactlist = List();
 
-  User(String nickname, String surname, String name, String email)
-      : super(nickname, surname, name, email);
+  String password;
+
+  User(String nickname, String surname, String name, String email, String password) 
+      : password = password, super(nickname, surname, name, email);
 
   // Adds a single contact, no duplicate by contactcode
   void addContact(Contact con) {

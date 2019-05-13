@@ -6,6 +6,7 @@ import 'package:demo/src/view/services/calendar_service.dart';
 import 'package:demo/src/view/services/dashboard_service.dart';
 import 'package:demo/src/view/services/dayview_service.dart';
 import 'package:demo/src/view/services/sample_service.dart';
+import 'package:demo/src/view/services/register_service.dart';
 
 
 @Component(
@@ -18,7 +19,8 @@ import 'package:demo/src/view/services/sample_service.dart';
     ClassProvider(DashboardService),
     ClassProvider(AppointmentService),
     ClassProvider(CalendarService),
-    ClassProvider(DayviewService)
+    ClassProvider(DayviewService),
+    ClassProvider(RegisterService)
     ],
   exports: [RoutePaths, Routes],
 )
