@@ -1,14 +1,12 @@
-import 'dart:html' as prefix0;
+import 'dart:html';
 
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/model/appointment.dart';
+import 'package:demo/src/model/day.dart';
 import 'package:demo/src/model/month.dart';
-import 'package:angular_router/angular_router.dart';
-import 'package:demo/src/view/components/mock_appointments.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/calendar_service.dart';
-import 'package:demo/src/model/day.dart';
 
 @Component(
   selector: 'calendarMain',
