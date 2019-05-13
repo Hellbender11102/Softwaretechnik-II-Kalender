@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
@@ -23,7 +25,7 @@ class AppointmentComponent implements OnActivate {
 
   Appointment appointment = Appointment(1, "Test Termin", "", "", "", "");
   final Location _location;
-
+  bool deleteControl;
   final AppointmentService _appointmentService;
 
   /// Folgender Code wird immer bei der Aktivierung der Klasse aufgerufen
@@ -45,8 +47,14 @@ class AppointmentComponent implements OnActivate {
 
   ///Methode zum löschen von Terminen
   Future<void> delete() async {
-    await _appointmentService.delete(appointment.id);
-   goBack();
+    if (deleteControl==true) {
+      await _appointmentService.delete(appointment.id);
+      goBack();
+    } else {
+      deleteControl = true;
+      final deleteDiv = querySelector('#delete');
+      deleteDiv.style.visibility = 'visible';
+    }
   }
 
   ///Methode, die die übergeordnete ansicht anzeigt
