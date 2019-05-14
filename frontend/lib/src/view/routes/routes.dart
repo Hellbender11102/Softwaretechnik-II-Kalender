@@ -46,6 +46,14 @@ class Routes {
     routePath: RoutePaths.dayview,
     component: dayview_template.DayviewComponentNgFactory,
   );
+  static final RouteDefinition contacts = RouteDefinition(
+    routePath: RoutePaths.contacts,
+    component: dayview_template.DayviewComponentNgFactory,
+  );
+  static final RouteDefinition contactNew = RouteDefinition(
+    routePath: RoutePaths.contactNew,
+    component: dayview_template.DayviewComponentNgFactory,
+  );
   // routing auf diese Component
   static final List<RouteDefinition> all = <RouteDefinition>[
     sample,
@@ -56,6 +64,8 @@ class Routes {
     calendarMain,
     calendar,
     dayview,
+    contacts,
+    contactNew,
     RouteDefinition.redirect(
       path: '',
       redirectTo: RoutePaths.dashboard.toUrl(),
