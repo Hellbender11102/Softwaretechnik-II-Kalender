@@ -26,6 +26,7 @@ class AppointmentComponent implements OnActivate {
   Appointment appointment = Appointment(1, "Test Termin", "", "", "", "");
   final Location _location;
   bool deleteControl;
+  bool submitted = true;
   final AppointmentService _appointmentService;
 
   /// Folgender Code wird immer bei der Aktivierung der Klasse aufgerufen
@@ -39,10 +40,11 @@ class AppointmentComponent implements OnActivate {
     }
   }
 
+  void onSubmit() => submitted = true;
+
   /// Methode zum speichern, der änderungen die man im Termin vorgenommen hat
   Future<void> save() async {
     await _appointmentService.update(appointment);
-    goBack();
   }
 
   ///Methode zum löschen von Terminen

@@ -1,9 +1,12 @@
+import 'dart:html';
+
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/services/dayview_service.dart';
 import 'package:demo/src/model/appointment.dart';
 
 import 'mock_appointments.dart';
+
 
 
 @Component(
@@ -25,5 +28,15 @@ class DayviewComponent implements OnInit {
   void ngOnInit() async {
     // do something when drawn
     // like DB connections
+  }
+
+
+  void collaps(int id) {
+    final buttonId = querySelector('#' + id.toString());
+    if (buttonId.classes.contains("w3-show")) {
+      buttonId.classes.add(" w3-show");
+    } else {
+      buttonId.classes.remove(" w3-show");
+    }
   }
 }

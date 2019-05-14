@@ -9,3 +9,6 @@
 #delete {
     visibility: hidden;
 }
+label {
+    width: 100%;
+}
