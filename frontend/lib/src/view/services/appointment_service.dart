@@ -17,7 +17,6 @@ class AppointmentService {
   ///Liest die Daten aus einer Response
   dynamic _extractData(Response resp) => json.decode(resp.body);
   Exception _handleError(dynamic e) {
-    print(e); // for demo purposes only
     return Exception('Server error; cause: $e');
   }
 
@@ -47,7 +46,6 @@ class AppointmentService {
     /*
     try {
       final response = await _http.get(_appointmentUrl);
-      print(response.body);
       final appointments = (_extractData(response) as List)
           .map((value) => Appointment.fromJson(value))
           .toList();
@@ -61,7 +59,6 @@ class AppointmentService {
   ///Gibt den Termin mit der gegebenen id zurück
   Future<Appointment> get(int id) async {
     for (var appointment in mockAppointments) {
-      print(appointment);
       if (appointment.id == id) {
         return appointment;
       }
@@ -89,7 +86,6 @@ class AppointmentService {
   ///Löscht den Termin mit gegebener id
   Future<void> delete(int id) async {
     for (var appointment in mockAppointments) {
-      print(appointment);
       if (appointment.id == id) {
         mockAppointments.removeWhere((element) => element.id == id);
       }

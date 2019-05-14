@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:demo/src/model/person.dart';
 import 'package:http/http.dart';
-import 'package:demo/src/model/appointment.dart';
-import '../components/mock_appointments.dart';
 
 
 class ContactService {
@@ -17,17 +16,17 @@ class ContactService {
   ///Liest die Daten aus einer Response
   dynamic _extractData(Response resp) => json.decode(resp.body);
   Exception _handleError(dynamic e) {
-    print(e); // for demo purposes only
     return Exception('Server error; cause: $e');
   }
 
   ///Updatet einen bereits existierenden Termin
-  Future<Appointment> update(Appointment appointment) async {
-    for (var mockAppointment in mockAppointments) {
-      if (mockAppointment.id == appointment.id) {
-        mockAppointment = appointment;
+  Future<Contact> update(Contact contact) async {
+    for (var list in list) {
+      if (list.contactCode == contact.contactCode) {
+        return contact;
+      } else{
+        return null;
       }
-        return mockAppointment;
     }
     /*
     try {
@@ -41,13 +40,12 @@ class ContactService {
   }
 
   ///gibt eine Liste von allen Terminen zurück
-  Future<List<Appointment>> getAll() async {
-    return mockAppointments;
+  Future<List<Contact>> getAll() async {
+    return list;
 
     /*
     try {
       final response = await _http.get(_appointmentUrl);
-      print(response.body);
       final appointments = (_extractData(response) as List)
           .map((value) => Appointment.fromJson(value))
           .toList();
@@ -59,11 +57,10 @@ class ContactService {
   }
 
   ///Gibt den Termin mit der gegebenen id zurück
-  Future<Appointment> get(int id) async {
-    for (var appointment in mockAppointments) {
-      print(appointment);
-      if (appointment.id == id) {
-        return appointment;
+  Future<Contact> get(String contactCode) async {
+    for (var contact in list) {
+      if (contact.contactCode == contactCode) {
+        return contact;
       }
     }
 
@@ -76,31 +73,29 @@ class ContactService {
   }
 
   ///Erstellt einen neuen Termin mit gegebenen Namen
-  Future<Appointment> create(String name) async {
+  Future<Contact> create(String name) async {
     try {
       final response = await _http.post(_contactUrl,
           headers: _headers, body: json.encode({'name': name}));
-      return Appointment.fromJson(_extractData(response) as Map<int, String>);
     } catch (e) {
       throw _handleError(e);
     }
   }
 
   ///Löscht den Termin mit gegebener id
-  Future<void> delete(int id) async {
-    for (var appointment in mockAppointments) {
-      print(appointment);
-      if (appointment.id == id) {
-        mockAppointments.removeWhere((element) => element.id == id);
+  Future<void> delete(String con) async {
+    for (var contact in list) {
+      if (contact.contactCode == con) {
+        list.removeWhere((element) => element.contactCode == con);
       }
     }
 
-    /*
+
     try {
-      final url = '$_appointmentUrl/$id';
+      final url = '$_contactUrl/$con';
       await _http.delete(url, headers: _headers);
     } catch (e) {
       throw _handleError(e);
-    }*/
+    }
   }
 }

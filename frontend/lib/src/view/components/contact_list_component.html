@@ -1,10 +1,12 @@
-<h2>Appointments</h2>
-<ul class="appointments">
-    <li *ngFor="let appointment of appointments"
-        [class.selected]="appointment === selected"
-        (click)="onSelect(appointment)">
-        <span class="badge">{{appointment.id}}</span>
-        <span>{{appointment.name}}</span>
+
+<h2>Contacts</h2>
+<ul class="contacts">
+    <li *ngFor="let contact of contacts"
+        [class.selected]="contact === selected"
+        (click)="onSelect(contact)">
+        <span>{{contact.contactCode}} </span>
+        <span>{{contact.name}} </span>
+        <span>{{contact.email}} </span>
     </li>
 </ul>
 <div *ngIf="selected != null">

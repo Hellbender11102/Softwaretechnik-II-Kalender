@@ -43,5 +43,5 @@ class Contact extends Person {
 List<Contact> list = []
   ..add(Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "PQ459",
       "Pretty average Guy."))
-  ..add(Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "PQ458",
+  ..add(Contact("dude", "Osu", "Hike", "Mike.owski@gmail.com", "PQ858",
       "the underwhelming Guy."));

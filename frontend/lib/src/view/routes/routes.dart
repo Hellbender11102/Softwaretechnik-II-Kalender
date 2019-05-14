@@ -3,9 +3,12 @@ import '../components/appointment_component.template.dart' as appointment_templa
 import '../components/appointment_list_component.template.dart' as appointment_list_template;
 import '../components/appointment_new_component.template.dart' as appointment_new_template;
 import '../components/calendar_main.template.dart' as calendar_template;
+import '../components/contact_component.template.dart' as contact_template;
+import '../components/contact_list_component.template.dart' as contacts_template;
 import '../components/dashboard_component.template.dart' as dashboard_template;
-import '../components/sample_component.template.dart' as sample_template;
 import '../components/dayview_component.template.dart' as dayview_template;
+import '../components/sample_component.template.dart' as sample_template;
+
 
 import 'route_paths.dart';
 
@@ -48,11 +51,11 @@ class Routes {
   );
   static final RouteDefinition contacts = RouteDefinition(
     routePath: RoutePaths.contacts,
-    component: dayview_template.DayviewComponentNgFactory,
+    component: contacts_template.ContactListComponentNgFactory,
   );
-  static final RouteDefinition contactNew = RouteDefinition(
-    routePath: RoutePaths.contactNew,
-    component: dayview_template.DayviewComponentNgFactory,
+  static final RouteDefinition contact = RouteDefinition(
+    routePath: RoutePaths.contact,
+    component: contact_template.ContactComponentNgFactory,
   );
   // routing auf diese Component
   static final List<RouteDefinition> all = <RouteDefinition>[
@@ -65,7 +68,7 @@ class Routes {
     calendar,
     dayview,
     contacts,
-    contactNew,
+    contact,
     RouteDefinition.redirect(
       path: '',
       redirectTo: RoutePaths.dashboard.toUrl(),

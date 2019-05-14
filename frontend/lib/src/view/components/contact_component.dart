@@ -3,9 +3,8 @@ import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
 
 
-import 'package:demo/src/model/appointment.dart';
+import 'package:demo/src/model/person.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
-import 'package:demo/src/view/services/appointment_service.dart';
 import 'package:demo/src/view/services/contact_service.dart';
 
 
@@ -18,11 +17,11 @@ import 'package:demo/src/view/services/contact_service.dart';
   directives: [coreDirectives, routerDirectives, formDirectives],
 )
 /// Klasse zur verwaltung der Termine
-class AppointmentComponent implements OnActivate {
+class ContactComponent implements OnActivate {
 
-  AppointmentComponent(this._contactService, this._location);
+  ContactComponent(this._contactService, this._location);
 
-  Appointment appointment = Appointment(1, "Test Termin", "", "", "", "");
+  Contact contact = Contact('lauri','Schindler','Laurenz','lauri.s@web.de','295145','Er ist einer');
   final Location _location;
 
   final ContactService _contactService;
@@ -30,28 +29,26 @@ class AppointmentComponent implements OnActivate {
   /// Folgender Code wird immer bei der Aktivierung der Klasse aufgerufen
   @override
   void onActivate(_, RouterState current) async {
-
-
-    final id = getId(current.parameters);
-    if (id != null) {
-      appointment = await (_contactService.get(id));
+    final con = getNumber(current.parameters);
+    if (getNumber != null) {
+      // ignore: unnecessary_parenthesis
+      contact = await (_contactService.get(con));
     }
   }
 
   /// Methode zum speichern, der änderungen die man im Termin vorgenommen hat
   Future<void> save() async {
-    await _contactService.update(appointment);
+    await _contactService.update(contact);
     goBack();
   }
 
   ///Methode zum löschen von Terminen
   Future<void> delete() async {
-    await _contactService.delete(appointment.id);
+    await _contactService.delete(contact.contactCode);
    goBack();
   }
 
   ///Methode, die die übergeordnete ansicht anzeigt
   void goBack() => _location.back();
-
 
 }

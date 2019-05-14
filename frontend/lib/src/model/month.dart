@@ -39,7 +39,6 @@ class Month {
   Iterable weekOfMonth(int week) sync* {
     final int firstWeekDayOfMonth = DateTime.utc(year, month, 1).weekday;
     final int weekOffSet = -firstWeekDayOfMonth+2;
-    print(firstWeekDayOfMonth);
 
     int k = weekOffSet + 7 * week;
     int count = 0;
