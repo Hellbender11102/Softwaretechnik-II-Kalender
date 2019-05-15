@@ -1,3 +1,5 @@
+import 'dart:mirrors';
+
 abstract class Person {
   Person(this.nickname, this.surname, this.name, this.email);
 
@@ -6,6 +8,7 @@ abstract class Person {
   String name;
   String email;
   String mobileNo;
+  String contactCode;
 }
 
 class User extends Person {
@@ -30,18 +33,42 @@ class User extends Person {
 
   // removes multiple Contacts
   void rmvAllContacts(List<Contact> list) => list.forEach(rmvContact);
+
+  // gets all of the ENDBENUTZER Contacts
+  Map<String, Contact> getMyContacts() {}
 }
 
 class Contact extends Person {
+  var contactCode;
+
   Contact(String nickname, String surname, String name, String email,
-      this.contactCode, this.note)
+      this.contactCode)
       : super(nickname, surname, name, email);
-  String contactCode;
-  String note;
 }
 
-List<Contact> list = []
-  ..add(Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "PQ459",
-      "Pretty average Guy."))
-  ..add(Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "PQ458",
-      "the underwhelming Guy."));
+
+
+
+class Mock {
+  // gets a Contact from ALL Contacts by its ContactCode
+  Contact getByContactCode(String contactCode) {
+    // service routine lookup
+    // CODE HERE
+    // potentialy returns null
+    return map[contactCode];
+    // Mock
+  }
+
+  // Mock Datensatz
+
+  static Contact marc =
+      Contact("dude", "owski", "marc", "marc.owski@gmail.com", "contactCode1");
+  static Contact mike =
+      Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "contactCode2");
+
+  // erstellt eine Map mit 2 Kontakten
+  static Map<String, Contact> map = {
+    "contactCode1": marc,
+    "contactCode2": mike
+  };
+}
