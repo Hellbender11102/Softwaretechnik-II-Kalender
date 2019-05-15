@@ -1,8 +1,7 @@
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
-import 'package:demo/src/model/appointment.dart';
-import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/dayview_service.dart';
+import 'package:demo/src/model/appointment.dart';
 
 import 'mock_appointments.dart';
 

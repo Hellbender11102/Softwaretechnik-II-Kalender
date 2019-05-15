@@ -1,24 +1,34 @@
 <div id="outerContainer">
-    <div id="buttons">
-        <nav>
-            <a [routerLink]="RoutePaths.sample.toUrl()"
-               [routerLinkActive]="'active'">Sample</a>
-            <a [routerLink]="RoutePaths.dashboard.toUrl()"
-               [routerLinkActive]="'active'">Dashboard</a>
-            <a [routerLink]="RoutePaths.appointments.toUrl()"
-               [routerLinkActive]="'active'">Appointments</a>
-            <a [routerLink]="RoutePaths.appointmentNew.toUrl()"
-               [routerLinkActive]="'active'">New Appointment</a>
-            <a [routerLink]="RoutePaths.calendarMain.toUrl()"
-               [routerLinkActive]="'active'">Calendar</a>
-        </nav>
-
-    </div>
     <div id="leftContainer"></div>
+    <div id="centerContainer">
+        <div id="buttons">
+            <nav>
+                <li [routerLink]="RoutePaths.sample.toUrl()"
+                    [routerLinkActive]="'active'">Sample
+                </li>
+                <li [routerLink]="RoutePaths.dashboard.toUrl()"
+                    [routerLinkActive]="'active'">Dashboard
+                </li>
+                <li [routerLink]="RoutePaths.dayview.toUrl()"
+                    [routerLinkActive]="'active'">Dayview
+                </li>
+                <li [routerLink]="RoutePaths.appointments.toUrl()"
+                    [routerLinkActive]="'active'">Appointments
+                </li>
+                <li [routerLink]="RoutePaths.appointmentNew.toUrl()"
+                    [routerLinkActive]="'active'">New Appointment
+                </li>
+                <li [routerLink]="RoutePaths.calendarMain.toUrl()"
+                    [routerLinkActive]="'active'">Calendar
+                </li>
+            </nav>
+
+        </div>
+        <innerContainer>
+            <router-outlet [routes]="Routes.all"></router-outlet>
+        </innerContainer>
+    </div>
     <div id="rightContainer"></div>
-    <innerContainer>
-        <router-outlet [routes]="Routes.all"></router-outlet>
-    </innerContainer>
     <div id="impressum"><p>Erstellt von Daniel Waage, Lennart Siedschlag, Marius Mauritz, Marcel Azadi, Olliver Wosiek
         und Laurenz Schindler</p></div>
 </div>

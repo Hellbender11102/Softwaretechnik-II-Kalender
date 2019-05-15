@@ -46,8 +46,6 @@ class Routes {
     routePath: RoutePaths.dayview,
     component: dayview_template.DayviewComponentNgFactory,
   );
-
-
   // routing auf diese Component
   static final List<RouteDefinition> all = <RouteDefinition>[
     sample,
