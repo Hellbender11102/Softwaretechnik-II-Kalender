@@ -1,7 +1,7 @@
-import 'package:heroes/heroes.dart';
+import 'package:middleman/middleman.dart';
 
 Future main() async {
-  final app = Application<HeroesChannel>()
+  final app = Application<CalenderChannel>()
       ..options.configurationFilePath = "config.yaml"
       ..options.port = 8888;
 

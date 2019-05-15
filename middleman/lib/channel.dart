@@ -1,12 +1,12 @@
-import 'package:heroes/controller/heroes_controller.dart';
+import 'package:middleman/controller/appointment_controller.dart';
 
-import 'heroes.dart';
+import 'middleman.dart';
 
 /// This type initializes an application.
 ///
 /// Override methods in this class to set up routes and initialize services like
 /// database connections. See http://aqueduct.io/docs/http/channel/.
-class HeroesChannel extends ApplicationChannel {
+class CalenderChannel extends ApplicationChannel {
   ManagedContext context;
 
   /// Initialize services in this method.
@@ -19,7 +19,7 @@ class HeroesChannel extends ApplicationChannel {
   Future prepare() async {
     logger.onRecord.listen((rec) => print("$rec ${rec.error ?? ""} ${rec.stackTrace ?? ""}"));
 
-    final config = HeroConfig(options.configurationFilePath);
+    final config = CalenderConfig(options.configurationFilePath);
     final dataModel = ManagedDataModel.fromCurrentMirrorSystem();
     final persistentStore = PostgreSQLPersistentStore.fromConnectionInfo(
       config.database.username,
@@ -42,14 +42,14 @@ class HeroesChannel extends ApplicationChannel {
     final router = Router();
 
     router
-      .route('/heroes/[:id]')
-      .link(() => HeroesController(context));
+      .route('/appointment/[:id]')
+      .link(() => AppointmentController(context));
     return router;
   }
 }
 
-class HeroConfig extends Configuration {
-  HeroConfig(String path): super.fromFile(File(path));
+class CalenderConfig extends Configuration {
+  CalenderConfig(String path): super.fromFile(File(path));
 
   DatabaseConfiguration database;
 }

@@ -1,7 +1,6 @@
-/// heroes
-///
+
 /// A Aqueduct web server.
-library heroes;
+library middleman;
 
 export 'dart:async';
 export 'dart:io';
