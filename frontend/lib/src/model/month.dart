@@ -10,32 +10,6 @@ class Month {
   int month;
   int year;
 
-  /*
-  Iterable weekOfMonth(int n) sync* {
-    final int currentMonthLength = DateTime.utc(year, month + 1, 0).day;
-    final int prevMonthLength = DateTime.utc(year, month , 0).day;
-    final int firstWeekDayOfMonth = DateTime.utc(year, month, 1).weekday;
-    final int weekOffSet = prevMonthLength - firstWeekDayOfMonth + 1;
-
-    int k = n * 7 - firstWeekDayOfMonth + 1;
-    int count = 0;
-    if (n == 0) {
-      k = weekOffSet;
-    }
-    while (count < 7) {
-      count++;
-      k++;
-      if (k > prevMonthLength && n == 0) {
-        k = 1;
-      }
-      if (k > currentMonthLength && n != 0) {
-        k = k-currentMonthLength;
-      }
-      yield k;
-    }
-  }
-  */
-
   Iterable weekOfMonth(int week) sync* {
     final int firstWeekDayOfMonth = DateTime.utc(year, month, 1).weekday;
     final int weekOffSet = -firstWeekDayOfMonth+2;
@@ -52,20 +26,6 @@ class Month {
       yield Day(count,time.year,time.month,time.day);
     }
   }
-  /* gewünschter output entspricht:
-
-    final days = <Day>[
-    Day(1, "2019", "11", "2"),
-    Day(2, "2019", "11", "3"),
-    Day(3, "2019", "11", "4"),
-    Day(4, "2019", "11", "5"),
-    Day(5, "2019", "11", "6"),
-  ];
-
-
-
-   */
-
 
   @override
   String toString(){
@@ -126,6 +86,7 @@ class Month {
     }
     return [yearOut,monthOut];
   }
+
   final List<String> week = [
     "Montag",
     "Dienstag",

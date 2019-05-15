@@ -8,7 +8,7 @@ class Day {
   int month;
   int day;
 
-  List<Appointment> Appointments;
+  List<Appointment> appointments;
 
   @override
   String toString() {
