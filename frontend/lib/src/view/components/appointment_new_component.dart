@@ -40,6 +40,4 @@ class AppointmentNewComponent {
 
   ///Methode, die die übergeordnete ansicht anzeigt
   void goBack() => _location.back();
-
-
 }

@@ -1,10 +1,19 @@
 
     <h1>Contact</h1>
 
+    <ul>
+           <h4>{{contact.surname}}</h4>
+           <h4>{{contact.email}}</h4>
+           <h4>{{contact.contactCode}}</h4>
+    </ul>
+    <div class="form-group">
+       <input type="text" class="form-control" id="note" required placeholder="note"
+                            [(ngModel)]="note" name="note">
+    </div>
 
-           <h2>{{contact.surname}}</h2>
+        <button (click)="save()" class="btn back" type="submit">Save</button>
 
-        <button type="submit" class="btn btn-success" (click)="save()">Save</button>
+        <button type="button" class="btn back" (click)="goBack()">GoBack</button>
 
         <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
 

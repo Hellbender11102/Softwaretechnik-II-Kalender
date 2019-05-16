@@ -1,5 +1,13 @@
 
-<h2>Contacts</h2>
+<h3>Contacts</h3>
+<form action="/action_page.php">
+    <div class="form-group">
+    <input type="text" class="form-control" id="contactCode" required placeholder="ContactCode"
+                              [(ngModel)]="contactCode" name="contactCode">
+    <button (click)="addContact()" type="submit">Add Contact</button>
+    </div>
+</form>
+
 <ul class="contacts">
     <li *ngFor="let contact of contacts"
         [class.selected]="contact === selected"

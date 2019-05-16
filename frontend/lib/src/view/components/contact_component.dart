@@ -23,7 +23,7 @@ class ContactComponent implements OnActivate {
 
   Contact contact = Contact('lauri','Schindler','Laurenz','lauri.s@web.de','295145','Er ist einer');
   final Location _location;
-
+  String note;
   final ContactService _contactService;
 
   /// Folgender Code wird immer bei der Aktivierung der Klasse aufgerufen
@@ -33,12 +33,14 @@ class ContactComponent implements OnActivate {
     if (getNumber != null) {
       // ignore: unnecessary_parenthesis
       contact = await (_contactService.get(con));
+      note = contact.note;
     }
   }
 
   /// Methode zum speichern, der änderungen die man im Termin vorgenommen hat
   Future<void> save() async {
-    await _contactService.update(contact);
+    contact.note = note;
+    //await _contactService.update(contact);
     goBack();
   }
 

@@ -82,7 +82,7 @@ class ContactService {
     }
   }
 
-  ///Löscht den Termin mit gegebener id
+  ///Löscht den Kontakt mit gegebenem KontaktCode
   Future<void> delete(String con) async {
     for (var contact in list) {
       if (contact.contactCode == con) {
@@ -97,5 +97,12 @@ class ContactService {
     } catch (e) {
       throw _handleError(e);
     }
+  }
+/*muss mit der datenbank angeschlossen werden*/
+  /*
+  Erstellt einen KOntakt und gibt ihn zurück
+   */
+  Contact find(String contactCode) {
+    return Contact('Nickname','Surname','Name','Email','contactCode','Note');
   }
 }

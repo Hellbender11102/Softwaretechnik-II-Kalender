@@ -33,11 +33,22 @@ class User extends Person {
 }
 
 class Contact extends Person {
-  Contact(String nickname, String surname, String name, String email,
-      this.contactCode, this.note)
-      : super(nickname, surname, name, email);
-  String contactCode;
-  String note;
+  Contact(String nickname, String surname, String name, String email,String contactCode,String  note)
+      : super(nickname,surname,name,email){
+    this.contactCode = contactCode;
+    this.note = note;
+  }
+  String contactCode ,note;
+
+factory Contact.fromJson(Map<String, String> contact) =>
+Contact(contact['nickname'],
+    contact['surname'],
+    contact['name'],
+    contact['email'],
+    contact['contactCode'],
+    contact['note']);
+
+Map toJson() => {'nickname': nickname, 'surname': surname, 'name': name, 'email': email, 'contactCode': contactCode, 'note': note};
 }
 
 List<Contact> list = []

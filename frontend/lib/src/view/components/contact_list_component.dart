@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:angular/angular.dart';
+import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
 
 import 'package:demo/src/model/person.dart';
@@ -13,8 +14,7 @@ import 'appointment_component.dart';
   selector: 'contacts',
   templateUrl: 'contact_list_component.html',
   styleUrls: ['contact_list_component.css'],
-  directives: [coreDirectives, routerDirectives, AppointmentComponent],
-  pipes: [commonPipes],
+  directives: [coreDirectives, routerDirectives, AppointmentComponent, formDirectives],
 )
 
 ///Klasse zum anzeigen aller Termine
@@ -25,6 +25,7 @@ class ContactListComponent implements OnInit {
   final Router _router;
   List<Contact> contacts;
   Contact selected;
+  String contactCode ="";
 
   ///Methode zum auswählen eines Termins
   void onSelect(Contact contact) => selected = contact;
@@ -56,4 +57,8 @@ class ContactListComponent implements OnInit {
   Future<NavigationResult> gotoDetail() {
     _router.navigate(_contactUrl(selected.contactCode));
   }
+  Future<void> addContact() async{
+    list.add(_contactService.find(contactCode));
+  }
+
 }
