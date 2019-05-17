@@ -1,6 +1,7 @@
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
-import 'package:demo/src/view/services/dayview_service.dart';
+import 'package:demo/src/view/routes/route_paths.dart';
+import 'package:demo/src/view/services/appointment_service.dart';
 import 'package:demo/src/model/appointment.dart';
 
 import 'mock_appointments.dart';
@@ -12,14 +13,35 @@ import 'mock_appointments.dart';
   styleUrls: ['dayview_component.css'],
   directives: [coreDirectives, routerDirectives],
 )
-class DayviewComponent implements OnInit {
+class DayviewComponent implements OnActivate {
+  final Router _router;
+  var appointments = List();
+
+  /// Folgender Code wird immer bei der Aktivierung der Klasse aufgerufen
+  @override
+  void onActivate(_, RouterState current) async {
+    final int year = getYear(current.parameters);
+    final int month = getMonth(current.parameters);
+    final int day = getDay(current.parameters);
+    if (year != null && month != null && day !=null) {
+      appointments = await _appointmentService.getAll();
+    }
+  }
 
   // service Klasse für ORM
-  DayviewComponent(this._dayviewService);
+  DayviewComponent(this._appointmentService,this._router);
 
-  final DayviewService _dayviewService;
+  final AppointmentService _appointmentService;
 
-  List<Appointment> appointments = mockAppointments.cast<Appointment>();
+
+  ///Methode die die URL von dem Termin mit gegebener id als String zurückgibt
+  String _appointmentUrl(int id) =>
+      RoutePaths.appointment.toUrl(parameters: {idParam: '$id'});
+
+  ///Methode die den ausgewählten Termin aufruft
+  Future<NavigationResult> gotoDetail(Appointment appointment) =>
+      _router.navigate(_appointmentUrl(appointment.id));
+
   // List<Appointment> appointments = mockAppointments.sort((a, b) => a.date.compareTo(b.date));
   @override
   void ngOnInit() async {

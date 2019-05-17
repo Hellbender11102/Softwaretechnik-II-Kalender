@@ -46,7 +46,7 @@ class AppointmentComponent implements OnActivate {
   ///Methode zum löschen von Terminen
   Future<void> delete() async {
     await _appointmentService.delete(appointment.id);
-   goBack();
+    goBack();
   }
 
   ///Methode, die die übergeordnete ansicht anzeigt
