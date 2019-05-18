@@ -25,6 +25,7 @@ class DayviewComponent implements OnActivate {
     final int day = getDay(current.parameters);
     if (year != null && month != null && day !=null) {
       appointments = await _appointmentService.getAll();
+      appointments.sort((a, b) => a.time.compareTo(b.time));
     }
   }
 
@@ -42,10 +43,4 @@ class DayviewComponent implements OnActivate {
   Future<NavigationResult> gotoDetail(Appointment appointment) =>
       _router.navigate(_appointmentUrl(appointment.id));
 
-  // List<Appointment> appointments = mockAppointments.sort((a, b) => a.date.compareTo(b.date));
-  @override
-  void ngOnInit() async {
-    // do something when drawn
-    // like DB connections
-  }
 }

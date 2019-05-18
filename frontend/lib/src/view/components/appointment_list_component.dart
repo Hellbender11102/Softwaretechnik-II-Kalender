@@ -32,7 +32,7 @@ class AppointmentListComponent implements OnInit {
   ///Methode die eine Liste aller appointments zurückgibt
   Future<void> _getAppointments() async {
     appointments = await _appointmentService.getAll();
-    //appointments = mockAppointments;
+    appointments.sort((a, b) => a.id.compareTo(b.id));
   }
 
   /*Future<void> add(String name) async {
@@ -44,15 +44,17 @@ class AppointmentListComponent implements OnInit {
 
   ///Nachfolgender Code wird bei der inizialisierung der Klasse ausgeführt
   @override
-  void ngOnInit() => _getAppointments();
+  void ngOnInit() {
+    _getAppointments();
+  }
 
 
 
-  ///Methode die die URL von dem Termin mit gegebener id als String zurückgibt
-  String _appointmentUrl(int id) =>
-      RoutePaths.appointment.toUrl(parameters: {idParam: '$id'});
+    ///Methode die die URL von dem Termin mit gegebener id als String zurückgibt
+    String _appointmentUrl(int id) =>
+        RoutePaths.appointment.toUrl(parameters: {idParam: '$id'});
 
-  ///Methode die den ausgewählten Termin aufruft
-  Future<NavigationResult> gotoDetail() =>
-      _router.navigate(_appointmentUrl(selected.id));
+    ///Methode die den ausgewählten Termin aufruft
+    Future<NavigationResult> gotoDetail() =>
+        _router.navigate(_appointmentUrl(selected.id));
 }
