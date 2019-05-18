@@ -4,15 +4,15 @@ import 'package:http/http.dart';
 import 'package:demo/src/model/person.dart';
 import '../components/mock_users.dart';
 
-class RegisterService {
+class LoginService {
   // request to middlemand
-  RegisterService(this._http);
+  LoginService(this._http);
 
   static final _headers = {'Content-Type': 'application/json'};
-  static const _registerUrl = 'http://localhost:8080/register'; // URL to web API
+  static const _registerUrl = 'http://localhost:8080/login'; // URL to web API
   final Client _http;
 
-
+/*
   ///Liest die Daten aus einer Response
   dynamic _extractData(Response resp) => json.decode(resp.body);
   Exception _handleError(dynamic e) {
@@ -40,4 +40,5 @@ class RegisterService {
         return mockUser;
     }
 }
+*/
 }

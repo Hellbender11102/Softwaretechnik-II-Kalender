@@ -5,6 +5,7 @@ import 'package:demo/src/view/services/appointment_service.dart';
 import 'package:demo/src/view/services/calendar_service.dart';
 import 'package:demo/src/view/services/dashboard_service.dart';
 import 'package:demo/src/view/services/dayview_service.dart';
+import 'package:demo/src/view/services/login_service.dart';
 import 'package:demo/src/view/services/sample_service.dart';
 import 'package:demo/src/view/services/register_service.dart';
 
@@ -20,7 +21,8 @@ import 'package:demo/src/view/services/register_service.dart';
     ClassProvider(AppointmentService),
     ClassProvider(CalendarService),
     ClassProvider(DayviewService),
-    ClassProvider(RegisterService)
+    ClassProvider(RegisterService),
+    ClassProvider(LoginService)
     ],
   exports: [RoutePaths, Routes],
 )
