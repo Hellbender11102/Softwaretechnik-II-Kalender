@@ -21,7 +21,7 @@ class LoginComponent implements OnInit {
   final LoginService _loginService;
 
   //Später löschen
-  User user = mockUsers[0]; //Später verändern
+  User user = User(1, "", "", "", "", ""); //Später verändern
 
   Future<void> login() async {
     for (int i = 0; i < mockUsers.length; i++) {

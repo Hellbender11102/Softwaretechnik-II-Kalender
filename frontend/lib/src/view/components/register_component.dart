@@ -26,6 +26,7 @@ class RegisterComponent implements OnInit {
     final int id = mockUsers.last.id +1;
     user.id = id;
     mockUsers.add(user);
+    print(user.toString());
     await _registerService.update(user/*.id, user.nickname, user.email, user.password*/); //.create()
     await _router.navigate('/login');
   }

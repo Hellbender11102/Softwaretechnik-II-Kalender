@@ -6,6 +6,7 @@
                    #nickname="ngForm"
                    [class.is-valid]="nickname.valid"
                    [class.is-invalid]="!nickname.valid"
+                   [(ngModel)]="user.nickname"
                    ngControl="nickname">
         </div>
         <div class="form-group">
@@ -14,6 +15,7 @@
                    #surename="ngForm"
                    [class.is-valid]="surename.valid"
                    [class.is-invalid]="!surename.valid"
+                   [(ngModel)]="user.surname"
                    ngControl="surename">
         </div>
         <div class="form-group">
@@ -22,6 +24,7 @@
                    #name="ngForm"
                    [class.is-valid]="name.valid"
                    [class.is-invalid]="!name.valid"
+                   [(ngModel)]="user.name"
                    ngControl="name">
         </div>
         <div class="form-group">
@@ -30,11 +33,12 @@
                    #email="ngForm"
                    [class.is-valid]="email.valid"
                    [class.is-invalid]="!email.valid"
+                   [(ngModel)]="user.email"
                    ngControl="email">
         </div>
         <div class="form-group">
             <label for="mobileNo">Mobile Number</label>
-            <input type="text" class="form-control" id="mobileNo" placeholder="Mobile Number">
+            <input type="text" class="form-control" id="mobileNo" placeholder="Mobile Number" [(ngModel)]="user.mobileNo">
         </div>
         <div class="form-group">
             <label for="password">Password&nbsp;*</label>
@@ -43,6 +47,7 @@
                    #password="ngForm"
                    [class.is-valid]="password.valid"
                    [class.is-invalid]="!password.valid"
+                   [(ngModel)]="user.password"
                    ngControl="password">
             <div [hidden]="password.valid || password.pristine" class="invalid-feedback">
                 Password must contain at least one number and one uppercase and lowercase letter,
@@ -51,6 +56,6 @@
 
         </div>
 
-        <button type="submit" class="btn btn-success" (click)="register()">Register</button>
+        <button type="button" class="btn btn-success" (click)="register()">Register</button>
         <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
     </form>
