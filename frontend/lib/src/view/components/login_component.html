@@ -3,6 +3,7 @@
     <div class="form-group">
         <label for="nickname">Nickname&nbsp;</label>
         <input type="text" class="form-control" id="nickname" required placeholder="Nickname"
+               [(ngModel)]="user.nickname"
                #nickname="ngForm"
                [class.is-valid]="nickname.valid"
                [class.is-invalid]="!nickname.valid"
@@ -11,6 +12,7 @@
     <div class="form-group">
         <label for="password">Password&nbsp;</label>
         <input type="password" class="form-control" id="password" required placeholder="Password"
+               [(ngModel)]="user.password"
                #password="ngForm"
                [class.is-valid]="password.valid"
                [class.is-invalid]="!password.valid"

@@ -20,9 +20,18 @@ class LoginComponent implements OnInit {
   final Router _router;
   final LoginService _loginService;
 
+  //Später löschen
+  User user = mockUsers[0]; //Später verändern
+
   Future<void> login() async {
-    // if nickname/email and password correct - login
-    _router.navigate('/dashboard');
+    for (int i = 0; i < mockUsers.length; i++) {
+      if (user.nickname == mockUsers[i].nickname && user.password == mockUsers[i].password) {
+        await _router.navigate('/dashboard');
+        break;
+      } else {
+        await _router.navigate('/register');
+      }
+    }
   }
 
   Future<void> register() async {
