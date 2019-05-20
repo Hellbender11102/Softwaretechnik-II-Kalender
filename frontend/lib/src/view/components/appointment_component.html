@@ -89,7 +89,7 @@
         <button (click)="goBack()" class="btn">GoBack</button>
         <button (click)="submitted=false" class="btn btn-primary">Edit</button>
         <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
-        <div id="delete">
+        <div [hidden]="!deleteControl" id="delete">
             If you really want to delete this Appointment click "Delete" again.
         </div>
     </div>

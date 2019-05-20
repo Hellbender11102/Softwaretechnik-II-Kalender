@@ -2,13 +2,10 @@
 
 .form-control {
     margin:5px;
-    width: 95%;
+    width: 97%;
     float: left;
 }
 
-#delete {
-    visibility: hidden;
-}
 label {
     width: 100%;
 }

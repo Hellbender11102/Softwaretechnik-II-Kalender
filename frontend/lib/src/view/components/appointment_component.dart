@@ -25,7 +25,7 @@ class AppointmentComponent implements OnActivate {
 
   Appointment appointment = Appointment(1, "Test Termin", "", "", "", "");
   final Location _location;
-  bool deleteControl;
+  bool deleteControl = false;
   bool submitted = true;
   final AppointmentService _appointmentService;
 
@@ -54,8 +54,7 @@ class AppointmentComponent implements OnActivate {
       goBack();
     } else {
       deleteControl = true;
-      final deleteDiv = querySelector('#delete');
-      deleteDiv.style.visibility = 'visible';
+
     }
   }
 
