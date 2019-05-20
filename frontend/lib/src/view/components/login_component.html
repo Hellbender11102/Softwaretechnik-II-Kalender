@@ -11,7 +11,7 @@
         <input type="password" class="form-control" id="password" placeholder="Password"
                [(ngModel)]="user.password"
                ngControl="password">
-        <div [hidden]="!loginFailure" class="invalid-feedback">
+        <div [hidden]="!loginFailure" class="loginFailure">
             Nickname oder Passwort falsch
         </div>
     </div>

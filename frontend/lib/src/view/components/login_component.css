@@ -9,3 +9,7 @@
 .btn-success {
     margin-left: 5px;
 }
+
+.loginFailure {
+    color: red;
+}
