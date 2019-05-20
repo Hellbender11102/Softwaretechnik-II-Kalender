@@ -19,6 +19,7 @@ class LoginComponent implements OnInit {
 
   final Router _router;
   final LoginService _loginService;
+  bool loginFailure = false;
 
   //Später löschen
   User user = User(1, "", "", "", "", ""); //Später verändern
@@ -29,7 +30,8 @@ class LoginComponent implements OnInit {
         await _router.navigate('/dashboard');
         break;
       } else {
-        await _router.navigate('/register');
+        loginFailure = true;
+        //await _router.navigate('/register');
       }
     }
   }
