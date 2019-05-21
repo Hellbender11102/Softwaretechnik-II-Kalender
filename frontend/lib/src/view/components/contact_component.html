@@ -1,4 +1,4 @@
-
+<div *ngIf="contact != null">
     <h3>{{contact.nickname}}</h3>
 
     <table>
@@ -29,3 +29,4 @@
     <div [hidden]="!deleteControl" id="delete">
         If you really want to delete this Contact click "Delete" again.
     </div>
+</div>
