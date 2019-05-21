@@ -5,6 +5,7 @@ import 'package:demo/src/view/services/login_service.dart';
 
 import '../../model/person.dart';
 import 'mock_users.dart';
+import '../main_component.dart';
 
 @Component(
   selector: 'login',
@@ -13,36 +14,53 @@ import 'mock_users.dart';
   directives: [coreDirectives, routerDirectives, formDirectives],
 )
 
-class LoginComponent implements OnInit {
+class LoginComponent implements OnInit, OnActivate {
 
   LoginComponent(this._loginService, this._router);
 
   final Router _router;
   final LoginService _loginService;
   bool loginFailure = false;
+  static bool loggedIn = false;
 
-  //Später löschen
-  User user = User(1, "", "", "", "", ""); //Später verändern
+  String nickname;
+  String password;
 
+  // 
   Future<void> login() async {
     for (int i = 0; i < mockUsers.length; i++) {
-      if (user.nickname == mockUsers[i].nickname && user.password == mockUsers[i].password) {
+      if ((nickname == mockUsers[i].nickname || nickname == mockUsers[i].email) && password == mockUsers[i].password) {
+        loggedIn = true;
+        AppComponent.showButtons = true;
         await _router.navigate('/dashboard');
         break;
       } else {
         loginFailure = true;
-        //await _router.navigate('/register');
       }
     }
   }
 
+  // Weiterleitung zum Registrierungsformular
   Future<void> register() async {
-    _router.navigate('/register');
+    await _router.navigate('/register');
+  }
+
+  Future<void> logout() async {
+    loggedIn = false;
+    AppComponent.showButtons = false;
+    await _router.navigate('/login');
   }
 
   @override
   void ngOnInit() async {
     // do something when drawn
     // like DB connections
+  }
+
+  @override
+  void onActivate(RouterState previous, RouterState current) {
+    if (loggedIn) {
+      _router.navigate('/calendar');
+    }
   }
 }
