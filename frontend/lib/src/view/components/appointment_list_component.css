@@ -7,7 +7,6 @@
     list-style-type: none;
     padding: 0;
     width: 15em;
-    z-index: 1;
 }
 .appointments li {
     cursor: pointer;
@@ -47,18 +46,4 @@
     border-radius: 4px 0 0 4px;
 }
 
-#search {
-    z-index: 2;
-}
-button {
-    font-family: Arial;
-    background-color: #eee;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: hand;
-}
-button:hover {
-    background-color: #cfd8dc;
-}
 
