@@ -17,99 +17,16 @@ colors to use if possible (descending) :
 #92D0FF - light
 
 */
-@media only screen and (max-width: 600px) {
 
-    html, body {
+@media only screen and (min-width: 64em) {
+    /* Hier Display Dimensionen Anpassen, Hier drunter sind bis jetzt nur Desktop größen*/
+    html,
+    body {
         width: 100vw;
         height: 100vh;
         margin: 0;
         background: #04202C;
     }
-
-    #outerContainer {
-        --color-darkness-1: #04202C;
-        --color-darkness-2: #304040;
-        --color-darkness-3: #5B7065;
-        --color-darkness-4: #C9D1C8;
-        --middle-height: 94vh;
-        width: 100%;
-        height: 100%;
-        box-sizing: content-box;
-        background: var(--color-darkness-1);
-        overflow: auto;
-    }
-
-    #leftContainer {
-        width: 100%;
-        height: 15vh;
-        background: var(--color-darkness-4);
-    }
-
-    #centerContainer {
-        width: 100%;
-        height: 150vh;
-        background: var(--color-darkness-4);
-    }
-
-    #rightContainer {
-        width: 100%;
-        height: 15vh;
-        background: var(--color-darkness-4);
-    }
-
-    #buttons{
-        position: absolute;
-        top: 0px;
-        float: left;
-        align-self: center;
-        width: 100%;
-        height: 5vh;
-        min-height: 20px;
-        font-size: 15px;
-        background: var(--color-darkness-2);
-        z-index: 1;
-    }
-    nav {
-        display:table;
-        width:100%;
-        height: 100%;
-    }
-
-    li {
-        color: var(--color-darkness-4);
-        float:none;
-        display:table-cell;
-        text-align:center;
-        vertical-align: middle;
-        text-decoration: none;
-        background-color: var(--color-darkness-3);
-    }
-
-    li:visited, li:link {
-        color: var(--color-darkness-4);
-    }
-
-    li:hover {
-        color: var(--color-darkness-1);
-        background-color: var(--color-darkness-4);
-    }
-
-    li.active {
-        color: var(--color-darkness-1);
-        background-color: var(--color-darkness-4)
-    }
-}
-
-
-@media only screen and (min-width: 600px) { /* Hier Display Dimensionen Anpassen, Hier drunter sind bis jetzt nur Desktop größen*/     
-
-    html, body {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    background: #04202C;
-}
-
     #outerContainer {
         --color-darkness-1: #04202C;
         --color-darkness-2: #304040;
@@ -121,9 +38,8 @@ colors to use if possible (descending) :
         background: var(--color-darkness-1);
         overflow: auto;
     }
-
     #centerContainer {
-        margin:5px;
+        margin: 5px;
         width: 87vw;
         float: left;
         height: var(--middle-height);
@@ -131,7 +47,6 @@ colors to use if possible (descending) :
         background: var(--color-darkness-3);
         /* border-radius: 10px; */
     }
-
     #buttons {
         float: left;
         align-self: center;
@@ -140,7 +55,6 @@ colors to use if possible (descending) :
         min-height: 20px;
         background: var(--color-darkness-2);
     }
-
     #leftContainer {
         margin: 5px;
         float: left;
@@ -149,7 +63,6 @@ colors to use if possible (descending) :
         height: var(--middle-height);
         background: var(--color-darkness-4);
     }
-
     #rightContainer {
         margin: 5px;
         float: left;
@@ -158,7 +71,6 @@ colors to use if possible (descending) :
         min-height: 75vh;
         background: var(--color-darkness-4);
     }
-
     innerContainer {
         padding-left: 10px;
         padding-right: 10px;
@@ -168,7 +80,6 @@ colors to use if possible (descending) :
         width: 100%;
         background: var(--color-darkness-4);
     }
-
     #impressum {
         position: fixed;
         text-align: center;
@@ -180,39 +91,33 @@ colors to use if possible (descending) :
         border-top: 4px solid var(--color-darkness-1);
         background: var(--color-darkness-4);
     }
-
-    #impressum > p {
+    #impressum>p {
         font-family: "Lucida Console", monospace;
         text-align: center;
         font-size: 10px;
     }
-
-
     nav {
-        display:table;
-        width:100%;
+        display: table;
+        width: 100%;
         height: 100%;
     }
-
     li {
         color: var(--color-darkness-4);
-        float:none;
-        display:table-cell;
-        text-align:center;
+        float: none;
+        display: table-cell;
+        text-align: center;
         vertical-align: middle;
         text-decoration: none;
         background-color: var(--color-darkness-3);
     }
-
-    li:visited, li:link {
+    li:visited,
+    li:link {
         color: var(--color-darkness-4);
     }
-
     li:hover {
         color: var(--color-darkness-1);
         background-color: var(--color-darkness-4);
     }
-
     li.active {
         color: var(--color-darkness-1);
         background-color: var(--color-darkness-4)
