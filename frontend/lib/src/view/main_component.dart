@@ -31,6 +31,7 @@ class AppComponent {
   final String title = 'innerComponent';
   static bool showButtons = false;
   void logout() {
+    print("logged out");
     LoginComponent.loggedIn = false;
     showButtons = false;
   }

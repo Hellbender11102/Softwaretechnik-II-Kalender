@@ -57,6 +57,10 @@ class LoginComponent implements OnInit, OnActivate {
     // like DB connections
   }
 
+  void setLoginFalse() {
+    loggedIn = false;
+  }
+
   @override
   void onActivate(RouterState previous, RouterState current) {
     if (loggedIn) {
