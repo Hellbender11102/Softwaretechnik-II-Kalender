@@ -31,12 +31,5 @@ class DayviewComponent implements OnInit {
   }
 
 
-  void collaps(int id) {
-    final buttonId = querySelector('#' + id.toString());
-    if (buttonId.classes.contains("w3-show")) {
-      buttonId.classes.add(" w3-show");
-    } else {
-      buttonId.classes.remove(" w3-show");
-    }
-  }
+
 }
