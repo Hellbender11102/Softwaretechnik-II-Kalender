@@ -1,6 +1,7 @@
+
 .selected {
     background-color: #CFD8DC !important;
-    color: white;
+    color:#00302f;
 }
 
 button {
@@ -13,5 +14,25 @@ button:hover {
     background-color: #cfd8dc;
 }
 form{
+    alignment: center;
     float: right;
+}
+h3{
+    text-align: center;
+}
+li{
+    margin-top: 2%;
+}
+ol{
+    overflow-y:scroll;
+    height: 70%;
+    border: 1px #484848 solid;
+    background: #758EB7;
+}
+div>button{
+    float: left;
+}
+ol{
+    margin-left: 2%;
+    margin-right: 2%;
 }

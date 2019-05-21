@@ -17,7 +17,7 @@ import 'appointment_component.dart';
   directives: [coreDirectives, routerDirectives, AppointmentComponent, formDirectives],
 )
 
-///Klasse zum anzeigen aller Termine
+///Klasse zum anzeigen aller contacte
 class ContactListComponent implements OnInit {
   ContactListComponent(this._contactService, this._router);
 
@@ -27,7 +27,7 @@ class ContactListComponent implements OnInit {
   Contact selected;
   String contactCode ="";
 
-  ///Methode zum auswählen eines Termins
+  ///Methode zum auswählen eines contacts
   void onSelect(Contact contact) => selected = contact;
 
   ///Methode die eine Liste aller appointments zurückgibt
@@ -47,12 +47,12 @@ class ContactListComponent implements OnInit {
   void ngOnInit() => _getContacts();
 
 
-  ///Methode die die URL von dem Termin mit gegebener id als String zurückgibt
+  ///Methode die die URL von dem contact mit gegebener id als String zurückgibt
   String _contactUrl(String getCon) {
    return RoutePaths.contact.toUrl(parameters: {conParam: '$getCon'});
   }
 
-  ///Methode die den ausgewählten Termin aufruft
+  ///Methode die den ausgewählten contact aufruft
 
   Future<NavigationResult> gotoDetail() {
     _router.navigate(_contactUrl(selected.contactCode));

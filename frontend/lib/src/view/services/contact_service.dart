@@ -89,8 +89,6 @@ class ContactService {
         list.removeWhere((element) => element.contactCode == con);
       }
     }
-
-
     try {
       final url = '$_contactUrl/$con';
       await _http.delete(url, headers: _headers);
