@@ -1,6 +1,7 @@
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
+import 'package:demo/src/view/components/login_component.dart';
 import 'package:demo/src/view/services/register_service.dart';
 
 import '../../model/person.dart';
@@ -13,7 +14,7 @@ import 'mock_users.dart';
   directives: [coreDirectives, routerDirectives, formDirectives],
 )
 
-class RegisterComponent implements OnInit {
+class RegisterComponent implements OnInit, OnActivate {
 
   RegisterComponent(this._registerService, this._router);
 
@@ -39,5 +40,12 @@ class RegisterComponent implements OnInit {
   void ngOnInit() async {
     // do something when drawn
     // like DB connections
+  }
+
+  @override
+  void onActivate(RouterState previous, RouterState current) {
+    if (!LoginComponent.loggedIn) {
+      _router.navigate('/calendar');
+    }
   }
 }

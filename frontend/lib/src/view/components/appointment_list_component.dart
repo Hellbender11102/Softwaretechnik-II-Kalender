@@ -8,6 +8,7 @@ import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
 
 import 'appointment_component.dart';
+import 'login_component.dart';
 
 @Component(
   selector: 'appointments',
@@ -18,7 +19,7 @@ import 'appointment_component.dart';
 )
 
 ///Klasse zum anzeigen aller Termine
-class AppointmentListComponent implements OnInit {
+class AppointmentListComponent implements OnInit, OnActivate {
   AppointmentListComponent(this._appointmentService, this._router);
 
   final AppointmentService _appointmentService;
@@ -55,4 +56,11 @@ class AppointmentListComponent implements OnInit {
   ///Methode die den ausgewählten Termin aufruft
   Future<NavigationResult> gotoDetail() =>
       _router.navigate(_appointmentUrl(selected.id));
+
+  @override
+  void onActivate(RouterState previous, RouterState current) {
+    if (!LoginComponent.loggedIn) {
+      _router.navigate('/login');
+    }
+  }
 }

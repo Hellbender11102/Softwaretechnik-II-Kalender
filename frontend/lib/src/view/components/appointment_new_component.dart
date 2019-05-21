@@ -7,7 +7,7 @@ import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
 
 import 'mock_appointments.dart';
-
+import 'login_component.dart';
 
 
 @Component(
@@ -18,15 +18,15 @@ import 'mock_appointments.dart';
 )
 
 ///Klasse zum erstellen eines neuen Termins
-class AppointmentNewComponent {
+class AppointmentNewComponent implements OnActivate {
 
-  AppointmentNewComponent(this._appointmentService, this._location);
+  AppointmentNewComponent(this._appointmentService, this._location, this._router);
 
   //Später löschen
   Appointment appointment = Appointment(1, "", "", "", "", ""); //Später verändern
   final Location _location;
   final AppointmentService _appointmentService;
-
+  final Router _router;
 
 
   ///Methode zum erstellen des neuen Termins
@@ -40,6 +40,13 @@ class AppointmentNewComponent {
 
   ///Methode, die die übergeordnete ansicht anzeigt
   void goBack() => _location.back();
+
+  @override
+  void onActivate(RouterState previous, RouterState current) {
+    if (!LoginComponent.loggedIn) {
+      _router.navigate('/login');
+    }
+  }
 
 
 }

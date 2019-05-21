@@ -1,7 +1,7 @@
 <div id="outerContainer">
     <div id="leftContainer"></div>
     <div id="centerContainer">
-        <div id="buttons">
+        <div id="buttons" [hidden]="!showButtons">
             <nav>
                 <li [routerLink]="RoutePaths.sample.toUrl()"
                     [routerLinkActive]="'active'">Sample
@@ -21,12 +21,10 @@
                 <li [routerLink]="RoutePaths.calendarMain.toUrl()"
                     [routerLinkActive]="'active'">Calendar
                 </li>
-                <li [routerLink]="RoutePaths.register.toUrl()"
-                    [routerLinkActive]="'active'">Register
-                </li>
                 <li [routerLink]="RoutePaths.login.toUrl()"
-                    [routerLinkActive]="'active'">Login
+                    [routerLinkActive]="'active'">Login/Register
                 </li>
+                <li onselect="logout()" [routerLink]="RoutePaths.login.toUrl()">Logout</li>
             </nav>
 
         </div>

@@ -9,6 +9,7 @@ import 'package:demo/src/view/services/login_service.dart';
 import 'package:demo/src/view/services/sample_service.dart';
 import 'package:demo/src/view/services/register_service.dart';
 
+import 'components/login_component.dart';
 
 @Component(
   selector: 'my-cal',
@@ -28,4 +29,9 @@ import 'package:demo/src/view/services/register_service.dart';
 )
 class AppComponent {
   final String title = 'innerComponent';
+  static bool showButtons = false;
+  void logout() {
+    LoginComponent.loggedIn = false;
+    showButtons = false;
+  }
 }

@@ -1,7 +1,7 @@
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/services/dashboard_service.dart';
-
+import 'package:demo/src/view/components/login_component.dart';
 
 @Component(
   selector: 'dash',
@@ -9,17 +9,24 @@ import 'package:demo/src/view/services/dashboard_service.dart';
   styleUrls: ['dashboard_component.css'],
   directives: [coreDirectives, routerDirectives],
 )
-class DashboardComponent implements OnInit {
+class DashboardComponent implements OnInit, OnActivate {
 
   // service Klasse für ORM
-  DashboardComponent(this._dashboardService);
+  DashboardComponent(this._dashboardService, this._router);
 
   final DashboardService _dashboardService;
-
+  final Router _router;
 
   @override
   void ngOnInit() async {
     // do something when drawn
     // like DB connections
+  }
+
+  @override
+  void onActivate(RouterState previous, RouterState current) {
+    if (!LoginComponent.loggedIn) {
+      _router.navigate('/login');
+    }
   }
 }
