@@ -58,22 +58,9 @@ Map toJson() => {'nickname': nickname, 'surname': surname, 'name': name, 'email'
 
 
 
-class Mock {
-  // gets a Contact from ALL Contacts by its ContactCode
-  Contact getByContactCode(String contactCode) {
-    // service routine lookup
-    // CODE HERE
-    // potentialy returns null
-    return map[contactCode];
-    // Mock
-  }
 
-List<Contact> list = []
-  ..add(Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "PQ459",
-      "Pretty average Guy."))
-  ..add(Contact("dude", "Osu", "Hike", "Mike.owski@gmail.com", "PQ858",
-      "the underwhelming Guy."));
-  static Map<String, Contact> map = {
-    "contactCode1": marc,
-    "contactCode2": mike
-  };
+  List<Contact> list = []..add(
+      Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "PQ459",
+          "Pretty average Guy."))..add(
+      Contact("dude", "Osu", "Hike", "Mike.owski@gmail.com", "PQ858",
+          "the underwhelming Guy."));
