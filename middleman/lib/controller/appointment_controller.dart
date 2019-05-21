@@ -18,22 +18,26 @@ class AppointmentController extends ResourceController {
 
   final ManagedContext context;
 
+  /*
   // getall or single
   @Operation.get()
   Future<Response> getAllAppointments() async {
     return Response.ok(_appointments);
   }
+  */
+  // getall
+  @Operation.get()
+  Future<Response> getAllAppointments() async {
+    final appointmentQuery = Query<Appointment>(context);
+    final heroes = await appointmentQuery.fetch();
+    return Response.ok(heroes);
+  }
 
   @Operation.get('id')
-  Future<Response> getAppointmentByID() async {
-    final id = int.parse(request.path.variables['id']);
-    print(id.toString());
-    final appointment = _appointments.firstWhere((appointment) => appointment['id'] == id, orElse: () => null);
-    print(appointment.toString());
-    if ( appointment == null) {
-      return Response.notFound();
-    }
-
+  Future<Response> getAppointmentByID(@Bind.path('id') int id) async {
+    final appointmentQuery = Query<Appointment>(context)
+    ..where((appointment)=> appointment.id).equalTo(id);
+    final appointment = await appointmentQuery.fetchOne();
     return Response.ok(appointment);
   }
 
