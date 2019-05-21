@@ -26,6 +26,7 @@ class DayviewComponent implements OnActivate {
     if (year != null && month != null && day !=null) {
       appointments = await _appointmentService.getAll();
       appointments.sort((a, b) => a.time.compareTo(b.time));
+
     }
   }
 
