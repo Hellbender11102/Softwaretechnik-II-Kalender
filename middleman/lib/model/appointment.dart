@@ -6,8 +6,17 @@ class _Appointment {
 @primaryKey
 int id;
 
-@Column(unique: true)
+@Column(unique: false)
 String name;
+
+@Column (unique: false)
+String time;
+
+@Column (unique: false)
+String duration;
+
+@Column (unique: false)
+String location;
 }
 
 
