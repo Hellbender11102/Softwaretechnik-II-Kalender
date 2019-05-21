@@ -23,7 +23,7 @@ class AppointmentComponent implements OnActivate {
 
   AppointmentComponent(this._appointmentService, this._location);
 
-  Appointment appointment = Appointment(1, "Test Termin", "", "", "", "");
+  Appointment appointment;
   final Location _location;
   bool deleteControl = false;
   bool submitted = true;

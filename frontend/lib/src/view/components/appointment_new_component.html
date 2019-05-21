@@ -1,4 +1,4 @@
-
+<div *ngIf="appointment != null">
 <h1>New Appointment</h1>
 
 <form #newAppointmentForm="ngForm">
@@ -57,3 +57,4 @@
     <button type="submit" [disabled]="!newAppointmentForm.form.valid" class="btn btn-success" (click)="create()">Create</button>
 
 </form>
+</div>
