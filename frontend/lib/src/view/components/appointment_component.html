@@ -1,4 +1,4 @@
-
+<div *ngIf="appointment != null">
     <h1>{{appointment.name}}</h1>
     <div [hidden]="submitted">
         <form (ngSubmit)="onSubmit()" #appointmentForm="ngForm">
@@ -93,3 +93,4 @@
             If you really want to delete this Appointment click "Delete" again.
         </div>
     </div>
+</div>
