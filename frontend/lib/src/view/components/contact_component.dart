@@ -24,6 +24,7 @@ class ContactComponent implements OnActivate {
   Contact contact = Contact('lauri','Schindler','Laurenz','lauri.s@web.de','295145','Er ist einer');
   final Location _location;
   String note;
+  bool deleteControl = false;
   final ContactService _contactService;
 
   /// Folgender Code wird immer bei der Aktivierung der Klasse aufgerufen
@@ -46,8 +47,12 @@ class ContactComponent implements OnActivate {
 
   ///Methode zum löschen von Terminen
   Future<void> delete() async {
-    await _contactService.delete(contact.contactCode);
-   goBack();
+    if (deleteControl==true) {
+      await _contactService.delete(contact.contactCode);
+      goBack();
+    } else {
+      deleteControl = true;
+    }
   }
 
   ///Methode, die die übergeordnete ansicht anzeigt

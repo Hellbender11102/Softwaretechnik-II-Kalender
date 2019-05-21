@@ -31,3 +31,8 @@ table{
     float: right;
     margin-right: 2%;
 }
+
+#delete {
+    color: red;
+    float: right;
+}

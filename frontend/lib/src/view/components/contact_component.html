@@ -25,3 +25,7 @@
         <button type="button" class="btn back" (click)="goBack()">GoBack</button>
 
         <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+
+    <div [hidden]="!deleteControl" id="delete">
+        If you really want to delete this Contact click "Delete" again.
+    </div>
