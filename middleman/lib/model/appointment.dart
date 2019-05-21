@@ -13,6 +13,9 @@ String name;
 String time;
 
 @Column (unique: false)
+String date;
+
+@Column (unique: false)
 String duration;
 
 @Column (unique: false)

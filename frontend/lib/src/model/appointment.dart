@@ -18,13 +18,13 @@ class Appointment {
   String location;
 
 
-  factory Appointment.fromJson(Map<int, String> appointment) =>
+  factory Appointment.fromJson(Map<String, dynamic> appointment) =>
       Appointment(_toInt(appointment['id']),
-          appointment['name'],
-          appointment['date'],
-          appointment['time'],
-          appointment['duration'],
-          appointment['location']);
+          appointment['name'] as String,
+          appointment['date']as String,
+          appointment['time']as String,
+          appointment['duration']as String,
+          appointment['location']as String);
 
   Map toJson() => {'id': id, 'name': name, 'date': date, 'time': time, 'duration': duration, 'location': location};
 }

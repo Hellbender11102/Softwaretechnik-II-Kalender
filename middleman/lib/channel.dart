@@ -42,7 +42,7 @@ class CalenderChannel extends ApplicationChannel {
     final router = Router();
 
     router
-      .route('/appointment/[:id]')
+      .route('/appointments/[:id]')
       .link(() => AppointmentController(context));
     return router;
   }

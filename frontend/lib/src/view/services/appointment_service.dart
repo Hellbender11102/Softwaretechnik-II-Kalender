@@ -41,51 +41,20 @@ class AppointmentService {
     }*/
   }
 
-  ///gibt eine Liste von allen Terminen zurück
-  Future<List<Appointment>> getAll() async {
-    return mockAppointments;
 
-    /*
-    try {
-      final response = await _http.get(_appointmentUrl);
-      print(response.body);
-      final appointments = (_extractData(response) as List)
-          .map((value) => Appointment.fromJson(value))
-          .toList();
-      return appointments;
-    } catch (e) {
-      throw _handleError(e);
-    }
-     */
-  }
-
-  Future<Appointment> getDB(int id) async {
-        final Response response = await _http.get('$_appointmentUrl/$id') as Response;
-        print(response.body);
-        return Appointment.fromJson(_extractData(response as Response) as Map<int, String>);
-  }
-  Future<Appointment> getAllDB(int id) async {
-        final Response response = await _http.get('$_appointmentUrl') as Response;
-        print(response.body);
-        return Appointment.fromJson(_extractData(response as Response) as Map<int, String>);
-  }
-
-  ///Gibt den Termin mit der gegebenen id zurück
   Future<Appointment> get(int id) async {
-    for (var appointment in mockAppointments) {
-      print(appointment);
-      if (appointment.id == id) {
-        return appointment;
-      }
-    }
-
-    /*try {
-      final response = await _http.get('$_appointmentUrl/$id');
-      return Appointment.fromJson(_extractData(response) as Map<int, String>);
-    } catch (e) {
-      throw _handleError(e);
-    }*/
+    final Response response =
+        await _http.get('$_appointmentUrl/$id') as Response;
+    return Appointment.fromJson(_extractData(response) as Map<String, dynamic>);
   }
+
+  Future<List<Appointment>> getAll() async {
+    final Response response = await _http.get('$_appointmentUrl') as Response;
+    return (_extractData(response) as List)
+        .map((value) => Appointment.fromJson(value as Map<String, dynamic>))
+        .toList();
+  }
+
 
   ///Gibt den Termin mit der gegebenen id zurück
 
@@ -94,7 +63,8 @@ class AppointmentService {
     try {
       final response = await _http.post(_appointmentUrl,
           headers: _headers, body: json.encode({'name': name}));
-      return Appointment.fromJson(_extractData(response as Response)as Map<int,String>);
+      return Appointment.fromJson(
+          _extractData(response as Response) as Map<String, dynamic>);
     } catch (e) {
       throw _handleError(e);
     }

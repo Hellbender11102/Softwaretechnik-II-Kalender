@@ -27,7 +27,8 @@ class AppointmentController extends ResourceController {
   @Operation.get('id')
   Future<Response> getAppointmentByID() async {
     final id = int.parse(request.path.variables['id']);
-    final appointment = _appointments.firstWhere((Appointment) => Appointment['id'] == id, orElse: () => null);
+    print(id.toString());
+    final appointment = _appointments.firstWhere((appointment) => appointment['id'] == id, orElse: () => null);
     print(appointment.toString());
     if ( appointment == null) {
       return Response.notFound();

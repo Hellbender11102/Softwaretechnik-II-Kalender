@@ -30,7 +30,7 @@ class AppointmentComponent implements OnActivate {
   @override
   void onActivate(_, RouterState current) async {
     final id = getId(current.parameters);
-    if (id != null) appointment = await (_appointmentService.getDB(id));
+    if (id != null) appointment = await (_appointmentService.get(id));
   }
 
   /// Methode zum speichern, der änderungen die man im Termin vorgenommen hat
