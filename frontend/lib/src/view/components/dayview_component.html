@@ -2,7 +2,6 @@
     <table>
         <ul class="dayAppointments">
             <li *ngFor="let appointment of appointments"
-                (click)="collaps(appointment.id)"
                 class="w3-block w3-left-align">
                 {{appointment.time}} - {{appointment.name}}
                 <div [attr.id]="appointment.id" class="w3-container w3-hide" >
