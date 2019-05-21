@@ -21,7 +21,7 @@ class AppointmentComponent implements OnActivate {
 
   AppointmentComponent(this._appointmentService, this._location);
 
-  Appointment appointment = Appointment(1, "Test Termin", "", "", "", "");
+  Appointment appointment;
   final Location _location;
 
   final AppointmentService _appointmentService;
@@ -29,12 +29,8 @@ class AppointmentComponent implements OnActivate {
   /// Folgender Code wird immer bei der Aktivierung der Klasse aufgerufen
   @override
   void onActivate(_, RouterState current) async {
-
-
     final id = getId(current.parameters);
-    if (id != null) {
-      appointment = await (_appointmentService.get(id));
-    }
+    if (id != null) appointment = await (_appointmentService.getDB(id));
   }
 
   /// Methode zum speichern, der änderungen die man im Termin vorgenommen hat
