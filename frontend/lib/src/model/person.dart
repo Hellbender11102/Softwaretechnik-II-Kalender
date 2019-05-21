@@ -6,6 +6,7 @@ abstract class Person {
   String name;
   String email;
   String mobileNo;
+  String contactCode;
 }
 
 class User extends Person {
@@ -30,6 +31,9 @@ class User extends Person {
 
   // removes multiple Contacts
   void rmvAllContacts(List<Contact> list) => list.forEach(rmvContact);
+
+  // gets all of the ENDBENUTZER Contacts
+  Map<String, Contact> getMyContacts() {}
 }
 
 class Contact extends Person {
@@ -51,8 +55,25 @@ Contact(contact['nickname'],
 Map toJson() => {'nickname': nickname, 'surname': surname, 'name': name, 'email': email, 'contactCode': contactCode, 'note': note};
 }
 
+
+
+
+class Mock {
+  // gets a Contact from ALL Contacts by its ContactCode
+  Contact getByContactCode(String contactCode) {
+    // service routine lookup
+    // CODE HERE
+    // potentialy returns null
+    return map[contactCode];
+    // Mock
+  }
+
 List<Contact> list = []
   ..add(Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "PQ459",
       "Pretty average Guy."))
   ..add(Contact("dude", "Osu", "Hike", "Mike.owski@gmail.com", "PQ858",
       "the underwhelming Guy."));
+  static Map<String, Contact> map = {
+    "contactCode1": marc,
+    "contactCode2": mike
+  };
