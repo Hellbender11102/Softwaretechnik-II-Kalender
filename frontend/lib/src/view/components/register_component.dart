@@ -44,7 +44,7 @@ class RegisterComponent implements OnInit, OnActivate {
 
   @override
   void onActivate(RouterState previous, RouterState current) {
-    if (!LoginComponent.loggedIn) {
+    if (LoginComponent.loggedIn) {
       _router.navigate('/calendar');
     }
   }
