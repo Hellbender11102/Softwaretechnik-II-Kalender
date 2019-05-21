@@ -11,7 +11,7 @@ class AppointmentService {
 
   static final _headers = {'Content-Type': 'application/json'};
   static const _appointmentUrl =
-      'http://localhost:8888/#/appointments'; // URL to web API
+      'http://localhost:8888/appointments'; // URL to web API
   final Client _http;
 
   ///Liest die Daten aus einer Response
@@ -61,6 +61,11 @@ class AppointmentService {
 
   Future<Appointment> getDB(int id) async {
         final Response response = await _http.get('$_appointmentUrl/$id') as Response;
+        print(response.body);
+        return Appointment.fromJson(_extractData(response as Response) as Map<int, String>);
+  }
+  Future<Appointment> getAllDB(int id) async {
+        final Response response = await _http.get('$_appointmentUrl') as Response;
         print(response.body);
         return Appointment.fromJson(_extractData(response as Response) as Map<int, String>);
   }
