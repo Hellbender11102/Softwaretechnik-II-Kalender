@@ -11,78 +11,69 @@
     #758EB7 - base
     #A5CAD2
     */
-    html,
-    body {
+    html, body {
         width: 100vw;
         height: 100vh;
         margin: 0;
         background: #04202C;
+    }
+    h3 {
+        text-align: center;
     }
     #outerContainer {
         --color-darkness-1: #04202C;
         --color-darkness-2: #304040;
         --color-darkness-3: #5B7065;
         --color-darkness-4: #C9D1C8;
-        --middle-height: 94vh;
         width: 100%;
+        height: 100%;
         box-sizing: content-box;
         background: var(--color-darkness-1);
-        overflow: auto;
+        overflow-y: auto;
     }
     #centerContainer {
-        margin: 1%;
-        width: 84%;
-        float: left;
-        height: var(--middle-height);
+        position: relative;
+        top: 5vh;
+        width: 100%;
+        height: 90vh;
+        max-width: 1600px;
         min-height: 75vh;
         background: var(--color-darkness-3);
-        /* border-radius: 10px; */
     }
     #buttons {
+        z-index: 1;
+        position: fixed;
         float: left;
         align-self: center;
         width: 100%;
         height: 5vh;
+        max-height: 40px;
         min-height: 20px;
+        border-bottom: 1px solid var(--color-darkness-1);
         background: var(--color-darkness-2);
-    }
-    #leftContainer {
-        margin: 1%;
-        float: left;
-        width: 5%;
-        left: 5px;
-        min-height: 75vh;
-        height: var(--middle-height);
-        background: var(--color-darkness-4);
-    }
-    #rightContainer {
-        margin: 1%;
-        float: left;
-        right: 5px;
-        width: 5%;
-        height: var(--middle-height);
-        min-height: 75vh;
-        background: var(--color-darkness-4);
     }
     innerContainer {
         padding-left: 10px;
+        max-width: 1600px;
         padding-right: 10px;
         box-sizing: border-box;
         float: left;
-        height: 89vh;
+        height: 90vh;
         width: 100%;
+        overflow-y: auto;
         background: var(--color-darkness-4);
     }
     #impressum {
         position: fixed;
         text-align: center;
-        bottom: 0%;
+        bottom: 0px;
         float: left;
         width: 100%;
-        height: 4vh;
+        height: 5vh;
         min-height: 20px;
-        border-top: 4px solid var(--color-darkness-1);
-        background: var(--color-darkness-4);
+        max-height: 40px;
+        border-top: 1px solid var(--color-darkness-1);
+        background: var(--color-darkness-3);
     }
     #impressum>p {
         font-family: "Lucida Console", monospace;
@@ -103,8 +94,7 @@
         text-decoration: none;
         background-color: var(--color-darkness-3);
     }
-    li:visited,
-    li:link {
+    li:visited, li:link {
         color: var(--color-darkness-4);
     }
     li:hover {
