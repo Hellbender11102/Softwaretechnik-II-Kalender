@@ -6,6 +6,10 @@
     float: left;
 }
 
+#delete {
+    color: red;
+}
+
 label {
     width: 100%;
 }
