@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:html';
 import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:demo/src/model/appointment.dart';
@@ -59,12 +60,9 @@ class AppointmentService {
   }
 
   Future<Appointment> getDB(int id) async {
-    try {
-      final Response response = await _http.get('$_appointmentUrl/$id');
-      return Appointment.fromJson(_extractData(response)as Map<int,String>);
-    } catch (e) {
-      throw _handleError(e);
-    }
+        final Response response = await _http.get('$_appointmentUrl/$id') as Response;
+        print(response.body);
+        return Appointment.fromJson(_extractData(response as Response) as Map<int, String>);
   }
 
   ///Gibt den Termin mit der gegebenen id zurück
@@ -91,7 +89,7 @@ class AppointmentService {
     try {
       final response = await _http.post(_appointmentUrl,
           headers: _headers, body: json.encode({'name': name}));
-      return Appointment.fromJson(_extractData(response) as Map<int, String>);
+      return Appointment.fromJson(_extractData(response as Response)as Map<int,String>);
     } catch (e) {
       throw _handleError(e);
     }

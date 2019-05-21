@@ -6,30 +6,32 @@ import 'package:middleman/model/appointment.dart';
 class AppointmentController extends ResourceController {
   AppointmentController(this.context);
 
+  final _appointments =[
+    {"id":1, "name" :"eins","date" : "2019-05-07", "time" : "12:00","duration" : "04:00", "location" : "Technischehochschule Lübeck"},
+    {"id":2, "name" :"zwei","date" : "2019-05-07", "time" : "12:00","duration" : "04:00", "location" : "Technischehochschule Lübeck"},
+    {"id":3, "name" :"drei","date" : "2019-05-07", "time" : "12:00","duration" : "04:00", "location" : "Technischehochschule Lübeck"},
+    {"id":4, "name" :"vier","date" : "2019-05-07", "time" : "12:00","duration" : "04:00", "location" : "Technischehochschule Lübeck"},
+    {"id":5, "name" :"fünf","date" : "2019-05-07", "time" : "12:00","duration" : "04:00", "location" : "Technischehochschule Lübeck"},
+  ];
+
+
+
   final ManagedContext context;
 
   // getall or single
   @Operation.get()
-  Future<Response> getAllAppointments({@Bind.query('name') String name}) async {
-    final appointmentQuery = Query<Appointment>(context);
-    if (name != null) {
-      appointmentQuery.where((h) => h.name).contains(name, caseSensitive: false);
-    }
-    final apointments = await appointmentQuery.fetch();
-    print(apointments);
-    return Response.ok(apointments);
+  Future<Response> getAllAppointments() async {
+    return Response.ok(_appointments);
   }
 
   @Operation.get('id')
   Future<Response> getAppointmentByID(@Bind.path('id') int id) async {
-    final appointmentQuery = Query<Appointment>(context)
-      ..where((h) => h.id).equalTo(id);
-
-    final appointment = await appointmentQuery.fetchOne();
-
-    if (appointment == null) {
+    final id = int.parse(request.path.variables['id']);
+    final appointment = _appointments.firstWhere((Appointment) => Appointment['id'] == id, orElse: () => null);
+    if ( appointment == null) {
       return Response.notFound();
     }
+
     return Response.ok(appointment);
   }
 
