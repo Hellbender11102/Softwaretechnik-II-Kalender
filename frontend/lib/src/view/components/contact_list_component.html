@@ -1,0 +1,20 @@
+
+<h3>Contacts</h3>
+<ol class="contacts">
+    <li *ngFor="let contact of contacts"
+        [class.selected]="contact === selected"
+        (click)="onSelect(contact)">
+        <span>{{contact.name}} </span>
+        <span>{{contact.email}} </span>
+    </li>
+</ol>
+<div *ngIf="selected != null">
+    <button (click)="gotoDetail()">View Details</button>
+</div>
+<form action="/action_page.php">
+    <div class="form-group">
+        <input type="text" class="form-control" id="contactCode" placeholder="ContactCode"
+               [(ngModel)]="contactCode" name="contactCode">
+        <button (click)="addContact()" type="submit">Add Contact</button>
+    </div>
+</form>

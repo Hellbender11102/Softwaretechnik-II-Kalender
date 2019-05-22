@@ -1,7 +1,7 @@
 import 'package:angular_router/angular_router.dart';
 
 const String idParam = 'id';
-
+const String conParam = 'number';
 const String yParam ="year";
 const String mParam ="month";
 const String dParam ="day";
@@ -19,6 +19,8 @@ class RoutePaths {
   static final RoutePath register = RoutePath(path: 'register');
   static final RoutePath login = RoutePath(path: 'login');
 
+  static final RoutePath contacts = RoutePath(path: 'contacts');
+  static final RoutePath contact = RoutePath(path: '${contacts.path}/:$conParam');
 }
 
 
@@ -37,4 +39,7 @@ int getDay(Map<String, String> parameters) {
 int getId(Map<String, String> parameters) {
   final id = parameters[idParam];
   return id == null ? null : int.tryParse(id);
+}
+String getNumber(Map<String, String> parameters) {
+  return parameters[conParam];
 }

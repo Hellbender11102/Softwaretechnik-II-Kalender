@@ -1,14 +1,8 @@
 
 class Appointment {
 
-  Appointment(int id, String name, String date, String time, String duration, String location) {
-    this.id = id;
-    this.name = name;
-    this.date = date;
-    this.time = time;
-    this.duration = duration;
-    this.location = location;
-  }
+  // constructor
+  Appointment(this.id, this.name, this.date, this.time, this.duration, this.location);
 
   int id;
   String name;
@@ -16,6 +10,8 @@ class Appointment {
   String time;
   String duration;
   String location;
+
+
 
 
   factory Appointment.fromJson(Map<int, String> appointment) =>
