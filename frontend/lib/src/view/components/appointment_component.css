@@ -1,1 +1,15 @@
-@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css');
+
+.form-control {
+    margin:5px;
+    width: 97%;
+    float: left;
+}
+
+#delete {
+    color: red;
+}
+
+label {
+    width: 100%;
+}

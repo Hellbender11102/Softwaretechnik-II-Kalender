@@ -1,12 +1,11 @@
-<h2>Appointments</h2>
+
+<h2>Agenda</h2>
+<appointment-search id="search"></appointment-search>
+
 <ul class="appointments">
     <li *ngFor="let appointment of appointments"
-        [class.selected]="appointment === selected"
-        (click)="onSelect(appointment)">
+        (click)="gotoDetail(appointment)">
         <span class="badge">{{appointment.id}}</span>
         <span>{{appointment.name}}</span>
     </li>
 </ul>
-<div *ngIf="selected != null">
-    <button (click)="gotoDetail()">View Details</button>
-</div>

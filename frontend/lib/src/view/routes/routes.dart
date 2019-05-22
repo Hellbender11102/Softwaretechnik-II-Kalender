@@ -3,8 +3,12 @@ import '../components/appointment_component.template.dart' as appointment_templa
 import '../components/appointment_list_component.template.dart' as appointment_list_template;
 import '../components/appointment_new_component.template.dart' as appointment_new_template;
 import '../components/calendar_main.template.dart' as calendar_template;
+import '../components/contact_component.template.dart' as contact_template;
+import '../components/contact_list_component.template.dart' as contacts_template;
 import '../components/dashboard_component.template.dart' as dashboard_template;
 import '../components/dayview_component.template.dart' as dayview_template;
+import '../components/sample_component.template.dart' as sample_template;
+
 import '../components/login_component.template.dart' as login_template;
 import '../components/register_component.template.dart' as register_template;
 import '../components/sample_component.template.dart' as sample_template;
@@ -60,6 +64,14 @@ class Routes {
     component: login_template.LoginComponentNgFactory,
   );
 
+  static final RouteDefinition contacts = RouteDefinition(
+    routePath: RoutePaths.contacts,
+    component: contacts_template.ContactListComponentNgFactory,
+  );
+  static final RouteDefinition contact = RouteDefinition(
+    routePath: RoutePaths.contact,
+    component: contact_template.ContactComponentNgFactory,
+  );
   // routing auf diese Component
   static final List<RouteDefinition> all = <RouteDefinition>[
     sample,
@@ -70,6 +82,8 @@ class Routes {
     calendarMain,
     calendar,
     dayview,
+    contacts,
+    contact,
     register,
     login,
     RouteDefinition.redirect(
