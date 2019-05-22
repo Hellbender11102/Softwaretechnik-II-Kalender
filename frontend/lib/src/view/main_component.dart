@@ -7,7 +7,6 @@ import 'package:demo/src/view/services/contact_service.dart';
 import 'package:demo/src/view/services/dashboard_service.dart';
 import 'package:demo/src/view/services/dayview_service.dart';
 import 'package:demo/src/view/services/login_service.dart';
-import 'package:demo/src/view/services/sample_service.dart';
 import 'package:demo/src/view/services/register_service.dart';
 
 import 'components/login_component.dart';
@@ -18,7 +17,6 @@ import 'components/login_component.dart';
   templateUrl: 'main_component.html',
   directives: [routerDirectives],
   providers: [
-    ClassProvider(SampleService),
     ClassProvider(DashboardService),
     ClassProvider(AppointmentService),
     ClassProvider(CalendarService),
