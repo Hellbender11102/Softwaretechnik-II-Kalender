@@ -10,7 +10,7 @@
                     [routerLinkActive]="'active'">Dashboard
                 </li>
                 <li [routerLink]="RoutePaths.appointments.toUrl()"
-                    [routerLinkActive]="'active'">Appointments
+                    [routerLinkActive]="'active'">Agenda
                 </li>
                 <li [routerLink]="RoutePaths.appointmentNew.toUrl()"
                     [routerLinkActive]="'active'">New Appointment
@@ -18,6 +18,11 @@
                 <li [routerLink]="RoutePaths.calendarMain.toUrl()"
                     [routerLinkActive]="'active'">Calendar
                 </li>
+
+                <li [routerLink]="RoutePaths.contacts.toUrl()"
+                    [routerLinkActive]="'active'">Contacts
+                </li>
+                <li (click)="logout()" [routerLink]="RoutePaths.login.toUrl()">Logout</li>
             </nav>
 
         </div>
@@ -26,7 +31,7 @@
         </innerContainer>
     </div>
     <div id="rightContainer"></div>
-    <div id="impressum"><p>Erstellt von Daniel Waage, Lennart Siedschlag, Marius Mauritz, Marcel Azadi, Olliver Wosiek
+    <div id="impressum"><p>Erstellt von Daniel Waage, Lennart Siedschlag, Marius Mauritz, Marcel Azadi, Oliver Wosiek
         und Laurenz Schindler</p></div>
 </div>
 

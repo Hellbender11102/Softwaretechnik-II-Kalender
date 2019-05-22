@@ -5,7 +5,7 @@ import 'package:demo/src/view/services/appointment_service.dart';
 import 'package:demo/src/model/appointment.dart';
 
 import 'mock_appointments.dart';
-
+import 'login_component.dart';
 
 @Component(
   selector: 'dayview',
@@ -13,27 +13,34 @@ import 'mock_appointments.dart';
   styleUrls: ['dayview_component.css'],
   directives: [coreDirectives, routerDirectives],
 )
-class DayviewComponent implements OnActivate {
+class DayviewComponent implements OnInit, OnActivate {
   final Router _router;
   var appointments = List();
 
+  // service Klasse für ORM
+  DayviewComponent(this._appointmentService, this._router);
+
+  final AppointmentService _appointmentService;
+
+  List<Appointment> appointments = mockAppointments.cast<Appointment>();
+
+  // List<Appointment> appointments = mockAppointments.sort((a, b) => a.date.compareTo(b.date));
   /// Folgender Code wird immer bei der Aktivierung der Klasse aufgerufen
   @override
   void onActivate(_, RouterState current) async {
-    final int year = getYear(current.parameters);
-    final int month = getMonth(current.parameters);
-    final int day = getDay(current.parameters);
-    if (year != null && month != null && day !=null) {
-      appointments = await _appointmentService.getAll();
-      appointments.sort((a, b) => a.time.compareTo(b.time) as int);
-
+    if (!LoginComponent.loggedIn) {
+      _router.navigate('/login');
+    } else {
+      final int year = getYear(current.parameters);
+      final int month = getMonth(current.parameters);
+      final int day = getDay(current.parameters);
+      if (year != null && month != null && day != null) {
+        appointments = await _appointmentService.getAll();
+        appointments.sort((a, b) => a.time.compareTo(b.time) as int);
+      }
     }
   }
 
-  // service Klasse für ORM
-  DayviewComponent(this._appointmentService,this._router);
-
-  final AppointmentService _appointmentService;
 
 
   ///Methode die die URL von dem Termin mit gegebener id als String zurückgibt
@@ -45,3 +52,4 @@ class DayviewComponent implements OnActivate {
       _router.navigate(_appointmentUrl(appointment.id));
 
 }
+

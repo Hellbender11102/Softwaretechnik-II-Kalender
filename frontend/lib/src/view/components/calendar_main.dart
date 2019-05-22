@@ -8,6 +8,8 @@ import 'package:demo/src/model/month.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/calendar_service.dart';
 
+import 'login_component.dart';
+
 @Component(
   selector: 'calendarMain',
   templateUrl: 'calendar_main.html',
@@ -40,12 +42,16 @@ class CalendarComponent implements OnActivate, OnInit {
 
   @override
   void onActivate(RouterState previous, RouterState current) async {
-    final int yearInt = getYear(current.parameters);
-    final int monthInt = getMonth(current.parameters);
-    if (yearInt != null && monthInt != null) {
-      month = _calendarService.getSpecificMonth(yearInt, monthInt);
+    if (!LoginComponent.loggedIn) {
+      await _router.navigate('/login');
+    } else {
+      final int yearInt = getYear(current.parameters);
+      final int monthInt = getMonth(current.parameters);
+      if (yearInt != null && monthInt != null) {
+        month = _calendarService.getSpecificMonth(yearInt, monthInt);
+      }
+      //print(month.weekOfMonth(0).toString());
     }
-    //print(month.weekOfMonth(0).toString());
   }
 
   String monthURL(String year, String month) => RoutePaths.calendar

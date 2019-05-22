@@ -1,0 +1,32 @@
+<div *ngIf="contact != null">
+    <h3>{{contact.nickname}}</h3>
+
+    <table>
+        <tr>
+            <th>Name: </th>
+            <td>{{contact.surname}}, {{contact.name}}</td>
+        </tr>
+        <tr>
+            <th>E-mail: </th>
+            <td>{{contact.email}}</td>
+        </tr>
+        <tr>
+            <th>ContactCode: </th>
+            <td>{{contact.contactCode}}</td>
+        </tr>
+    </table>
+    <div class="form-group">
+       <textarea type="text" class="form-control" id="note" required placeholder="note"
+                 [(ngModel)]="note" name="note" rows="4"></textarea>
+    </div>
+
+        <button (click)="save()" class="btn back" type="submit">Save</button>
+
+        <button type="button" class="btn back" (click)="goBack()">GoBack</button>
+
+        <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+
+    <div [hidden]="!deleteControl" id="delete">
+        If you really want to delete this Contact click "Delete" again.
+    </div>
+</div>

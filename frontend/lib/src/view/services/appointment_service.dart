@@ -19,7 +19,6 @@ class AppointmentService {
   dynamic _extractData(Response resp) => json.decode(resp.body);
 
   Exception _handleError(dynamic e) {
-    print(e); // for demo purposes only
     return Exception('Server error; cause: $e');
   }
 
@@ -62,7 +61,6 @@ class AppointmentService {
   ///Gibt den Termin mit der gegebenen id zurück
   Future<Appointment> get(int id) async {
     for (var appointment in mockAppointments) {
-      print(appointment);
       if (appointment.id == id) {
         return appointment;
       }
@@ -78,5 +76,22 @@ class AppointmentService {
     } catch (e) {
       throw _handleError(e);
     }
+  }
+
+  ///Löscht den Termin mit gegebener id
+  Future<void> delete(int id) async {
+    for (var appointment in mockAppointments) {
+      if (appointment.id == id) {
+        mockAppointments.removeWhere((element) => element.id == id);
+      }
+    }
+
+    /*
+    try {
+      final url = '$_appointmentUrl/$id';
+      await _http.delete(url, headers: _headers);
+    } catch (e) {
+      throw _handleError(e);
+    }*/
   }
 }

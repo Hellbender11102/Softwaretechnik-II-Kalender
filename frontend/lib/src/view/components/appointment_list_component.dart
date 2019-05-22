@@ -8,26 +8,27 @@ import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
 
 import 'appointment_component.dart';
+import 'login_component.dart';
+import 'appointment_search_component.dart';
+
+
 
 @Component(
   selector: 'appointments',
   templateUrl: 'appointment_list_component.html',
   styleUrls: ['appointment_list_component.css'],
-  directives: [coreDirectives, routerDirectives, AppointmentComponent],
+  directives: [coreDirectives, routerDirectives, AppointmentComponent, AppointmentSearchComponent],
   pipes: [commonPipes],
 )
 
 ///Klasse zum anzeigen aller Termine
-class AppointmentListComponent implements OnInit {
+class AppointmentListComponent implements OnInit, OnActivate {
   AppointmentListComponent(this._appointmentService, this._router);
 
   final AppointmentService _appointmentService;
   final Router _router;
   List<Appointment> appointments;
-  Appointment selected;
 
-  ///Methode zum auswählen eines Termins
-  void onSelect(Appointment appointment) => selected = appointment;
 
   ///Methode die eine Liste aller appointments zurückgibt
   Future<void> _getAppointments() async {
@@ -44,8 +45,12 @@ class AppointmentListComponent implements OnInit {
 
   ///Nachfolgender Code wird bei der inizialisierung der Klasse ausgeführt
   @override
-  void ngOnInit() {
-    _getAppointments();
+  void ngOnInit() => _getAppointments();
+  @override
+  void onActivate(RouterState previous, RouterState current) {
+    if (!LoginComponent.loggedIn) {
+      _router.navigate('/login');
+    }
   }
 
 
@@ -55,6 +60,6 @@ class AppointmentListComponent implements OnInit {
         RoutePaths.appointment.toUrl(parameters: {idParam: '$id'});
 
     ///Methode die den ausgewählten Termin aufruft
-    Future<NavigationResult> gotoDetail() =>
-        _router.navigate(_appointmentUrl(selected.id));
+    Future<NavigationResult> gotoDetail(Appointment appointment) =>
+        _router.navigate(_appointmentUrl(appointment.id));
 }

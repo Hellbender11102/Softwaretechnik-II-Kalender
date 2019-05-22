@@ -29,6 +29,10 @@ class Appointment {
     return DateTime.utc(
         int.parse(split[0]), int.parse(split[1]), int.parse(split[2]));
   }
+
+  String getDate(){
+    return date.substring(8,10)+"/"+date.substring(5,7)+"/"+date.substring(0,4);
+}
 }
 
 int _toInt(id) => id is int ? id : int.parse(id as String);

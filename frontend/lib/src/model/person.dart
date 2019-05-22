@@ -1,5 +1,3 @@
-import 'dart:mirrors';
-
 abstract class Person {
   Person(this.nickname, this.surname, this.name, this.email);
 
@@ -15,8 +13,11 @@ class User extends Person {
   // ggf persistente Daten von einer Service Routine
   List<Contact> _contactlist = List();
 
-  User(String nickname, String surname, String name, String email)
-      : super(nickname, surname, name, email);
+  int id;
+  String password;
+
+  User(int id, String nickname, String surname, String name, String email, String password) 
+      : id = id, password = password, super(nickname, surname, name, email);
 
   // Adds a single contact, no duplicate by contactcode
   void addContact(Contact con) {
@@ -34,41 +35,43 @@ class User extends Person {
   // removes multiple Contacts
   void rmvAllContacts(List<Contact> list) => list.forEach(rmvContact);
 
+  factory User.fromJson(Map<int, String> user) =>
+      User(_toInt(user['id']),
+          user['nickname'],
+          user['surname'],
+          user['name'],
+          user['email'],
+          user['password']);
+
+  Map toJson() => {'nickname': nickname, 'surname': surname, 'name': name, 'email': email, 'password': password};
+
   // gets all of the ENDBENUTZER Contacts
   Map<String, Contact> getMyContacts() {}
 }
 
+int _toInt(id) => id is int ? id : int.parse(id as String);
+
 class Contact extends Person {
-  var contactCode;
-
-  Contact(String nickname, String surname, String name, String email,
-      this.contactCode)
-      : super(nickname, surname, name, email);
-}
-
-
-
-
-class Mock {
-  // gets a Contact from ALL Contacts by its ContactCode
-  Contact getByContactCode(String contactCode) {
-    // service routine lookup
-    // CODE HERE
-    // potentialy returns null
-    return map[contactCode];
-    // Mock
+  Contact(String nickname, String surname, String name, String email,String contactCode,String  note)
+      : super(nickname,surname,name,email){
+    this.contactCode = contactCode;
+    this.note = note;
   }
+  String contactCode ,note;
 
-  // Mock Datensatz
+factory Contact.fromJson(Map<String, String> contact) =>
+Contact(contact['nickname'],
+    contact['surname'],
+    contact['name'],
+    contact['email'],
+    contact['contactCode'],
+    contact['note']);
 
-  static Contact marc =
-      Contact("dude", "owski", "marc", "marc.owski@gmail.com", "contactCode1");
-  static Contact mike =
-      Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "contactCode2");
-
-  // erstellt eine Map mit 2 Kontakten
-  static Map<String, Contact> map = {
-    "contactCode1": marc,
-    "contactCode2": mike
-  };
+Map toJson() => {'nickname': nickname, 'surname': surname, 'name': name, 'email': email, 'contactCode': contactCode, 'note': note};
 }
+
+List<Contact> list = []
+  ..add(Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "PQ459",
+      "Pretty average Guy."))
+  ..add(Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "PQ458",
+      "the underwhelming Guy."));
