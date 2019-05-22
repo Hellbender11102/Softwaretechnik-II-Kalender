@@ -1,0 +1,11 @@
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css');
+
+.form-group {
+    margin:5px;
+    width: 97%;
+    float: left;
+}
+
+.btn-success {
+    margin-left: 5px;
+}

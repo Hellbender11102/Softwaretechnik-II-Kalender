@@ -21,6 +21,11 @@
                 <li [routerLink]="RoutePaths.calendarMain.toUrl()"
                     [routerLinkActive]="'active'">Calendar
                 </li>
+
+                <li [routerLink]="RoutePaths.contacts.toUrl()"
+                    [routerLinkActive]="'active'">Contacts
+                </li>
+                <li (click)="logout()" [routerLink]="RoutePaths.login.toUrl()">Logout</li>
             </nav>
 
         </div>
@@ -29,7 +34,7 @@
         </innerContainer>
     </div>
     <div id="rightContainer"></div>
-    <div id="impressum"><p>Erstellt von Daniel Waage, Lennart Siedschlag, Marius Mauritz, Marcel Azadi, Olliver Wosiek
+    <div id="impressum"><p>Erstellt von Daniel Waage, Lennart Siedschlag, Marius Mauritz, Marcel Azadi, Oliver Wosiek
         und Laurenz Schindler</p></div>
 </div>
 

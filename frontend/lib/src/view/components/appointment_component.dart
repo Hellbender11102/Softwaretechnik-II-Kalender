@@ -9,7 +9,7 @@ import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
 
-
+import 'package:demo/src/view/components/login_component.dart';
 
 
 @Component(
@@ -21,22 +21,25 @@ import 'package:demo/src/view/services/appointment_service.dart';
 /// Klasse zur verwaltung der Termine
 class AppointmentComponent implements OnActivate {
 
-  AppointmentComponent(this._appointmentService, this._location);
+  AppointmentComponent(this._appointmentService, this._location, this._router);
 
   Appointment appointment;
   final Location _location;
   bool deleteControl = false;
   bool submitted = true;
+  final Router _router;
   final AppointmentService _appointmentService;
 
   /// Folgender Code wird immer bei der Aktivierung der Klasse aufgerufen
   @override
   void onActivate(_, RouterState current) async {
-
-
-    final id = getId(current.parameters);
-    if (id != null) {
-      appointment = await (_appointmentService.get(id));
+    if (!LoginComponent.loggedIn) {
+      await _router.navigate('/login');
+    } else {
+      final id = getId(current.parameters);
+      if (id != null) {
+        appointment = await _appointmentService.get(id);
+      }
     }
   }
 
