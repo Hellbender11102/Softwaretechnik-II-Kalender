@@ -6,14 +6,16 @@ import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
-
 import 'appointment_component.dart';
+import 'appointment_search_component.dart';
+
+
 
 @Component(
   selector: 'appointments',
   templateUrl: 'appointment_list_component.html',
   styleUrls: ['appointment_list_component.css'],
-  directives: [coreDirectives, routerDirectives, AppointmentComponent],
+  directives: [coreDirectives, routerDirectives, AppointmentComponent, AppointmentSearchComponent],
   pipes: [commonPipes],
 )
 

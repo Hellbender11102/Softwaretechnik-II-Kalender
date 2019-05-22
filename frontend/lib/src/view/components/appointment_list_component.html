@@ -1,4 +1,7 @@
 <h2>Appointments</h2>
+
+<appointment-search id="search"></appointment-search>
+
 <ul class="appointments">
     <li *ngFor="let appointment of appointments"
         [class.selected]="appointment === selected"
