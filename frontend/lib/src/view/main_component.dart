@@ -35,7 +35,6 @@ class AppComponent {
   //todo muss raus hier
   static bool showButtons = false;
   void logout() {
-    print("logged out");
     LoginComponent.loggedIn = false;
     showButtons = false;
   }
