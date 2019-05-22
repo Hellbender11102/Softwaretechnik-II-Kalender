@@ -13,8 +13,11 @@ class User extends Person {
   // ggf persistente Daten von einer Service Routine
   List<Contact> _contactlist = List();
 
-  User(String nickname, String surname, String name, String email)
-      : super(nickname, surname, name, email);
+  int id;
+  String password;
+
+  User(int id, String nickname, String surname, String name, String email, String password) 
+      : id = id, password = password, super(nickname, surname, name, email);
 
   // Adds a single contact, no duplicate by contactcode
   void addContact(Contact con) {
@@ -32,9 +35,21 @@ class User extends Person {
   // removes multiple Contacts
   void rmvAllContacts(List<Contact> list) => list.forEach(rmvContact);
 
+  factory User.fromJson(Map<int, String> user) =>
+      User(_toInt(user['id']),
+          user['nickname'],
+          user['surname'],
+          user['name'],
+          user['email'],
+          user['password']);
+
+  Map toJson() => {'nickname': nickname, 'surname': surname, 'name': name, 'email': email, 'password': password};
+
   // gets all of the ENDBENUTZER Contacts
   Map<String, Contact> getMyContacts() {}
 }
+
+int _toInt(id) => id is int ? id : int.parse(id as String);
 
 class Contact extends Person {
   Contact(String nickname, String surname, String name, String email,String contactCode,String  note)
@@ -55,12 +70,8 @@ Contact(contact['nickname'],
 Map toJson() => {'nickname': nickname, 'surname': surname, 'name': name, 'email': email, 'contactCode': contactCode, 'note': note};
 }
 
-
-
-
-
-  List<Contact> list = []..add(
-      Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "PQ459",
-          "Pretty average Guy."))..add(
-      Contact("dude", "Osu", "Hike", "Mike.owski@gmail.com", "PQ858",
-          "the underwhelming Guy."));
+List<Contact> list = []
+  ..add(Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "PQ459",
+      "Pretty average Guy."))
+  ..add(Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "PQ458",
+      "the underwhelming Guy."));

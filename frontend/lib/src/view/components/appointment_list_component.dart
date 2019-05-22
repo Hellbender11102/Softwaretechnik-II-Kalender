@@ -6,7 +6,9 @@ import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
+
 import 'appointment_component.dart';
+import 'login_component.dart';
 import 'appointment_search_component.dart';
 
 
@@ -20,7 +22,7 @@ import 'appointment_search_component.dart';
 )
 
 ///Klasse zum anzeigen aller Termine
-class AppointmentListComponent implements OnInit {
+class AppointmentListComponent implements OnInit, OnActivate {
   AppointmentListComponent(this._appointmentService, this._router);
 
   final AppointmentService _appointmentService;
@@ -47,7 +49,12 @@ class AppointmentListComponent implements OnInit {
   ///Nachfolgender Code wird bei der inizialisierung der Klasse ausgeführt
   @override
   void ngOnInit() => _getAppointments();
-
+  @override
+  void onActivate(RouterState previous, RouterState current) {
+    if (!LoginComponent.loggedIn) {
+      _router.navigate('/login');
+    }
+  }
 
 
   ///Methode die die URL von dem Termin mit gegebener id als String zurückgibt
@@ -57,4 +64,6 @@ class AppointmentListComponent implements OnInit {
   ///Methode die den ausgewählten Termin aufruft
   Future<NavigationResult> gotoDetail() =>
       _router.navigate(_appointmentUrl(selected.id));
+
+
 }

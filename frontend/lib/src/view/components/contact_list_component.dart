@@ -8,13 +8,11 @@ import 'package:demo/src/model/person.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/contact_service.dart';
 
-import 'appointment_component.dart';
-
 @Component(
   selector: 'contacts',
   templateUrl: 'contact_list_component.html',
   styleUrls: ['contact_list_component.css'],
-  directives: [coreDirectives, routerDirectives, AppointmentComponent, formDirectives],
+  directives: [coreDirectives, routerDirectives, formDirectives],
 )
 
 ///Klasse zum anzeigen aller contacte
