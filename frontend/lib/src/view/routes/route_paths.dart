@@ -16,6 +16,9 @@ class RoutePaths {
   static final RoutePath calendarMain = RoutePath(path: 'calendar');
   static final RoutePath calendar = RoutePath(path: '${calendarMain.path}/:$yParam/:$mParam');
   static final RoutePath dayview = RoutePath(path: '${calendarMain.path}/:$yParam/:$mParam/:$dParam');
+  static final RoutePath register = RoutePath(path: 'register');
+  static final RoutePath login = RoutePath(path: 'login');
+
 }
 
 

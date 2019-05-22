@@ -1,7 +1,7 @@
 <div id="outerContainer">
     <div id="leftContainer"></div>
     <div id="centerContainer">
-        <div id="buttons">
+        <div id="buttons" [hidden]="!showButtons">
             <nav>
                 <li [routerLink]="RoutePaths.sample.toUrl()"
                     [routerLinkActive]="'active'">Sample
@@ -21,6 +21,7 @@
                 <li [routerLink]="RoutePaths.calendarMain.toUrl()"
                     [routerLinkActive]="'active'">Calendar
                 </li>
+                <li (click)="logout()" [routerLink]="RoutePaths.login.toUrl()">Logout</li>
             </nav>
 
         </div>
@@ -29,7 +30,7 @@
         </innerContainer>
     </div>
     <div id="rightContainer"></div>
-    <div id="impressum"><p>Erstellt von Daniel Waage, Lennart Siedschlag, Marius Mauritz, Marcel Azadi, Olliver Wosiek
+    <div id="impressum"><p>Erstellt von Daniel Waage, Lennart Siedschlag, Marius Mauritz, Marcel Azadi, Oliver Wosiek
         und Laurenz Schindler</p></div>
 </div>
 
