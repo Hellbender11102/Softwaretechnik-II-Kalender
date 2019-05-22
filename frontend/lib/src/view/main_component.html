@@ -1,7 +1,7 @@
 <div id="outerContainer">
     <div id="leftContainer"></div>
     <div id="centerContainer">
-        <div id="buttons">
+        <div id="buttons" [hidden]="!showButtons">
             <nav>
                 <li [routerLink]="RoutePaths.dashboard.toUrl()"
                     [routerLinkActive]="'active'">Dashboard

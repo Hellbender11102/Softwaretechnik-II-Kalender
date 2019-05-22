@@ -42,7 +42,6 @@
     }
     #buttons {
         z-index: 1;
-        position: fixed;
         float: left;
         align-self: center;
         width: 100%;

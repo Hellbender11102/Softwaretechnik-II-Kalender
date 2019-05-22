@@ -4,6 +4,7 @@ import 'package:angular_router/angular_router.dart';
 
 
 import 'package:demo/src/model/person.dart';
+import 'package:demo/src/view/components/login_component.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/contact_service.dart';
 
@@ -19,10 +20,11 @@ import 'package:demo/src/view/services/contact_service.dart';
 /// Klasse zur verwaltung der Termine
 class ContactComponent implements OnActivate {
 
-  ContactComponent(this._contactService, this._location);
+  ContactComponent(this._contactService, this._location, this._router);
 
   Contact contact = Contact('lauri','Schindler','Laurenz','lauri.s@web.de','295145','Er ist einer');
   final Location _location;
+  final Router _router;
   String note;
   bool deleteControl = false;
   final ContactService _contactService;
@@ -30,11 +32,15 @@ class ContactComponent implements OnActivate {
   /// Folgender Code wird immer bei der Aktivierung der Klasse aufgerufen
   @override
   void onActivate(_, RouterState current) async {
-    final con = getNumber(current.parameters);
-    if (getNumber != null) {
-      // ignore: unnecessary_parenthesis
-      contact = await (_contactService.get(con));
-      note = contact.note;
+    if (!LoginComponent.loggedIn) {
+      await _router.navigate('/login');
+    } else {
+      final con = getNumber(current.parameters);
+      if (getNumber != null) {
+        // ignore: unnecessary_parenthesis
+        contact = await (_contactService.get(con));
+        note = contact.note;
+      }
     }
   }
 
