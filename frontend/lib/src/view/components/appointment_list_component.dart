@@ -9,12 +9,15 @@ import 'package:demo/src/view/services/appointment_service.dart';
 
 import 'appointment_component.dart';
 import 'login_component.dart';
+import 'appointment_search_component.dart';
+
+
 
 @Component(
   selector: 'appointments',
   templateUrl: 'appointment_list_component.html',
   styleUrls: ['appointment_list_component.css'],
-  directives: [coreDirectives, routerDirectives, AppointmentComponent],
+  directives: [coreDirectives, routerDirectives, AppointmentComponent, AppointmentSearchComponent],
   pipes: [commonPipes],
 )
 
@@ -46,7 +49,12 @@ class AppointmentListComponent implements OnInit, OnActivate {
   ///Nachfolgender Code wird bei der inizialisierung der Klasse ausgeführt
   @override
   void ngOnInit() => _getAppointments();
-
+  @override
+  void onActivate(RouterState previous, RouterState current) {
+    if (!LoginComponent.loggedIn) {
+      _router.navigate('/login');
+    }
+  }
 
 
   ///Methode die die URL von dem Termin mit gegebener id als String zurückgibt
@@ -57,10 +65,5 @@ class AppointmentListComponent implements OnInit, OnActivate {
   Future<NavigationResult> gotoDetail() =>
       _router.navigate(_appointmentUrl(selected.id));
 
-  @override
-  void onActivate(RouterState previous, RouterState current) {
-    if (!LoginComponent.loggedIn) {
-      _router.navigate('/login');
-    }
-  }
+
 }
