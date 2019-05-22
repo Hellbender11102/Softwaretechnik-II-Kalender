@@ -24,8 +24,7 @@ import 'components/login_component.dart';
     ClassProvider(CalendarService),
     ClassProvider(DayviewService),
     ClassProvider(RegisterService),
-    ClassProvider(LoginService)
-    ClassProvider(DayviewService),
+    ClassProvider(LoginService),
     ClassProvider(ContactService),
     ],
   exports: [RoutePaths, Routes],
