@@ -78,20 +78,5 @@ class AppointmentService {
     }
   }
 
-  ///Löscht den Termin mit gegebener id
-  Future<void> delete(int id) async {
-    for (var appointment in mockAppointments) {
-      if (appointment.id == id) {
-        mockAppointments.removeWhere((element) => element.id == id);
-      }
-    }
 
-    /*
-    try {
-      final url = '$_appointmentUrl/$id';
-      await _http.delete(url, headers: _headers);
-    } catch (e) {
-      throw _handleError(e);
-    }*/
-  }
 }

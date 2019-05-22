@@ -13,18 +13,15 @@ import 'login_component.dart';
   styleUrls: ['dayview_component.css'],
   directives: [coreDirectives, routerDirectives],
 )
-class DayviewComponent implements OnInit, OnActivate {
+class DayviewComponent implements  OnActivate {
   final Router _router;
-  var appointments = List();
+  List appointments = List();
 
   // service Klasse für ORM
   DayviewComponent(this._appointmentService, this._router);
 
   final AppointmentService _appointmentService;
 
-  List<Appointment> appointments = mockAppointments.cast<Appointment>();
-
-  // List<Appointment> appointments = mockAppointments.sort((a, b) => a.date.compareTo(b.date));
   /// Folgender Code wird immer bei der Aktivierung der Klasse aufgerufen
   @override
   void onActivate(_, RouterState current) async {
@@ -50,6 +47,7 @@ class DayviewComponent implements OnInit, OnActivate {
   ///Methode die den ausgewählten Termin aufruft
   Future<NavigationResult> gotoDetail(Appointment appointment) =>
       _router.navigate(_appointmentUrl(appointment.id));
+
 
 }
 
