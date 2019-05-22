@@ -7,11 +7,9 @@ import '../components/contact_component.template.dart' as contact_template;
 import '../components/contact_list_component.template.dart' as contacts_template;
 import '../components/dashboard_component.template.dart' as dashboard_template;
 import '../components/dayview_component.template.dart' as dayview_template;
-import '../components/sample_component.template.dart' as sample_template;
 
 import '../components/login_component.template.dart' as login_template;
 import '../components/register_component.template.dart' as register_template;
-import '../components/sample_component.template.dart' as sample_template;
 
 
 import 'route_paths.dart';
@@ -19,11 +17,6 @@ import 'route_paths.dart';
 export 'route_paths.dart';
 
 class Routes {
-  // hier wird eine precompiled component eingebunden als sample
-  static final RouteDefinition sample = RouteDefinition(
-    routePath: RoutePaths.sample,
-    component: sample_template.SampleComponentNgFactory,
-  );
   static final RouteDefinition calendar = RouteDefinition(
     routePath: RoutePaths.calendar,
     component: calendar_template.CalendarComponentNgFactory,
@@ -74,7 +67,6 @@ class Routes {
   );
   // routing auf diese Component
   static final List<RouteDefinition> all = <RouteDefinition>[
-    sample,
     dashboard,
     appointment,
     appointments,
