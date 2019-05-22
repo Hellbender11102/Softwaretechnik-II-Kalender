@@ -1,15 +1,11 @@
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css');
 
-.form-control {
+.form-group {
     margin:5px;
     width: 97%;
     float: left;
 }
 
-#delete {
-    color: red;
-}
-
-label {
-    width: 100%;
+.btn-success {
+    margin-left: 5px;
 }

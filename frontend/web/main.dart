@@ -14,6 +14,8 @@ import 'main.template.dart' as self;
   //   ClassProvider(Client, useClass: BrowserClient),
 ])
 const InjectorFactory injector = self.injector$Injector;
+
 void main() {
+
   runApp(ng.AppComponentNgFactory, createInjector: injector);
 }
