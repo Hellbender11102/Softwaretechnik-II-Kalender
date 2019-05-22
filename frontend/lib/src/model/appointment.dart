@@ -24,6 +24,12 @@ class Appointment {
 
   Map toJson() => {'id': id, 'name': name, 'date': date, 'time': time, 'duration': duration, 'location': location};
 
+  DateTime dateTimeGen() {
+    var split = date.split("-");
+    return DateTime.utc(
+        int.parse(split[0]), int.parse(split[1]), int.parse(split[2]));
+  }
+
   String getDate(){
     return date.substring(8,10)+"/"+date.substring(5,7)+"/"+date.substring(0,4);
 }

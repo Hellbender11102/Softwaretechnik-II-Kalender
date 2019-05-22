@@ -1,13 +1,13 @@
 @import url('https://www.w3schools.com/w3css/4/w3.css');
 
-
-.dayAppointments {
+.appointments {
     margin: 0 0 2em 0;
     list-style-type: none;
     padding: 0;
     width: 15em;
+
 }
-.dayAppointments li {
+.appointments li {
     cursor: pointer;
     position: relative;
     left: 0;
@@ -17,20 +17,27 @@
     height: 1.6em;
     border-radius: 4px;
 }
-.dayAppointments li:hover {
+.appointments li:hover {
     color: #607D8B;
     background-color: #DDD;
     left: .1em;
 }
-.dayAppointments li.selected:hover {
-    background-color: #BBD8DC !important;
-    color: white;
-}
-.dayAppointments .text {
+.appointments .text {
     position: relative;
     top: -3px;
 }
-.dayAppointments .badge {
+button {
+    font-family: Arial;
+    background-color: #eee;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: hand;
+}
+button:hover {
+    background-color: #cfd8dc;
+}
+.appointments .badge {
     display: inline-block;
     font-size: small;
     color: white;
@@ -43,15 +50,4 @@
     height: 1.8em;
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
-}
-button {
-    font-family: Arial;
-    background-color: #eee;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: hand;
-}
-button:hover {
-    background-color: #cfd8dc;
 }

@@ -28,15 +28,12 @@ class AppointmentListComponent implements OnInit, OnActivate {
   final AppointmentService _appointmentService;
   final Router _router;
   List<Appointment> appointments;
-  //Appointment selected;
 
-  ///Methode zum auswählen eines Termins
-  //void onSelect(Appointment appointment) => selected = appointment;
 
   ///Methode die eine Liste aller appointments zurückgibt
   Future<void> _getAppointments() async {
     appointments = await _appointmentService.getAll();
-    //appointments = mockAppointments;
+    appointments.sort((a, b) => a.id.compareTo(b.id));
   }
 
   /*Future<void> add(String name) async {
@@ -57,11 +54,12 @@ class AppointmentListComponent implements OnInit, OnActivate {
   }
 
 
-  ///Methode die die URL von dem Termin mit gegebener id als String zurückgibt
-  String _appointmentUrl(int id) =>
-      RoutePaths.appointment.toUrl(parameters: {idParam: '$id'});
 
-  ///Methode die den ausgewählten Termin aufruft
-  Future<NavigationResult> gotoDetail(Appointment appointment) =>
-      _router.navigate(_appointmentUrl(appointment.id));
+    ///Methode die die URL von dem Termin mit gegebener id als String zurückgibt
+    String _appointmentUrl(int id) =>
+        RoutePaths.appointment.toUrl(parameters: {idParam: '$id'});
+
+    ///Methode die den ausgewählten Termin aufruft
+    Future<NavigationResult> gotoDetail(Appointment appointment) =>
+        _router.navigate(_appointmentUrl(appointment.id));
 }

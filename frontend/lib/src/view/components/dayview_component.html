@@ -1,13 +1,8 @@
 <h3>Dayview</h3>
-    <table>
-        <ul class="dayAppointments">
-            <li *ngFor="let appointment of appointments"
-                class="w3-block w3-left-align">
-                {{appointment.time}} - {{appointment.name}}
-                <div [attr.id]="appointment.id" class="w3-container w3-hide" >
-                    <p>Ort: {{appointment.location}}</p>
-                    <p>Dauer: {{appointment.duration}}</p>
-                </div>
-            </li>
-        </ul>
-    </table>
+    <ul class="appointments">
+        <li *ngFor="let appointment of appointments"
+            (click)="gotoDetail(appointment)">
+            <span class="badge">{{appointment.time}}</span>
+            <span>{{appointment.name}}</span>
+        </li>
+    </ul>
