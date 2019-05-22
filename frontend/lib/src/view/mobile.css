@@ -1,128 +1,92 @@
-/*
-colors to use if possible (descending) :
-
-#04202C - dark
-#304040
-#5B7065
-#C9D1C8 - light
-
-#FFEDA1 - light
-#FFD18B
-#FFB76D
-#FFA264 - dark
-
-#92AAFF - dark
-#92BAFF
-#92C5FF
-#92D0FF - light
-
-*/
-
-
-
-@media  not all and (min-width: 42em) and (max-width: 64em) {
-
+@media only screen and (max-width: 42em) {
+    html, body {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        background: #04202C;
+    }
+    h3 {
+        text-align: center;
+    }
     #outerContainer {
         --color-darkness-1: #04202C;
         --color-darkness-2: #304040;
         --color-darkness-3: #5B7065;
         --color-darkness-4: #C9D1C8;
-        --middle-height: 94vh;
         width: 100%;
-        min-height: 100%;
+        height: 100%;
         box-sizing: content-box;
         background: var(--color-darkness-1);
-
+        overflow-y: auto;
     }
-
     #centerContainer {
-        margin:5px;
-        width: 87vw;
-        float: left;
-        height: var(--middle-height);
+        position: relative;
+        top: 5vh;
+        width: 100%;
+        height: 90vh;
         min-height: 75vh;
         background: var(--color-darkness-3);
-        /* border-radius: 10px; */
     }
-
     #buttons {
+        z-index: 1;
         float: left;
         align-self: center;
         width: 100%;
         height: 5vh;
+        max-height: 40px;
+        min-height: 20px;
+        border-bottom: 1px solid var(--color-darkness-1);
         background: var(--color-darkness-2);
     }
-
-    #leftContainer {
-        margin: 5px;
-        float: left;
-        width: 5vw;
-        min-height: 75vh;
-        height: var(--middle-height);
-        background: var(--color-darkness-4);
-    }
-
-    #rightContainer {
-        margin: 5px;
-        float: left;
-        width: 5vw;
-        height: var(--middle-height);
-        min-height: 75vh;
-        background: var(--color-darkness-4);
-    }
-
     innerContainer {
         padding-left: 10px;
+        max-width: 1600px;
         padding-right: 10px;
         box-sizing: border-box;
         float: left;
-        height: 89vh;
+        height: 90vh;
         width: 100%;
+        overflow-y: auto;
         background: var(--color-darkness-4);
     }
-
     #impressum {
-        position: absolute;
+        position: fixed;
         text-align: center;
-        bottom: 0%;
+        bottom: 0px;
         float: left;
         width: 100%;
-        height: 4vh;
-        background: var(--color-darkness-4);
+        height: 5vh;
+        min-height: 20px;
+        max-height: 40px;
+        border-top: 1px solid var(--color-darkness-1);
+        background: var(--color-darkness-3);
     }
-
-    #impressum > p {
+    #impressum>p {
         font-family: "Lucida Console", monospace;
         text-align: center;
-        font-size: 15px;
+        font-size: 10px;
     }
-
-
     nav {
-        display:table;
-        width:100%;
+        display: table;
+        width: 100%;
         height: 100%;
     }
-
     li {
         color: var(--color-darkness-4);
-        float:none;
-        display:table-cell;
-        text-align:center;
+        float: none;
+        display: table-cell;
+        text-align: center;
         vertical-align: middle;
         text-decoration: none;
         background-color: var(--color-darkness-3);
     }
-
     li:visited, li:link {
         color: var(--color-darkness-4);
     }
-
     li:hover {
         color: var(--color-darkness-1);
         background-color: var(--color-darkness-4);
     }
-
     li.active {
         color: var(--color-darkness-1);
         background-color: var(--color-darkness-4)

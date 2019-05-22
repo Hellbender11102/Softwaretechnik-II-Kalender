@@ -1,16 +1,25 @@
-@media only screen and (min-width: 42em) and (max-width: 64em) {
-    /* min-width 672px / max-width 1024px */
-    /* hier vermuten wir Tabletts         */
-    /*
-    /* em hat de wenigsten nebenwirkungen bei Browsern daher em nutzen!!!!
-    /* wird als einziges auch von Safari unterstützt, Alle Apple devices sind somit included
-    colors to use if possible (descending) :
-    #FF7B89
-    #8A5082
-    #6F5F90
-    #758EB7 - base
-    #A5CAD2
-    */
+/*
+colors to use if possible (descending) :
+
+#04202C - dark
+#304040
+#5B7065
+#C9D1C8 - light
+
+#FFEDA1 - light
+#FFD18B
+#FFB76D
+#FFA264 - dark
+
+#92AAFF - dark
+#92BAFF
+#92C5FF
+#92D0FF - light
+
+*/
+
+@media only screen and (min-width: 64em) {
+    /* Hier Display Dimensionen Anpassen, Hier drunter sind bis jetzt nur Desktop größen*/
     html, body {
         width: 100vw;
         height: 100vh;
@@ -32,12 +41,12 @@
         overflow-y: auto;
     }
     #centerContainer {
-        position: relative;
+        margin: auto;
         top: 5vh;
         width: 100%;
         height: 90vh;
-        max-width: 1600px;
         min-height: 75vh;
+        max-width: 1600px;
         background: var(--color-darkness-3);
     }
     #buttons {

@@ -36,4 +36,3 @@ class Appointment {
 }
 
 int _toInt(id) => id is int ? id : int.parse(id as String);
-

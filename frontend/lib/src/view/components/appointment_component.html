@@ -1,5 +1,5 @@
 <div *ngIf="appointment != null">
-    <h1>{{appointment.name}}</h1>
+    <h3>{{appointment.name}}</h3>
     <div [hidden]="submitted">
         <form (ngSubmit)="onSubmit()" #appointmentForm="ngForm">
             <div class="form-group">
