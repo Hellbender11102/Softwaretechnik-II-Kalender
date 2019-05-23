@@ -14,4 +14,6 @@ build:
   script:
     - docker build -t $IMAGE_TAG .
     - docker push $IMAGE_TAG
+    - docker build -t $IMAGE_TAG-mm -f Dockerfile-MM .
+    - docker push $IMAGE_TAG-mm
 
