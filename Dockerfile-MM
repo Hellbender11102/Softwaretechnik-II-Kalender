@@ -1,0 +1,8 @@
+FROM google/dart:2.2 AS builder
+ENV PATH="${PATH}:/root/.pub-cache/bin"
+RUN pub global activate webdev
+COPY ./middleman/ /app/
+WORKDIR /app
+RUN pub get
+EXPOSE 81
+ENTRYPOINT ["pub", "run", "aqueduct:aqueduct", "serve", "--port", "81"]

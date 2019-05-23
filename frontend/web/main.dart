@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/main_component.template.dart' as ng;
@@ -16,6 +18,6 @@ import 'main.template.dart' as self;
 const InjectorFactory injector = self.injector$Injector;
 
 void main() {
-
+  final String host = Platform.environment('MY_ENVIROMENT') as String;
   runApp(ng.AppComponentNgFactory, createInjector: injector);
 }
