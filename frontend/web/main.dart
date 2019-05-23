@@ -18,6 +18,5 @@ import 'main.template.dart' as self;
 const InjectorFactory injector = self.injector$Injector;
 
 void main() {
-  final String host = Platform.environment('MY_ENVIROMENT') as String;
   runApp(ng.AppComponentNgFactory, createInjector: injector);
 }
