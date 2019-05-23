@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
@@ -48,6 +46,7 @@ class AppointmentComponent implements OnActivate {
   /// Methode zum speichern, der änderungen die man im Termin vorgenommen hat
   Future<void> save() async {
     await _appointmentService.update(appointment);
+    goBack();
   }
 
   ///Methode zum löschen von Terminen
