@@ -1,5 +1,5 @@
-<div id="calendar">
-    <a routerLink="/year"></a>
+<div id="screen">
+<a routerLink="/year"></a>
     <h3>{{month.toString()}} {{month.year}}</h3>
     <table>
         <tr>
@@ -36,8 +36,6 @@
             </td>
         </tr>
     </table>
-</div>
-<div id="month">
-    <h4 (click)="previous()">&lt;- Previous</h4>
-    <h4 (click)="next()">Next -&gt;</h4>
+    <h4 (click)="previous()">&lt;&lt;- Previous</h4>
+    <h4 (click)="next()">Next -&gt;&gt;</h4>
 </div>

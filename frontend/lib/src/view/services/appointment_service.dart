@@ -9,6 +9,8 @@ class AppointmentService {
   // request to middlemand
   AppointmentService(this._http);
 
+  List<Appointment> appointmentlist = List();
+
   static final _headers = {'Content-Type': 'application/json'};
   static const _appointmentUrl =
       'http://localhost:8888/appointments'; // URL to web API
@@ -18,7 +20,6 @@ class AppointmentService {
   dynamic _extractData(Response resp) => json.decode(resp.body);
 
   Exception _handleError(dynamic e) {
-    print(e); // for demo purposes only
     return Exception('Server error; cause: $e');
   }
 
@@ -30,15 +31,16 @@ class AppointmentService {
       }
       return mockAppointment;
     }
-    /*
-    try {
-      final url = '$_appointmentUrl/${appointment.id}';
-      final response =
-      await _http.put(url, headers: _headers, body: json.encode(appointment));
-      return Appointment.fromJson(_extractData(response) as Map<int, String>);
-    } catch (e) {
-      throw _handleError(e);
-    }*/
+  }
+
+  ///Löscht den Termin mit gegebener id
+  Future<void> delete(int id) async {
+    for (var appointment in mockAppointments) {
+      print(appointment);
+      if (appointment.id == id) {
+        mockAppointments.removeWhere((element) => element.id == id);
+      }
+    }
   }
 
 
@@ -70,21 +72,5 @@ class AppointmentService {
     }
   }
 
-  ///Löscht den Termin mit gegebener id
-  Future<void> delete(int id) async {
-    for (var appointment in mockAppointments) {
-      print(appointment);
-      if (appointment.id == id) {
-        mockAppointments.removeWhere((element) => element.id == id);
-      }
-    }
 
-    /*
-    try {
-      final url = '$_appointmentUrl/$id';
-      await _http.delete(url, headers: _headers);
-    } catch (e) {
-      throw _handleError(e);
-    }*/
-  }
 }

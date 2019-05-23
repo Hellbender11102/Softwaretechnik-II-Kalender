@@ -1,39 +1,96 @@
 <div *ngIf="appointment != null">
-    <h1>Appointment</h1>
-    <form>
-        <div class="form-group">
-            <label for="name">Terminname</label>
-            <input type="text" class="form-control" id="name" required placeholder="Name"
-                   [(ngModel)]="appointment.name" name="name">
-        </div>
+    <h1>{{appointment.name}}</h1>
+    <div [hidden]="submitted">
+        <form (ngSubmit)="onSubmit()" #appointmentForm="ngForm">
+            <div class="form-group">
+                <label for="name">Terminname&nbsp;*</label>
+                <input type="text" class="form-control" id="name" required
+                       placeholder="Name"
+                       [(ngModel)]="appointment.name"
+                       #name="ngForm"
+                       [class.is-valid]="name.valid"
+                       [class.is-invalid]="!name.valid"
+                       ngControl="name">
+                <div [hidden]="name.valid || name.pristine" class="invalid-feedback">
+                    Name is required
+                </div>
+            </div>
 
         <div class="form-group">
-            <label for="date">Datum</label>
-            <input type="text" class="form-control" id="date" required placeholder="Year-Month-Day"
-                   [(ngModel)]="appointment.date" ngControl="date">
+            <label for="date">Datum&nbsp;*</label>
+            <input type="date" class="form-control" id="date" required
+                   [(ngModel)]="appointment.date"
+                   #date="ngForm"
+                   [class.is-valid]="date.valid"
+                   [class.is-invalid]="!date.valid"
+                   ngControl="date">
+            <div [hidden]="date.valid || date.pristine" class="invalid-feedback">
+                Date is required
+            </div>
         </div>
 
         <div class="form-group">
             <label for="time">Uhrzeit</label>
             <input type="text" class="form-control" id="time" placeholder="00:00"
-                   [(ngModel)]="appointment.time" ngControl="time" >
+                   [(ngModel)]="appointment.time" ngControl="time">
         </div>
 
         <div class="form-group">
             <label for="duration">Dauer</label>
-            <input type="text" class="form-control" id="duration" required placeholder="00:00"
+            <input type="text" class="form-control" id="duration" placeholder="00:00"
                    [(ngModel)]="appointment.duration" ngControl="duration">
         </div>
 
         <div class="form-group">
-            <label for="location">Ort</label>
-            <input type="text" class="form-control" id="location" placeholder="Ort"
-                   [(ngModel)]="appointment.location" ngControl="location">
+            <label for="location">Ort&nbsp;*</label>
+            <input type="text" class="form-control" id="location" required placeholder="Ort"
+                   [(ngModel)]="appointment.location"
+                   #location="ngForm"
+                   [class.is-valid]="location.valid"
+                   [class.is-invalid]="!location.valid"
+                   ngControl="location">
+            <div [hidden]="location.valid || location.pristine" class="invalid-feedback">
+                Location is required
+            </div>
         </div>
 
-        <button type="submit" class="btn btn-success" (click)="save()">Save</button>
+        <button type="submit" [disabled]="!appointmentForm.form.valid"
+                class="btn btn-success" (click)="save()">Save</button>
 
-        <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+
 
     </form>
+    </div>
+
+    <div [hidden]="!submitted">
+        <table class="table">
+            <tr>
+                <th>Terminname</th>
+                <td>{{appointment.name}}</td>
+            </tr>
+            <tr>
+                <th>Datum</th>
+                <td>{{appointment.getDate()}}</td>
+            </tr>
+            <tr>
+                <th>Uhrzeit</th>
+                <td>{{appointment.time}}</td>
+            </tr>
+            <tr>
+                <th>Dauer</th>
+                <td>{{appointment.duration}}</td>
+            </tr>
+            <tr>
+                <th>Ort</th>
+                <td>{{appointment.location}}</td>
+            </tr>
+        </table>
+
+        <button (click)="goBack()" class="btn">GoBack</button>
+        <button (click)="submitted=false" class="btn btn-primary">Edit</button>
+        <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+        <div [hidden]="!deleteControl" id="delete">
+            If you really want to delete this Appointment click "Delete" again.
+        </div>
+    </div>
 </div>
