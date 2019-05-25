@@ -3,4 +3,4 @@ database:
   port: 5432
   username: cal_user
   password: password
-  databaseName: cal
+  databaseName: calendar
