@@ -1,0 +1,14 @@
+version: '0.1'
+services:
+  client:
+    build: .
+    volumes:
+      - "./frontend:/app"
+    ports:
+      - "80:80"
+    depends_on:
+      - middleman
+  middleman:
+    build: .
+    volumes:
+      - "./middleman:/app"
