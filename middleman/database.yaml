@@ -3,4 +3,3 @@
   username: cal_user
   password: password
   databaseName: cal
-DB_HOST=localhost;DB_NAME=cal;DB_PASS=password;DB_PORT=5432;DB_USER=cal_user;MIDDEL_MAN_PORT=8888;MIDDLE_MAN_HOST=localhost
