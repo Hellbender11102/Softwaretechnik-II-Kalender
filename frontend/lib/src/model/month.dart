@@ -1,4 +1,3 @@
-import 'dart:js';
 
 import 'package:demo/src/model/day.dart';
 

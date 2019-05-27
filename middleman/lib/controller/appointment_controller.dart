@@ -29,8 +29,9 @@ class AppointmentController extends ResourceController {
   @Operation.get()
   Future<Response> getAllAppointments() async {
     final appointmentQuery = Query<Appointment>(context);
-    final heroes = await appointmentQuery.fetch();
-    return Response.ok(heroes);
+    final appointments = await appointmentQuery.fetch();
+    print(appointments.toString());
+    return Response.ok(appointments);
   }
 
   @Operation.get('id')

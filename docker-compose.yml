@@ -1,0 +1,26 @@
+version: '3'
+services:
+  client:
+    image: frontend
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "8080:80"
+
+  middleman:
+    image: middleman
+    build:
+      context: .
+      dockerfile: middleman/Dockerfile
+    ports:
+      - "8888:8888"
+
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+
