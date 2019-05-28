@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:html';
 import 'dart:convert';
 import 'dart:html';
 
@@ -35,33 +36,16 @@ class AppointmentService {
     } catch (e) {
       throw _handleError(e);
     }
-
-    /**
-    for (var mockAppointment in mockAppointments) {
-      if (mockAppointment.id == appointment.id) {
-        mockAppointment = appointment;
-      }
-      return mockAppointment;
-    }**/
   }
 
   ///Löscht den Termin mit gegebener id
   Future<void> delete(int id) async {
-
     try {
       final url = '$_appointmentUrl/$id';
       await _http.delete(url, headers: _headers);
     } catch (e) {
       throw _handleError(e);
     }
-
-    /**
-    for (var appointment in mockAppointments) {
-      print(appointment);
-      if (appointment.id == id) {
-        mockAppointments.removeWhere((element) => element.id == id);
-      }
-    }**/
   }
 
 

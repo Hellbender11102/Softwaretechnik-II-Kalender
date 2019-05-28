@@ -51,4 +51,13 @@ class AppointmentController extends ResourceController {
 
     return Response.ok(insertedAppointment);
   }
+  @Operation.delete("id")
+  Future<Response> deleteAppointment(@Bind.path('id') int id) async {
+    final query = Query<Appointment>(context)
+      ..where((app) => app.id).equalTo(id);
+
+    int appointmensdelete = await query.delete();
+
+    return Response.ok(appointmensdelete);
+  }
 }
