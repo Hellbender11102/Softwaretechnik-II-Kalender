@@ -1,6 +1,6 @@
 database:
-  host: postgres
-  port: 5432
-  username: docker
-  password: docker
-  databaseName: calendar
+  host: $CAL_DB_HOST
+  port: $CAL_DB_PORT
+  username: $CAL_DB_USER
+  password: $CAL_DB_PASS
+  databaseName: $CAL_DB_NAME
