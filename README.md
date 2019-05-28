@@ -32,3 +32,8 @@ CREATE USER cal_user WITH createdb;
 ALTER USER cal_user WITH password 'password';
 GRANT all ON database calendar TO cal_user;
 ----------------------------------------------
+// dockercompose
+
+
+docker-compose up --build
+
