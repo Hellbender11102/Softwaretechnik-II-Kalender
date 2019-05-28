@@ -5,7 +5,6 @@ import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/routes/routes.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
-import 'package:demo/src/view/services/calendar_service.dart';
 import 'package:demo/src/view/services/contact_service.dart';
 import 'package:demo/src/view/services/dashboard_service.dart';
 import 'package:demo/src/view/services/dayview_service.dart';
@@ -22,7 +21,6 @@ import 'components/login_component.dart';
   providers: [
     ClassProvider(DashboardService),
     ClassProvider(AppointmentService),
-    ClassProvider(CalendarService),
     ClassProvider(DayviewService),
     ClassProvider(RegisterService),
     ClassProvider(LoginService),

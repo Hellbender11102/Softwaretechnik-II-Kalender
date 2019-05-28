@@ -17,16 +17,17 @@ class CalenderChannel extends ApplicationChannel {
   /// This method is invoked prior to [entryPoint] being accessed.
   @override
   Future prepare() async {
-    logger.onRecord.listen((rec) => print("$rec ${rec.error ?? ""} ${rec.stackTrace ?? ""}"));
+    logger.onRecord.listen(
+        (rec) => print("$rec ${rec.error ?? ""} ${rec.stackTrace ?? ""}"));
 
     final config = CalenderConfig(options.configurationFilePath);
     final dataModel = ManagedDataModel.fromCurrentMirrorSystem();
     final persistentStore = PostgreSQLPersistentStore.fromConnectionInfo(
-      config.database.username,
-      config.database.password,
-      config.database.host,
-      config.database.port,
-      config.database.databaseName);
+        config.database.username,
+        config.database.password,
+        config.database.host,
+        config.database.port,
+        config.database.databaseName);
 
     context = ManagedContext(dataModel, persistentStore);
   }
@@ -42,14 +43,17 @@ class CalenderChannel extends ApplicationChannel {
     final router = Router();
 
     router
-      .route('/appointments/[:id]')
-      .link(() => AppointmentController(context));
+        .route('/appointments/[:id]')
+        .link(() => AppointmentController(context));
+    router
+        .route('/appointments/lookup/[:year/[:month/[:day]]]')
+        .link(() => AppointmentController(context));
     return router;
   }
 }
 
 class CalenderConfig extends Configuration {
-  CalenderConfig(String path): super.fromFile(File(path));
+  CalenderConfig(String path) : super.fromFile(File(path));
 
   DatabaseConfiguration database;
 }

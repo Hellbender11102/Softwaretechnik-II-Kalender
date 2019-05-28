@@ -11,8 +11,6 @@ class AppointmentService {
   // request to middlemand
   AppointmentService(this._http);
 
-  //List<Appointment> appointmentlist = List();
-
   static final _headers = {'Content-Type': 'application/json'};
   static const _appointmentUrl =
       'http://localhost:8888/appointments'; // URL to web API
@@ -27,12 +25,12 @@ class AppointmentService {
 
   ///Updatet einen bereits existierenden Termin
   Future<Appointment> update(Appointment appointment) async {
-
     try {
       final url = '$_appointmentUrl/${appointment.id}';
-      final response =
-      await _http.put(url, headers: _headers, body: json.encode(appointment)) as Response;
-      return Appointment.fromJson(_extractData(response) as Map<String, dynamic>);
+      final response = await _http.put(url,
+          headers: _headers, body: json.encode(appointment)) as Response;
+      return Appointment.fromJson(
+          _extractData(response) as Map<String, dynamic>);
     } catch (e) {
       throw _handleError(e);
     }
@@ -48,11 +46,19 @@ class AppointmentService {
     }
   }
 
-
   Future<Appointment> get(int id) async {
     final Response response =
         await _http.get('$_appointmentUrl/$id') as Response;
     return Appointment.fromJson(_extractData(response) as Map<String, dynamic>);
+  }
+
+  Future<List<Appointment>> getByDate(int year, int month, [int day]) async {
+    final Response response = (day != null)
+        ? await _http.get('$_appointmentUrl/lookup/$year/$month/$day') as Response
+        : await _http.get('$_appointmentUrl/lookup/$year/$month') as Response;
+    return (_extractData(response) as List)
+        .map((value) => Appointment.fromJson(value as Map<String, dynamic>))
+        .toList();
   }
 
   Future<List<Appointment>> getAll() async {
@@ -61,7 +67,6 @@ class AppointmentService {
         .map((value) => Appointment.fromJson(value as Map<String, dynamic>))
         .toList();
   }
-
 
   ///Gibt den Termin mit der gegebenen id zurück
 
@@ -76,6 +81,4 @@ class AppointmentService {
       throw _handleError(e);
     }
   }
-
-
 }

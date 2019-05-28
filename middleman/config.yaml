@@ -1,6 +1,6 @@
 database:
-  host: $CAL_DB_HOST
+  host: localhost
   port: $CAL_DB_PORT
   username: $CAL_DB_USER
-  password: $CAL_DB_PASS
+  password: password
   databaseName: $CAL_DB_NAME

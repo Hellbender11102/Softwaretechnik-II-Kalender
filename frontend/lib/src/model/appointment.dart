@@ -2,11 +2,13 @@
 class Appointment {
 
   // constructor
-  Appointment(this.id, this.name, this.date, this.time, this.duration, this.location);
+  Appointment(this.id, this.name, this.year,this.month,this.day, this.time, this.duration, this.location);
 
   int id;
   String name;
-  String date;
+  int year;
+  int month;
+  int day;
   String time;
   String duration;
   String location;
@@ -15,22 +17,25 @@ class Appointment {
     factory Appointment.fromJson(Map<String, dynamic> appointment) =>
       Appointment(_toInt(appointment['id']),
           appointment['name'] as String,
-          appointment['date'] as String,
+          appointment['year'] as int,
+          appointment['month'] as int,
+          appointment['day'] as int,
           appointment['time'] as String,
           appointment['duration'] as String,
           appointment['location'] as String);
 
-  Map toJson() => {'id': id, 'name': name, 'date': date, 'time': time, 'duration': duration, 'location': location};
+  Map toJson() => {'id': id, 'name': name, 'year': year,'month':month,"day" :day, 'time': time, 'duration': duration, 'location': location};
 
-  DateTime dateTimeGen() {
-    var split = date.split("-");
-    return DateTime.utc(
-        int.parse(split[0]), int.parse(split[1]), int.parse(split[2]));
+  ///date like 'yyyy-mm-dd'
+  set date(String str) {
+    List split = str.split("-");
+    year = _toInt(split[0]);
+    year = _toInt(split[1]);
+    year = _toInt(split[2]);
   }
-
-  String getDate(){
-    return date.substring(8,10)+"/"+date.substring(5,7)+"/"+date.substring(0,4);
-}
+  String get date {
+   return"$year-$month-$day";
+  }
 }
 
 int _toInt(id) => id is int ? id : int.parse(id as String);
