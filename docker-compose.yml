@@ -2,19 +2,28 @@ version: '3'
 services:
   client:
     image: frontend
+
     build:
       context: .
       dockerfile: frontend/Dockerfile
     ports:
       - "8080:80"
 
+
   middleman:
+
     image: middleman
     build:
       context: .
       dockerfile: middleman/Dockerfile
     ports:
       - "8888:8888"
+    environment:
+      - CAL_DB_HOST=postgres
+      - CAL_DB_PORT=5432
+      - CAL_DB_USER=cal_user
+      - CAL_DB_NAME=calendar
+      - CAL_DB_PASS=password
 
   postgres:
     image: postgres
