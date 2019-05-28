@@ -1,8 +1,9 @@
-
 class Appointment {
-
   // constructor
-  Appointment(this.id, this.name, this.year,this.month,this.day, this.time, this.duration, this.location);
+  Appointment(this.id, this.name, this.year, this.month, this.day, this.time,
+      this.duration, this.location);
+
+  Appointment.zero();
 
   int id;
   String name;
@@ -13,18 +14,26 @@ class Appointment {
   String duration;
   String location;
 
+  factory Appointment.fromJson(Map<String, dynamic> appointment) => Appointment(
+      _toInt(appointment['id']),
+      appointment['name'] as String,
+      appointment['year'] as int,
+      appointment['month'] as int,
+      appointment['day'] as int,
+      appointment['time'] as String,
+      appointment['duration'] as String,
+      appointment['location'] as String);
 
-    factory Appointment.fromJson(Map<String, dynamic> appointment) =>
-      Appointment(_toInt(appointment['id']),
-          appointment['name'] as String,
-          appointment['year'] as int,
-          appointment['month'] as int,
-          appointment['day'] as int,
-          appointment['time'] as String,
-          appointment['duration'] as String,
-          appointment['location'] as String);
-
-  Map toJson() => {'id': id, 'name': name, 'year': year,'month':month,"day" :day, 'time': time, 'duration': duration, 'location': location};
+  Map toJson() => {
+        'id': id,
+        'name': name,
+        'year': year,
+        'month': month,
+        "day": day,
+        'time': time,
+        'duration': duration,
+        'location': location
+      };
 
   ///date like 'yyyy-mm-dd'
   set date(String str) {
@@ -33,10 +42,10 @@ class Appointment {
     year = _toInt(split[1]);
     year = _toInt(split[2]);
   }
+
   String get date {
-   return"$year-$month-$day";
+    return "$year-$month-$day";
   }
 }
 
 int _toInt(id) => id is int ? id : int.parse(id as String);
-

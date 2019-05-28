@@ -23,7 +23,7 @@ class AppointmentNewComponent implements OnActivate {
   AppointmentNewComponent(this._appointmentService, this._location, this._router);
 
   //Später löschen
-  Appointment appointment;
+  Appointment appointment = Appointment.zero();
   final Location _location;
   final AppointmentService _appointmentService;
   final Router _router;
