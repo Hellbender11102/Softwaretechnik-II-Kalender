@@ -15,25 +15,25 @@ class AppointmentSearchService {
 
   Future<List<Appointment>> search(String term) async {
 
+    /**
     final List<Appointment> appointments = List<Appointment>();
-
     for (var appointment in mockAppointments) {
       if (appointment.name.contains(term)) {
         appointments.add(appointment);
       }
     }
-    return appointments;
+    return appointments;**/
 
-    /**
+
     try {
       final response = await _http.get('app/appointments/?name=$term');
       return (_extractData(response) as List)
-          .map((json) => Appointment.fromJson(json))
+          .map((json) => Appointment.fromJson(json as Map<String, dynamic>))
           .toList();
     } catch (e) {
       throw _handleError(e);
     }
-        **/
+
   }
 
   dynamic _extractData(Response resp) => json.decode(resp.body)['data'];
