@@ -6,6 +6,7 @@ import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/model/day.dart';
 import 'package:demo/src/model/month.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
+import 'package:demo/src/view/services/appointment_service.dart';
 import 'package:demo/src/view/services/calendar_service.dart';
 
 import 'login_component.dart';
@@ -17,18 +18,14 @@ import 'login_component.dart';
   directives: [coreDirectives, routerDirectives],
 )
 class CalendarComponent implements OnActivate, OnInit {
-  CalendarComponent(this._calendarService,this._router, this._location){
-    appointmentInMonth =_calendarService.getAppointmentsForMonth(DateTime.now().year, DateTime.now().month, "USERCODE");
-  }
+  CalendarComponent(this._calendarService,this._router, this._location);
 
-  static List<Appointment> appointmentInMonth;
  //Month month = Month(DateTime.now().year, DateTime.now().month);
   final CalendarService _calendarService;
   //TODO MUSS NOCH DEN EINGELOGGTEN USEERCODE BEKOMMEN
-  Month month = Month(DateTime.now().year, DateTime.now().month, appointmentInMonth);
+  Month month = Month(DateTime.now().year, DateTime.now().month);
   final Router _router;
   final Location _location;
-  List<String> get week => month.week;
 
   // as variable but on call get appointments from service routine
 
@@ -36,6 +33,9 @@ class CalendarComponent implements OnActivate, OnInit {
   Future<NavigationResult> gotoDetail(Day day) =>
       _router.navigate(dayUrl(day.year,day.month,day.day));
 
+  Iterable week(int week,){
+    return month.weekOfMonth(week);
+  }
 
   @override
   void ngOnInit() {
@@ -50,7 +50,7 @@ class CalendarComponent implements OnActivate, OnInit {
       final int yearInt = getYear(current.parameters);
       final int monthInt = getMonth(current.parameters);
       if (yearInt != null && monthInt != null) {
-        month = _calendarService.getSpecificMonth(yearInt, monthInt,_calendarService.getAppointmentsForMonth(yearInt, monthInt, 'USERCODE'));
+        month = _calendarService.getSpecificMonth(yearInt, monthInt);
       }
       //print(month.weekOfMonth(0).toString());
     }

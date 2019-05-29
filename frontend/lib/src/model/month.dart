@@ -2,15 +2,14 @@ import 'dart:js';
 
 import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/model/day.dart';
+import 'package:demo/src/view/services/calendar_service.dart';
 
 class Month {
   // Constructor
-  Month(this.year,this.month,this.appointments);
-
+  Month(this.year,this.month);
 
   int month;
   int year;
-  List<Appointment> appointments;
 ///returns a full week of
   Iterable weekOfMonth(int week) sync* {
     final int firstWeekDayOfMonth = DateTime.utc(year, month, 1).weekday;

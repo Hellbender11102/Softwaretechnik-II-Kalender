@@ -14,8 +14,8 @@ class CalendarService {
   Month month;
   // Implementation ORM below
 
-  Month getSpecificMonth(int yearInt,int monthInt,List<Appointment> appointments) {
-    return month = Month(yearInt, monthInt,appointments);
+  Month getSpecificMonth(int yearInt,int monthInt) {
+    return month = Month(yearInt, monthInt);
   }
   Month getMonth() {
     return month;
