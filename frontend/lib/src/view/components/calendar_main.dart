@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/model/appointment.dart';
@@ -17,13 +15,12 @@ import 'login_component.dart';
   directives: [coreDirectives, routerDirectives],
 )
 class CalendarComponent implements OnActivate, OnInit {
-  CalendarComponent(this._appointmentService, this._router, this._location);
+  CalendarComponent(this._appointmentService, this._router);
 
   //Month month = Month(DateTime.now().year, DateTime.now().month);
   Month month = Month(DateTime.now().year, DateTime.now().month);
   final AppointmentService _appointmentService;
   final Router _router;
-  final Location _location;
 
   List<String> get week => month.week;
   List<Appointment> appointments = [];

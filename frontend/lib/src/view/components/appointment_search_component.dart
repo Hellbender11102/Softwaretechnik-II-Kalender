@@ -19,7 +19,7 @@ import 'package:demo/src/view/services/appointment_service.dart';
 )
 class AppointmentSearchComponent implements OnInit {
 
-  AppointmentSearchComponent(this._appointmentService, this._router) {}
+  AppointmentSearchComponent(this._appointmentService, this._router);
 
   AppointmentService _appointmentService;
   Router _router;
