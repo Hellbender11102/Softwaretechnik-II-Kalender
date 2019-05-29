@@ -14,31 +14,32 @@ class CalendarService {
   Month month;
   // Implementation ORM below
 
-  Month getSpecificMonth(int yearInt,int monthInt) {
-    return month = Month(yearInt, monthInt);
+  Month getSpecificMonth(int yearInt,int monthInt,List<Appointment> appointments) {
+    return month = Month(yearInt, monthInt,appointments);
   }
   Month getMonth() {
     return month;
   }
 
-  /* potential waste
-  void setMonth(int year,int month){
-        Month(year,month);
-  }
-  */
+  //TODO USERCODE
+  List<Appointment> getAllAppointments(String UserCode) {
 
-  List<Appointment> getAllAppointments() {
     return mockAppointments;
   }
-
-  List<Appointment> getAppointmentByDay(int year, int month, int Day){
-
+  //TODO USERCODE in datenbankabfrage checken und ergebnisse als liste von Appointments für diesen user
+  List<Appointment> getAppointmentsForMonth(int year, int month,String userCode){
+/*
+Appointments von der DatenBank
+ */
+    List<Appointment> li;
+    DateTime date;
+    for(Appointment a in mockAppointments){
+      date= a.dateTimeGen();
+      if(date.year == year && date.month == month){
+        li.add(a);
+      }
+    }
+    return li;
   }
-  List<Appointment> getAppointmentsForMonth(int year, int month){
 
-  }
-
-  Month initMonth() {
-    return Month(DateTime.now().year,DateTime.now().month);
-  }
 }

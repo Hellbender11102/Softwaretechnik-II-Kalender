@@ -17,6 +17,7 @@ import 'route_paths.dart';
 export 'route_paths.dart';
 
 class Routes {
+  // hier wird eine precompiled component eingebunden als sample+
   static final RouteDefinition calendar = RouteDefinition(
     routePath: RoutePaths.calendar,
     component: calendar_template.CalendarComponentNgFactory,
@@ -41,22 +42,18 @@ class Routes {
     routePath: RoutePaths.calendarMain,
     component: calendar_template.CalendarComponentNgFactory,
   );
-
   static final RouteDefinition dayview = RouteDefinition(
     routePath: RoutePaths.dayview,
     component: dayview_template.DayviewComponentNgFactory,
   );
-
   static final RouteDefinition register = RouteDefinition(
     routePath: RoutePaths.register,
     component: register_template.RegisterComponentNgFactory,
   );
-
   static final RouteDefinition login = RouteDefinition(
     routePath: RoutePaths.login,
     component: login_template.LoginComponentNgFactory,
   );
-
   static final RouteDefinition contacts = RouteDefinition(
     routePath: RoutePaths.contacts,
     component: contacts_template.ContactListComponentNgFactory,

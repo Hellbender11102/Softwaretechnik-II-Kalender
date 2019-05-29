@@ -25,7 +25,7 @@ class RegisterService {
     try {
       final response = await _http.post(_registerUrl,
           headers: _headers, body: json.encode({'id': id, 'nickname': nickname,'email': email, 'password': password}));
-      return User.fromJson(_extractData(response) as Map<int, String>);
+      return User.fromJson(_extractData(response) as Map<String, String>);
     } catch (e) {
       throw _handleError(e);
     }
@@ -34,7 +34,7 @@ class RegisterService {
   ///Updatet einen bereits existierenden User
   Future<User> update(User user) async {
     for (var mockUser in mockUsers) {
-      if (mockUser.id == user.id) {
+      if (mockUser.contactCode == user.contactCode) {
         mockUser = user;
       }
         return mockUser;

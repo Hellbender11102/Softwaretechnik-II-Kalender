@@ -70,7 +70,7 @@ Map toJson() => {'contactCode': contactCode,'nickname': nickname, 'surname': sur
 }
 
 List<Contact> list = []
-  ..add(Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "PQ459",
+  ..add(Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "CC3",
       "Pretty average Guy."))
-  ..add(Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "PQ458",
+  ..add(Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "CC4",
       "the underwhelming Guy."));

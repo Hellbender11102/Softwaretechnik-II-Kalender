@@ -9,8 +9,6 @@ class AppointmentService {
   // request to middlemand
   AppointmentService(this._http);
 
-  List<Appointment> appointmentlist = List();
-
   static final _headers = {'Content-Type': 'application/json'};
   static const _appointmentUrl =
       'http://localhost:8888/appointments'; // URL to web API
@@ -71,6 +69,4 @@ class AppointmentService {
       throw _handleError(e);
     }
   }
-
-
 }

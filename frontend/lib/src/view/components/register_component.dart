@@ -20,12 +20,13 @@ class RegisterComponent implements OnInit, OnActivate {
 
   final Router _router;
   final RegisterService _registerService;
-  User user = User(1, "", "", "", "", "");
+  //TODO current user(signd in)
+  User user = User("CC001", "", "", "", "", "");
 
 
   Future<void> register() async {
-    final int id = mockUsers.last.id +1;
-    user.id = id;
+    final String contactCode = (int.parse(mockUsers.last.contactCode.substring(2,mockUsers.last.contactCode.length))+1).toString();
+    user.contactCode= contactCode;
     mockUsers.add(user);
     print(user.toString());
     await _registerService.update(user/*.id, user.nickname, user.email, user.password*/); //.create()

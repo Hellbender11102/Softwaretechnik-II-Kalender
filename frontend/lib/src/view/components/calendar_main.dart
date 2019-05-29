@@ -17,18 +17,20 @@ import 'login_component.dart';
   directives: [coreDirectives, routerDirectives],
 )
 class CalendarComponent implements OnActivate, OnInit {
-  CalendarComponent(this._calendarService, this._router, this._location);
+  CalendarComponent(this._calendarService,this._router, this._location){
+    appointmentInMonth =_calendarService.getAppointmentsForMonth(DateTime.now().year, DateTime.now().month, "USERCODE");
+  }
 
-
+  static List<Appointment> appointmentInMonth;
  //Month month = Month(DateTime.now().year, DateTime.now().month);
-  Month month = Month(DateTime.now().year, DateTime.now().month);
   final CalendarService _calendarService;
+  //TODO MUSS NOCH DEN EINGELOGGTEN USEERCODE BEKOMMEN
+  Month month = Month(DateTime.now().year, DateTime.now().month, appointmentInMonth);
   final Router _router;
   final Location _location;
   List<String> get week => month.week;
 
   // as variable but on call get appointments from service routine
-  List<Appointment> get appointments => _calendarService.getAllAppointments();
 
   // auswählen des Tages
   Future<NavigationResult> gotoDetail(Day day) =>
@@ -37,9 +39,9 @@ class CalendarComponent implements OnActivate, OnInit {
 
   @override
   void ngOnInit() {
-    // TODO: implement ngOnInit
-  }
 
+  }
+//TODO USERCODE
   @override
   void onActivate(RouterState previous, RouterState current) async {
     if (!LoginComponent.loggedIn) {
@@ -48,7 +50,7 @@ class CalendarComponent implements OnActivate, OnInit {
       final int yearInt = getYear(current.parameters);
       final int monthInt = getMonth(current.parameters);
       if (yearInt != null && monthInt != null) {
-        month = _calendarService.getSpecificMonth(yearInt, monthInt);
+        month = _calendarService.getSpecificMonth(yearInt, monthInt,_calendarService.getAppointmentsForMonth(yearInt, monthInt, 'USERCODE'));
       }
       //print(month.weekOfMonth(0).toString());
     }

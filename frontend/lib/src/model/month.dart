@@ -1,19 +1,21 @@
 import 'dart:js';
 
+import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/model/day.dart';
 
 class Month {
   // Constructor
-  Month(this.year,this.month);
+  Month(this.year,this.month,this.appointments);
 
 
   int month;
   int year;
+  List<Appointment> appointments;
 ///returns a full week of
   Iterable weekOfMonth(int week) sync* {
     final int firstWeekDayOfMonth = DateTime.utc(year, month, 1).weekday;
     final int weekOffSet = -firstWeekDayOfMonth+2;
-
+    Day day;
     int k = weekOffSet + 7 * week;
     int count = 0;
     // 6 * 7 Tage
@@ -22,7 +24,13 @@ class Month {
       DateTime time = DateTime.utc(year, month , k);
       count++;
       k++;
-      yield Day(count,time.year,time.month,time.day);
+      day =Day(count,time.year,time.month,time.day);
+      for(Appointment a in appointments){
+        if(a.dateTimeGen().day == day.day){
+          day.appointments.add(a);
+        }
+      }
+      yield day;
     }
   }
 
@@ -45,23 +53,6 @@ class Month {
     }
   }
 
-  void previus(){
-    if(month -1 > 0) {
-      month = month - 1;
-    }else {
-      month = 12;
-      year = year - 1;
-    }
-  }
-  void next(){
-    if(month +1 < 13){
-      month = month +1;
-    }
-    else{
-      year = year +1;
-      month =1;
-    }
-  }
   List<int> nextM(){
     int yearOut = year;
     int monthOut;
