@@ -7,9 +7,7 @@ import 'package:demo/src/view/routes/routes.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
 import 'package:demo/src/view/services/contact_service.dart';
 import 'package:demo/src/view/services/dashboard_service.dart';
-import 'package:demo/src/view/services/dayview_service.dart';
-import 'package:demo/src/view/services/login_service.dart';
-import 'package:demo/src/view/services/register_service.dart';
+import 'package:demo/src/view/services/user_service.dart';
 
 import 'components/login_component.dart';
 
@@ -19,12 +17,10 @@ import 'components/login_component.dart';
   templateUrl: 'main_component.html',
   directives: [routerDirectives],
   providers: [
-    ClassProvider(DashboardService),
     ClassProvider(AppointmentService),
-    ClassProvider(DayviewService),
-    ClassProvider(RegisterService),
-    ClassProvider(LoginService),
+    ClassProvider(UserService),
     ClassProvider(ContactService),
+    ClassProvider(DashboardService),
     ],
   exports: [RoutePaths, Routes],
 )

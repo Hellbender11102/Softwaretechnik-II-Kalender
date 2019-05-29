@@ -21,7 +21,7 @@ class Month {
       DateTime time = DateTime.utc(year, month , k);
       count++;
       k++;
-      yield Day(count,time.year,time.month,time.day);
+      yield Day(time.year,time.month,time.day);
     }
   }
 

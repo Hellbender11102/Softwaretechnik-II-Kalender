@@ -2,7 +2,7 @@ class Appointment {
   // constructor
   Appointment(this.id, this.name, this.year, this.month, this.day, this.time,
       this.duration, this.location);
-
+  // leeres Appointment
   Appointment.zero();
 
   int id;
@@ -39,8 +39,8 @@ class Appointment {
   set date(String str) {
     List split = str.split("-");
     year = _toInt(split[0]);
-    year = _toInt(split[1]);
-    year = _toInt(split[2]);
+    month = _toInt(split[1]);
+    day = _toInt(split[2]);
   }
 
   String get date {

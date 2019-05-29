@@ -41,7 +41,7 @@ class CalendarComponent implements OnActivate, OnInit {
         .toList()
         .length;
   }
-
+  // todo bug in anderen monaten
   Future<void> _getAppointments() async {
     appointments = await _appointmentService.getByDate(month.year, month.month);
     appointments.sort((a, b) => a.id.compareTo(b.id));

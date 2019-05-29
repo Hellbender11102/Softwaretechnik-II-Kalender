@@ -16,6 +16,7 @@ class DashboardComponent implements OnInit, OnActivate {
 
   final DashboardService _dashboardService;
   final Router _router;
+  List<String> joke;
 
   @override
   void ngOnInit() async {
@@ -24,9 +25,12 @@ class DashboardComponent implements OnInit, OnActivate {
   }
 
   @override
-  void onActivate(RouterState previous, RouterState current) {
+  void onActivate(RouterState previous, RouterState current) async {
     if (!LoginComponent.loggedIn) {
       _router.navigate('/login');
+    }
+    else{
+      joke = await _dashboardService.getJoke();
     }
   }
 }

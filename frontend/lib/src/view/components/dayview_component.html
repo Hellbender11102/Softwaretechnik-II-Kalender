@@ -1,4 +1,5 @@
-<h3>Dayview</h3>
+<div *ngIf="day != null">
+    <h3>{{day.toString()}}</h3>
     <ul class="appointments">
         <li *ngFor="let appointment of appointments"
             (click)="gotoDetail(appointment)">
@@ -6,3 +7,4 @@
             <span>{{appointment.name}}</span>
         </li>
     </ul>
+</div>

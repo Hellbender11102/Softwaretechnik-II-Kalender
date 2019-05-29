@@ -4,9 +4,9 @@ import 'package:http/http.dart';
 import 'package:demo/src/model/person.dart';
 import '../components/mock_users.dart';
 
-class RegisterService {
+class UserService {
   // request to middlemand
-  RegisterService(this._http);
+  UserService(this._http);
 
   static final _headers = {'Content-Type': 'application/json'};
   static const _registerUrl = 'http://localhost:8080/register'; // URL to web API
