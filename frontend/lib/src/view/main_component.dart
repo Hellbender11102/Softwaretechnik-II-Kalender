@@ -13,7 +13,7 @@ import 'components/login_component.dart';
 
 @Component(
   selector: 'my-cal',
-  styleUrls:['default.css','theme-672-1024.css'],
+  styleUrls:['desktop.css','theme-672-1024.css','mobile.css'],
   templateUrl: 'main_component.html',
   directives: [routerDirectives],
   providers: [

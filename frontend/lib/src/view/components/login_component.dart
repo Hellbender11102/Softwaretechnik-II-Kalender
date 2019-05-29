@@ -26,8 +26,8 @@ class LoginComponent implements OnInit, OnActivate {
 
   // 
   Future<void> login() async {
-    for (int i = 0; i < mockUsers.length; i++) {
-      if ((nickname == mockUsers[i].nickname || nickname == mockUsers[i].email) && password == mockUsers[i].password) {
+    for (User u in mockUsers) {
+      if ((nickname == u.nickname || nickname == u.email) && password ==u.password) {
         loggedIn = true;
         AppComponent.showButtons = true;
         await _router.navigate('/dashboard');
@@ -52,7 +52,7 @@ class LoginComponent implements OnInit, OnActivate {
   @override
   void ngOnInit() async {
     // do something when drawn
-    // like DB connections
+    // like DB connections //TODO
   }
 
   void setLoginFalse() {
