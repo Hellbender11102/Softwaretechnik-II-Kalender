@@ -31,6 +31,13 @@ class CalendarService {
     return mockAppointments;
   }
 
+  List<Appointment> getAppointmentByDay(int year, int month, int Day){
+
+  }
+  List<Appointment> getAppointmentsForMonth(int year, int month){
+
+  }
+
   Month initMonth() {
     return Month(DateTime.now().year,DateTime.now().month);
   }

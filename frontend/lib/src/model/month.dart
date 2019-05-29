@@ -9,7 +9,7 @@ class Month {
 
   int month;
   int year;
-
+///returns a full week of
   Iterable weekOfMonth(int week) sync* {
     final int firstWeekDayOfMonth = DateTime.utc(year, month, 1).weekday;
     final int weekOffSet = -firstWeekDayOfMonth+2;
