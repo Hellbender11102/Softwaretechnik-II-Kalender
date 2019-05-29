@@ -74,7 +74,7 @@ class AppointmentService {
   Future<Appointment> create(Appointment appointment) async {
     try {
       final response = await _http.post(_appointmentUrl,
-          headers: _headers, body: json.encode(appointment));
+          headers: _headers, body: json.encode(appointment.toJson()));
       return Appointment.fromJson(
           _extractData(response as Response) as Map<String, dynamic>);
     } catch (e) {

@@ -25,7 +25,6 @@ class Appointment {
       appointment['location'] as String);
 
   Map toJson() => {
-        'id': id,
         'name': name,
         'year': year,
         'month': month,

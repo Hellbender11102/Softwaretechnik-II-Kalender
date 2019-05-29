@@ -36,13 +36,6 @@ class AppointmentListComponent implements OnInit, OnActivate {
     appointments.sort((a, b) => a.id.compareTo(b.id));
   }
 
-  /*Future<void> add(String name) async {
-    name = name.trim();
-    if (name.isEmpty) return null;
-    appointments.add(await _appointmentService.create(name));
-    selected = null;
-  }*/
-
   ///Nachfolgender Code wird bei der inizialisierung der Klasse ausgeführt
   @override
   void ngOnInit() => _getAppointments();
@@ -52,8 +45,6 @@ class AppointmentListComponent implements OnInit, OnActivate {
       _router.navigate('/login');
     }
   }
-
-
 
     ///Methode die die URL von dem Termin mit gegebener id als String zurückgibt
     String _appointmentUrl(int id) =>

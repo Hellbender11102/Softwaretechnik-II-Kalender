@@ -54,7 +54,7 @@ class AppointmentController extends ResourceController {
   }
 
   @Operation.post()
-  Future<Response> createAppointment(
+  Future<Response> updateAppointment(
       @Bind.body() Appointment inputAppointment) async {
     final query = Query<Appointment>(context)..values = inputAppointment;
     final insertedAppointment = await query.insert();
