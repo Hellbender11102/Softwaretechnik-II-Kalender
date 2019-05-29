@@ -2,9 +2,10 @@
 class Appointment {
 
   // constructor
-  Appointment(this.id, this.name, this.date, this.time, this.duration, this.location);
+  Appointment(this.id,this.contactCodes, this.name, this.date, this.time, this.duration, this.location);
 
   int id;
+  List<String> contactCodes;
   String name;
   String date;
   String time;
@@ -14,13 +15,14 @@ class Appointment {
 
     factory Appointment.fromJson(Map<String, dynamic> appointment) =>
       Appointment(_toInt(appointment['id']),
+          appointment['contactCodes']as List<String>,
           appointment['name'] as String,
           appointment['date'] as String,
           appointment['time'] as String,
           appointment['duration'] as String,
           appointment['location'] as String);
 
-  Map toJson() => {'id': id, 'name': name, 'date': date, 'time': time, 'duration': duration, 'location': location};
+  Map toJson() => {'id': id,'contactCodes':contactCodes, 'name': name, 'date': date, 'time': time, 'duration': duration, 'location': location};
 
   DateTime dateTimeGen() {
     var split = date.split("-");
