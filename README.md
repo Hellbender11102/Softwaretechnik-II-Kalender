@@ -17,3 +17,23 @@ https://itnext.io/building-restful-web-apis-with-dart-aqueduct-and-postgresql-3c
 Desweiteren haben wir uns dazu entschieden, uns immer Dienstags um 12.00 Uhr in der Uni zu treffen, um an dem Projekt weiter zu arbeiten. Weitere Termine Entscheiden wir von Woche zu Woche.
 
 Online https://projects.mylab.th-luebeck.de/calendar/#/login
+
+// Entwicklickung:
+!!!!ACHTUNG!!!!
+ECHTE Zugangsdaten dürfen !NIEMALS! in einem Repository auftauchen.
+Bitte nur zur lokalen Entwicklung nutzen.
+
+
+SQL zum erstellen einer Datenbank,
+    'password' und 'user' nach Wahl.
+----------------------------------------------
+CREATE DATABASE calendar;
+CREATE USER cal_user WITH createdb;
+ALTER USER cal_user WITH password 'password';
+GRANT all ON database calendar TO cal_user;
+----------------------------------------------
+// dockercompose
+
+
+docker-compose up --build
+

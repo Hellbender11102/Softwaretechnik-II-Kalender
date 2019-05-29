@@ -1,14 +1,13 @@
+import 'dart:core' as prefix0;
+import 'dart:core';
 
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/routes/routes.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
-import 'package:demo/src/view/services/calendar_service.dart';
 import 'package:demo/src/view/services/contact_service.dart';
 import 'package:demo/src/view/services/dashboard_service.dart';
-import 'package:demo/src/view/services/dayview_service.dart';
-import 'package:demo/src/view/services/login_service.dart';
-import 'package:demo/src/view/services/register_service.dart';
+import 'package:demo/src/view/services/user_service.dart';
 
 import 'components/login_component.dart';
 
@@ -18,17 +17,15 @@ import 'components/login_component.dart';
   templateUrl: 'main_component.html',
   directives: [routerDirectives],
   providers: [
-    ClassProvider(DashboardService),
     ClassProvider(AppointmentService),
-    ClassProvider(CalendarService),
-    ClassProvider(DayviewService),
-    ClassProvider(RegisterService),
-    ClassProvider(LoginService),
+    ClassProvider(UserService),
     ClassProvider(ContactService),
-  ],
+    ClassProvider(DashboardService),
+    ],
   exports: [RoutePaths, Routes],
 )
 class AppComponent {
+
   final String title = 'innerComponent';
 
   //todo muss raus hier
@@ -38,3 +35,7 @@ class AppComponent {
     showButtons = false;
   }
 }
+// Connection Defaults soll später im Clienten einstellbar sein.
+String domain = "localhost";
+String port = ":8888";
+String url="http://"+domain+port;

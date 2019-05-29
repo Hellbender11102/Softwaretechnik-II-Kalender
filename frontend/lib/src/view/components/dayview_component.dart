@@ -3,8 +3,8 @@ import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
 import 'package:demo/src/model/appointment.dart';
+import 'package:demo/src/model/day.dart';
 
-import 'mock_appointments.dart';
 import 'login_component.dart';
 
 @Component(
@@ -13,9 +13,10 @@ import 'login_component.dart';
   styleUrls: ['dayview_component.css'],
   directives: [coreDirectives, routerDirectives],
 )
-class DayviewComponent implements  OnActivate {
+class DayviewComponent implements OnActivate {
   final Router _router;
   List appointments = List();
+  Day day;
 
   // service Klasse für ORM
   DayviewComponent(this._appointmentService, this._router);
@@ -28,17 +29,16 @@ class DayviewComponent implements  OnActivate {
     if (!LoginComponent.loggedIn) {
       _router.navigate('/login');
     } else {
-      final int year = getYear(current.parameters);
-      final int month = getMonth(current.parameters);
-      final int day = getDay(current.parameters);
-      if (year != null && month != null && day != null) {
-        appointments = await _appointmentService.getAll();
+      this.day = Day(
+          getYear(current.parameters),
+          getMonth(current.parameters),
+          getDay(current.parameters));
+      if (day.isValid()) {
+        appointments = await _appointmentService.getByDate(day.year,day.month,day.day);
         appointments.sort((a, b) => a.time.compareTo(b.time) as int);
       }
     }
   }
-
-
 
   ///Methode die die URL von dem Termin mit gegebener id als String zurückgibt
   String _appointmentUrl(int id) =>
@@ -47,7 +47,4 @@ class DayviewComponent implements  OnActivate {
   ///Methode die den ausgewählten Termin aufruft
   Future<NavigationResult> gotoDetail(Appointment appointment) =>
       _router.navigate(_appointmentUrl(appointment.id));
-
-
 }
-

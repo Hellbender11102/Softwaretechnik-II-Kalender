@@ -1,9 +1,8 @@
 import 'package:demo/src/model/appointment.dart';
 
 class Day {
-  Day(this.order, this.year, this.month, this.day);
+  Day(this.year, this.month, this.day);
 
-  int order;
   int year;
   int month;
   int day;
@@ -11,17 +10,11 @@ class Day {
   List<Appointment> appointments;
 
   @override
-  String toString() {
-    // ignore: prefer_interpolation_to_compose_strings
-    return order.toString() +
-        ":" +
-        year.toString() +
-        "," +
-        month.toString() +
-        "," +
-        day.toString() +
-        weekday();
-  }
+  String toString() => weekday()+":  $month/$day/$year";
+
+
+  bool isValid()=> year != null && month != null && day != null;
+
 
   String weekday() {
     switch (DateTime(year, month, day).weekday) {

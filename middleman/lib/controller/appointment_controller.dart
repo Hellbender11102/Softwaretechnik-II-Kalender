@@ -6,16 +6,6 @@ import 'package:middleman/model/appointment.dart';
 class AppointmentController extends ResourceController {
   AppointmentController(this.context);
 
-  final _appointments =[
-    {"id":1, "name" :"eins","date" : "2019-05-07", "time" : "12:00","duration" : "04:00", "location" : "Technischehochschule Lübeck"},
-    {"id":2, "name" :"zwei","date" : "2019-05-07", "time" : "12:00","duration" : "04:00", "location" : "Technischehochschule Lübeck"},
-    {"id":3, "name" :"drei","date" : "2019-05-07", "time" : "12:00","duration" : "04:00", "location" : "Technischehochschule Lübeck"},
-    {"id":4, "name" :"vier","date" : "2019-05-07", "time" : "12:00","duration" : "04:00", "location" : "Technischehochschule Lübeck"},
-    {"id":5, "name" :"fünf","date" : "2019-05-07", "time" : "12:00","duration" : "04:00", "location" : "Technischehochschule Lübeck"},
-  ];
-
-
-
   final ManagedContext context;
 
   /*
@@ -29,25 +19,53 @@ class AppointmentController extends ResourceController {
   @Operation.get()
   Future<Response> getAllAppointments() async {
     final appointmentQuery = Query<Appointment>(context);
-    final heroes = await appointmentQuery.fetch();
-    return Response.ok(heroes);
+    final appointments = await appointmentQuery.fetch();
+    print(appointments.toString());
+    return Response.ok(appointments);
   }
 
   @Operation.get('id')
   Future<Response> getAppointmentByID(@Bind.path('id') int id) async {
     final appointmentQuery = Query<Appointment>(context)
-    ..where((appointment)=> appointment.id).equalTo(id);
+      ..where((appointment) => appointment.id).equalTo(id);
     final appointment = await appointmentQuery.fetchOne();
     return Response.ok(appointment);
   }
 
+  @Operation.get('year', "month")
+  Future<Response> getAppointmentByMonth(
+      @Bind.path('year') int year, @Bind.path('month') int month) async {
+    final appointmentQuery = Query<Appointment>(context)
+      ..where((appointment) => appointment.year).equalTo(year)
+      ..where((appointment) => appointment.month).equalTo(month);
+    final appointments = await appointmentQuery.fetch();
+    return Response.ok(appointments);
+  }
+
+  @Operation.get('year', "month", "day")
+  Future<Response> getAppointmentByDate(@Bind.path('year') int year,
+      @Bind.path('month') int month, @Bind.path('day') int day) async {
+    final appointmentQuery = Query<Appointment>(context)
+      ..where((appointment) => appointment.year).equalTo(year)
+      ..where((appointment) => appointment.month).equalTo(month)
+      ..where((appointment) => appointment.day).equalTo(day);
+    final appointments = await appointmentQuery.fetch();
+    return Response.ok(appointments);
+  }
+
   @Operation.post()
-  Future<Response> createAppointment(@Bind.body() Appointment inputAppointment) async {
-    final query = Query<Appointment>(context)
-      ..values = inputAppointment;
-
+  Future<Response> updateAppointment(
+      @Bind.body() Appointment inputAppointment) async {
+    final query = Query<Appointment>(context)..values = inputAppointment;
     final insertedAppointment = await query.insert();
-
     return Response.ok(insertedAppointment);
+  }
+
+  @Operation.delete("id")
+  Future<Response> deleteAppointment(@Bind.path('id') int id) async {
+    final query = Query<Appointment>(context)
+      ..where((app) => app.id).equalTo(id);
+    int appointmensdelete = await query.delete();
+    return Response.ok(appointmensdelete);
   }
 }

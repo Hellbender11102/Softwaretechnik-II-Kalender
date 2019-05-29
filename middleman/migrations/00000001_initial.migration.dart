@@ -9,7 +9,7 @@ class Migration1 extends Migration {
           isPrimaryKey: true,
           autoincrement: true,
           isIndexed: false,
-          isNullable: false,
+          isNullable: true,
           isUnique: false),
       SchemaColumn("name", ManagedPropertyType.string,
           isPrimaryKey: false,
@@ -23,7 +23,19 @@ class Migration1 extends Migration {
           isIndexed: false,
           isNullable: false,
           isUnique: false),
-      SchemaColumn("date", ManagedPropertyType.string,
+      SchemaColumn("year", ManagedPropertyType.integer,
+          isPrimaryKey: false,
+          autoincrement: false,
+          isIndexed: false,
+          isNullable: false,
+          isUnique: false),
+      SchemaColumn("month", ManagedPropertyType.integer,
+          isPrimaryKey: false,
+          autoincrement: false,
+          isIndexed: false,
+          isNullable: false,
+          isUnique: false),
+      SchemaColumn("day", ManagedPropertyType.integer,
           isPrimaryKey: false,
           autoincrement: false,
           isIndexed: false,
@@ -53,7 +65,9 @@ class Migration1 extends Migration {
       {
         "id": 1,
         "name": "eins",
-        "date": "2019-05-07",
+        "year": 2019,
+        "month": 7,
+        "day": 22,
         "time": "12:00",
         "duration": "04:00",
         "location": "Technischehochschule Lübeck"
@@ -61,7 +75,9 @@ class Migration1 extends Migration {
       {
         "id": 2,
         "name": "zwei",
-        "date": "2019-05-07",
+        "year": 2019,
+        "month": 5,
+        "day": 22,
         "time": "12:00",
         "duration": "04:00",
         "location": "Technischehochschule Lübeck"
@@ -69,7 +85,9 @@ class Migration1 extends Migration {
       {
         "id": 3,
         "name": "drei",
-        "date": "2019-05-07",
+        "year": 2019,
+        "month": 5,
+        "day": 24,
         "time": "12:00",
         "duration": "04:00",
         "location": "Technischehochschule Lübeck"
@@ -77,7 +95,9 @@ class Migration1 extends Migration {
       {
         "id": 4,
         "name": "vier",
-        "date": "2019-05-07",
+        "year": 2019,
+        "month": 5,
+        "day": 21,
         "time": "12:00",
         "duration": "04:00",
         "location": "Technischehochschule Lübeck"
@@ -85,24 +105,26 @@ class Migration1 extends Migration {
       {
         "id": 5,
         "name": "fünf",
-        "date": "2019-05-07",
+        "year": 2019,
+        "month": 7,
+        "day": 22,
         "time": "12:00",
         "duration": "04:00",
         "location": "Technischehochschule Lübeck"
       },
     ];
 
-    _appointments.forEach((Map<String, dynamic> map) async => await database
-            .store
-            .execute("INSERT INTO _Appointment (name,time,date,duration,location) VALUES (@name,@time,@date,@duration,@location)",
-                substitutionValues: {
+    _appointments.forEach((Map<String, dynamic> map) async =>
+        await database.store.execute(
+            "INSERT INTO _Appointment (name,time,year,month,day,duration,location) VALUES (@name,@time,@year,@month,@day,@duration,@location)",
+            substitutionValues: {
               "name": map['name'],
               "time": map['time'],
-              "date": map['date'],
+              "year": map['year'],
+              "month": map['month'],
+              "day": map['day'],
               "duration": map['duration'],
               "location": map['location'],
             }));
-
-
   }
 }

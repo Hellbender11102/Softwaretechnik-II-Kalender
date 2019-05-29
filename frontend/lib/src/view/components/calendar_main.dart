@@ -1,12 +1,10 @@
-import 'dart:html';
-
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/model/day.dart';
 import 'package:demo/src/model/month.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
-import 'package:demo/src/view/services/calendar_service.dart';
+import 'package:demo/src/view/services/appointment_service.dart';
 
 import 'login_component.dart';
 
@@ -17,31 +15,39 @@ import 'login_component.dart';
   directives: [coreDirectives, routerDirectives],
 )
 class CalendarComponent implements OnActivate, OnInit {
-  CalendarComponent(this._calendarService,this._router, this._location){
-    appointmentInMonth =_calendarService.getAppointmentsForMonth(DateTime.now().year, DateTime.now().month, "USERCODE");
-  }
+  CalendarComponent(this._appointmentService, this._router);
 
-  static List<Appointment> appointmentInMonth;
- //Month month = Month(DateTime.now().year, DateTime.now().month);
-  final CalendarService _calendarService;
-  //TODO MUSS NOCH DEN EINGELOGGTEN USEERCODE BEKOMMEN
-  Month month = Month(DateTime.now().year, DateTime.now().month, appointmentInMonth);
+  Month month = Month(DateTime.now().year, DateTime.now().month);
+  final AppointmentService _appointmentService;
   final Router _router;
-  final Location _location;
-  List<String> get week => month.week;
 
-  // as variable but on call get appointments from service routine
+  List<String> get week => month.week;
+  List<Appointment> appointments = [];
 
   // auswählen des Tages
   Future<NavigationResult> gotoDetail(Day day) =>
-      _router.navigate(dayUrl(day.year,day.month,day.day));
+      _router.navigate(dayUrl(day.year, day.month, day.day));
 
-
-  @override
-  void ngOnInit() {
-
+  int daysAppointments(Day day) {
+    return appointments
+        .where((app) =>
+            app.year == day.year &&
+            app.month == day.month &&
+            app.day == day.day)
+        .toList()
+        .length;
   }
-//TODO USERCODE
+  // todo bug in anderen monaten
+  Future<void> _getAppointments() async {
+    print(month.year.toString()+"+"+month.month.toString());
+    appointments = await _appointmentService.getByDate(month.year, month.month);
+    appointments.sort((a, b) => a.id.compareTo(b.id));
+  }
+
+  ///Nachfolgender Code wird bei der inizialisierung der Klasse ausgeführt
+  @override
+  void ngOnInit() => _getAppointments();
+
   @override
   void onActivate(RouterState previous, RouterState current) async {
     if (!LoginComponent.loggedIn) {
@@ -50,19 +56,21 @@ class CalendarComponent implements OnActivate, OnInit {
       final int yearInt = getYear(current.parameters);
       final int monthInt = getMonth(current.parameters);
       if (yearInt != null && monthInt != null) {
-        month = _calendarService.getSpecificMonth(yearInt, monthInt,_calendarService.getAppointmentsForMonth(yearInt, monthInt, 'USERCODE'));
+        month = Month(yearInt, monthInt);
+        await _getAppointments();
       }
-      //print(month.weekOfMonth(0).toString());
     }
   }
 
-  String monthURL(String year, String month) => RoutePaths.calendar
-      .toUrl(parameters: {yParam: year, mParam: month});
+  String monthURL(String year, String month) =>
+      RoutePaths.calendar.toUrl(parameters: {yParam: year, mParam: month});
 
-  String dayUrl(int yearInt,int monthInt,int dayInt) =>
-      RoutePaths.dayview.toUrl(parameters: {yParam: "$yearInt", mParam: "$monthInt", dParam: "$dayInt"});
-
-
+  String dayUrl(int yearInt, int monthInt, int dayInt) =>
+      RoutePaths.dayview.toUrl(parameters: {
+        yParam: "$yearInt",
+        mParam: "$monthInt",
+        dParam: "$dayInt"
+      });
 
   // ignore: unused_element
   void next() {
@@ -75,5 +83,4 @@ class CalendarComponent implements OnActivate, OnInit {
     _router.navigate(monthURL(
         month.prevM().first.toString(), month.prevM().last.toString()));
   }
-
 }

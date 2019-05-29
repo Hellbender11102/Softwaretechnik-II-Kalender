@@ -1,7 +1,6 @@
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
-import 'package:demo/src/view/services/login_service.dart';
 
 import '../../model/person.dart';
 import 'mock_users.dart';
@@ -16,10 +15,9 @@ import '../main_component.dart';
 
 class LoginComponent implements OnInit, OnActivate {
 
-  LoginComponent(this._loginService, this._router);
+  LoginComponent(this._router);
 
   final Router _router;
-  final LoginService _loginService;
   bool loginFailure = false;
   static bool loggedIn = false;
 
