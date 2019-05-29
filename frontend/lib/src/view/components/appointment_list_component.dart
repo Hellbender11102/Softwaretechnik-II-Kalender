@@ -8,8 +8,8 @@ import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
 
 import 'appointment_component.dart';
-import 'login_component.dart';
 import 'appointment_search_component.dart';
+import 'login_component.dart';
 
 
 

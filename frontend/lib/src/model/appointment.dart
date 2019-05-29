@@ -5,15 +5,6 @@ class Appointment {
   // leeres Appointment
   Appointment.zero();
 
-  int id;
-  String name;
-  int year;
-  int month;
-  int day;
-  String time = "";
-  String duration = "";
-  String location;
-
   factory Appointment.fromJson(Map<String, dynamic> appointment) => Appointment(
       _toInt(appointment['id']),
       appointment['name'] as String,
@@ -23,6 +14,15 @@ class Appointment {
       appointment['time'] as String,
       appointment['duration'] as String,
       appointment['location'] as String);
+
+  int id;
+  String name;
+  int year;
+  int month;
+  int day;
+  String time = "";
+  String duration = "";
+  String location;
 
   Map toJson() => {
         'name': name,
@@ -36,7 +36,7 @@ class Appointment {
 
   ///date like 'yyyy-mm-dd'
   set date(String str) {
-    List split = str.split("-");
+    final List split = str.split("-");
     year = _toInt(split[0]);
     month = _toInt(split[1]);
     day = _toInt(split[2]);

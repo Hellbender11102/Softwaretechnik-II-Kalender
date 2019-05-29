@@ -5,7 +5,6 @@ import 'package:demo/src/view/services/appointment_service.dart';
 import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/model/day.dart';
 
-import 'mock_appointments.dart';
 import 'login_component.dart';
 
 @Component(

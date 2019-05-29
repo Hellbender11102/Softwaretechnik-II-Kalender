@@ -5,7 +5,6 @@ import 'dart:html';
 
 import 'package:http/http.dart';
 import 'package:demo/src/model/appointment.dart';
-import '../components/mock_appointments.dart';
 
 class AppointmentService {
   // request to middlemand

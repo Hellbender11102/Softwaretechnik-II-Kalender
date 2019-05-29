@@ -6,7 +6,6 @@ import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
 
-import 'mock_appointments.dart';
 import 'login_component.dart';
 
 
@@ -32,7 +31,6 @@ class AppointmentNewComponent implements OnActivate {
 
   ///Methode zum erstellen des neuen Termins
   Future<void> create() async {
-    final List<Appointment> appointments = await _appointmentService.getAll();
     appointment.date = dateString;
     await _appointmentService.create(appointment);
     goBack();

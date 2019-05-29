@@ -10,14 +10,24 @@ abstract class Person {
 }
 
 class User extends Person {
+
+  User(int id, String nickname, String surname, String name, String email, String password)
+      : id = id, password = password, super(nickname, surname, name, email);
+
+  factory User.fromJson(Map<int, String> user) =>
+      User(_toInt(user['id']),
+          user['nickname'],
+          user['surname'],
+          user['name'],
+          user['email'],
+          user['password']);
+
+
   // ggf persistente Daten von einer Service Routine
-  List<Contact> _contactlist = List();
+  final List<Contact> _contactlist = List();
 
   int id;
   String password;
-
-  User(int id, String nickname, String surname, String name, String email, String password) 
-      : id = id, password = password, super(nickname, surname, name, email);
 
   // Adds a single contact, no duplicate by contactcode
   void addContact(Contact con) {
@@ -35,13 +45,7 @@ class User extends Person {
   // removes multiple Contacts
   void rmvAllContacts(List<Contact> list) => list.forEach(rmvContact);
 
-  factory User.fromJson(Map<int, String> user) =>
-      User(_toInt(user['id']),
-          user['nickname'],
-          user['surname'],
-          user['name'],
-          user['email'],
-          user['password']);
+
 
   Map toJson() => {'nickname': nickname, 'surname': surname, 'name': name, 'email': email, 'password': password};
 
@@ -57,15 +61,17 @@ class Contact extends Person {
     this.contactCode = contactCode;
     this.note = note;
   }
+
+  factory Contact.fromJson(Map<String, String> contact) =>
+      Contact(contact['nickname'],
+          contact['surname'],
+          contact['name'],
+          contact['email'],
+          contact['contactCode'],
+          contact['note']);
+
   String contactCode ,note;
 
-factory Contact.fromJson(Map<String, String> contact) =>
-Contact(contact['nickname'],
-    contact['surname'],
-    contact['name'],
-    contact['email'],
-    contact['contactCode'],
-    contact['note']);
 
 Map toJson() => {'nickname': nickname, 'surname': surname, 'name': name, 'email': email, 'contactCode': contactCode, 'note': note};
 }
