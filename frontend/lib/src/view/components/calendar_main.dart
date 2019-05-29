@@ -19,7 +19,6 @@ import 'login_component.dart';
 class CalendarComponent implements OnActivate, OnInit {
   CalendarComponent(this._appointmentService, this._router, this._location);
 
-  //Month month = Month(DateTime.now().year, DateTime.now().month);
   Month month = Month(DateTime.now().year, DateTime.now().month);
   final AppointmentService _appointmentService;
   final Router _router;
@@ -43,6 +42,7 @@ class CalendarComponent implements OnActivate, OnInit {
   }
   // todo bug in anderen monaten
   Future<void> _getAppointments() async {
+    print(month.year.toString()+"+"+month.month.toString());
     appointments = await _appointmentService.getByDate(month.year, month.month);
     appointments.sort((a, b) => a.id.compareTo(b.id));
   }
@@ -60,6 +60,7 @@ class CalendarComponent implements OnActivate, OnInit {
       final int monthInt = getMonth(current.parameters);
       if (yearInt != null && monthInt != null) {
         month = Month(yearInt, monthInt);
+        await _getAppointments();
       }
     }
   }
