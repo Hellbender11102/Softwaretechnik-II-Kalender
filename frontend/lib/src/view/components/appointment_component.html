@@ -18,8 +18,8 @@
 
         <div class="form-group">
             <label for="date">Datum&nbsp;*</label>
-            <input type="date" class="form-control" id="date" required
-                   [(ngModel)]="appointment.date"
+            <input type="text" class="form-control" id="date" required
+                   [(ngModel)]="dateString"
                    #date="ngForm"
                    [class.is-valid]="date.valid"
                    [class.is-invalid]="!date.valid"

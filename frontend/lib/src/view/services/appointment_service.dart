@@ -83,17 +83,6 @@ class AppointmentService {
   }
 
   Future<List<Appointment>> search(String term) async {
-
-    /**
-        final List<Appointment> appointments = List<Appointment>();
-        for (var appointment in mockAppointments) {
-        if (appointment.name.contains(term)) {
-        appointments.add(appointment);
-        }
-        }
-        return appointments;**/
-
-
     try {
       final response = await _http.get('$_appointmentUrl');
       final List<Appointment> appointments = (_extractData(response as Response) as List)

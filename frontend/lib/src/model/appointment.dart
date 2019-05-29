@@ -10,8 +10,8 @@ class Appointment {
   int year;
   int month;
   int day;
-  String time;
-  String duration;
+  String time = "";
+  String duration = "";
   String location;
 
   factory Appointment.fromJson(Map<String, dynamic> appointment) => Appointment(
@@ -39,8 +39,8 @@ class Appointment {
   set date(String str) {
     List split = str.split("-");
     year = _toInt(split[0]);
-    year = _toInt(split[1]);
-    year = _toInt(split[2]);
+    month = _toInt(split[1]);
+    day = _toInt(split[2]);
   }
 
   String get date {
