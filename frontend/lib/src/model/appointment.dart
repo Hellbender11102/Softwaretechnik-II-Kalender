@@ -10,8 +10,8 @@ class Appointment {
   int year;
   int month;
   int day;
-  String time;
-  String duration;
+  String time = "";
+  String duration = "";
   String location;
 
   factory Appointment.fromJson(Map<String, dynamic> appointment) => Appointment(
@@ -25,7 +25,6 @@ class Appointment {
       appointment['location'] as String);
 
   Map toJson() => {
-        'id': id,
         'name': name,
         'year': year,
         'month': month,

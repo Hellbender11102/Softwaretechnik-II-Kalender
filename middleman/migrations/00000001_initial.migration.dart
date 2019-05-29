@@ -1,12 +1,61 @@
 import 'dart:async';
-import 'package:aqueduct/aqueduct.dart';   
+import 'package:aqueduct/aqueduct.dart';
 
-class Migration1 extends Migration { 
+class Migration1 extends Migration {
   @override
   Future upgrade() async {
-   		database.createTable(SchemaTable("_Appointment", [SchemaColumn("id", ManagedPropertyType.bigInteger, isPrimaryKey: true, autoincrement: true, isIndexed: false, isNullable: false, isUnique: false),SchemaColumn("name", ManagedPropertyType.string, isPrimaryKey: false, autoincrement: false, isIndexed: false, isNullable: false, isUnique: false),SchemaColumn("time", ManagedPropertyType.string, isPrimaryKey: false, autoincrement: false, isIndexed: false, isNullable: false, isUnique: false),SchemaColumn("year", ManagedPropertyType.integer, isPrimaryKey: false, autoincrement: false, isIndexed: false, isNullable: false, isUnique: false),SchemaColumn("month", ManagedPropertyType.integer, isPrimaryKey: false, autoincrement: false, isIndexed: false, isNullable: false, isUnique: false),SchemaColumn("day", ManagedPropertyType.integer, isPrimaryKey: false, autoincrement: false, isIndexed: false, isNullable: false, isUnique: false),SchemaColumn("duration", ManagedPropertyType.string, isPrimaryKey: false, autoincrement: false, isIndexed: false, isNullable: false, isUnique: false),SchemaColumn("location", ManagedPropertyType.string, isPrimaryKey: false, autoincrement: false, isIndexed: false, isNullable: false, isUnique: false)]));
+    database.createTable(SchemaTable("_Appointment", [
+      SchemaColumn("id", ManagedPropertyType.bigInteger,
+          isPrimaryKey: true,
+          autoincrement: true,
+          isIndexed: false,
+          isNullable: true,
+          isUnique: false),
+      SchemaColumn("name", ManagedPropertyType.string,
+          isPrimaryKey: false,
+          autoincrement: false,
+          isIndexed: false,
+          isNullable: false,
+          isUnique: false),
+      SchemaColumn("time", ManagedPropertyType.string,
+          isPrimaryKey: false,
+          autoincrement: false,
+          isIndexed: false,
+          isNullable: false,
+          isUnique: false),
+      SchemaColumn("year", ManagedPropertyType.integer,
+          isPrimaryKey: false,
+          autoincrement: false,
+          isIndexed: false,
+          isNullable: false,
+          isUnique: false),
+      SchemaColumn("month", ManagedPropertyType.integer,
+          isPrimaryKey: false,
+          autoincrement: false,
+          isIndexed: false,
+          isNullable: false,
+          isUnique: false),
+      SchemaColumn("day", ManagedPropertyType.integer,
+          isPrimaryKey: false,
+          autoincrement: false,
+          isIndexed: false,
+          isNullable: false,
+          isUnique: false),
+      SchemaColumn("duration", ManagedPropertyType.string,
+          isPrimaryKey: false,
+          autoincrement: false,
+          isIndexed: false,
+          isNullable: false,
+          isUnique: false),
+      SchemaColumn("location", ManagedPropertyType.string,
+          isPrimaryKey: false,
+          autoincrement: false,
+          isIndexed: false,
+          isNullable: false,
+          isUnique: false)
+    ]));
   }
-  
+
   @override
   Future downgrade() async {}
 
@@ -65,20 +114,17 @@ class Migration1 extends Migration {
       },
     ];
 
-    _appointments.forEach((Map<String, dynamic> map) async => await database
-        .store
-        .execute("INSERT INTO _Appointment (name,time,year,month,day,duration,location) VALUES (@name,@time,@year,@month,@day,@duration,@location)",
-        substitutionValues: {
-          "name": map['name'],
-          "time": map['time'],
-          "year": map['year'],
-          "month": map['month'],
-          "day": map['day'],
-          "duration": map['duration'],
-          "location": map['location'],
-        }));
-
-
+    _appointments.forEach((Map<String, dynamic> map) async =>
+        await database.store.execute(
+            "INSERT INTO _Appointment (name,time,year,month,day,duration,location) VALUES (@name,@time,@year,@month,@day,@duration,@location)",
+            substitutionValues: {
+              "name": map['name'],
+              "time": map['time'],
+              "year": map['year'],
+              "month": map['month'],
+              "day": map['day'],
+              "duration": map['duration'],
+              "location": map['location'],
+            }));
   }
 }
-    

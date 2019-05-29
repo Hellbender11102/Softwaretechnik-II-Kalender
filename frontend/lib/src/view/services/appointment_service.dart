@@ -74,11 +74,25 @@ class AppointmentService {
   Future<Appointment> create(Appointment appointment) async {
     try {
       final response = await _http.post(_appointmentUrl,
-          headers: _headers, body: json.encode(appointment));
+          headers: _headers, body: json.encode(appointment.toJson()));
       return Appointment.fromJson(
           _extractData(response as Response) as Map<String, dynamic>);
     } catch (e) {
       throw _handleError(e);
     }
+  }
+
+  Future<List<Appointment>> search(String term) async {
+    try {
+      final response = await _http.get('$_appointmentUrl');
+      final List<Appointment> appointments = (_extractData(response as Response) as List)
+          .map((json) => Appointment.fromJson(json as Map<String, dynamic>))
+          .toList();
+      appointments.retainWhere((h) => h.name.toLowerCase().contains(term.toLowerCase()));
+      return appointments;
+    } catch (e) {
+      throw _handleError(e);
+    }
+
   }
 }

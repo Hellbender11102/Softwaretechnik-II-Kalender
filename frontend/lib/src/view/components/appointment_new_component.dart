@@ -27,22 +27,15 @@ class AppointmentNewComponent implements OnActivate {
   final Location _location;
   final AppointmentService _appointmentService;
   final Router _router;
+  String dateString;
 
 
   ///Methode zum erstellen des neuen Termins
-  Future<void> create() async { //Später in richtiges create umwandeln
-
-
+  Future<void> create() async {
     final List<Appointment> appointments = await _appointmentService.getAll();
-    appointment.id = appointments.last.id +1;
+    appointment.date = dateString;
     await _appointmentService.create(appointment);
     goBack();
-    /**
-    final int id = mockAppointments.last.id +1;
-    appointment.id = id;
-    mockAppointments.add(appointment);
-    await _appointmentService.update(appointment); //.create()
-    goBack();**/
   }
 
   ///Methode, die die übergeordnete ansicht anzeigt

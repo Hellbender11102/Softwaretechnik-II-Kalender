@@ -27,6 +27,7 @@ class AppointmentComponent implements OnActivate {
   bool submitted = true;
   final Router _router;
   final AppointmentService _appointmentService;
+  String dateString;
 
   /// Folgender Code wird immer bei der Aktivierung der Klasse aufgerufen
   @override
@@ -37,6 +38,7 @@ class AppointmentComponent implements OnActivate {
       final id = getId(current.parameters);
       if (id != null) {
         appointment = await _appointmentService.get(id);
+        dateString = appointment.date;
       }
     }
   }
@@ -45,6 +47,7 @@ class AppointmentComponent implements OnActivate {
 
   /// Methode zum speichern, der änderungen die man im Termin vorgenommen hat
   Future<void> save() async {
+    appointment.date = dateString;
     await _appointmentService.update(appointment);
     goBack();
   }
