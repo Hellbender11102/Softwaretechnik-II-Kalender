@@ -64,7 +64,6 @@ class Contact extends Person {
   Contact(String nickname, String surname, String name, String email,
       String contactCode, String note)
       : super(contactCode,nickname, surname, name, email) {
-    this.contactCode = contactCode;
     this.note = note;
   }
 

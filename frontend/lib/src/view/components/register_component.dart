@@ -24,11 +24,9 @@ class RegisterComponent implements OnInit, OnActivate {
 
 
   Future<void> register() async {
-    final int id = mockUsers.last.id +1;
-    user.id = id;
-    mockUsers.add(user);
+    //mockUsers.add(user);
     print(user.toString());
-    await _registerService.update(user/*.id, user.nickname, user.email, user.password*/); //.create()
+    await _registerService.create(user/*.id, user.nickname, user.email, user.password*/); //.create()
     await _router.navigate('/login');
   }
 

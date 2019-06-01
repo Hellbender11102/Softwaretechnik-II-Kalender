@@ -9,7 +9,7 @@ class UserService {
   UserService(this._http);
 
   static final _headers = {'Content-Type': 'application/json'};
-  static const _registerUrl =
+  static const _userUrl =
       'http://localhost:8080/register'; // URL to web API
   final Client _http;
 
@@ -22,10 +22,10 @@ class UserService {
   }
 
   ///Erstellt einen neuen User mit gegebenem Namen, Email und Passwort
-  Future<User> create(
+ /* Future<User> create(
       int id, String nickname, String email, String password) async {
     try {
-      final response = await _http.post(_registerUrl,
+      final response = await _http.post(_userUrl,
           headers: _headers,
           body: json.encode({
             'id': id,
@@ -37,9 +37,26 @@ class UserService {
     } catch (e) {
       throw _handleError(e);
     }
+  }*/
+
+  Future<User> create(User user) async {
+    try {
+      final response = await _http.post(_userUrl,
+          headers: _headers, body: json.encode(user.toJson()));
+      return User.fromJson(
+          _extractData(response) as Map<String, dynamic>);
+    } catch (e) {
+      throw _handleError(e);
+    }
   }
 
-  ///Updatet einen bereits existierenden User
+  Future<User> get(String contactCode) async {
+    final Response response =
+    await _http.get('$_userUrl/$contactCode');
+    return User.fromJson(_extractData(response) as Map<String, String>);
+  }
+
+  /*///Updatet einen bereits existierenden User
   Future<User> update(User user) async {
     for (var mockUser in mockUsers) {
       if (mockUser.contactCode == user.contactCode) {
@@ -47,5 +64,5 @@ class UserService {
       }
       return mockUser;
     }
-  }
+  }*/
 }
