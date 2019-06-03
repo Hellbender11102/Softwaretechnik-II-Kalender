@@ -10,6 +10,7 @@ class ContactService {
 
   static final _headers = {'Content-Type': 'application/json'};
   static const _contactUrl = 'http://localhost:8080/#/contacts'; // URL to web API
+  static const _userUrl = 'http://localhost:8080/#/user'; // URL to web API
   final Client _http;
 
 
@@ -121,7 +122,12 @@ class ContactService {
   /*Contact find(String contactCode) {
     return Contact('Nickname','Surname','Name','Email','contactCode','Note');
   }*/
-  Contact find(String contactCode) {
+  Future<Contact> find(String contactCode) async{
+    final Response response =
+        await _http.get('$_userUrl/$contactCode');
+        final User user = User.fromJson(_extractData(response) as Map<String, String>);
+        return Contact(user.nickname, user.surname, user.name, user.email,
+            user.contactCode, "");
 
   }
 }

@@ -1,4 +1,6 @@
 import 'package:middleman/controller/appointment_controller.dart';
+import 'package:middleman/controller/contact_controller.dart';
+import 'package:middleman/controller/user_controller.dart';
 
 import 'middleman.dart';
 
@@ -48,6 +50,12 @@ class CalenderChannel extends ApplicationChannel {
     router
         .route('/appointments/lookup/[:year/[:month/[:day]]]')
         .link(() => AppointmentController(context));
+    router
+        .route('/user/[:con]')
+        .link(() => UserController(context));
+    router
+        .route('/contact/[:con]')
+        .link(() => ContactController(context));
     return router;
   }
 }

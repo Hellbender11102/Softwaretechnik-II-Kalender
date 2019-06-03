@@ -7,7 +7,7 @@ import 'package:demo/src/view/routes/routes.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
 import 'package:demo/src/view/services/contact_service.dart';
 import 'package:demo/src/view/services/dashboard_service.dart';
-import 'package:demo/src/view/services/user_service.dart';
+import 'package:demo/src/view/services/person_service.dart';
 
 import 'components/login_component.dart';
 

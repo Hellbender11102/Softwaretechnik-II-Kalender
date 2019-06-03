@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:demo/src/model/person.dart';
-import '../components/mock_users.dart';
 
 class UserService {
   // request to middlemand
@@ -10,7 +9,7 @@ class UserService {
 
   static final _headers = {'Content-Type': 'application/json'};
   static const _userUrl =
-      'http://localhost:8080/register'; // URL to web API
+      'http://localhost:8080/user'; // URL to web API
   final Client _http;
 
   ///Liest die Daten aus einer Response

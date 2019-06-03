@@ -5,15 +5,16 @@ abstract class Person {
   String surname;
   String name;
   String email;
-  String mobileNo;
   String contactCode;
 }
 
 class User extends Person {
   User(String contactCode, String nickname, String surname, String name,
-      String email, String password)
-      : password = password,
+      String email, String password, String mobileNo) :
+       password = password,
+       mobileNo = mobileNo,
         super(contactCode, nickname, surname, name, email);
+
 
   factory User.fromJson(Map<String, dynamic> user) => User(
       user['contactCode'] as String,
@@ -21,13 +22,15 @@ class User extends Person {
       user['surname'] as String,
       user['name'] as String,
       user['email'] as String,
-      user['password'] as String);
+      user['password'] as String,
+      user['mobileNo'] as String);
 
   // ggf persistente Daten von einer Service Routine
   final List<Contact> _contactlist = List();
 
   int id;
   String password;
+  String mobileNo;
 
   // Adds a single contact, no duplicate by contactcode
   void addContact(Contact con) {
