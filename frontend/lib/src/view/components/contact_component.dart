@@ -46,8 +46,7 @@ class ContactComponent implements OnActivate {
 
   /// Methode zum speichern, der änderungen die man im Termin vorgenommen hat
   Future<void> save() async {
-    contact.note = note;
-    //await _contactService.update(contact);
+    await _contactService.update(contact);
     goBack();
   }
 

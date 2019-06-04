@@ -70,13 +70,13 @@ class Contact extends Person {
     this.note = note;
   }
 
-  factory Contact.fromJson(Map<String, String> contact) => Contact(
-      contact['nickname'],
-      contact['surname'],
-      contact['name'],
-      contact['email'],
-      contact['contactCode'],
-      contact['note']);
+  factory Contact.fromJson(Map<String, dynamic> contact) => Contact(
+      contact['nickname'] as String,
+      contact['surname'] as String,
+      contact['name'] as String,
+      contact['email'] as String,
+      contact['contactCode'] as String,
+      contact['note'] as String);
 
   String note;
 
