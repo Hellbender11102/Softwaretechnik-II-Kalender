@@ -21,9 +21,9 @@ services:
     environment:
       - CAL_DB_HOST=postgres
       - CAL_DB_PORT=5432
-      - CAL_DB_USER=cal_user
+      - CAL_DB_USER=docker
       - CAL_DB_NAME=calendar
-      - CAL_DB_PASS=password
+      - CAL_DB_PASS=docker
 
   postgres:
     image: postgres
