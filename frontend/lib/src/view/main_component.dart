@@ -36,6 +36,4 @@ class AppComponent {
   }
 }
 // Connection Defaults soll später im Clienten einstellbar sein.
-String domain = "localhost";
-String port = ":8888";
-String url="http://"+domain+port;
+const host = const String.fromEnvironment("host");

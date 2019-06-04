@@ -1,12 +1,11 @@
 FROM google/dart:2.2 AS builder
 ENV PATH="${PATH}:/root/.pub-cache/bin"
 WORKDIR /root/build-here
-RUN pub global activate webdev
-COPY frontend/pubspec.yaml /root/build-here/
+COPY pubspec.yaml /root/build-here/
 RUN pub get
-COPY frontend/ /root/build-here/
-RUN pub get && webdev build --output web:build
-
+COPY . /root/build-here/
+RUN pub get
+RUN pub run build_runner build --output web:build --release
 FROM nginx
 EXPOSE 80
 RUN sed -i -e 's,   location / {,   location /calendar {,g' /etc/nginx/conf.d/default.conf; \

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:html';
 import 'dart:html';
 
+import 'package:demo/src/view/main_component.dart';
 import 'package:http/http.dart';
 import 'package:demo/src/model/appointment.dart';
 
@@ -11,8 +12,9 @@ class AppointmentService {
   AppointmentService(this._http);
 
   static final _headers = {'Content-Type': 'application/json'};
+
   static const _appointmentUrl =
-      'http://localhost:8888/appointments'; // URL to web API
+      host+'/appointments'; // URL to web API
   final Client _http;
 
   ///Liest die Daten aus einer Response

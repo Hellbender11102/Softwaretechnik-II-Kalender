@@ -55,7 +55,7 @@ class ContactListComponent implements OnInit, OnActivate {
 
   Future<NavigationResult> gotoDetail() =>_router.navigate(_contactUrl(selected.contactCode));
 
-  Future<void> addContact() async{
+  Future<void> addContact() async {
     await _contactService.create(await _contactService.find(contactCode));
   }
 
