@@ -1,9 +1,9 @@
 FROM google/dart:2.2 AS builder
 ENV PATH="${PATH}:/root/.pub-cache/bin"
 WORKDIR /root/build-here
-COPY frontend/pubspec.yaml /root/build-here/
+COPY pubspec.yaml /root/build-here/
 RUN pub get
-COPY frontend/ /root/build-here/
+COPY . /root/build-here/
 RUN pub get
 RUN pub run build_runner build --output web:build --release
 FROM nginx
