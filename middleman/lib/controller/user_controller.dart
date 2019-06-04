@@ -24,8 +24,8 @@ class UserController extends ResourceController {
     return Response.ok(user);
   }
 
-  @Operation.get('con')
-  Future<Response> getUserByID(@Bind.path('con') String con) async {
+  @Operation.get('number')
+  Future<Response> getUserByID(@Bind.path('number') String con) async {
     final userQuery = Query<User>(context)
       ..where((user) => user.contactCode).equalTo(con);
     final user = await userQuery.fetchOne();
@@ -40,8 +40,8 @@ class UserController extends ResourceController {
     return Response.ok(insertedUser);
   }
 
-  @Operation.delete("con")
-  Future<Response> deleteUser(@Bind.path('con') String con) async {
+  @Operation.delete("number")
+  Future<Response> deleteUser(@Bind.path('number') String con) async {
     final query = Query<User>(context)
       ..where((app) => app.contactCode).equalTo(con);
     int userdelete = await query.delete();

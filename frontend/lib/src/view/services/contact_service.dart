@@ -86,7 +86,7 @@ class ContactService {
       final response = await _http.post(_contactUrl,
           headers: _headers, body: json.encode(contact.toJson()));
       return Contact.fromJson(
-          _extractData(response) as Map<String, String>);
+          _extractData(response) as Map<String, dynamic>);
     } catch (e) {
       throw _handleError(e);
     }
@@ -126,7 +126,7 @@ class ContactService {
   Future<Contact> find(String contactCode) async{
     final Response response =
         await _http.get('$_userUrl/$contactCode');
-        final User user = User.fromJson(_extractData(response) as Map<String, String>);
+        final User user = User.fromJson(_extractData(response) as Map<String, dynamic>);
         return Contact(user.nickname, user.surname, user.name, user.email,
             user.contactCode, "");
 

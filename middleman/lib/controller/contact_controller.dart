@@ -20,8 +20,8 @@ class ContactController extends ResourceController {
     return Response.ok(contacts);
   }
 
-  @Operation.get('con')
-  Future<Response> getContactByID(@Bind.path('con') String id) async {
+  @Operation.get('number')
+  Future<Response> getContactByID(@Bind.path('number') String id) async {
     final contactQuery = Query<Contact>(context)
       ..where((contact) => contact.contactCode).equalTo(id);
     final contact = await contactQuery.fetchOne();
@@ -39,8 +39,8 @@ class ContactController extends ResourceController {
     return Response.ok(insertedContact);
   }
 
-  @Operation.delete("con")
-  Future<Response> deleteContact(@Bind.path('con') String id) async {
+  @Operation.delete("number")
+  Future<Response> deleteContact(@Bind.path('number') String id) async {
     final query = Query<Contact>(context)
       ..where((app) => app.contactCode).equalTo(id);
     int contactdelete = await query.delete();
