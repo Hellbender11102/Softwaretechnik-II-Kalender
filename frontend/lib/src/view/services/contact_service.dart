@@ -38,7 +38,7 @@ class ContactService {
       final response = await _http.put(url,
           headers: _headers, body: json.encode(contact));
       return Contact.fromJson(
-          _extractData(response) as Map<String, String>);
+          _extractData(response) as Map<String, dynamic>);
     } catch (e) {
       throw _handleError(e);
     }
@@ -52,7 +52,7 @@ class ContactService {
   Future<List<Contact>> getAll() async {
     final Response response = await _http.get('$_contactUrl');
     return (_extractData(response) as List)
-        .map((value) => Contact.fromJson(value as Map<String, String>))
+        .map((value) => Contact.fromJson(value as Map<String, dynamic>))
         .toList();
   }
 
@@ -68,7 +68,7 @@ class ContactService {
   Future<Contact> get(String contactCode) async {
     final Response response =
     await _http.get('$_contactUrl/$contactCode');
-    return Contact.fromJson(_extractData(response) as Map<String, String>);
+    return Contact.fromJson(_extractData(response) as Map<String, dynamic>);
   }
 
   ///Erstellt einen neuen Termin mit gegebenen Namen
