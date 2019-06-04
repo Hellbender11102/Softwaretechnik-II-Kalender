@@ -11,7 +11,7 @@ targets:
           dart2js_args:
             - --minify
             - -O2
-            - -Dhost=name
+            - -Dhost=http://localhost:8888/
         release_options:
           dart2js_args:
             - --minify
