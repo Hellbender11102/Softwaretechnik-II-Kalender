@@ -1,12 +1,14 @@
 class Appointment {
   // constructor
-  Appointment(this.id, this.name, this.year, this.month, this.day, this.time,
+  Appointment(this.id,this.contactCodes, this.name, this.year, this.month, this.day, this.time,
       this.duration, this.location);
+
   // leeres Appointment
   Appointment.zero();
 
   factory Appointment.fromJson(Map<String, dynamic> appointment) => Appointment(
       _toInt(appointment['id']),
+      appointment['contactCodes'] as List<String>,
       appointment['name'] as String,
       appointment['year'] as int,
       appointment['month'] as int,
@@ -15,6 +17,7 @@ class Appointment {
       appointment['duration'] as String,
       appointment['location'] as String);
 
+  List<String> contactCodes;
   int id;
   String name;
   int year;
@@ -25,6 +28,7 @@ class Appointment {
   String location;
 
   Map toJson() => {
+        'contactCodes': contactCodes,
         'name': name,
         'year': year,
         'month': month,

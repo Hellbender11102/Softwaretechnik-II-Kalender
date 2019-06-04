@@ -5,6 +5,7 @@ import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
 
 import 'package:demo/src/model/person.dart';
+import 'package:demo/src/view/components/login_component.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/contact_service.dart';
 
@@ -16,7 +17,7 @@ import 'package:demo/src/view/services/contact_service.dart';
 )
 
 ///Klasse zum anzeigen aller contacte
-class ContactListComponent implements OnInit {
+class ContactListComponent implements OnInit, OnActivate {
   ContactListComponent(this._contactService, this._router);
 
   final ContactService _contactService;
@@ -30,7 +31,7 @@ class ContactListComponent implements OnInit {
 
   ///Methode die eine Liste aller appointments zurückgibt
   Future<void> _getContacts() async {
-    contacts = await list;
+    contacts = await _contactService.getAll();
   }
 
   /*Future<void> add(String name) async {
@@ -52,11 +53,17 @@ class ContactListComponent implements OnInit {
 
   ///Methode die den ausgewählten contact aufruft
 
-  Future<NavigationResult> gotoDetail() {
-    _router.navigate(_contactUrl(selected.contactCode));
-  }
+  Future<NavigationResult> gotoDetail() =>_router.navigate(_contactUrl(selected.contactCode));
+
   Future<void> addContact() async{
-    list.add(_contactService.find(contactCode));
+    await _contactService.create(await _contactService.find(contactCode));
+  }
+
+  @override
+  Future onActivate(RouterState previous, RouterState current) async {
+    if (!LoginComponent.loggedIn) {
+      await _router.navigate('/login');
+    }
   }
 
 }

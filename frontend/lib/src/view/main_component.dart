@@ -7,13 +7,13 @@ import 'package:demo/src/view/routes/routes.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
 import 'package:demo/src/view/services/contact_service.dart';
 import 'package:demo/src/view/services/dashboard_service.dart';
-import 'package:demo/src/view/services/user_service.dart';
+import 'package:demo/src/view/services/person_service.dart';
 
 import 'components/login_component.dart';
 
 @Component(
   selector: 'my-cal',
-  styleUrls:['default.css','theme-672-1024.css'],
+  styleUrls:['desktop.css','theme-672-1024.css','mobile.css'],
   templateUrl: 'main_component.html',
   directives: [routerDirectives],
   providers: [
