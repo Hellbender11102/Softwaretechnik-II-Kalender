@@ -6,6 +6,10 @@ abstract class Person {
   String name;
   String email;
   String contactCode;
+
+  bool equals(Person per){
+    return(this.nickname == per.nickname && this.surname == per.surname && this.email == per.email && this.name == per.name && this.contactCode == per.contactCode);
+  }
 }
 
 class User extends Person {

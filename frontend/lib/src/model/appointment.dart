@@ -27,12 +27,13 @@ class Appointment {
   String duration = "";
   String location;
 
-  Map toJson() => {
+  Map<String,dynamic> toJson() => {
+        'id' : id,
         'contactCodes': contactCodes,
         'name': name,
         'year': year,
         'month': month,
-        "day": day,
+        'day': day,
         'time': time,
         'duration': duration,
         'location': location
@@ -49,6 +50,9 @@ class Appointment {
   String get date {
     return "$year-$month-$day";
   }
-}
 
+  bool equals(Appointment appoint){
+    return (appoint.id == this.id && appoint.location == this.location && appoint.date == this.date && appoint.name == this.name && this.duration == appoint.duration && appoint.time == this.time);
+  }
+}
 int _toInt(id) => id is int ? id : int.parse(id as String);
