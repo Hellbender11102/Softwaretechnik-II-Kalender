@@ -101,12 +101,6 @@ class Migration1 extends Migration {
     ]));
 
     database.createTable(SchemaTable("_Contact", [
-      SchemaColumn("contactCode", ManagedPropertyType.string,
-          isPrimaryKey: true,
-          autoincrement: false,
-          isIndexed: false,
-          isNullable: true,
-          isUnique: false),
       SchemaColumn("nickname", ManagedPropertyType.string,
           isPrimaryKey: false,
           autoincrement: false,
@@ -131,7 +125,13 @@ class Migration1 extends Migration {
           isIndexed: false,
           isNullable: false,
           isUnique: true),
-      SchemaColumn("password", ManagedPropertyType.string,
+      SchemaColumn("contactCode", ManagedPropertyType.string,
+          isPrimaryKey: true,
+          autoincrement: false,
+          isIndexed: false,
+          isNullable: true,
+          isUnique: false),
+      SchemaColumn("note", ManagedPropertyType.string,
           isPrimaryKey: false,
           autoincrement: false,
           isIndexed: false,
