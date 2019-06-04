@@ -56,7 +56,7 @@
     final _contacts = [
     {
       "nickname": "dude",
-      "surename": "eins",
+      "surname": "eins",
       "name": "zwei",
       "email": "hallo@hallo.gmx.de",
       "contactCode": "abcd",
@@ -78,10 +78,10 @@
 
     _contacts.forEach((Map<String, String> map) async =>
     await database.store.execute(
-        "INSERT INTO _Appointment (nickname,surename,name,email,contactCode,note) VALUES (@nickname,@surename,@name,@email,@contactCode,@note)",
+        "INSERT INTO _Appointment (nickname,surname,name,email,contactCode,note) VALUES (@nickname,@surname,@name,@email,@contactCode,@note)",
         substitutionValues: {
           "nickname": map['nickname'],
-          "surename": map['surename'],
+          "surname": map['surname'],
           "name": map['name'],
           "email": map['email'],
           "contactCode": map['contactCode'],

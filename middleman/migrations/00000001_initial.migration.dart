@@ -61,9 +61,15 @@ class Migration1 extends Migration {
           isIndexed: false,
           isNullable: false,
           isUnique: true),
-      SchemaColumn("contactCode", ManagedPropertyType.bigInteger,
+      SchemaColumn("id", ManagedPropertyType.bigInteger,
           isPrimaryKey: true,
           autoincrement: true,
+          isIndexed: false,
+          isNullable: false,
+          isUnique: false),
+      SchemaColumn("contactCode", ManagedPropertyType.string,
+          isPrimaryKey: false,
+          autoincrement: false,
           isIndexed: false,
           isNullable: false,
           isUnique: false),
@@ -105,9 +111,15 @@ class Migration1 extends Migration {
           isIndexed: false,
           isNullable: false,
           isUnique: true),
-      SchemaColumn("contactCode", ManagedPropertyType.bigInteger,
+      SchemaColumn("id", ManagedPropertyType.bigInteger,
           isPrimaryKey: true,
           autoincrement: true,
+          isIndexed: false,
+          isNullable: false,
+          isUnique: false),
+      SchemaColumn("contactCode", ManagedPropertyType.string,
+          isPrimaryKey: false,
+          autoincrement: false,
           isIndexed: false,
           isNullable: false,
           isUnique: false),
@@ -137,9 +149,15 @@ class Migration1 extends Migration {
           isUnique: true)
     ]));
     database.createTable(SchemaTable("_Person", [
-      SchemaColumn("contactCode", ManagedPropertyType.bigInteger,
+      SchemaColumn("id", ManagedPropertyType.bigInteger,
           isPrimaryKey: true,
           autoincrement: true,
+          isIndexed: false,
+          isNullable: false,
+          isUnique: false),
+      SchemaColumn("contactCode", ManagedPropertyType.string,
+          isPrimaryKey: false,
+          autoincrement: false,
           isIndexed: false,
           isNullable: false,
           isUnique: false),
@@ -175,6 +193,29 @@ class Migration1 extends Migration {
 
   @override
   Future seed() async {
+
+    final _contacts = [
+      {
+        "nickname": "dude",
+        "surname": "eins",
+        "name": "zwei",
+        "email": "hallo@hallo.gmx.de",
+        "contactCode": "abcd",
+        "note": "12:00",
+      }];
+
+
+    _contacts.forEach((Map<String, String> map) async =>
+    await database.store.execute(
+        "INSERT INTO _Contact (nickname,surname,name,email,contactCode,note) VALUES (@nickname,@surname,@name,@email,@contactCode,@note)",
+        substitutionValues: {
+          "nickname": map['nickname'],
+          "surname": map['surname'],
+          "name": map['name'],
+          "email": map['email'],
+          "contactCode": map['contactCode'],
+          "note": map['note']
+        }));
 
   }
 }

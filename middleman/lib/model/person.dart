@@ -8,6 +8,9 @@ class Contact extends ManagedObject<_Contact> implements _Contact {}
 abstract class _Person {
 
   @primaryKey
+  int id;
+
+  @Column(unique: false)
   String contactCode;
 
   @Column(unique: false)
