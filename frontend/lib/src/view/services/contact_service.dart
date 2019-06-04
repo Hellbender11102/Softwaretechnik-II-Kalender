@@ -10,7 +10,7 @@ class ContactService {
   ContactService(this._http);
 
   static final _headers = {'Content-Type': 'application/json'};
-  static const _userUrl = host+'/user'; // URL to web API
+  static const _userUrl = host+'/users'; // URL to web API
   static const _contactUrl = host+'/contacts'; // URL to web API
   final Client _http;
 
