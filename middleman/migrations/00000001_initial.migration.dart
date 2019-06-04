@@ -55,7 +55,6 @@ class Migration1 extends Migration {
           isUnique: false)
     ]));
 
-
     database.createTable(SchemaTable("_User", [
       SchemaColumn("contactCode", ManagedPropertyType.string,
           isPrimaryKey: true,

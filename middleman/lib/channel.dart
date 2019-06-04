@@ -54,7 +54,7 @@ class CalenderChannel extends ApplicationChannel {
         .route('/user/[:con]')
         .link(() => UserController(context));
     router
-        .route('/contact/[:con]')
+        .route('/contacts/[:con]')
         .link(() => ContactController(context));
     return router;
   }
