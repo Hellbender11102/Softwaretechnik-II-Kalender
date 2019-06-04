@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:demo/src/view/main_component.dart';
 import 'package:http/http.dart';
 import 'package:demo/src/model/person.dart';
 import '../components/mock_users.dart';
@@ -9,7 +10,7 @@ class UserService {
   UserService(this._http);
 
   static final _headers = {'Content-Type': 'application/json'};
-  static const _registerUrl = 'http://localhost:8080/register'; // URL to web API
+  static const _registerUrl =host+'register'; // URL to web API
   final Client _http;
 
 
@@ -25,7 +26,7 @@ class UserService {
     try {
       final response = await _http.post(_registerUrl,
           headers: _headers, body: json.encode({'id': id, 'nickname': nickname,'email': email, 'password': password}));
-      return User.fromJson(_extractData(response) as Map<int, String>);
+      return User.fromJson(_extractData(response) as Map<String, dynamic>);
     } catch (e) {
       throw _handleError(e);
     }
