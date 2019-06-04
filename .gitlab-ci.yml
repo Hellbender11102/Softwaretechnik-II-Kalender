@@ -12,9 +12,6 @@ before_script:
 build:
   stage: build
   script:
-    - docker build -t $IMAGE_TAG frontend/
-    - docker push $IMAGE_TAG
-    - docker build -t $IMAGE_TAG-mm -f Dockerfile middleman/
-    - docker push $IMAGE_TAG-mm
+    - docker-compose build
 
 
