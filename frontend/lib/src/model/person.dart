@@ -78,7 +78,7 @@ class Contact extends Person {
       contact['contactCode'],
       contact['note']);
 
-  String contactCode, note;
+  String note;
 
   Map toJson() => {
         'nickname': nickname,
