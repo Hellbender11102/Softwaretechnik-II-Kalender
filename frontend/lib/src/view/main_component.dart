@@ -36,4 +36,4 @@ class AppComponent {
   }
 }
 // Connection Defaults soll später im Clienten einstellbar sein.
-const host = const String.fromEnvironment("host");
+const host = const String.fromEnvironment("host",defaultValue : "http://localhost:8888");

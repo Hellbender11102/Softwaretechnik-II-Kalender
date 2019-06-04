@@ -13,8 +13,7 @@ class AppointmentService {
 
   static final _headers = {'Content-Type': 'application/json'};
 
-  static const _appointmentUrl =
-      host+'/appointments'; // URL to web API
+  static const _appointmentUrl = host + '/appointments'; // URL to web API
   final Client _http;
 
   ///Liest die Daten aus einer Response
@@ -55,7 +54,8 @@ class AppointmentService {
 
   Future<List<Appointment>> getByDate(int year, int month, [int day]) async {
     final Response response = (day != null)
-        ? await _http.get('$_appointmentUrl/lookup/$year/$month/$day') as Response
+        ? await _http.get('$_appointmentUrl/lookup/$year/$month/$day')
+            as Response
         : await _http.get('$_appointmentUrl/lookup/$year/$month') as Response;
     return (_extractData(response) as List)
         .map((value) => Appointment.fromJson(value as Map<String, dynamic>))
@@ -73,27 +73,24 @@ class AppointmentService {
 
   ///Erstellt einen neuen Termin mit gegebenen Namen
   Future<Appointment> create(Appointment appointment) async {
-    try {
-      final response = await _http.post(_appointmentUrl,
-          headers: _headers, body: json.encode(appointment.toJson()));
-      return Appointment.fromJson(
-          _extractData(response as Response) as Map<String, dynamic>);
-    } catch (e) {
-      throw _handleError(e);
-    }
+    final response = await _http.post(_appointmentUrl,
+        headers: _headers, body: json.encode(appointment.toJson()));
+    return Appointment.fromJson(
+        _extractData(response as Response) as Map<String, dynamic>);
   }
 
   Future<List<Appointment>> search(String term) async {
     try {
       final response = await _http.get('$_appointmentUrl');
-      final List<Appointment> appointments = (_extractData(response as Response) as List)
-          .map((json) => Appointment.fromJson(json as Map<String, dynamic>))
-          .toList();
-      appointments.retainWhere((h) => h.name.toLowerCase().contains(term.toLowerCase()));
+      final List<Appointment> appointments =
+          (_extractData(response as Response) as List)
+              .map((json) => Appointment.fromJson(json as Map<String, dynamic>))
+              .toList();
+      appointments.retainWhere(
+          (h) => h.name.toLowerCase().contains(term.toLowerCase()));
       return appointments;
     } catch (e) {
       throw _handleError(e);
     }
-
   }
 }

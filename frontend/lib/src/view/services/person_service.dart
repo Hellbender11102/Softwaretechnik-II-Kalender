@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:demo/src/view/main_component.dart';
 import 'package:http/http.dart';
 import 'package:demo/src/model/person.dart';
 
@@ -9,7 +10,7 @@ class UserService {
 
   static final _headers = {'Content-Type': 'application/json'};
   static const _userUrl =
-      'http://localhost:8080/user'; // URL to web API
+      host+'/user'; // URL to web API
   final Client _http;
 
   ///Liest die Daten aus einer Response
