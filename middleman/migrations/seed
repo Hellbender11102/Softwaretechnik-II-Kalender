@@ -53,18 +53,39 @@
       },
     ];
 
-    _appointments.forEach((Map<String, dynamic> map) async => await database
-            .store
-            .execute("INSERT INTO _Appointment (name,time,date,duration,location) VALUES (@name,@time,@date,@duration,@location)",
-                substitutionValues: {
+    final _contacts = [
+    {
+      "nickname": "dude",
+      "surename": "eins",
+      "name": "zwei",
+      "email": "hallo@hallo.gmx.de",
+      "contactCode": "abcd",
+      "note": "12:00",
+    }];
+
+    _appointments.forEach((Map<String, dynamic> map) async =>
+        await database.store.execute(
+            "INSERT INTO _Appointment (name,time,year,month,day,duration,location) VALUES (@name,@time,@year,@month,@day,@duration,@location)",
+            substitutionValues: {
               "name": map['name'],
               "time": map['time'],
-              "year": map['date'],
-              "month": map['date'],
-              "day": map['date'],
+              "year": map['year'],
+              "month": map['month'],
+              "day": map['day'],
               "duration": map['duration'],
               "location": map['location'],
             }));
 
+    _contacts.forEach((Map<String, String> map) async =>
+    await database.store.execute(
+        "INSERT INTO _Appointment (nickname,surename,name,email,contactCode,note) VALUES (@nickname,@surename,@name,@email,@contactCode,@note)",
+        substitutionValues: {
+          "nickname": map['nickname'],
+          "surename": map['surename'],
+          "name": map['name'],
+          "email": map['email'],
+          "contactCode": map['contactCode'],
+          "note": map['note']
+        }));
 
   }

@@ -55,6 +55,45 @@ class Migration1 extends Migration {
           isUnique: false)
     ]));
 
+    database.createTable(SchemaTable("_Contact", [
+      SchemaColumn("nickname", ManagedPropertyType.string,
+          isPrimaryKey: false,
+          autoincrement: false,
+          isIndexed: false,
+          isNullable: false,
+          isUnique: false),
+      SchemaColumn("surename", ManagedPropertyType.string,
+          isPrimaryKey: false,
+          autoincrement: false,
+          isIndexed: false,
+          isNullable: false,
+          isUnique: false),
+      SchemaColumn("name", ManagedPropertyType.string,
+          isPrimaryKey: false,
+          autoincrement: false,
+          isIndexed: false,
+          isNullable: false,
+          isUnique: false),
+      SchemaColumn("email", ManagedPropertyType.string,
+          isPrimaryKey: false,
+          autoincrement: false,
+          isIndexed: false,
+          isNullable: false,
+          isUnique: true),
+      SchemaColumn("contactCode", ManagedPropertyType.string,
+          isPrimaryKey: true,
+          autoincrement: false,
+          isIndexed: false,
+          isNullable: true,
+          isUnique: false),
+      SchemaColumn("note", ManagedPropertyType.string,
+          isPrimaryKey: false,
+          autoincrement: false,
+          isIndexed: false,
+          isNullable: false,
+          isUnique: false)
+    ]));
+
     database.createTable(SchemaTable("_User", [
       SchemaColumn("contactCode", ManagedPropertyType.string,
           isPrimaryKey: true,
@@ -93,45 +132,6 @@ class Migration1 extends Migration {
           isNullable: false,
           isUnique: false),
       SchemaColumn("mobileNo", ManagedPropertyType.string,
-          isPrimaryKey: false,
-          autoincrement: false,
-          isIndexed: false,
-          isNullable: false,
-          isUnique: false)
-    ]));
-
-    database.createTable(SchemaTable("_Contact", [
-      SchemaColumn("nickname", ManagedPropertyType.string,
-          isPrimaryKey: false,
-          autoincrement: false,
-          isIndexed: false,
-          isNullable: false,
-          isUnique: false),
-      SchemaColumn("surename", ManagedPropertyType.string,
-          isPrimaryKey: false,
-          autoincrement: false,
-          isIndexed: false,
-          isNullable: false,
-          isUnique: false),
-      SchemaColumn("name", ManagedPropertyType.string,
-          isPrimaryKey: false,
-          autoincrement: false,
-          isIndexed: false,
-          isNullable: false,
-          isUnique: false),
-      SchemaColumn("email", ManagedPropertyType.string,
-          isPrimaryKey: false,
-          autoincrement: false,
-          isIndexed: false,
-          isNullable: false,
-          isUnique: true),
-      SchemaColumn("contactCode", ManagedPropertyType.string,
-          isPrimaryKey: true,
-          autoincrement: false,
-          isIndexed: false,
-          isNullable: true,
-          isUnique: false),
-      SchemaColumn("note", ManagedPropertyType.string,
           isPrimaryKey: false,
           autoincrement: false,
           isIndexed: false,
@@ -198,6 +198,16 @@ class Migration1 extends Migration {
       },
     ];
 
+    final _contacts = [
+    {
+      "nickname": "dude",
+      "surename": "eins",
+      "name": "zwei",
+      "email": "hallo@hallo.gmx.de",
+      "contactCode": "abcd",
+      "note": "12:00",
+    }];
+
     _appointments.forEach((Map<String, dynamic> map) async =>
         await database.store.execute(
             "INSERT INTO _Appointment (name,time,year,month,day,duration,location) VALUES (@name,@time,@year,@month,@day,@duration,@location)",
@@ -210,5 +220,17 @@ class Migration1 extends Migration {
               "duration": map['duration'],
               "location": map['location'],
             }));
+
+    _contacts.forEach((Map<String, String> map) async =>
+    await database.store.execute(
+        "INSERT INTO _Appointment (nickname,surename,name,email,contactCode,note) VALUES (@nickname,@surename,@name,@email,@contactCode,@note)",
+        substitutionValues: {
+          "nickname": map['nickname'],
+          "surename": map['surename'],
+          "name": map['name'],
+          "email": map['email'],
+          "contactCode": map['contactCode'],
+          "note": map['note']
+        }));
   }
 }
