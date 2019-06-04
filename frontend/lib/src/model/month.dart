@@ -1,4 +1,3 @@
-import 'dart:js';
 
 import 'package:demo/src/model/day.dart';
 
@@ -19,10 +18,10 @@ class Month {
     // 6 * 7 Tage
     while (count < 7) {
       // adds a day on top now again from top
-      DateTime time = DateTime.utc(year, month , k);
+      final DateTime time = DateTime.utc(year, month , k);
       count++;
       k++;
-      yield Day(count,time.year,time.month,time.day);
+      yield Day(time.year,time.month,time.day);
     }
   }
 

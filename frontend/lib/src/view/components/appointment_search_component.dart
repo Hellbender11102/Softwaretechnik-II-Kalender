@@ -6,7 +6,7 @@ import 'package:stream_transform/stream_transform.dart';
 
 import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
-import 'package:demo/src/view/services/appointment_search_service.dart';
+import 'package:demo/src/view/services/appointment_service.dart';
 
 
 @Component(
@@ -14,14 +14,14 @@ import 'package:demo/src/view/services/appointment_search_service.dart';
   templateUrl: 'appointment_search_component.html',
   styleUrls: ['appointment_search_component.css'],
   directives: [coreDirectives],
-  providers: [ClassProvider(AppointmentSearchService)],
+  providers: [ClassProvider(AppointmentService)],
   pipes: [commonPipes],
 )
 class AppointmentSearchComponent implements OnInit {
 
-  AppointmentSearchComponent(this._appointmentSearchService, this._router) {}
+  AppointmentSearchComponent(this._appointmentService, this._router);
 
-  AppointmentSearchService _appointmentSearchService;
+  AppointmentService _appointmentService;
   Router _router;
 
   Stream<List<Appointment>> appointments;
@@ -38,7 +38,7 @@ class AppointmentSearchComponent implements OnInit {
         .distinct()
         .transform(switchMap((term) => term.isEmpty
         ? Stream<List<Appointment>>.fromIterable([<Appointment>[]])
-        : _appointmentSearchService.search(term).asStream()))
+        : _appointmentService.search(term).asStream()))
         .handleError(print);
   }
 

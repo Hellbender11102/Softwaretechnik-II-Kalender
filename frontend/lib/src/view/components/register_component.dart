@@ -2,7 +2,8 @@ import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/components/login_component.dart';
-import 'package:demo/src/view/services/register_service.dart';
+import 'package:demo/src/view/services/person_service.dart';
+import 'package:demo/src/view/services/person_service.dart';
 
 import '../../model/person.dart';
 import 'mock_users.dart';
@@ -19,16 +20,14 @@ class RegisterComponent implements OnInit, OnActivate {
   RegisterComponent(this._registerService, this._router);
 
   final Router _router;
-  final RegisterService _registerService;
-  User user = User(1, "", "", "", "", "");
+  final UserService _registerService;
+  User user = User("cc2", "", "", "", "", "", "");
 
 
   Future<void> register() async {
-    final int id = mockUsers.last.id +1;
-    user.id = id;
-    mockUsers.add(user);
+    //mockUsers.add(user);
     print(user.toString());
-    await _registerService.update(user/*.id, user.nickname, user.email, user.password*/); //.create()
+    await _registerService.create(user/*.id, user.nickname, user.email, user.password*/); //.create()
     await _router.navigate('/login');
   }
 

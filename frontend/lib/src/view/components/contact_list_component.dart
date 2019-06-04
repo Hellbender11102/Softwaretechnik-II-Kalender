@@ -31,7 +31,7 @@ class ContactListComponent implements OnInit, OnActivate {
 
   ///Methode die eine Liste aller appointments zurückgibt
   Future<void> _getContacts() async {
-    contacts = await list;
+    contacts = await _contactService.getAll();
   }
 
   /*Future<void> add(String name) async {
@@ -53,11 +53,10 @@ class ContactListComponent implements OnInit, OnActivate {
 
   ///Methode die den ausgewählten contact aufruft
 
-  Future<NavigationResult> gotoDetail() {
-    _router.navigate(_contactUrl(selected.contactCode));
-  }
-  Future<void> addContact() async{
-    list.add(_contactService.find(contactCode));
+  Future<NavigationResult> gotoDetail() =>_router.navigate(_contactUrl(selected.contactCode));
+
+  Future<void> addContact() async {
+    await _contactService.create(await _contactService.find(contactCode));
   }
 
   @override

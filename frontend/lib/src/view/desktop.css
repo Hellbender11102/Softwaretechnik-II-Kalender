@@ -59,6 +59,7 @@ colors to use if possible (descending) :
         min-height: 20px;
         border-bottom: 1px solid var(--color-darkness-1);
         background: var(--color-darkness-2);
+        cursor: pointer;
     }
     innerContainer {
         padding-left: 10px;

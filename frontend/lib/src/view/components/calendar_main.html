@@ -7,32 +7,32 @@
         </tr>
         <tr>
             <td *ngFor="let day of month.weekOfMonth(0)" (click)="gotoDetail(day)">{{day.day}}
-                <div class="appointmentNotifier">{{appointments.length}}</div>
+                <div class="appointmentNotifier">{{daysAppointments(day)}}</div>
             </td>
         </tr>
         <tr>
             <td *ngFor="let day of month.weekOfMonth(1)" (click)="gotoDetail(day)">{{day.day}}
-                <div class="appointmentNotifier">{{appointments.length}}</div>
+                <div class="appointmentNotifier">{{daysAppointments(day)}}</div>
             </td>
         </tr>
         <tr>
             <td *ngFor="let day of month.weekOfMonth(2)" (click)="gotoDetail(day)">{{day.day}}
-                <div class="appointmentNotifier">{{appointments.length}}</div>
+                <div class="appointmentNotifier">{{daysAppointments(day)}}</div>
             </td>
         </tr>
         <tr>
             <td *ngFor="let day of month.weekOfMonth(3)" (click)="gotoDetail(day)">{{day.day}}
-                <div class="appointmentNotifier">{{appointments.length}}</div>
+                <div class="appointmentNotifier">{{daysAppointments(day)}}</div>
             </td>
         </tr>
         <tr>
             <td *ngFor="let day of month.weekOfMonth(4)" (click)="gotoDetail(day)">{{day.day}}
-                <div class="appointmentNotifier">{{appointments.length}}</div>
+                <div class="appointmentNotifier">{{daysAppointments(day)}}</div>
             </td>
         </tr>
         <tr>
             <td *ngFor="let day of month.weekOfMonth(5)" (click)="gotoDetail(day)">{{day.day}}
-                <div class="appointmentNotifier">{{appointments.length}}</div>
+                <div class="appointmentNotifier">{{daysAppointments(day)}}</div>
             </td>
         </tr>
     </table>

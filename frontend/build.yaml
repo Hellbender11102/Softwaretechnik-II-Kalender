@@ -1,0 +1,18 @@
+targets:
+  $default:
+    builders:
+      build_web_compilers|entrypoint:
+        # These are globs for the entrypoints you want to compile.
+        generate_for:
+          - web/main.dart
+        options:
+          compiler: dart2js
+          # List any dart2js specific args here, or omit it.
+          dart2js_args:
+            - --minify
+            - -O2
+            - -Dhost=http://localhost:8888/
+        release_options:
+          dart2js_args:
+            - --minify
+            - -Dhost=https://projects.mylab.th-luebeck.de:443/calendar/mm

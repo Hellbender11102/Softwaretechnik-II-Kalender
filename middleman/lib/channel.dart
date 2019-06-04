@@ -1,4 +1,6 @@
 import 'package:middleman/controller/appointment_controller.dart';
+import 'package:middleman/controller/contact_controller.dart';
+import 'package:middleman/controller/user_controller.dart';
 
 import 'middleman.dart';
 
@@ -17,16 +19,17 @@ class CalenderChannel extends ApplicationChannel {
   /// This method is invoked prior to [entryPoint] being accessed.
   @override
   Future prepare() async {
-    logger.onRecord.listen((rec) => print("$rec ${rec.error ?? ""} ${rec.stackTrace ?? ""}"));
+    logger.onRecord.listen(
+        (rec) => print("$rec ${rec.error ?? ""} ${rec.stackTrace ?? ""}"));
 
     final config = CalenderConfig(options.configurationFilePath);
     final dataModel = ManagedDataModel.fromCurrentMirrorSystem();
     final persistentStore = PostgreSQLPersistentStore.fromConnectionInfo(
-      config.database.username,
-      config.database.password,
-      config.database.host,
-      config.database.port,
-      config.database.databaseName);
+        config.database.username,
+        config.database.password,
+        config.database.host,
+        config.database.port,
+        config.database.databaseName);
 
     context = ManagedContext(dataModel, persistentStore);
   }
@@ -42,14 +45,23 @@ class CalenderChannel extends ApplicationChannel {
     final router = Router();
 
     router
-      .route('/appointments/[:id]')
-      .link(() => AppointmentController(context));
+        .route('/appointments/[:id]')
+        .link(() => AppointmentController(context));
+    router
+        .route('/appointments/lookup/[:year/[:month/[:day]]]')
+        .link(() => AppointmentController(context));
+    router
+        .route('/user/[:con]')
+        .link(() => UserController(context));
+    router
+        .route('/contact/[:con]')
+        .link(() => ContactController(context));
     return router;
   }
 }
 
 class CalenderConfig extends Configuration {
-  CalenderConfig(String path): super.fromFile(File(path));
+  CalenderConfig(String path) : super.fromFile(File(path));
 
   DatabaseConfiguration database;
 }
