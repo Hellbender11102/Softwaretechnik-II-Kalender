@@ -55,22 +55,22 @@
 
     final _contacts = [
       {
-        "nickname": "dude",
-        "surname": "eins",
-        "name": "zwei",
+        "nickname": "marius",
+        "surname": "Marius",
+        "name": "Mauritz",
         "email": "hallo@hallo.gmx.de",
-        "contactCode": "abcd",
-        "note": "12:00"
+        "contactCode": "ContactCode1",
+        "note": "Datenbank experte"
       },
       {
-        "nickname": "mate",
-        "surname": "funf",
-        "name": "sechs",
+        "nickname": "lauri",
+        "surname": "Laurenz",
+        "name": "Schindler",
         "email": "hello@world.gmx.de",
-        "contactCode": "efgh",
-        "note": "test"
+        "contactCode": "ContactCode2",
+        "note": "voll der pro"
       }
-      ];
+    ];
 
     final _users = [
       {
@@ -122,3 +122,4 @@
         }));
 
   }
+}

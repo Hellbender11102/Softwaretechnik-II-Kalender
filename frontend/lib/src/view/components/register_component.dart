@@ -2,6 +2,7 @@ import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/components/login_component.dart';
+import 'package:demo/src/view/components/mock_users.dart';
 import 'package:demo/src/view/services/person_service.dart';
 
 import '../../model/person.dart';
@@ -23,7 +24,7 @@ class RegisterComponent implements OnInit, OnActivate {
 
 
   Future<void> register() async {
-    //mockUsers.add(user);
+    mockUsers.add(user);
     await _registerService.create(user);
     await _router.navigate('/login');
   }
