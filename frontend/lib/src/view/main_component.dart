@@ -28,6 +28,7 @@ class AppComponent {
 
   final String title = 'innerComponent';
 
+
   //todo muss raus hier
   static bool showButtons = false;
   void logout() {
@@ -36,4 +37,5 @@ class AppComponent {
   }
 }
 // Connection Defaults soll später im Clienten einstellbar sein.
-const host = const String.fromEnvironment("host",defaultValue : "http://localhost:8888");
+// ignore: type_annotate_public_apis
+const host =  String.fromEnvironment("host",defaultValue : "http://localhost:8888");
