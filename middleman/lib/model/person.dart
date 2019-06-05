@@ -1,13 +1,16 @@
 import 'package:middleman/middleman.dart';
 
 class Person extends ManagedObject<_Person> implements _Person {}
-class Contact extends ManagedObject<_Contact> implements _Contact {}
 class User extends ManagedObject<_User> implements _User {}
+class Contact extends ManagedObject<_Contact> implements _Contact {}
 
 
 abstract class _Person {
 
   @primaryKey
+  int id;
+
+  @Column(unique: false)
   String contactCode;
 
   @Column(unique: false)
@@ -26,8 +29,15 @@ abstract class _Person {
 
 }
 
-class _User extends _Person
-{
+class _Contact extends _Person{
+
+  @Column(unique: true)
+  String note;
+
+}
+
+class _User extends _Person {
+
   @Column(unique: false)
   String password;
 
@@ -36,9 +46,3 @@ class _User extends _Person
 
 }
 
-class _Contact extends _Person{
-
-  @Column(unique: true)
-  String note;
-
-}

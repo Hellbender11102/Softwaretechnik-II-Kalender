@@ -1,26 +1,24 @@
 abstract class Person {
-  Person(this.contactCode, this.nickname, this.surname, this.name, this.email);
+  Person(this.id, this.contactCode, this.nickname, this.surname, this.name,
+      this.email);
 
+  int id;
   String nickname;
   String surname;
   String name;
   String email;
   String contactCode;
-
-  bool equals(Person per){
-    return this.nickname == per.nickname && this.surname == per.surname && this.email == per.email && this.name == per.name && this.contactCode == per.contactCode;
-  }
 }
 
 class User extends Person {
-  User(String contactCode, String nickname, String surname, String name,
-      String email, String password, String mobileNo) :
-       password = password,
-       mobileNo = mobileNo,
-        super(contactCode, nickname, surname, name, email);
-
+  User(int id, String contactCode, String nickname, String surname, String name,
+      String email, String password, String mobileNo)
+      : password = password,
+        mobileNo = mobileNo,
+        super(id, contactCode, nickname, surname, name, email);
 
   factory User.fromJson(Map<String, dynamic> user) => User(
+      user['id'] as int,
       user['contactCode'] as String,
       user['nickname'] as String,
       user['surname'] as String,
@@ -52,7 +50,8 @@ class User extends Person {
   // removes multiple Contacts
   void rmvAllContacts(List<Contact> list) => list.forEach(rmvContact);
 
-  Map<String,dynamic> toJson() => {
+  Map toJson() => {
+        'id': id,
         'contactCode': contactCode,
         'nickname': nickname,
         'surname': surname,
@@ -61,18 +60,21 @@ class User extends Person {
         'password': password
       };
 
+  // gets all of the ENDBENUTZER Contacts
+  Map<String, Contact> getMyContacts() {}
 }
 
 int _toInt(id) => id is int ? id : int.parse(id as String);
 
 class Contact extends Person {
-  Contact(String nickname, String surname, String name, String email,
+  Contact(int id, String nickname, String surname, String name, String email,
       String contactCode, String note)
-      : super(contactCode,nickname, surname, name, email) {
+      : super(id, contactCode, nickname, surname, name, email) {
     this.note = note;
   }
 
   factory Contact.fromJson(Map<String, dynamic> contact) => Contact(
+      contact['id'] as int,
       contact['nickname'] as String,
       contact['surname'] as String,
       contact['name'] as String,
@@ -82,7 +84,8 @@ class Contact extends Person {
 
   String note;
 
-  Map<String,dynamic> toJson() => {
+  Map toJson() => {
+        'id': id,
         'nickname': nickname,
         'surname': surname,
         'name': name,
@@ -91,9 +94,3 @@ class Contact extends Person {
         'note': note
       };
 }
-
-List<Contact> list = []
-  ..add(Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "PQ459",
-      "Pretty average Guy."))
-  ..add(Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "PQ458",
-      "the underwhelming Guy."));

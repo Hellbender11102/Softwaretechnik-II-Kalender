@@ -20,7 +20,6 @@ class AppointmentController extends ResourceController {
   Future<Response> getAllAppointments() async {
     final appointmentQuery = Query<Appointment>(context);
     final appointments = await appointmentQuery.fetch();
-    print(appointments.toString());
     return Response.ok(appointments);
   }
 
@@ -54,11 +53,22 @@ class AppointmentController extends ResourceController {
   }
 
   @Operation.post()
-  Future<Response> updateAppointment(
-      @Bind.body() Appointment inputAppointment) async {
-    final query = Query<Appointment>(context)..values = inputAppointment;
-    final insertedAppointment = await query.insert();
-    return Response.ok(insertedAppointment);
+  Future<Response> newAppointment() async {
+    final Map<String, dynamic> body = await request.body.decode();
+    final query = Query<Appointment>(context)..values.read(body,ignore: ["id"]);
+    final insertedApp = await query.insert();
+
+    return Response.ok(insertedApp);
+  }
+
+  @Operation.put()
+  Future<Response> updateAppointment() async {
+    final Map<String, dynamic> body = await request.body.decode();
+    final query = Query<Appointment>(context)
+      ..values.read(body,ignore: ["id"])
+      ..where((app) => app.id).equalTo(body["id"] as int);
+    final updatedApp = await query.updateOne();
+    return Response.ok(updatedApp);
   }
 
   @Operation.delete("id")

@@ -51,10 +51,10 @@ class CalenderChannel extends ApplicationChannel {
         .route('/appointments/lookup/[:year/[:month/[:day]]]')
         .link(() => AppointmentController(context));
     router
-        .route('/user/[:con]')
+        .route('/users/[:number]')
         .link(() => UserController(context));
     router
-        .route('/contacts/[:con]')
+        .route('/contacts/[:number]')
         .link(() => ContactController(context));
     return router;
   }
