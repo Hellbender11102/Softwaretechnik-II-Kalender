@@ -26,7 +26,7 @@ class Appointment {
   String duration = "";
   String location;
 
-  Map toJson() => {
+  Map<String,dynamic> toJson() => {
         'id' :id,
         'name': name,
         'year': year,
@@ -47,6 +47,10 @@ class Appointment {
 
   String get date {
     return "$year-$month-$day";
+  }
+
+  bool equals(Appointment app){
+    return this.toJson() == app.toJson();
   }
 }
 
