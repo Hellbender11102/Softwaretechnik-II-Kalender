@@ -1,6 +1,7 @@
 abstract class Person {
   Person(this.id, this.contactCode, this.nickname, this.surname, this.name,
       this.email);
+  Person.zero();
 
   int id;
   String nickname;
@@ -25,6 +26,8 @@ class User extends Person {
       : password = password,
         mobileNo = mobileNo,
         super(id, contactCode, nickname, surname, name, email);
+
+  User.zero() : super.zero();
 
   factory User.fromJson(Map<String, dynamic> user) => User(
       user['id'] as int,

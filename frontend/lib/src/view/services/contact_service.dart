@@ -88,20 +88,6 @@ class ContactService {
     }
   }
 
-  ///Löscht den Kontakt mit gegebenem KontaktCode
-  /*Future<void> delete(String con) async {
-    for (var contact in list) {
-      if (contact.contactCode == con) {
-        list.removeWhere((element) => element.contactCode == con);
-      }
-    }
-    try {
-      final url = '$_contactUrl/$con';
-      await _http.delete(url, headers: _headers);
-    } catch (e) {
-      throw _handleError(e);
-    }
-  }*/
 
   Future<void> delete(String contactCode) async {
     try {
@@ -112,13 +98,7 @@ class ContactService {
     }
   }
 
-/*muss mit der datenbank angeschlossen werden*/
-  /*
-  Erstellt einen KOntakt und gibt ihn zurück
-   */
-  /*Contact find(String contactCode) {
-    return Contact('Nickname','Surname','Name','Email','contactCode','Note');
-  }*/
+  //Erstellt einen KOntakt und gibt ihn zurück
   Future<Contact> find(String contactCode) async {
     final Response response = await _http.get('$_userUrl/$contactCode');
     final User user =
