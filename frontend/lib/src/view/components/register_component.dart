@@ -20,7 +20,7 @@ class RegisterComponent implements OnInit, OnActivate {
 
   final Router _router;
   final UserService _registerService;
-  User user = User(1,"cc2", "", "", "", "", "", "");
+  User user = User.zero();
 
 
   Future<void> register() async {
