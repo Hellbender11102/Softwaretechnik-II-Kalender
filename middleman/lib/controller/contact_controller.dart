@@ -32,12 +32,23 @@ class ContactController extends ResourceController {
   }
 
   @Operation.post()
-  Future<Response> newAppointment() async {
+  Future<Response> newContact() async {
     final Map<String, dynamic> body = await request.body.decode();
-    final query = Query<Contact>(context)..values.read(body);
-    final insertedHero = await query.insert();
+    final query = Query<Contact>(context)..values.read(body,ignore: ["id"]);
+    final insertedCon = await query.insert();
 
-    return Response.ok(insertedHero);
+    return Response.ok(insertedCon);
+  }
+
+  @Operation.put('number')
+  Future<Response> updateContact(@Bind.path('number') String id) async {
+    final Map<String, dynamic> body = await request.body.decode();
+    print(body.toString());
+    final query = Query<Contact>(context)
+      ..values.read(body,ignore: ["id"])
+      ..where((con) => con.id).equalTo(body["id"] as int);
+    final updatedCon = await query.updateOne();
+    return Response.ok(updatedCon);
   }
 
 
