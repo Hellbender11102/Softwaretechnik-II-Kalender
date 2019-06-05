@@ -56,22 +56,21 @@ class AppointmentController extends ResourceController {
   @Operation.post()
   Future<Response> newAppointment() async {
     final Map<String, dynamic> body = await request.body.decode();
-    final query = Query<Appointment>(context)..values.read(body);
-    final insertedHero = await query.insert();
+    final query = Query<Appointment>(context)..values.read(body,ignore: ["id"]);
+    final insertedApp = await query.insert();
 
-    return Response.ok(insertedHero);
+    return Response.ok(insertedApp);
   }
+
   @Operation.put()
   Future<Response> updateAppointment() async {
     final Map<String, dynamic> body = await request.body.decode();
-    print(body.toString());
-    final query = Query<Appointment>(context)..values.read(body);
-    final insertedHero = await query.insert();
-
-    return Response.ok(insertedHero);
+    final query = Query<Appointment>(context)
+      ..values.read(body,ignore: ["id"])
+      ..where((app) => app.id).equalTo(body["id"] as int);
+    final updatedApp = await query.updateOne();
+    return Response.ok(updatedApp);
   }
-
-
 
   @Operation.delete("id")
   Future<Response> deleteAppointment(@Bind.path('id') int id) async {
