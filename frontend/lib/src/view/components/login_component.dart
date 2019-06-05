@@ -1,9 +1,9 @@
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
+import 'package:demo/src/view/components/mock_users.dart';
 
 import '../../model/person.dart';
-import 'mock_users.dart';
 import '../main_component.dart';
 
 @Component(

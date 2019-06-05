@@ -32,12 +32,14 @@ class ContactController extends ResourceController {
   }
 
   @Operation.post()
-  Future<Response> updateContact(
-      @Bind.body() Contact inputContact) async {
-    final query = Query<Contact>(context)..values = inputContact;
-    final insertedContact = await query.insert();
-    return Response.ok(insertedContact);
+  Future<Response> newAppointment() async {
+    final Map<String, dynamic> body = await request.body.decode();
+    final query = Query<Contact>(context)..values.read(body);
+    final insertedHero = await query.insert();
+
+    return Response.ok(insertedHero);
   }
+
 
   @Operation.delete("number")
   Future<Response> deleteContact(@Bind.path('number') String id) async {

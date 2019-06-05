@@ -22,7 +22,7 @@ class ContactComponent implements OnActivate {
 
   ContactComponent(this._contactService, this._location, this._router);
 
-  Contact contact = Contact('lauri','Schindler','Laurenz','lauri.s@web.de','295145','Er ist einer');
+  Contact contact = Contact(1,'lauri','Schindler','Laurenz','lauri.s@web.de','295145','Er ist einer');
   final Location _location;
   final Router _router;
   String note;
@@ -32,19 +32,21 @@ class ContactComponent implements OnActivate {
   /// Folgender Code wird immer bei der Aktivierung der Klasse aufgerufen
   @override
   void onActivate(_, RouterState current) async {
-    if (!LoginComponent.loggedIn) {
+    /*if (!LoginComponent.loggedIn) {
       await _router.navigate('/login');
     } else {
+
+     */
       final con = getNumber(current.parameters);
       if (getNumber != null) {
         // ignore: unnecessary_parenthesis
         contact = await (_contactService.get(con));
         note = contact.note;
       }
-    }
+    //}
   }
 
-  /// Methode zum speichern, der änderungen die man im Termin vorgenommen hat
+  /// Methode zum speichern, der änderungen die man im Kontakt vorgenommen hat
   Future<void> save() async {
     await _contactService.update(contact);
     goBack();

@@ -24,16 +24,12 @@ class AppointmentService {
   }
 
   ///Updatet einen bereits existierenden Termin
+  ///Erstellt einen neuen Termin mit gegebenen Namen
   Future<Appointment> update(Appointment appointment) async {
-    try {
-      final url = '$_appointmentUrl/${appointment.id}';
-      final response = await _http.put(url,
-          headers: _headers, body: json.encode(appointment)) as Response;
-      return Appointment.fromJson(
-          _extractData(response) as Map<String, dynamic>);
-    } catch (e) {
-      throw _handleError(e);
-    }
+    final response = await _http.put(_appointmentUrl,
+        headers: _headers, body: json.encode(appointment.toJson()));
+    return Appointment.fromJson(
+        _extractData(response as Response) as Map<String, dynamic>);
   }
 
   ///Löscht den Termin mit gegebener id

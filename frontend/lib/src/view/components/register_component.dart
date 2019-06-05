@@ -6,7 +6,6 @@ import 'package:demo/src/view/services/person_service.dart';
 import 'package:demo/src/view/services/person_service.dart';
 
 import '../../model/person.dart';
-import 'mock_users.dart';
 
 @Component(
   selector: 'register',
@@ -21,7 +20,7 @@ class RegisterComponent implements OnInit, OnActivate {
 
   final Router _router;
   final UserService _registerService;
-  User user = User("cc2", "", "", "", "", "", "");
+  User user = User(1,"cc2", "", "", "", "", "", "");
 
 
   Future<void> register() async {
