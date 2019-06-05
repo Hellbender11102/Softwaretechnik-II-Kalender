@@ -32,11 +32,23 @@ class UserController extends ResourceController {
   }
 
   @Operation.post()
-  Future<Response> updateUser(
-      @Bind.body() User inputUser) async {
-    final query = Query<User>(context)..values = inputUser;
+  Future<Response> newUser() async {
+    final Map<String, dynamic> body = await request.body.decode();
+    final query = Query<User>(context)..values.read(body,ignore: ["id"]);
     final insertedUser = await query.insert();
+
     return Response.ok(insertedUser);
+  }
+
+  @Operation.put('number')
+  Future<Response> updateUser(@Bind.path('number') String id) async {
+    final Map<String, dynamic> body = await request.body.decode();
+    print(body.toString());
+    final query = Query<User>(context)
+      ..values.read(body,ignore: ["id"])
+      ..where((user) => user.id).equalTo(body["id"] as int);
+    final updatedUser = await query.updateOne();
+    return Response.ok(updatedUser);
   }
 
   @Operation.delete("number")
