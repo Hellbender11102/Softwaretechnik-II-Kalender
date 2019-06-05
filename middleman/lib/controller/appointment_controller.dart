@@ -61,7 +61,7 @@ class AppointmentController extends ResourceController {
 
     return Response.ok(insertedHero);
   }
-
+/*
   @Operation.put()
   Future<Response> updateAppointment() async {
     final Map<String, dynamic> body = await request.body.decode();
@@ -70,7 +70,7 @@ class AppointmentController extends ResourceController {
     final insertedHero = await query.insert();
 
     return Response.ok(insertedHero);
-  }
+  }*/
 
 
 
