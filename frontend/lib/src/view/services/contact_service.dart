@@ -36,8 +36,6 @@ class ContactService {
       final url = '$_contactUrl/${contact.contactCode}';
       final response =
           await _http.put(url, headers: _headers, body: json.encode(contact));
-      print(response.toString());
-      print(response.body);
       return Contact.fromJson(_extractData(response) as Map<String, dynamic>);
     } catch (e) {
       throw _handleError(e);

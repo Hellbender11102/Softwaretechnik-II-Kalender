@@ -20,7 +20,6 @@ class AppointmentController extends ResourceController {
   Future<Response> getAllAppointments() async {
     final appointmentQuery = Query<Appointment>(context);
     final appointments = await appointmentQuery.fetch();
-    print(appointments.toString());
     return Response.ok(appointments);
   }
 

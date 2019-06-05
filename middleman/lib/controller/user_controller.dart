@@ -20,7 +20,6 @@ class UserController extends ResourceController {
   Future<Response> getAllUsers() async {
     final userQuery = Query<User>(context);
     final user = await userQuery.fetch();
-    print(user.toString());
     return Response.ok(user);
   }
 
