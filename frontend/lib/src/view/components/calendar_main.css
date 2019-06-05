@@ -17,11 +17,6 @@ table tr {
     height: 5em;
 }
 
-.appointmentNotifier {
-    right: 5px;
-    float: right;
-}
-
 table{
     table-layout: fixed;
     align-content: center;
