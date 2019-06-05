@@ -8,6 +8,15 @@ abstract class Person {
   String name;
   String email;
   String contactCode;
+
+  bool equals(Person person) {
+    return this.email == person.email &&
+        this.nickname == person.nickname &&
+        this.name == person.name &&
+        this.surname == person.surname &&
+        this.contactCode == person.contactCode &&
+        this.id == person.id;
+  }
 }
 
 class User extends Person {
@@ -50,7 +59,7 @@ class User extends Person {
   // removes multiple Contacts
   void rmvAllContacts(List<Contact> list) => list.forEach(rmvContact);
 
-  Map toJson() => {
+  Map<String, dynamic> toJson() => {
         'id': id,
         'contactCode': contactCode,
         'nickname': nickname,
@@ -84,7 +93,7 @@ class Contact extends Person {
 
   String note;
 
-  Map toJson() => {
+  Map<String, dynamic> toJson() => {
         'id': id,
         'nickname': nickname,
         'surname': surname,
