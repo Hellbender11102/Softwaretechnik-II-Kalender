@@ -19,6 +19,7 @@ Day day2;
     day = Day(DateTime.now().year,DateTime.now().month,DateTime.now().day);
     expect(day.toString(), day.weekday()+":  "+DateTime.now().month.toString()+"/"+DateTime.now().day.toString()+"/"+DateTime.now().year.toString());
   });
+
   test("Day.weekday(), Gives The weekday As String", () {
     day = Day(DateTime.now().year,DateTime.now().month,DateTime.now().day);
     day2 = Day(day.year,day.month,day.day+7);
@@ -38,17 +39,21 @@ Day day2;
 ///Tests for appointment.dart
   Appointment appo = Appointment(1, ["CC23"], "Abifaier", 2019, 6, 4, "2", "4", "Lübeck");
   Appointment json = Appointment.zero();
-  json = Appointment.fromJson(appo.toJson());
-   test("Appointment appointment.fromJson", () {
-    expect(appo.equals(json), true);
-  });
 
-  test("Appointment", () {
-    appo = Appointment(1, ["CC23"], "Abifaier", 2019, 6, 4, "2", "4", "Lübeck");
-    expect(appo, appo.toJson());
+   test("Appointment appointment.fromJson", () {
+    expect(appo.equals(Appointment.fromJson(appo.toJson())), true);
   });
 
 
 
 ///Tests for person.dart
+  User user = User('CC123','Hellbender','Schindler','Laurenz','Hallo@myWebmail.com','dasisteinschlechtesPasswort','016331742');
+  Contact contact = Contact('Xanta','Waage','Daniel','DanielHateinemail@mail.de','CC124','Ist ein feiner.');
+
+  test("User.toJson == user.FromJson", () {
+  expect(user.equals(User.fromJson(user.toJson())),true);
+});
+test("Contact.toJson == Contact.FromJson", () {
+  expect(contact.equals(Contact.fromJson(contact.toJson())),true);
+});
 }

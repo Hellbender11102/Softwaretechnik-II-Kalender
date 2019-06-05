@@ -8,7 +8,7 @@ abstract class Person {
   String contactCode;
 
   bool equals(Person per){
-    return(this.nickname == per.nickname && this.surname == per.surname && this.email == per.email && this.name == per.name && this.contactCode == per.contactCode);
+    return this.nickname == per.nickname && this.surname == per.surname && this.email == per.email && this.name == per.name && this.contactCode == per.contactCode;
   }
 }
 
@@ -52,7 +52,7 @@ class User extends Person {
   // removes multiple Contacts
   void rmvAllContacts(List<Contact> list) => list.forEach(rmvContact);
 
-  Map toJson() => {
+  Map<String,dynamic> toJson() => {
         'contactCode': contactCode,
         'nickname': nickname,
         'surname': surname,
@@ -61,8 +61,6 @@ class User extends Person {
         'password': password
       };
 
-  // gets all of the ENDBENUTZER Contacts
-  Map<String, Contact> getMyContacts() {}
 }
 
 int _toInt(id) => id is int ? id : int.parse(id as String);
@@ -74,17 +72,17 @@ class Contact extends Person {
     this.note = note;
   }
 
-  factory Contact.fromJson(Map<String, String> contact) => Contact(
-      contact['nickname'],
-      contact['surname'],
-      contact['name'],
-      contact['email'],
-      contact['contactCode'],
-      contact['note']);
+  factory Contact.fromJson(Map<String, dynamic> contact) => Contact(
+      contact['nickname'] as String,
+      contact['surname'] as String,
+      contact['name'] as String,
+      contact['email'] as String,
+      contact['contactCode'] as String,
+      contact['note'] as String);
 
   String note;
 
-  Map toJson() => {
+  Map<String,dynamic> toJson() => {
         'nickname': nickname,
         'surname': surname,
         'name': name,
