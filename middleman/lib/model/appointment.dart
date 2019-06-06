@@ -25,6 +25,9 @@ class _Appointment {
   @Column(unique: false)
   String location;
 
+  @Column(unique: false)
+  String note;
+
   @override
   String toString() {
     return "$id, $year-$month-$day";

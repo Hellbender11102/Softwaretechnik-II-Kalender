@@ -1,7 +1,7 @@
 class Appointment {
   // constructor
   Appointment(this.id, this.name, this.year, this.month, this.day, this.time,
-      this.duration, this.location);
+      this.duration, this.location, this.note);
 
   // leeres Appointment
   Appointment.zero();
@@ -14,7 +14,8 @@ class Appointment {
       appointment['day'] as int,
       appointment['time'] as String,
       appointment['duration'] as String,
-      appointment['location'] as String);
+      appointment['location'] as String,
+      appointment['note'] as String);
 
   List<String> contactCodes = [];
   int id;
@@ -25,6 +26,7 @@ class Appointment {
   String time = "";
   String duration = "";
   String location;
+  String note = "";
 
   Map<String,dynamic> toJson() => {
         'id' :id,
@@ -34,7 +36,8 @@ class Appointment {
         "day": day,
         'time': time,
         'duration': duration,
-        'location': location
+        'location': location,
+        'note': note
       };
 
   ///date like 'yyyy-mm-dd'

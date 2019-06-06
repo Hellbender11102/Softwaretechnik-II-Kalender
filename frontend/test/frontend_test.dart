@@ -46,7 +46,7 @@ void main() {
 
   ///Tests for appointment.dart
   Appointment appo =
-      Appointment(1, "Abifaier", 2019, 6, 4, "2", "4", "Lübeck");
+      Appointment(1, "Abifaier", 2019, 6, 4, "2", "4", "Lübeck", "hi");
   Appointment json = Appointment.zero();
 
   test("Appointment appointment.fromJson", () {

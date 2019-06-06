@@ -52,6 +52,12 @@ class Migration1 extends Migration {
           autoincrement: false,
           isIndexed: false,
           isNullable: false,
+          isUnique: false),
+      SchemaColumn("note", ManagedPropertyType.string,
+          isPrimaryKey: false,
+          autoincrement: false,
+          isIndexed: false,
+          isNullable: false,
           isUnique: false)
     ]));
     database.createTable(SchemaTable("_Contact", [
@@ -202,7 +208,8 @@ class Migration1 extends Migration {
         "day": 22,
         "time": "12:00",
         "duration": "04:00",
-        "location": "Technischehochschule Lübeck"
+        "location": "Technischehochschule Lübeck",
+        "note": ""
       },
       {
         "id": 2,
@@ -212,7 +219,8 @@ class Migration1 extends Migration {
         "day": 22,
         "time": "12:00",
         "duration": "04:00",
-        "location": "Technischehochschule Lübeck"
+        "location": "Technischehochschule Lübeck",
+        "note": ""
       },
       {
         "id": 3,
@@ -222,7 +230,8 @@ class Migration1 extends Migration {
         "day": 24,
         "time": "12:00",
         "duration": "04:00",
-        "location": "Technischehochschule Lübeck"
+        "location": "Technischehochschule Lübeck",
+        "note": ""
       },
       {
         "id": 4,
@@ -232,7 +241,8 @@ class Migration1 extends Migration {
         "day": 21,
         "time": "12:00",
         "duration": "04:00",
-        "location": "Technischehochschule Lübeck"
+        "location": "Technischehochschule Lübeck",
+        "note": ""
       },
       {
         "id": 5,
@@ -242,7 +252,8 @@ class Migration1 extends Migration {
         "day": 22,
         "time": "12:00",
         "duration": "04:00",
-        "location": "Technischehochschule Lübeck"
+        "location": "Technischehochschule Lübeck",
+        "note": ""
       },
     ];
 
@@ -278,7 +289,7 @@ class Migration1 extends Migration {
 
     _appointments.forEach((Map<String, dynamic> map) async =>
     await database.store.execute(
-        "INSERT INTO _Appointment (name,time,year,month,day,duration,location) VALUES (@name,@time,@year,@month,@day,@duration,@location)",
+        "INSERT INTO _Appointment (name,time,year,month,day,duration,location,note) VALUES (@name,@time,@year,@month,@day,@duration,@location,@note)",
         substitutionValues: {
           "name": map['name'],
           "time": map['time'],
@@ -287,6 +298,7 @@ class Migration1 extends Migration {
           "day": map['day'],
           "duration": map['duration'],
           "location": map['location'],
+          "note": map['note']
         }));
 
     _contacts.forEach((Map<String, String> map) async =>
@@ -315,4 +327,5 @@ class Migration1 extends Migration {
         }));
 
   }
+
 }

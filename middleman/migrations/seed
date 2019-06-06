@@ -1,125 +1,130 @@
-  @override
-  Future seed() async {
-    final _appointments = [
-      {
-        "id": 1,
-        "name": "eins",
-        "year": 2019,
-        "month": 7,
-        "day": 22,
-        "time": "12:00",
-        "duration": "04:00",
-        "location": "Technischehochschule Lübeck"
-      },
-      {
-        "id": 2,
-        "name": "zwei",
-        "year": 2019,
-        "month": 5,
-        "day": 22,
-        "time": "12:00",
-        "duration": "04:00",
-        "location": "Technischehochschule Lübeck"
-      },
-      {
-        "id": 3,
-        "name": "drei",
-        "year": 2019,
-        "month": 5,
-        "day": 24,
-        "time": "12:00",
-        "duration": "04:00",
-        "location": "Technischehochschule Lübeck"
-      },
-      {
-        "id": 4,
-        "name": "vier",
-        "year": 2019,
-        "month": 5,
-        "day": 21,
-        "time": "12:00",
-        "duration": "04:00",
-        "location": "Technischehochschule Lübeck"
-      },
-      {
-        "id": 5,
-        "name": "fünf",
-        "year": 2019,
-        "month": 7,
-        "day": 22,
-        "time": "12:00",
-        "duration": "04:00",
-        "location": "Technischehochschule Lübeck"
-      },
-    ];
+ @override
+   Future seed() async {
+     final _appointments = [
+       {
+         "id": 1,
+         "name": "eins",
+         "year": 2019,
+         "month": 7,
+         "day": 22,
+         "time": "12:00",
+         "duration": "04:00",
+         "location": "Technischehochschule Lübeck",
+         "note": ""
+       },
+       {
+         "id": 2,
+         "name": "zwei",
+         "year": 2019,
+         "month": 5,
+         "day": 22,
+         "time": "12:00",
+         "duration": "04:00",
+         "location": "Technischehochschule Lübeck",
+         "note": ""
+       },
+       {
+         "id": 3,
+         "name": "drei",
+         "year": 2019,
+         "month": 5,
+         "day": 24,
+         "time": "12:00",
+         "duration": "04:00",
+         "location": "Technischehochschule Lübeck",
+         "note": ""
+       },
+       {
+         "id": 4,
+         "name": "vier",
+         "year": 2019,
+         "month": 5,
+         "day": 21,
+         "time": "12:00",
+         "duration": "04:00",
+         "location": "Technischehochschule Lübeck",
+         "note": ""
+       },
+       {
+         "id": 5,
+         "name": "fünf",
+         "year": 2019,
+         "month": 7,
+         "day": 22,
+         "time": "12:00",
+         "duration": "04:00",
+         "location": "Technischehochschule Lübeck",
+         "note": ""
+       },
+     ];
 
-    final _contacts = [
-      {
-        "nickname": "marius",
-        "surname": "Marius",
-        "name": "Mauritz",
-        "email": "hallo@hallo.gmx.de",
-        "contactCode": "ContactCode1",
-        "note": "Datenbank experte"
-      },
-      {
-        "nickname": "lauri",
-        "surname": "Laurenz",
-        "name": "Schindler",
-        "email": "hello@world.gmx.de",
-        "contactCode": "ContactCode2",
-        "note": "voll der pro"
-      }
-    ];
+     final _contacts = [
+       {
+         "nickname": "marius",
+         "surname": "Marius",
+         "name": "Mauritz",
+         "email": "hallo@hallo.gmx.de",
+         "contactCode": "ContactCode1",
+         "note": "Datenbank experte"
+       },
+       {
+         "nickname": "lauri",
+         "surname": "Laurenz",
+         "name": "Schindler",
+         "email": "hello@world.gmx.de",
+         "contactCode": "ContactCode2",
+         "note": "voll der pro"
+       }
+     ];
 
-    final _users = [
-      {
-        "nickname": "dude2",
-        "surname": "drei",
-        "name": "vier",
-        "email": "hello@hello.gmx.de",
-        "contactCode": "12345",
-        "password": "Calendar123",
-        "mobileNo": ""
-      }];
+     final _users = [
+       {
+         "nickname": "dude2",
+         "surname": "drei",
+         "name": "vier",
+         "email": "hello@hello.gmx.de",
+         "contactCode": "12345",
+         "password": "Calendar123",
+         "mobileNo": ""
+       }];
 
-    _appointments.forEach((Map<String, dynamic> map) async =>
-    await database.store.execute(
-        "INSERT INTO _Appointment (name,time,year,month,day,duration,location) VALUES (@name,@time,@year,@month,@day,@duration,@location)",
-        substitutionValues: {
-          "name": map['name'],
-          "time": map['time'],
-          "year": map['year'],
-          "month": map['month'],
-          "day": map['day'],
-          "duration": map['duration'],
-          "location": map['location'],
-        }));
+     _appointments.forEach((Map<String, dynamic> map) async =>
+     await database.store.execute(
+         "INSERT INTO _Appointment (name,time,year,month,day,duration,location,note) VALUES (@name,@time,@year,@month,@day,@duration,@location,@note)",
+         substitutionValues: {
+           "name": map['name'],
+           "time": map['time'],
+           "year": map['year'],
+           "month": map['month'],
+           "day": map['day'],
+           "duration": map['duration'],
+           "location": map['location'],
+           "note": map['note']
+         }));
 
-    _contacts.forEach((Map<String, String> map) async =>
-    await database.store.execute(
-        "INSERT INTO _Contact (nickname,surname,name,email,contactCode,note) VALUES (@nickname,@surname,@name,@email,@contactCode,@note)",
-        substitutionValues: {
-          "nickname": map['nickname'],
-          "surname": map['surname'],
-          "name": map['name'],
-          "email": map['email'],
-          "contactCode": map['contactCode'],
-          "note": map['note']
-        }));
+     _contacts.forEach((Map<String, String> map) async =>
+     await database.store.execute(
+         "INSERT INTO _Contact (nickname,surname,name,email,contactCode,note) VALUES (@nickname,@surname,@name,@email,@contactCode,@note)",
+         substitutionValues: {
+           "nickname": map['nickname'],
+           "surname": map['surname'],
+           "name": map['name'],
+           "email": map['email'],
+           "contactCode": map['contactCode'],
+           "note": map['note']
+         }));
 
-    _users.forEach((Map<String, String> map) async =>
-    await database.store.execute(
-        "INSERT INTO _User (nickname,surname,name,email,contactCode,password,mobileNo) VALUES (@nickname,@surname,@name,@email,@contactCode,@password,@mobileNo)",
-        substitutionValues: {
-          "nickname": map['nickname'],
-          "surname": map['surname'],
-          "name": map['name'],
-          "email": map['email'],
-          "contactCode": map['contactCode'],
-          "password": map['password'],
-          "mobileNo": map['mobileNo']
-        }));
+     _users.forEach((Map<String, String> map) async =>
+     await database.store.execute(
+         "INSERT INTO _User (nickname,surname,name,email,contactCode,password,mobileNo) VALUES (@nickname,@surname,@name,@email,@contactCode,@password,@mobileNo)",
+         substitutionValues: {
+           "nickname": map['nickname'],
+           "surname": map['surname'],
+           "name": map['name'],
+           "email": map['email'],
+           "contactCode": map['contactCode'],
+           "password": map['password'],
+           "mobileNo": map['mobileNo']
+         }));
 
-  }
-}
+   }

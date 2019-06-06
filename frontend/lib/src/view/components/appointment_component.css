@@ -6,6 +6,15 @@
     float: left;
 }
 
+#noteplain{
+     resize: none;
+     background-color: #C9D1C8;
+     border: none;
+ }
+#note{
+    resize: none;
+}
+
 #delete {
     color: red;
 }

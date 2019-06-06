@@ -49,7 +49,6 @@ class AppointmentComponent implements OnActivate {
   Future<void> save() async {
     appointment.date = dateString;
     await _appointmentService.update(appointment);
-    goBack();
   }
 
   ///Methode zum löschen von Terminen
