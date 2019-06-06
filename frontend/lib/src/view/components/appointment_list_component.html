@@ -5,7 +5,7 @@
 <ul class="appointments">
     <li *ngFor="let appointment of appointments"
         (click)="gotoDetail(appointment)">
-        <span class="badge">{{appointment.id}}</span>
+        <span class="badge">{{appointment.date}}</span>
         <span>{{appointment.name}}</span>
     </li>
 </ul>

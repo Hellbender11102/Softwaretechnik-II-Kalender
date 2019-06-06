@@ -20,6 +20,9 @@ class UserController extends ResourceController {
   Future<Response> getAllUsers() async {
     final userQuery = Query<User>(context);
     final user = await userQuery.fetch();
+    if (user == null) {
+      return Response.notFound();
+    }
     return Response.ok(user);
   }
 
@@ -28,6 +31,35 @@ class UserController extends ResourceController {
     final userQuery = Query<User>(context)
       ..where((user) => user.contactCode).equalTo(con);
     final user = await userQuery.fetchOne();
+    if (user == null) {
+      return Response.notFound();
+    }
+    return Response.ok(user);
+  }
+
+  @Operation.get('password', 'nickname')
+  Future<Response> getUserLoginNickname(@Bind.path('password') String password,
+    @Bind.path('nickname') String nickname) async {
+    final userQuery = Query<User>(context)
+      ..where((user) => user.password).equalTo(password)
+      ..where((user) => user.nickname).equalTo(nickname);
+    final user = await userQuery.fetchOne();
+    if (user == null) {
+      return Response.notFound();
+    }
+    return Response.ok(user);
+  }
+
+  @Operation.get('password', 'email')
+  Future<Response> getUserLoginEmail(@Bind.path('password') String password,
+      @Bind.path('email') String email) async {
+    final userQuery = Query<User>(context)
+      ..where((user) => user.password).equalTo(password)
+      ..where((user) => user.email).equalTo(email);
+    final user = await userQuery.fetchOne();
+    if (user == null) {
+      return Response.notFound();
+    }
     return Response.ok(user);
   }
 

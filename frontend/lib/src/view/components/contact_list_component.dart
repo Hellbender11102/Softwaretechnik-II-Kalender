@@ -57,6 +57,7 @@ class ContactListComponent implements OnInit, OnActivate {
 
   Future<void> addContact() async {
     await _contactService.create(await _contactService.find(contactCode));
+    await _router.navigate(_contactUrl(contactCode));
   }
 
   @override

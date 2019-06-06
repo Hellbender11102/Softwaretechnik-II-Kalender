@@ -11,6 +11,7 @@ td:hover{
 }
 h4{
     text-align: center;
+    cursor: hand;
 }
 
 table tr {
@@ -28,6 +29,7 @@ table{
 h4:hover {
     color: #039be5;
     background-position: center;
+    cursor: hand;
 }
 .calendar{
     width: 100%;

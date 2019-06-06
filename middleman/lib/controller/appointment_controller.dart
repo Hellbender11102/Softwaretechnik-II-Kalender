@@ -20,6 +20,9 @@ class AppointmentController extends ResourceController {
   Future<Response> getAllAppointments() async {
     final appointmentQuery = Query<Appointment>(context);
     final appointments = await appointmentQuery.fetch();
+    if (appointments == null) {
+      return Response.notFound();
+    }
     return Response.ok(appointments);
   }
 
@@ -28,6 +31,9 @@ class AppointmentController extends ResourceController {
     final appointmentQuery = Query<Appointment>(context)
       ..where((appointment) => appointment.id).equalTo(id);
     final appointment = await appointmentQuery.fetchOne();
+    if (appointment == null) {
+      return Response.notFound();
+    }
     return Response.ok(appointment);
   }
 
@@ -38,6 +44,9 @@ class AppointmentController extends ResourceController {
       ..where((appointment) => appointment.year).equalTo(year)
       ..where((appointment) => appointment.month).equalTo(month);
     final appointments = await appointmentQuery.fetch();
+    if (appointments == null) {
+      return Response.notFound();
+    }
     return Response.ok(appointments);
   }
 
@@ -49,6 +58,9 @@ class AppointmentController extends ResourceController {
       ..where((appointment) => appointment.month).equalTo(month)
       ..where((appointment) => appointment.day).equalTo(day);
     final appointments = await appointmentQuery.fetch();
+    if (appointments == null) {
+      return Response.notFound();
+    }
     return Response.ok(appointments);
   }
 

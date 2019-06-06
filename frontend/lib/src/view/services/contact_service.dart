@@ -9,7 +9,7 @@ class ContactService {
   ContactService(this._http);
 
   static final _headers = {'Content-Type': 'application/json'};
-  static const _userUrl = host + '/users'; // URL to web API
+  static const _userUrl = host + '/user'; // URL to web API
   static const _contactUrl = host + '/contacts'; // URL to web API
   final Client _http;
 
@@ -21,16 +21,6 @@ class ContactService {
   }
 
   ///Updatet einen bereits existierenden Termin
-  /*Future<Contact> update(Contact contact) async {
-    for (var list in list) {
-      if (list.contactCode == contact.contactCode) {
-        return contact;
-      } else{
-        return null;
-      }
-    }
-  }*/
-
   Future<Contact> update(Contact contact) async {
     try {
       final url = '$_contactUrl/${contact.contactCode}';
@@ -43,10 +33,6 @@ class ContactService {
   }
 
   ///gibt eine Liste von allen Terminen zurück
-  /*Future<List<Contact>> getAll() async {
-    return list;
-  }*/
-
   Future<List<Contact>> getAll() async {
     final Response response = await _http.get('$_contactUrl');
     return (_extractData(response) as List)
@@ -55,32 +41,15 @@ class ContactService {
   }
 
   ///Gibt den Termin mit der gegebenen id zurück
-  /*Future<Contact> get(String contactCode) async {
-    for (var contact in list) {
-      if (contact.contactCode == contactCode) {
-        return contact;
-      }
-    }
-  }*/
-
   Future<Contact> get(String contactCode) async {
     final Response response = await _http.get('$_contactUrl/$contactCode');
     return Contact.fromJson(_extractData(response) as Map<String, dynamic>);
   }
 
   ///Erstellt einen neuen Termin mit gegebenen Namen
-  /*Future<Contact> create(String name) async {
-    try {
-      final response = await _http.post(_contactUrl,
-          headers: _headers, body: json.encode({'name': name}));
-    } catch (e) {
-      throw _handleError(e);
-    }
-  }*/
-
   Future<Contact> create(Contact contact) async {
     try {
-      final response = await _http.put(_contactUrl,
+      final response = await _http.post(_contactUrl,
           headers: _headers, body: json.encode(contact));
       return Contact.fromJson(_extractData(response) as Map<String, dynamic>);
     } catch (e) {
@@ -98,12 +67,10 @@ class ContactService {
     }
   }
 
-  //Erstellt einen KOntakt und gibt ihn zurück
+  ///Erstellt einen Kontakt und gibt ihn zurück
   Future<Contact> find(String contactCode) async {
     final Response response = await _http.get('$_userUrl/$contactCode');
-    final User user =
-        User.fromJson(_extractData(response) as Map<String, dynamic>);
-    return Contact(user.id, user.contactCode, user.nickname, user.surname,
-        user.name, user.email, "");
+    final User user = User.fromJson(_extractData(response) as Map<String, dynamic>);
+    return Contact(user.id, user.nickname, user.surname,user.name, user.email, user.contactCode, "");
   }
 }

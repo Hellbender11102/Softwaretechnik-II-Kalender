@@ -2,6 +2,7 @@ import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/components/mock_users.dart';
+import 'package:demo/src/view/services/person_service.dart';
 
 import '../../model/person.dart';
 import '../main_component.dart';
@@ -15,7 +16,10 @@ import '../main_component.dart';
 
 class LoginComponent implements OnInit, OnActivate {
 
-  LoginComponent(this._router);
+  LoginComponent(this._router, this._userService);
+
+
+  final UserService _userService;
 
   final Router _router;
   bool loginFailure = false;
@@ -23,10 +27,13 @@ class LoginComponent implements OnInit, OnActivate {
 
   String nickname;
   String password;
+  List<User> users;
+  //User user;
 
   // 
   Future<void> login() async {
-    for (User u in mockUsers) {
+    users = await _userService.getAll();
+    for (User u in users) {
       if ((nickname == u.nickname || nickname == u.email) && password ==u.password) {
         loggedIn = true;
         AppComponent.showButtons = true;
@@ -36,6 +43,12 @@ class LoginComponent implements OnInit, OnActivate {
         loginFailure = true;
       }
     }
+    /*
+    if (nickname.contains("@")) {
+      user = await _userService.getLoginEmail(password, nickname);
+    } else {
+      user = await _userService.getLoginNickname(password, nickname);
+    }*/
   }
 
   // Weiterleitung zum Registrierungsformular
