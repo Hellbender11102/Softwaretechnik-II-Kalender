@@ -25,7 +25,7 @@ class Appointment {
   int day;
   String time = "";
   String duration = "";
-  String location;
+  String location = "";
   String note = "";
 
   Map<String,dynamic> toJson() => {

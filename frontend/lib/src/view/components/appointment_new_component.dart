@@ -32,6 +32,7 @@ class AppointmentNewComponent implements OnActivate {
   ///Methode zum erstellen des neuen Termins
   Future<void> create() async {
     appointment.date = dateString;
+    print(appointment);
     await _appointmentService.create(appointment);
     goBack();
   }
