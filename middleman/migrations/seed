@@ -60,7 +60,7 @@
 
      final _contacts = [
        {
-         "nickname": "marius",
+         "username": "marius",
          "surname": "Marius",
          "name": "Mauritz",
          "email": "hallo@hallo.gmx.de",
@@ -68,7 +68,7 @@
          "note": "Datenbank experte"
        },
        {
-         "nickname": "lauri",
+         "username": "lauri",
          "surname": "Laurenz",
          "name": "Schindler",
          "email": "hello@world.gmx.de",
@@ -79,7 +79,7 @@
 
      final _users = [
        {
-         "nickname": "dude2",
+         "username": "dude2",
          "surname": "drei",
          "name": "vier",
          "email": "hello@hello.gmx.de",
@@ -104,9 +104,9 @@
 
      _contacts.forEach((Map<String, String> map) async =>
      await database.store.execute(
-         "INSERT INTO _Contact (nickname,surname,name,email,contactCode,note) VALUES (@nickname,@surname,@name,@email,@contactCode,@note)",
+         "INSERT INTO _Contact (username,surname,name,email,contactCode,note) VALUES (@username,@surname,@name,@email,@contactCode,@note)",
          substitutionValues: {
-           "nickname": map['nickname'],
+           "username": map['username'],
            "surname": map['surname'],
            "name": map['name'],
            "email": map['email'],
@@ -116,9 +116,9 @@
 
      _users.forEach((Map<String, String> map) async =>
      await database.store.execute(
-         "INSERT INTO _User (nickname,surname,name,email,contactCode,password,mobileNo) VALUES (@nickname,@surname,@name,@email,@contactCode,@password,@mobileNo)",
+         "INSERT INTO _User (username,surname,name,email,contactCode,password,mobileNo) VALUES (@username,@surname,@name,@email,@contactCode,@password,@mobileNo)",
          substitutionValues: {
-           "nickname": map['nickname'],
+           "username": map['username'],
            "surname": map['surname'],
            "name": map['name'],
            "email": map['email'],

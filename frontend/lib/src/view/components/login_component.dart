@@ -25,7 +25,7 @@ class LoginComponent implements OnInit, OnActivate {
   bool loginFailure = false;
   static bool loggedIn = false;
 
-  String nickname;
+  String username;
   String password;
   List<User> users;
   //User user;
@@ -34,7 +34,7 @@ class LoginComponent implements OnInit, OnActivate {
   Future<void> login() async {
     users = await _userService.getAll();
     for (User u in users) {
-      if ((nickname == u.nickname || nickname == u.email) && password ==u.password) {
+      if ((username == u.username || username == u.email) && password ==u.password) {
         loggedIn = true;
         AppComponent.showButtons = true;
         await _router.navigate('/dashboard');
@@ -44,10 +44,10 @@ class LoginComponent implements OnInit, OnActivate {
       }
     }
     /*
-    if (nickname.contains("@")) {
-      user = await _userService.getLoginEmail(password, nickname);
+    if (username.contains("@")) {
+      user = await _userService.getLoginEmail(password, username);
     } else {
-      user = await _userService.getLoginNickname(password, nickname);
+      user = await _userService.getLoginNickname(password, username);
     }*/
   }
 

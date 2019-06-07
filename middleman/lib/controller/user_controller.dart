@@ -37,12 +37,12 @@ class UserController extends ResourceController {
     return Response.ok(user);
   }
 
-  @Operation.get('password', 'nickname')
+  @Operation.get('password', 'username')
   Future<Response> getUserLoginNickname(@Bind.path('password') String password,
-    @Bind.path('nickname') String nickname) async {
+    @Bind.path('username') String username) async {
     final userQuery = Query<User>(context)
-      ..where((user) => user.password).equalTo(password)
-      ..where((user) => user.nickname).equalTo(nickname);
+      ..where((user) => user.hashedPassword).equalTo(password)
+      ..where((user) => user.username).equalTo(username);
     final user = await userQuery.fetchOne();
     if (user == null) {
       return Response.notFound();
@@ -54,7 +54,7 @@ class UserController extends ResourceController {
   Future<Response> getUserLoginEmail(@Bind.path('password') String password,
       @Bind.path('email') String email) async {
     final userQuery = Query<User>(context)
-      ..where((user) => user.password).equalTo(password)
+      ..where((user) => user.hashedPassword).equalTo(password)
       ..where((user) => user.email).equalTo(email);
     final user = await userQuery.fetchOne();
     if (user == null) {

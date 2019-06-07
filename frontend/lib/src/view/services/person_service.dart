@@ -49,7 +49,7 @@ class UserService {
     return User.fromJson(_extractData(response) as Map<String, dynamic>);
   }
 
-  Future<User> getLoginNickname(String password, String nickname) async {
+  Future<User> getLoginNickname(String password, String username) async {
     final Response response = await _http.get('$_userUrl/$password/$nickname');
     return User.fromJson(_extractData(response) as Map<String, dynamic>);
   }*/
