@@ -55,6 +55,7 @@ class Routes {
   static final RouteDefinition login = RouteDefinition(
     routePath: RoutePaths.login,
     component: login_template.LoginComponentNgFactory as ComponentFactory,
+    useAsDefault: true,
   );
   static final RouteDefinition contacts = RouteDefinition(
     routePath: RoutePaths.contacts,
@@ -79,7 +80,7 @@ class Routes {
     login,
     RouteDefinition.redirect(
       path: '',
-      redirectTo: RoutePaths.dashboard.toUrl(),
+      redirectTo: RoutePaths.login.toUrl(),
     ),
   ];
 }

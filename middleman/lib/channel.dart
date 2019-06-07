@@ -61,22 +61,20 @@ class CalenderChannel extends ApplicationChannel {
     router
         .route('/auth/token')
         .link(() => AuthController(authServer));
-
-
     router
         .route('/appointments/[:id]')
+        .link(() => Authorizer.bearer(authServer))
         .link(() => AppointmentController(context));
     router
         .route('/appointments/lookup/[:year/[:month/[:day]]]')
+        .link(() => Authorizer.bearer(authServer))
         .link(() => AppointmentController(context));
-    /*
     router
         .route('/user/[:number]')
         .link(() => UserController(context));
     router
         .route('/contacts/[:number]')
         .link(() => ContactController(context));
-        */
 
     return router;
   }

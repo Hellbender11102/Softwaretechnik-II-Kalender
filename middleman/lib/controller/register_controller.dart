@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:aqueduct/aqueduct.dart';
 import 'package:middleman/model/person.dart';
+import 'package:http/http.dart' as http; // Must include http package in your pubspec.yaml
 
 class RegisterController extends ResourceController {
   RegisterController(this.context, this.authServer);

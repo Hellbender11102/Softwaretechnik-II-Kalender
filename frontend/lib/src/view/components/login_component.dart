@@ -3,6 +3,7 @@ import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/components/mock_users.dart';
 import 'package:demo/src/view/services/person_service.dart';
+import 'package:demo/src/view/services/register_service.dart';
 
 import '../../model/person.dart';
 import '../main_component.dart';
@@ -16,10 +17,11 @@ import '../main_component.dart';
 
 class LoginComponent implements OnInit, OnActivate {
 
-  LoginComponent(this._router, this._userService);
+  LoginComponent(this._router, this._userService,this._registerService);
 
 
   final UserService _userService;
+  final RegisterService _registerService;
 
   final Router _router;
   bool loginFailure = false;
@@ -32,7 +34,13 @@ class LoginComponent implements OnInit, OnActivate {
 
   // 
   Future<void> login() async {
-    await _userService.login(username,password);
+    loggedIn = true;
+    AppComponent.showButtons = true;
+    //await _registerService.login(username,password);
+    await _router.navigate('/dashboard');
+
+
+
   }
 
 
@@ -60,7 +68,7 @@ class LoginComponent implements OnInit, OnActivate {
 
   @override
   void onActivate(RouterState previous, RouterState current) {
-    if (loggedIn) {
+    if(loggedIn){
       _router.navigate('/calendar');
     }
   }

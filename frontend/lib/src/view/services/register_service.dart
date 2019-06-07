@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:demo/src/view/main_component.dart';
 import 'package:http/http.dart';
 import 'package:demo/src/model/person.dart';
+import 'dart:html';
 
 class RegisterService {
   // request to middlemand
@@ -26,9 +27,33 @@ class RegisterService {
       final response = await _http.post(_userUrl,
           headers: _headers, body: json.encode(user.toJson()));
       return User.fromJson(
-          _extractData(response) as Map<String, dynamic>);
+          _extractData(response as Response) as Map<String, dynamic>);
     } catch (e) {
       throw _handleError(e);
     }
+  }
+
+  Future login(String username, String password) async {
+    // Must include http package in your pubspec.yaml
+    const clientID = "com.calendar.app";
+    final body = "username=$username&password=$password&grant_type=password";
+// Note the trailing colon (:) after the clientID.
+// A client identifier secret would follow this, but there is no secret, so it is the empty string.
+    final clientCredentials = Base64Encoder().convert("$clientID:".codeUnits);
+
+    final response = await _http.post("$host/auth/token",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Authorization": "Basic $clientCredentials"
+        },
+        body: body);
+    print(response.body);
+    final Map<String,dynamic> jsonMap = json.decode(response.body as String) as Map<String, dynamic>;
+
+    window.localStorage.addAll({
+      "access_token": jsonMap["access_token"] as String,
+      "token_type": jsonMap["token_type"] as String,
+      "expires_in": (jsonMap["expires_in"] as int).toString()
+    });
   }
 }
