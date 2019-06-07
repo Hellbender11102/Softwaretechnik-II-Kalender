@@ -11,18 +11,15 @@ class RegisterController extends ResourceController {
 
   @Operation.post()
   Future<Response> createUser(@Bind.body() User user) async {
-    print(user.toString());
     // Check for required parameters before we spend time hashing
     if (user.username == null || user.password == null ){
-      print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
       return Response.badRequest(
           body: {"error": "username and password required."});
     }
-
-    print("passiert#######################");
+    logger.warning("hier");
+    logger.warning(user.id);
     user.salt = AuthUtility.generateRandomSalt();
     user.hashedPassword = authServer.hashPassword(user.password, user.salt);
-
     return Response.ok(await Query(context, values: user).insert());
   }
 }

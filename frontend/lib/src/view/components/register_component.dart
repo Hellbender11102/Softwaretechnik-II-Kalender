@@ -20,7 +20,7 @@ class RegisterComponent implements OnInit, OnActivate {
   RegisterComponent(this._registerService, this._router);
 
   final Router _router;
-  final UserService _registerService;
+  final RegisterService _registerService;
   User user = User.fromJson({
   'id': null,
   'contactCode': null,

@@ -1,4 +1,4 @@
-/*
+
  import 'dart:async';
 
 import 'package:aqueduct/aqueduct.dart';
@@ -61,4 +61,3 @@ class ContactController extends ResourceController {
     return Response.ok(contactdelete);
   }
 }
-*/

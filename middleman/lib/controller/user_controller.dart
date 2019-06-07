@@ -92,3 +92,4 @@ class UserController extends ResourceController {
     return Response.ok(userdelete);
   }
 }
+

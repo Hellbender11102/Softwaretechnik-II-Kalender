@@ -8,6 +8,7 @@ import 'package:demo/src/view/services/appointment_service.dart';
 import 'package:demo/src/view/services/contact_service.dart';
 import 'package:demo/src/view/services/dashboard_service.dart';
 import 'package:demo/src/view/services/person_service.dart';
+import 'package:demo/src/view/services/register_service.dart';
 
 import 'components/login_component.dart';
 
@@ -21,6 +22,7 @@ import 'components/login_component.dart';
     ClassProvider(UserService),
     ClassProvider(ContactService),
     ClassProvider(DashboardService),
+    ClassProvider(RegisterService),
     ],
   exports: [RoutePaths, Routes],
 )

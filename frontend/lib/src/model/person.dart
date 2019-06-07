@@ -51,7 +51,6 @@ class User extends Person {
 
 
   Map<String, dynamic> toJson() => {
-        'id': id,
         'contactCode': contactCode,
         'username': username,
         'surname': surname,
