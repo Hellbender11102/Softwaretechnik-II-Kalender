@@ -32,24 +32,10 @@ class LoginComponent implements OnInit, OnActivate {
 
   // 
   Future<void> login() async {
-    users = await _userService.getAll();
-    for (User u in users) {
-      if ((username == u.username || username == u.email) && password ==u.password) {
-        loggedIn = true;
-        AppComponent.showButtons = true;
-        await _router.navigate('/dashboard');
-        break;
-      } else {
-        loginFailure = true;
-      }
-    }
-    /*
-    if (username.contains("@")) {
-      user = await _userService.getLoginEmail(password, username);
-    } else {
-      user = await _userService.getLoginNickname(password, username);
-    }*/
+    await _userService.login(username,password);
   }
+
+
 
   // Weiterleitung zum Registrierungsformular
   Future<void> register() async {
