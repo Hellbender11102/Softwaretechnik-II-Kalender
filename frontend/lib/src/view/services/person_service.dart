@@ -45,18 +45,22 @@ class UserService {
     return User.fromJson(_extractData(response) as Map<String, dynamic>);
   }
 
-  Future login(username, password) async {
-    var response =
-    await _http.post(_userUrl, body: {'username': username, 'password': password}) as Response;
-    Map<String,dynamic> mappedResponse = json.decode(response.body) as Map<String,dynamic>;
-    window.localStorage.addAll({"token": mappedResponse["key"]as String});
-  }
-  Future check_authentification () async {
-    String _headers_key = "Authorization";
-    String _headers_value =  "Token "+window.localStorage["token"];
-    var response = await _http.get("http://127.0.0.1:8000/auth/user/", headers: {_headers_key: _headers_value})as Response;
-    Map<String,dynamic> jsonMap = json.decode(response.body) as Map<String,dynamic>;
-    print(response.statusCode);
+  Future login(String username, String password) async {
+    // Must include http package in your pubspec.yaml
+    const clientID = "com.calendar.app";
+    final body = "username=$username&password=$password&grant_type=password";
+// Note the trailing colon (:) after the clientID.
+// A client identifier secret would follow this, but there is no secret, so it is the empty string.
+    final clientCredentials = Base64Encoder().convert("$clientID:".codeUnits);
+
+    final response = await _http.post(
+        "https://stablekernel.com/auth/token",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Authorization": "Basic $clientCredentials"
+        },
+        body: body);
+        window.localStorage.addAll({"access_token": response["access_token"]as String,"token_type":response["token_type"]as String,"expires_in": response["expires_in"] as String});
   }
 
 
