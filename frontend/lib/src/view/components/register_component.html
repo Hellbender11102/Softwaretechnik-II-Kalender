@@ -1,6 +1,6 @@
 <div *ngIf="user != null">
 <h3>Register</h3>
-    <form>
+    <form #registerForm="ngForm">
         <div class="form-group">
             <label for="nickname">Nickname&nbsp;*</label>
             <input type="text" class="form-control" id="nickname" required placeholder="Nickname"
@@ -57,7 +57,7 @@
 
         </div>
 
-        <button type="button" class="btn btn-success" (click)="register()">Register</button>
+        <button type="button" [disabled]="!registerForm.form.valid" class="btn btn-success" (click)="register()">Register</button>
         <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
     </form>
 </div>
