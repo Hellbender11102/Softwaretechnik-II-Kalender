@@ -17,9 +17,10 @@ class DayviewComponent implements OnActivate {
   final Router _router;
   List appointments = List();
   Day day;
+  final Location _location;
 
   // service Klasse für ORM
-  DayviewComponent(this._appointmentService, this._router);
+  DayviewComponent(this._appointmentService, this._location, this._router);
 
   final AppointmentService _appointmentService;
 
@@ -47,4 +48,8 @@ class DayviewComponent implements OnActivate {
   ///Methode die den ausgewählten Termin aufruft
   Future<NavigationResult> gotoDetail(Appointment appointment) =>
       _router.navigate(_appointmentUrl(appointment.id));
+
+  void goBack() => _location.back();
+
+  void newAppointment() => _router.navigate('appointmentNew');
 }

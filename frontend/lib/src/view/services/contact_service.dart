@@ -57,7 +57,6 @@ class ContactService {
     }
   }
 
-
   Future<void> delete(String contactCode) async {
     try {
       final url = '$_contactUrl/$contactCode';
@@ -69,8 +68,27 @@ class ContactService {
 
   ///Erstellt einen Kontakt und gibt ihn zurück
   Future<Contact> find(String contactCode) async {
+    Contact contact;
     final Response response = await _http.get('$_userUrl/$contactCode');
+    if (response.statusCode.toString() == "404") {
+      return contact;
+    }
     final User user = User.fromJson(_extractData(response) as Map<String, dynamic>);
-    return Contact(user.id, user.nickname, user.surname,user.name, user.email, user.contactCode, "");
+    return Contact(user.id, user.nickname, user.surname, user.name, user.email, user.contactCode, "");
+  }
+
+  Future<List<Contact>> search(String term) async {
+    try {
+      final response = await _http.get('$_contactUrl');
+      final List<Contact> contacts =
+      (_extractData(response) as List)
+          .map((json) => Contact.fromJson(json as Map<String, dynamic>))
+          .toList();
+      contacts.retainWhere(
+              (h) => h.nickname.toLowerCase().contains(term.toLowerCase()));
+      return contacts;
+    } catch (e) {
+      throw _handleError(e);
+    }
   }
 }

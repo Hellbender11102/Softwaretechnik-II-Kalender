@@ -4,9 +4,9 @@
            (change)="search(searchBox.value)"
            (keyup)="search(searchBox.value)" />
     <div>
-        <div *ngFor="let appointment of appointments | async"
-             (click)="gotoDetail(appointment)" class="search-result" >
-            {{appointment.name}}
+        <div *ngFor="let contact of contacts | async"
+             (click)="contact.delete()" class="search-result" >
+            {{contact.nickname}}
         </div>
     </div>
 </div>

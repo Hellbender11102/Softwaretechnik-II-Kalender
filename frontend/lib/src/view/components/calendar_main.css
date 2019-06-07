@@ -54,6 +54,10 @@ th{
     text-align: center;
 }
 
+div .appointmentNotifier{
+    color: red;
+}
+
 /*
 colors to use if possible (descending) :
 #FF7B89
