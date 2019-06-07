@@ -21,7 +21,15 @@ class RegisterComponent implements OnInit, OnActivate {
 
   final Router _router;
   final UserService _registerService;
-  User user = User.zero();
+  User user = User.fromJson({
+  'id': null,
+  'contactCode': null,
+  'username': "username",
+  'surname': "surname",
+  'name': "name",
+  'email': "email@mail.de",
+  'password': "mockAdmin1"
+  });
 
 
   Future<void> register() async {

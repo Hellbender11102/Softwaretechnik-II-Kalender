@@ -31,7 +31,7 @@ SQL zum erstellen einer Datenbank,
 // entfernt alle aktuellen verbindungen zur db   
 select pg_terminate_backend(pid) from pg_stat_activity where datname='calendar';
 // löscht die Database
-DROP DATABASE calendar
+DROP DATABASE calendar;
 ----------------------------------------------
 CREATE USER cal_user WITH createdb;
 ALTER USER cal_user WITH password 'password';
