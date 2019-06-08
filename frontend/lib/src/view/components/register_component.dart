@@ -21,6 +21,7 @@ class RegisterComponent implements OnInit, OnActivate {
   final Router _router;
   final UserService _registerService;
   User user = User.zero();
+  String passwordWh = "";
 
 
   Future<void> register() async {
@@ -45,4 +46,8 @@ class RegisterComponent implements OnInit, OnActivate {
       _router.navigate('/calendar');
     }
   }
+
+
+
+
 }
