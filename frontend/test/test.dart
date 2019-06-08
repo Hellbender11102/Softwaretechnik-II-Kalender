@@ -1,10 +1,13 @@
+
+import 'package:demo/src/view/services/appointment_service.dart';
+import 'package:demo/src/view/services/person_service.dart';
 import 'package:test/test.dart';
 import 'package:demo/src/model/day.dart';
 import 'package:demo/src/model/month.dart';
 import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/model/person.dart';
 
-void main() {
+Future main() async {
   Day day;
   Day day2;
 
@@ -45,6 +48,7 @@ void main() {
   });
 
   ///Tests for appointment.dart
+  AppointmentService appointmentService;
   Appointment appo =
       Appointment(1, "Abifaier", 2019, 6, 4, "2", "4", "Lübeck", "hi");
   Appointment json = Appointment.zero();
@@ -53,7 +57,15 @@ void main() {
     expect(appo.equals(Appointment.fromJson(appo.toJson())), true);
   });
 
+  await appointmentService.update(appo);
+  List<Appointment> appointments= await appointmentService.getByDate(appo.year, appo.month,appo.day);
+  test("AppointmentService.update appointment.getByDate",() async {
+    expect(appointments.contains(appo), true);
+  });
+
   ///Tests for person.dart
+  UserService userService;
+
   User user = User(1,'CC123', 'Hellbender', 'Schindler', 'Laurenz',
       'Hallo@myWebmail.com', 'dasisteinschlechtesPasswort', '016331742');
   Contact contact = Contact(2,'Xanta', 'Waage', 'Daniel',
@@ -65,4 +77,6 @@ void main() {
   test("Contact.toJson == Contact.FromJson", () {
     expect(contact.equals(Contact.fromJson(contact.toJson())), true);
   });
+
+
 }
