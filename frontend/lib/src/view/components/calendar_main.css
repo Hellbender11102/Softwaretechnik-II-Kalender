@@ -1,3 +1,7 @@
+.today {
+    background-color: lightgreen;
+}
+
 td{
     border-width:2px;
     border-style: solid;
@@ -57,6 +61,7 @@ th{
 div .appointmentNotifier{
     color: red;
 }
+
 
 /*
 colors to use if possible (descending) :

@@ -23,6 +23,8 @@ class CalendarComponent implements OnActivate, OnInit {
 
   List<String> get week => month.week;
   List<Appointment> appointments = [];
+  int today;
+  int thisMonth;
 
   // auswählen des Tages
   Future<NavigationResult> gotoDetail(Day day) =>
@@ -39,6 +41,8 @@ class CalendarComponent implements OnActivate, OnInit {
   }
   // todo bug in anderen monaten
   Future<void> _getAppointments() async {
+    today = DateTime.now().day;
+    thisMonth = DateTime.now().month;
     appointments = await _appointmentService.getByDate(month.year, month.month);
     appointments.sort((a, b) => a.id.compareTo(b.id));
   }
