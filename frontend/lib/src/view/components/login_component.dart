@@ -36,7 +36,7 @@ class LoginComponent implements OnInit, OnActivate {
   Future<void> login() async {
     loggedIn = true;
     AppComponent.showButtons = true;
-    //await _registerService.login(username,password);
+    await _registerService.login(username,password);
     await _router.navigate('/dashboard');
 
 

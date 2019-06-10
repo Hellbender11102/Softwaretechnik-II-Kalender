@@ -47,12 +47,11 @@ class RegisterService {
           "Authorization": "Basic $clientCredentials"
         },
         body: body);
-    print(response.body);
     final Map<String,dynamic> jsonMap = json.decode(response.body as String) as Map<String, dynamic>;
-
+    capitalize(String s) => s[0].toUpperCase() + s.substring(1);
     window.localStorage.addAll({
       "access_token": jsonMap["access_token"] as String,
-      "token_type": jsonMap["token_type"] as String,
+      "token_type": capitalize(jsonMap["token_type"] as String),
       "expires_in": (jsonMap["expires_in"] as int).toString()
     });
   }
