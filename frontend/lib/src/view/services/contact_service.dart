@@ -87,11 +87,11 @@ class ContactService {
     try {
       final response = await _http.get('$_contactUrl');
       final List<Contact> contacts =
-      (_extractData(response) as List)
+      (_extractData(response as Response) as List)
           .map((json) => Contact.fromJson(json as Map<String, dynamic>))
           .toList();
       contacts.retainWhere(
-              (h) => h.nickname.toLowerCase().contains(term.toLowerCase()));
+              (h) => h.username.toLowerCase().contains(term.toLowerCase()));
       return contacts;
     } catch (e) {
       throw _handleError(e);
