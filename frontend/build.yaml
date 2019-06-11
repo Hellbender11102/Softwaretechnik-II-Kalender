@@ -10,4 +10,4 @@ targets:
           compiler: dart2js
           dart2js_args:
             - --minify
-            - -Dhost=https://projects.mylab.th-luebeck.de:443/calendar/mm
+            - -Dhost=http://localhost:8888

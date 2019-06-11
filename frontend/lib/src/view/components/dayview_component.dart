@@ -28,7 +28,7 @@ class DayviewComponent implements OnActivate {
   @override
   void onActivate(_, RouterState current) async {
     if (!LoginComponent.loggedIn) {
-      _router.navigate('/login');
+      await _router.navigate('/login');
     } else {
       this.day = Day(
           getYear(current.parameters),

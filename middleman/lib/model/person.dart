@@ -1,20 +1,25 @@
+
+import 'package:aqueduct/managed_auth.dart';
 import 'package:middleman/middleman.dart';
 
-class Person extends ManagedObject<_Person> implements _Person {}
 
-class User extends ManagedObject<_User> implements _User {}
+class User extends ManagedObject<_User> implements _User,ManagedAuthResourceOwner<_User> {
+  @Serialize(input: true, output: false)
+  String password;
+}
 
 class Contact extends ManagedObject<_Contact> implements _Contact {}
 
-abstract class _Person {
+
+class _Contact{
+  @Column(unique: false,nullable: true)
+  String note;
+
   @primaryKey
   int id;
 
   @Column(unique: true, nullable: true)
   String contactCode;
-
-  @Column(unique: true)
-  String nickname;
 
   @Column(unique: false)
   String surname;
@@ -26,15 +31,22 @@ abstract class _Person {
   String email;
 }
 
-class _Contact extends _Person {
-  @Column(unique: false,nullable: true)
-  String note;
-}
 
-class _User extends _Person {
-  @Column(unique: false)
-  String password;
+class _User extends ResourceOwnerTableDefinition {
 
   @Column(unique: false, nullable: true)
   String mobileNo;
+
+  @Column(unique: true, nullable: true)
+  String contactCode;
+
+  @Column(unique: false)
+  String surname;
+
+  @Column(unique: false)
+  String name;
+
+  @Column(unique: true)
+  String email;
 }
+

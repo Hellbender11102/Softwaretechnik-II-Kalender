@@ -37,6 +37,32 @@ class UserController extends ResourceController {
     return Response.ok(user);
   }
 
+  @Operation.get('password', 'username')
+  Future<Response> getUserLoginNickname(@Bind.path('password') String password,
+    @Bind.path('username') String username) async {
+    final userQuery = Query<User>(context)
+      ..where((user) => user.hashedPassword).equalTo(password)
+      ..where((user) => user.username).equalTo(username);
+    final user = await userQuery.fetchOne();
+    if (user == null) {
+      return Response.notFound();
+    }
+    return Response.ok(user);
+  }
+
+  @Operation.get('password', 'email')
+  Future<Response> getUserLoginEmail(@Bind.path('password') String password,
+      @Bind.path('email') String email) async {
+    final userQuery = Query<User>(context)
+      ..where((user) => user.hashedPassword).equalTo(password)
+      ..where((user) => user.email).equalTo(email);
+    final user = await userQuery.fetchOne();
+    if (user == null) {
+      return Response.notFound();
+    }
+    return Response.ok(user);
+  }
+
   @Operation.post()
   Future<Response> newUser() async {
     final Map<String, dynamic> body = await request.body.decode();
