@@ -78,6 +78,7 @@ class AppointmentController extends ResourceController {
   @Operation.put()
   Future<Response> updateAppointment() async {
     final Map<String, dynamic> body = await request.body.decode();
+    logger.warning(request.body.decode());
     final query = Query<Appointment>(context)
       ..values.read(body,ignore: ["id"])
       ..where((app) => app.id).equalTo(body["id"] as int);

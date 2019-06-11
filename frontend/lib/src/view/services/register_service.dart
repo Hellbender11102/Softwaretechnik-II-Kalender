@@ -49,6 +49,7 @@ class RegisterService {
         body: body);
     final Map<String,dynamic> jsonMap = json.decode(response.body as String) as Map<String, dynamic>;
     capitalize(String s) => s[0].toUpperCase() + s.substring(1);
+    print(jsonMap.toString());
     window.localStorage.addAll({
       "access_token": jsonMap["access_token"] as String,
       "token_type": capitalize(jsonMap["token_type"] as String),

@@ -36,10 +36,8 @@ class AppointmentService {
     // Add security Header
     final Response response = await _http.put(_appointmentUrl,
         headers: _headers, body: json.encode(appointment.toJson())) as Response;
-    if(response.statusCode == 200){
       return Appointment.fromJson(
           _extractData(response as Response) as Map<String, dynamic>);
-    }
   }
 
   ///Löscht den Termin mit gegebener id
@@ -51,7 +49,7 @@ class AppointmentService {
 
   Future<Appointment> get(int id) async {
     final Response response =
-        await _http.get('$_appointmentUrl/$id') as Response;
+        await _http.get('$_appointmentUrl/$id',headers: _headers) as Response;
     return Appointment.fromJson(_extractData(response) as Map<String, dynamic>);
   }
 

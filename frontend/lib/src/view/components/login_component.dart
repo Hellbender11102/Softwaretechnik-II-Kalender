@@ -14,11 +14,8 @@ import '../main_component.dart';
   styleUrls: ['login_component.css'],
   directives: [coreDirectives, routerDirectives, formDirectives],
 )
-
 class LoginComponent implements OnInit, OnActivate {
-
-  LoginComponent(this._router, this._userService,this._registerService);
-
+  LoginComponent(this._router, this._userService, this._registerService);
 
   final UserService _userService;
   final RegisterService _registerService;
@@ -30,20 +27,16 @@ class LoginComponent implements OnInit, OnActivate {
   String username;
   String password;
   List<User> users;
+
   //User user;
 
-  // 
+  //
   Future<void> login() async {
+    await _registerService.login(username, password);
     loggedIn = true;
     AppComponent.showButtons = true;
-    await _registerService.login(username,password);
     await _router.navigate('/dashboard');
-
-
-
   }
-
-
 
   // Weiterleitung zum Registrierungsformular
   Future<void> register() async {
@@ -68,7 +61,7 @@ class LoginComponent implements OnInit, OnActivate {
 
   @override
   void onActivate(RouterState previous, RouterState current) {
-    if(loggedIn){
+    if (loggedIn) {
       _router.navigate('/calendar');
     }
   }

@@ -38,6 +38,10 @@ ALTER USER cal_user WITH password 'password';
 CREATE DATABASE calendar;
 GRANT all ON database calendar TO cal_user;
 ----------------------------------------------
+
+aqueduct auth add-client --id com.calendar.app
+
+
 // dockercompose
 
 
