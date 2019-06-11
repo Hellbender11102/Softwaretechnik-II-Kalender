@@ -6,32 +6,32 @@
             <th *ngFor="let day of week">{{day}}</th>
         </tr>
         <tr>
-            <td *ngFor="let day of month.weekOfMonth(0)" (click)="gotoDetail(day)">{{day.day}}
+            <td *ngFor="let day of month.weekOfMonth(0)" [class.today]="day.day === today && day.month === thisMonth" (click)="gotoDetail(day)">{{day.day}}
                 <div  *ngIf="daysAppointments(day) != 0"  class="appointmentNotifier">{{daysAppointments(day)}}</div>
             </td>
         </tr>
         <tr>
-            <td *ngFor="let day of month.weekOfMonth(1)" (click)="gotoDetail(day)">{{day.day}}
+            <td *ngFor="let day of month.weekOfMonth(1)" [class.today]="day.day === today && day.month === thisMonth" (click)="gotoDetail(day)">{{day.day}}
                 <div *ngIf="daysAppointments(day) != 0" class="appointmentNotifier">{{daysAppointments(day)}}</div>
             </td>
         </tr>
         <tr>
-            <td *ngFor="let day of month.weekOfMonth(2)" (click)="gotoDetail(day)">{{day.day}}
+            <td *ngFor="let day of month.weekOfMonth(2)" [class.today]="day.day === today && day.month === thisMonth" (click)="gotoDetail(day)">{{day.day}}
                 <div *ngIf="daysAppointments(day) != 0" class="appointmentNotifier">{{daysAppointments(day)}}</div>
             </td>
         </tr>
         <tr>
-            <td *ngFor="let day of month.weekOfMonth(3)" (click)="gotoDetail(day)">{{day.day}}
+            <td *ngFor="let day of month.weekOfMonth(3)" [class.today]="day.day === today && day.month === thisMonth" (click)="gotoDetail(day)">{{day.day}}
                 <div *ngIf="daysAppointments(day) != 0" class="appointmentNotifier">{{daysAppointments(day)}}</div>
             </td>
         </tr>
         <tr>
-            <td *ngFor="let day of month.weekOfMonth(4)" (click)="gotoDetail(day)">{{day.day}}
+            <td *ngFor="let day of month.weekOfMonth(4)" [class.today]="day.day === today && day.month === thisMonth" (click)="gotoDetail(day)">{{day.day}}
                 <div *ngIf="daysAppointments(day) != 0" class="appointmentNotifier">{{daysAppointments(day)}}</div>
             </td>
         </tr>
         <tr>
-            <td *ngFor="let day of month.weekOfMonth(5)" (click)="gotoDetail(day)">{{day.day}}
+            <td *ngFor="let day of month.weekOfMonth(5)" [class.today]="day.day === today && day.month === thisMonth" (click)="gotoDetail(day)">{{day.day}}
                 <div *ngIf="daysAppointments(day) != 0" class="appointmentNotifier">{{daysAppointments(day)}}</div>
             </td>
         </tr>

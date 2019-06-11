@@ -15,8 +15,17 @@
     resize: none;
 }
 
+#stern{
+    margin:6px;
+    font-size: 12px;
+}
+
 #delete {
     color: red;
+}
+
+.invalid-feedback {
+    margin:6px;
 }
 
 label {

@@ -4,7 +4,6 @@ import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/components/login_component.dart';
 import 'package:demo/src/view/components/mock_users.dart';
 import 'package:demo/src/view/services/person_service.dart';
-import 'package:demo/src/view/services/register_service.dart';
 
 import '../../model/person.dart';
 
@@ -20,16 +19,8 @@ class RegisterComponent implements OnInit, OnActivate {
   RegisterComponent(this._registerService, this._router);
 
   final Router _router;
-  final RegisterService _registerService;
-  User user = User.fromJson({
-  'id': null,
-  'contactCode': null,
-  'username': "username",
-  'surname': "surname",
-  'name': "name",
-  'email': "email@mail.de",
-  'password': "mockAdmin1"
-  });
+  final UserService _registerService;
+  User user = User.zero();
 
 
   Future<void> register() async {

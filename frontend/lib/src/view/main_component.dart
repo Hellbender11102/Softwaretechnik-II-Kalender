@@ -1,5 +1,6 @@
 import 'dart:core' as prefix0;
 import 'dart:core';
+import 'dart:html';
 
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
@@ -34,8 +35,14 @@ class AppComponent {
   //todo muss raus hier
   static bool showButtons = false;
   void logout() {
-    LoginComponent.loggedIn = false;
-    showButtons = false;
+
+    if (window.confirm('Are you sure you want to log out?')) {
+      LoginComponent.loggedIn = false;
+      showButtons = false;
+    } else {
+      // Do nothing!
+    }
+
   }
 }
 // Connection Defaults soll später im Clienten einstellbar sein.

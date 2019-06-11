@@ -1,20 +1,41 @@
-
 <h3>Contacts</h3>
-<ol class="contacts">
-    <li *ngFor="let contact of contacts"
-        [class.selected]="contact === selected"
-        (click)="onSelect(contact)">
-        <span>{{contact.name}} </span>
-        <span>{{contact.email}} </span>
-    </li>
-</ol>
-<div *ngIf="selected != null">
-    <button (click)="gotoDetail()">View Details</button>
+
+
+<contact-search id="search"></contact-search>
+
+<table class="table">
+    <tr id="header">
+        <td><b>Nickname: </b></td>
+        <td><b>Surname: </b></td>
+        <td><b>Name: </b></td>
+        <td><b>E-Mail: </b></td>
+        <td><b>Delete</b></td>
+    </tr>
+    <tr *ngFor="let contact of contacts" id="contact">
+        <tr (click)="gotoDetail(contact)">{{contact.nickname}}</tr>
+        <td (click)="gotoDetail(contact)">{{contact.surname}}</td>
+        <td (click)="gotoDetail(contact)">{{contact.name}}</td>
+        <td (click)="gotoDetail(contact)">{{contact.email}}</td>
+        <td (click)="delete(contact)">X</td>
+    </tr>
+    <tr></tr>
+</table>
+<div [hidden]="!deleteControl" id="delete">
+    If you really want to delete this Contact click "Delete" again.
 </div>
+
 <form action="/action_page.php">
     <div class="form-group">
         <input type="text" class="form-control" id="contactCode" placeholder="ContactCode"
                [(ngModel)]="contactCode" name="contactCode">
         <button (click)="addContact()" type="submit">Add Contact</button>
+        <div id="con">
+            <div [hidden]="valid">
+                The given ContactCode does not exist
+            </div>
+            <div [hidden]="!exists">
+                The Contact with this ContactCode does already exists
+            </div>
+        </div>
     </div>
 </form>

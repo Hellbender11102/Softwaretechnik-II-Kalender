@@ -33,4 +33,8 @@ class DashboardComponent implements OnInit, OnActivate {
       joke = await _dashboardService.getJoke();
     }
   }
+
+  void refresh() async{
+    joke = await _dashboardService.getJoke();
+  }
 }

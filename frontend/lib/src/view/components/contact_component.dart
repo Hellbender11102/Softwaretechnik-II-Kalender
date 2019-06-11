@@ -32,18 +32,16 @@ class ContactComponent implements OnActivate {
   /// Folgender Code wird immer bei der Aktivierung der Klasse aufgerufen
   @override
   void onActivate(_, RouterState current) async {
-    /*if (!LoginComponent.loggedIn) {
+    if (!LoginComponent.loggedIn) {
       await _router.navigate('/login');
     } else {
-
-     */
       final con = getNumber(current.parameters);
       if (getNumber != null) {
         // ignore: unnecessary_parenthesis
         contact = await (_contactService.get(con));
         note = contact.note;
       }
-    //}
+    }
   }
 
   /// Methode zum speichern, der änderungen die man im Kontakt vorgenommen hat
