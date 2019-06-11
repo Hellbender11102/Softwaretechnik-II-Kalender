@@ -15,7 +15,7 @@ td:hover{
 }
 h4{
     text-align: center;
-    cursor: hand;
+    cursor: pointer;
 }
 
 table tr {
