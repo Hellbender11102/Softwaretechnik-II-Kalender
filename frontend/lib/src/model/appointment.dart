@@ -17,7 +17,6 @@ class Appointment {
       appointment['location'] as String,
       appointment['note'] as String);
 
-  List<String> contactCodes = [];
   int id;
   String name;
   int year;
@@ -53,7 +52,11 @@ class Appointment {
   }
 
   bool equals(Appointment app){
-    return this.toJson() == app.toJson();
+    return toString() == app.toString();
+  }
+
+  String toString(){
+    return "ID: $id Name: $name Date: $date Time: $time Duration: $duration Location: $location Note: $note";
   }
 }
 

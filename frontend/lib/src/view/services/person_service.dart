@@ -44,23 +44,4 @@ class UserService {
     return User.fromJson(_extractData(response) as Map<String, dynamic>);
   }
 
-  /*Future<User> getLoginEmail(String password, String email) async {
-    final Response response = await _http.get('$_userUrl/$password/$email');
-    return User.fromJson(_extractData(response) as Map<String, dynamic>);
-  }
-
-  Future<User> getLoginNickname(String password, String nickname) async {
-    final Response response = await _http.get('$_userUrl/$password/$nickname');
-    return User.fromJson(_extractData(response) as Map<String, dynamic>);
-  }*/
-
-  /*///Updatet einen bereits existierenden User
-  Future<User> update(User user) async {
-    for (var mockUser in mockUsers) {
-      if (mockUser.contactCode == user.contactCode) {
-        mockUser = user;
-      }
-      return mockUser;
-    }
-  }*/
 }

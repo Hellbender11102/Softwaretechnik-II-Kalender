@@ -1,13 +1,12 @@
 
-import 'package:demo/src/view/services/appointment_service.dart';
-import 'package:demo/src/view/services/person_service.dart';
+
 import 'package:test/test.dart';
 import 'package:demo/src/model/day.dart';
 import 'package:demo/src/model/month.dart';
 import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/model/person.dart';
 
-Future main() {
+void main() {
   Day day;
   Day day2;
 
@@ -49,7 +48,6 @@ Future main() {
 
   ///Tests for appointment.dart
   List<Appointment> appointments;
-  AppointmentService appointmentService;
   Appointment appo =
       Appointment(1, "Abifaier", 2019, 6, 4, "2:30", "", "Lübeck", "hi");
   Appointment json = Appointment.zero();
@@ -58,35 +56,7 @@ Future main() {
     expect(appo.equals(Appointment.fromJson(appo.toJson())), true);
   });
 
- ///Datenbank tests für AppointmentService
-  test("AppointmentService.creat appointment.getByDate",() async {
-    await appointmentService.create(appo);
-    appointments = await appointmentService.getByDate(appo.year, appo.month,appo.day);
-    expect(appointments.contains(appo), true);
-  });
-
-  test("AppointmentService.update appointment.getByDate",() async {
-    appointments = await appointmentService.getByDate(appo.year, appo.month,appo.day);
-    int length = appointments.length;
-    await appointmentService.update(Appointment(1, "KiezTour", 2019, 6, 4, "22:30", "", "Hamburg", "Lass mal nicht so spät anfangen."));
-    appointments = await appointmentService.getByDate(appo.year, appo.month,appo.day);
-    expect(appointments.length, length);
-  });
-
-  test("AppointmentService.delet getAll",() async {
-    appointments = await appointmentService.getAll();
-    int length = appointments.length;
-    appointmentService.delete(appointments.last.id);
-    appointments = await appointmentService.getAll();
-    expect(appointments.length + 1, length);
-  });
-  test("AppointmentService.creat search",() async {
-    await appointmentService.create(appo);
-    appointments = await appointmentService.search(appo.name);
-    expect(appointments.contains(appo), true);
-  });
   ///Tests for person.dart
-  UserService userService;
 
   User user = User(1,'CC123', 'Hellbender', 'Schindler', 'Laurenz',
       'Hallo@myWebmail.com', 'dasisteinschlechtesPasswort', '016331742');
