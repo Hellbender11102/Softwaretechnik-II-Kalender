@@ -52,12 +52,18 @@ class Appointment {
     return "$year-$month-$day";
   }
 
-  bool equals(Appointment app){
-    return toString() == app.toString();
+  bool equals(Appointment app) {
+    return id == app.id &&
+        year == app.year &&
+        month == app.month &&
+        day == app.day &&
+        name == app.name &&
+        time == app.time &&
+        duration == app.duration &&
+        location == app.location;
   }
 
-  String toString(){
+  String toString() {
     return "ID: $id Name: $name Date: $date Time: $time Duration: $duration Location: $location Note: $note";
   }
 }
-
