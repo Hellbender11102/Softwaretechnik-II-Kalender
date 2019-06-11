@@ -2,6 +2,7 @@ import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/services/person_service.dart';
+import 'package:demo/src/view/services/register_service.dart';
 
 import '../../model/person.dart';
 import '../main_component.dart';
@@ -12,42 +13,28 @@ import '../main_component.dart';
   styleUrls: ['login_component.css'],
   directives: [coreDirectives, routerDirectives, formDirectives],
 )
-
 class LoginComponent implements OnInit, OnActivate {
-
-  LoginComponent(this._router, this._userService);
-
+  LoginComponent(this._router, this._userService, this._registerService);
 
   final UserService _userService;
+  final RegisterService _registerService;
 
   final Router _router;
   bool loginFailure = false;
   static bool loggedIn = false;
 
-  String nickname;
+  String username;
   String password;
   List<User> users;
+
   //User user;
 
-  // 
+  //
   Future<void> login() async {
-    users = await _userService.getAll();
-    for (User u in users) {
-      if ((nickname == u.nickname || nickname == u.email) && password ==u.password) {
-        loggedIn = true;
-        AppComponent.showButtons = true;
-        await _router.navigate('/dashboard');
-        break;
-      } else {
-        loginFailure = true;
-      }
-    }
-    /*
-    if (nickname.contains("@")) {
-      user = await _userService.getLoginEmail(password, nickname);
-    } else {
-      user = await _userService.getLoginNickname(password, nickname);
-    }*/
+    await _registerService.login(username, password);
+    loggedIn = true;
+    AppComponent.showButtons = true;
+    await _router.navigate('/dashboard');
   }
 
   // Weiterleitung zum Registrierungsformular

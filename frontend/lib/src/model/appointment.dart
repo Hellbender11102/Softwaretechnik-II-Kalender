@@ -17,6 +17,7 @@ class Appointment {
       appointment['location'] as String,
       appointment['note'] as String);
 
+  List<String> contactCodes = [];
   int id;
   String name;
   int year;
@@ -27,8 +28,8 @@ class Appointment {
   String location = "";
   String note = "";
 
-  Map<String,dynamic> toJson() => {
-        'id' :id,
+  Map<String, dynamic> toJson() => {
+        'id': id,
         'name': name,
         'year': year,
         'month': month,

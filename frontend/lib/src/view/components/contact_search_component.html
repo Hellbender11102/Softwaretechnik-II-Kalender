@@ -6,7 +6,7 @@
     <div>
         <div *ngFor="let contact of contacts | async"
              (click)="contact.delete()" class="search-result" >
-            {{contact.nickname}}
+            {{contact.username}}
         </div>
     </div>
 </div>

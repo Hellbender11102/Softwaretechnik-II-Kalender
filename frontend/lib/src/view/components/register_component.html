@@ -2,13 +2,13 @@
     <h3>Register</h3>
     <form #registerForm="ngForm">
         <div class="form-group">
-            <label for="nickname">Nickname&nbsp;*</label>
-            <input type="text" class="form-control" id="nickname" required placeholder="Nickname"
-                   #nickname="ngForm"
-                   [class.is-valid]="nickname.valid"
-                   [class.is-invalid]="!nickname.valid"
-                   [(ngModel)]="user.nickname"
-                   ngControl="nickname">
+            <label for="username">Username&nbsp;*</label>
+            <input type="text" class="form-control" id="username" required placeholder="Username"
+                   #username="ngForm"
+                   [class.is-valid]="username.valid"
+                   [class.is-invalid]="!username.valid"
+                   [(ngModel)]="user.username"
+                   ngControl="username">
         </div>
         <div class="form-group">
             <label for="surname">Surname&nbsp;*</label>

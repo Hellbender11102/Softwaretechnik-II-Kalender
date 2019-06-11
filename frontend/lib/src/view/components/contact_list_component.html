@@ -12,7 +12,7 @@
         <td><b>Delete</b></td>
     </tr>
     <tr *ngFor="let contact of contacts" id="contact">
-        <tr (click)="gotoDetail(contact)">{{contact.nickname}}</tr>
+        <tr (click)="gotoDetail(contact)">{{contact.username}}</tr>
         <td (click)="gotoDetail(contact)">{{contact.surname}}</td>
         <td (click)="gotoDetail(contact)">{{contact.name}}</td>
         <td (click)="gotoDetail(contact)">{{contact.email}}</td>
