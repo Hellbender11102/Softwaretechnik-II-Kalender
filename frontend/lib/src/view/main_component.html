@@ -18,6 +18,9 @@
                 <li [routerLink]="RoutePaths.contacts.toUrl()"
                     [routerLinkActive]="'active'">Contacts
                 </li>
+                <li [routerLink]="RoutePaths.account.toUrl()"
+                    [routerLinkActive]="'active'">Account
+                </li>
                 <li (click)="logout()" [routerLink]="RoutePaths.login.toUrl()">Logout</li>
             </nav>
 

@@ -1,0 +1,33 @@
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css');
+
+.form-control {
+    margin:5px;
+    width: 97%;
+    float: left;
+}
+
+#noteplain{
+     resize: none;
+     background-color: #C9D1C8;
+     border: none;
+ }
+#note{
+    resize: none;
+}
+
+#stern{
+    margin:6px;
+    font-size: 12px;
+}
+
+#delete {
+    color: red;
+}
+
+.invalid-feedback {
+    margin:6px;
+}
+
+label {
+    width: 100%;
+}
