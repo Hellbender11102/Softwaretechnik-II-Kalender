@@ -8,13 +8,6 @@ class AppointmentController extends ResourceController {
 
   final ManagedContext context;
 
-  /*
-  // getall or single
-  @Operation.get()
-  Future<Response> getAllAppointments() async {
-    return Response.ok(_appointments);
-  }
-  */
   // getall
   @Operation.get()
   Future<Response> getAllAppointments() async {

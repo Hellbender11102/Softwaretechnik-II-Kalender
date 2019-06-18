@@ -11,12 +11,12 @@ abstract class Person {
   String contactCode;
 
   bool equals(Person person) {
-    return this.email == person.email &&
-        this.username == person.username &&
-        this.name == person.name &&
-        this.surname == person.surname &&
-        this.contactCode == person.contactCode &&
-        this.id == person.id;
+    return email == person.email &&
+        username == person.username &&
+        name == person.name &&
+        surname == person.surname &&
+        contactCode == person.contactCode &&
+        id == person.id;
   }
 }
 
@@ -45,7 +45,7 @@ class User extends Person {
   // ggf persistente Daten von einer Service Routine
   final List<Contact> _contactlist = List();
 
-  int id;
+
   String password;
   String mobileNo;
 

@@ -77,7 +77,11 @@ class ContactService {
 
   ///Erstellt einen Kontakt und gibt ihn zurück
   Future<Contact> find(String contactCode) async {
+    Contact contact;
     final Response response = (await _http.get('$_userUrl/$contactCode')) as Response;
+    if (response.statusCode.toString() == "404") {
+      return contact;
+    }
     final User user =
         User.fromJson(_extractData(response) as Map<String, dynamic>);
     return Contact(user.id, user.username, user.surname, user.name, user.email,

@@ -63,6 +63,7 @@ class Appointment {
         location == app.location;
   }
 
+  @override
   String toString() {
     return "ID: $id Name: $name Date: $date Time: $time Duration: $duration Location: $location Note: $note";
   }

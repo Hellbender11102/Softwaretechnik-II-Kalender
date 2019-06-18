@@ -8,13 +8,7 @@ class UserController extends ResourceController {
 
   final ManagedContext context;
 
-  /*
-  // getall or single
-  @Operation.get()
-  Future<Response> getAllAppointments() async {
-    return Response.ok(_appointments);
-  }
-  */
+
   // getall
   @Operation.get()
   Future<Response> getAllUsers() async {
@@ -30,32 +24,6 @@ class UserController extends ResourceController {
   Future<Response> getUserByID(@Bind.path('number') String con) async {
     final userQuery = Query<User>(context)
       ..where((user) => user.contactCode).equalTo(con);
-    final user = await userQuery.fetchOne();
-    if (user == null) {
-      return Response.notFound();
-    }
-    return Response.ok(user);
-  }
-
-  @Operation.get('password', 'username')
-  Future<Response> getUserLoginNickname(@Bind.path('password') String password,
-    @Bind.path('username') String username) async {
-    final userQuery = Query<User>(context)
-      ..where((user) => user.hashedPassword).equalTo(password)
-      ..where((user) => user.username).equalTo(username);
-    final user = await userQuery.fetchOne();
-    if (user == null) {
-      return Response.notFound();
-    }
-    return Response.ok(user);
-  }
-
-  @Operation.get('password', 'email')
-  Future<Response> getUserLoginEmail(@Bind.path('password') String password,
-      @Bind.path('email') String email) async {
-    final userQuery = Query<User>(context)
-      ..where((user) => user.hashedPassword).equalTo(password)
-      ..where((user) => user.email).equalTo(email);
     final user = await userQuery.fetchOne();
     if (user == null) {
       return Response.notFound();

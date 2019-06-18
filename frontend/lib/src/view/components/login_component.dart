@@ -49,10 +49,7 @@ class LoginComponent implements OnInit, OnActivate {
   }
 
   @override
-  void ngOnInit() async {
-    // do something when drawn
-    // like DB connections //TODO
-  }
+  void ngOnInit() async {}
 
   void setLoginFalse() {
     loggedIn = false;

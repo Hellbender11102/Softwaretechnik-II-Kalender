@@ -14,13 +14,16 @@ import 'login_component.dart';
   directives: [coreDirectives, routerDirectives],
 )
 class DayviewComponent implements OnActivate {
+
+  // service Klasse für ORM
+  DayviewComponent(this._appointmentService, this._location, this._router);
+
   final Router _router;
   List appointments = List();
   Day day;
   final Location _location;
 
-  // service Klasse für ORM
-  DayviewComponent(this._appointmentService, this._location, this._router);
+
 
   final AppointmentService _appointmentService;
 
@@ -30,7 +33,7 @@ class DayviewComponent implements OnActivate {
     if (!LoginComponent.loggedIn) {
       await _router.navigate('/login');
     } else {
-      this.day = Day(
+      day = Day(
           getYear(current.parameters),
           getMonth(current.parameters),
           getDay(current.parameters));
