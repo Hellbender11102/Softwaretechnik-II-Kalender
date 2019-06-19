@@ -51,4 +51,8 @@ button {
 button:hover {
     background-color: #cfd8dc;
 }
+li > .middle{
+    position: relative;
+    bottom: 50%;
+}
 
