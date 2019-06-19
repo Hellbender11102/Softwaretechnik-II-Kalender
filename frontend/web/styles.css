@@ -5,3 +5,19 @@ html, body{
     margin: 0;
     background: #04202C;
 }
+
+#search-component > #search-box {
+    width: 200px;
+    height: 30px;
+}
+#search-component > div {
+    position: absolute;
+}
+
+.search-result.search-result.search-result.search-result{
+    position: relative;
+    z-index: 90000;
+    cursor: pointer;
+    width: 200px;
+    height: 30px;
+}

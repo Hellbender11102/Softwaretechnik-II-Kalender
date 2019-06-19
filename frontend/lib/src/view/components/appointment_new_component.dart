@@ -21,7 +21,6 @@ class AppointmentNewComponent implements OnActivate {
 
   AppointmentNewComponent(this._appointmentService, this._location, this._router);
 
-  //Später löschen
   Appointment appointment = Appointment.zero();
   final Location _location;
   final AppointmentService _appointmentService;
@@ -32,6 +31,7 @@ class AppointmentNewComponent implements OnActivate {
   ///Methode zum erstellen des neuen Termins
   Future<void> create() async {
     appointment.date = dateString;
+    print(appointment);
     await _appointmentService.create(appointment);
     goBack();
   }

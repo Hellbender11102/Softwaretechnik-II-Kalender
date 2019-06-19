@@ -1,9 +1,10 @@
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
+import 'package:demo/src/view/services/person_service.dart';
+import 'package:demo/src/view/services/register_service.dart';
 
 import '../../model/person.dart';
-import 'mock_users.dart';
 import '../main_component.dart';
 
 @Component(
@@ -12,30 +13,28 @@ import '../main_component.dart';
   styleUrls: ['login_component.css'],
   directives: [coreDirectives, routerDirectives, formDirectives],
 )
-
 class LoginComponent implements OnInit, OnActivate {
+  LoginComponent(this._router, this._userService, this._registerService);
 
-  LoginComponent(this._router);
+  final UserService _userService;
+  final RegisterService _registerService;
 
   final Router _router;
   bool loginFailure = false;
   static bool loggedIn = false;
 
-  String nickname;
+  String username;
   String password;
+  List<User> users;
 
-  // 
+  //User user;
+
+  //
   Future<void> login() async {
-    for (User u in mockUsers) {
-      if ((nickname == u.nickname || nickname == u.email) && password ==u.password) {
-        loggedIn = true;
-        AppComponent.showButtons = true;
-        await _router.navigate('/dashboard');
-        break;
-      } else {
-        loginFailure = true;
-      }
-    }
+    await _registerService.login(username, password);
+    loggedIn = true;
+    AppComponent.showButtons = true;
+    await _router.navigate('/dashboard');
   }
 
   // Weiterleitung zum Registrierungsformular
@@ -50,10 +49,7 @@ class LoginComponent implements OnInit, OnActivate {
   }
 
   @override
-  void ngOnInit() async {
-    // do something when drawn
-    // like DB connections //TODO
-  }
+  void ngOnInit() async {}
 
   void setLoginFalse() {
     loggedIn = false;

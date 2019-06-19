@@ -1,6 +1,8 @@
+
 import 'dart:core' as prefix0;
 import 'dart:core';
 
+import "dart:html";
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:demo/src/view/routes/routes.dart';
@@ -8,6 +10,7 @@ import 'package:demo/src/view/services/appointment_service.dart';
 import 'package:demo/src/view/services/contact_service.dart';
 import 'package:demo/src/view/services/dashboard_service.dart';
 import 'package:demo/src/view/services/person_service.dart';
+import 'package:demo/src/view/services/register_service.dart';
 
 import 'components/login_component.dart';
 
@@ -21,6 +24,7 @@ import 'components/login_component.dart';
     ClassProvider(UserService),
     ClassProvider(ContactService),
     ClassProvider(DashboardService),
+    ClassProvider(RegisterService),
     ],
   exports: [RoutePaths, Routes],
 )
@@ -28,12 +32,20 @@ class AppComponent {
 
   final String title = 'innerComponent';
 
+
   //todo muss raus hier
   static bool showButtons = false;
   void logout() {
-    LoginComponent.loggedIn = false;
-    showButtons = false;
+
+    if (window.confirm('Are you sure you want to log out?')) {
+      LoginComponent.loggedIn = false;
+      showButtons = false;
+    } else {
+      // Do nothing!
+    }
+
   }
 }
 // Connection Defaults soll später im Clienten einstellbar sein.
-const host = const String.fromEnvironment("host");
+// ignore: type_annotate_public_apis
+const host =  String.fromEnvironment("host",defaultValue : "http://localhost:8888");

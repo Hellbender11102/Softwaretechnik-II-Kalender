@@ -27,10 +27,14 @@ class DashboardComponent implements OnInit, OnActivate {
   @override
   void onActivate(RouterState previous, RouterState current) async {
     if (!LoginComponent.loggedIn) {
-      _router.navigate('/login');
+      await _router.navigate('/login');
     }
     else{
       joke = await _dashboardService.getJoke();
     }
+  }
+
+  void refresh() async{
+    joke = await _dashboardService.getJoke();
   }
 }

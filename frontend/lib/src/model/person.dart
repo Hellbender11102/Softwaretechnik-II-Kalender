@@ -1,24 +1,41 @@
 abstract class Person {
-  Person(this.contactCode, this.nickname, this.surname, this.name, this.email);
+  Person(this.id, this.contactCode, this.username, this.surname, this.name,
+      this.email);
+  Person.zero();
 
-  String nickname;
+  int id;
+  String username;
   String surname;
   String name;
   String email;
   String contactCode;
+
+  bool equals(Person person) {
+    return email == person.email &&
+        username == person.username &&
+        name == person.name &&
+        surname == person.surname &&
+        contactCode == person.contactCode &&
+        id == person.id;
+  }
 }
 
-class User extends Person {
-  User(String contactCode, String nickname, String surname, String name,
-      String email, String password, String mobileNo) :
-       password = password,
-       mobileNo = mobileNo,
-        super(contactCode, nickname, surname, name, email);
 
+
+/// Hier ist der User
+class User extends Person {
+  User(int id, String contactCode, String username, String surname, String name,
+      String email, String password, String mobileNo)
+      : password = password,
+        mobileNo = mobileNo,
+        super(id, contactCode, username, surname, name, email);
+
+  User.zero() : super.zero();
 
   factory User.fromJson(Map<String, dynamic> user) => User(
+      user['id'] as int,
       user['contactCode'] as String,
-      user['nickname'] as String,
+      user['username'] as String,
       user['surname'] as String,
       user['name'] as String,
       user['email'] as String,
@@ -28,29 +45,14 @@ class User extends Person {
   // ggf persistente Daten von einer Service Routine
   final List<Contact> _contactlist = List();
 
-  int id;
+
   String password;
   String mobileNo;
 
-  // Adds a single contact, no duplicate by contactcode
-  void addContact(Contact con) {
-    if (_contactlist.any((ele) => ele.contactCode != con.contactCode)) {
-      _contactlist.add(con);
-    }
-  }
 
-  // adds all Contacts, no duplicates by contactcode
-  void addContacts(List<Contact> list) => list.forEach(addContact);
-
-  // removes contact from list
-  void rmvContact(Contact con) => _contactlist.remove(con);
-
-  // removes multiple Contacts
-  void rmvAllContacts(List<Contact> list) => list.forEach(rmvContact);
-
-  Map toJson() => {
+  Map<String, dynamic> toJson() => {
         'contactCode': contactCode,
-        'nickname': nickname,
+        'username': username,
         'surname': surname,
         'name': name,
         'email': email,
@@ -61,27 +63,29 @@ class User extends Person {
   Map<String, Contact> getMyContacts() {}
 }
 
-int _toInt(id) => id is int ? id : int.parse(id as String);
 
+/// Hier ist der Kontakt
 class Contact extends Person {
-  Contact(String nickname, String surname, String name, String email,
+  Contact(int id, String username, String surname, String name, String email,
       String contactCode, String note)
-      : super(contactCode,nickname, surname, name, email) {
+      : super(id, contactCode, username, surname, name, email) {
     this.note = note;
   }
 
-  factory Contact.fromJson(Map<String, String> contact) => Contact(
-      contact['nickname'],
-      contact['surname'],
-      contact['name'],
-      contact['email'],
-      contact['contactCode'],
-      contact['note']);
+  factory Contact.fromJson(Map<String, dynamic> contact) => Contact(
+      contact['id'] as int,
+      contact['username'] as String,
+      contact['surname'] as String,
+      contact['name'] as String,
+      contact['email'] as String,
+      contact['contactCode'] as String,
+      contact['note'] as String);
 
-  String contactCode, note;
+  String note;
 
-  Map toJson() => {
-        'nickname': nickname,
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'username': username,
         'surname': surname,
         'name': name,
         'email': email,
@@ -89,9 +93,3 @@ class Contact extends Person {
         'note': note
       };
 }
-
-List<Contact> list = []
-  ..add(Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "PQ459",
-      "Pretty average Guy."))
-  ..add(Contact("dude", "owski", "mike", "Mike.owski@gmail.com", "PQ458",
-      "the underwhelming Guy."));

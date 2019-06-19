@@ -1,60 +1,81 @@
 <div *ngIf="appointment != null">
-<h3>New Appointment</h3>
+    <h3>New Appointment</h3>
 
-<form #newAppointmentForm="ngForm">
-    <div class="form-group">
-        <label for="name">Terminname&nbsp;*</label>
-        <input type="text" class="form-control" id="name" required
-               placeholder="Name"
-               [(ngModel)]="appointment.name"
-               #name="ngForm"
-               [class.is-valid]="name.valid"
-               [class.is-invalid]="!name.valid"
-               ngControl="name">
-        <div [hidden]="name.valid || name.pristine" class="invalid-feedback">
-            Name is required
+    <form #newAppointmentForm="ngForm">
+        <div class="form-group">
+            <label for="name">Terminname&nbsp;*</label>
+            <input type="text" class="form-control" id="name" required
+                   placeholder="Name"
+                   [(ngModel)]="appointment.name"
+                   #name="ngForm"
+                   [class.is-valid]="name.valid"
+                   [class.is-invalid]="!name.valid"
+                   ngControl="name">
+            <div [hidden]="name.valid || name.pristine" class="invalid-feedback">
+                Name is required
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label for="date">Datum&nbsp;*</label>
-        <input type="date" class="form-control" id="date" required
-               [(ngModel)]="dateString"
-               #date="ngForm"
-               [class.is-valid]="date.valid"
-               [class.is-invalid]="!date.valid"
-               ngControl="date">
-        <div [hidden]="date.valid || date.pristine" class="invalid-feedback">
-            Date is required
+        <div class="form-group">
+            <label for="date">Datum&nbsp;*</label>
+            <input type="date" class="form-control" id="date" required
+                   [(ngModel)]="dateString"
+                   #date="ngForm"
+                   [class.is-valid]="date.valid"
+                   [class.is-invalid]="!date.valid"
+                   ngControl="date">
+            <div [hidden]="date.valid || date.pristine" class="invalid-feedback">
+                Date is required
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label for="time">Uhrzeit</label>
-        <input type="text" class="form-control" id="time" placeholder="00:00"
-               [(ngModel)]="appointment.time" ngControl="time">
-    </div>
-
-    <div class="form-group">
-        <label for="duration">Dauer</label>
-        <input type="text" class="form-control" id="duration" placeholder="00:00"
-               [(ngModel)]="appointment.duration" ngControl="duration">
-    </div>
-
-    <div class="form-group">
-        <label for="location">Ort&nbsp;*</label>
-        <input type="text" class="form-control" id="location" required placeholder="Ort"
-               [(ngModel)]="appointment.location"
-               #location="ngForm"
-               [class.is-valid]="location.valid"
-               [class.is-invalid]="!location.valid"
-               ngControl="location">
-        <div [hidden]="location.valid || location.pristine" class="invalid-feedback">
-            Location is required
+        <div class="form-group">
+            <label for="time">Uhrzeit</label>
+            <input type="text" class="form-control" id="time"
+                   pattern="(0[0-9]|1[0-9]|2[0-4])(:[0-5][0-9])"
+                   placeholder="HH:MM"
+                   #time="ngForm"
+                   [class.is-valid]="time.valid"
+                   [class.is-invalid]="!time.valid"
+                   [(ngModel)]="appointment.time" ngControl="time">
+            <div [hidden]="time.valid || time.pristine" class="invalid-feedback">
+                Please follow the pattern HH:MM
+            </div>
         </div>
-    </div>
 
-    <button type="submit" [disabled]="!newAppointmentForm.form.valid" class="btn btn-success" (click)="create()">Create</button>
+        <div class="form-group">
+            <label for="duration">Dauer</label>
+            <input type="text" class="form-control" id="duration"
+                   pattern="(0[0-9]|1[0-9]|2[0-4])(:[0-5][0-9])"
+                   placeholder="HH:MM"
+                   #duration="ngForm"
+                   [class.is-valid]="duration.valid"
+                   [class.is-invalid]="!duration.valid"
+                   [(ngModel)]="appointment.duration" ngControl="duration">
+            <div [hidden]="duration.valid || duration.pristine" class="invalid-feedback">
+                Please follow the pattern HH:MM
+            </div>
+        </div>
 
-</form>
+        <div class="form-group">
+            <label for="location">Ort</label>
+            <input type="text" class="form-control" id="location" placeholder="Ort"
+                   [(ngModel)]="appointment.location" ngControl="location">
+        </div>
+
+        <div class="form-group">
+            <label for="note">Note: </label>
+            <textarea type="text" class="form-control" id="note" placeholder="note"
+                      [(ngModel)]="appointment.note" name="note" rows="4"></textarea>
+            <div id="stern">
+                    fields with an <b>*</b> are required
+            </div>
+        </div>
+
+
+        <button type="submit" [disabled]="!newAppointmentForm.form.valid" class="btn btn-success" (click)="create()">
+            Create
+        </button>
+
+    </form>
 </div>

@@ -26,12 +26,22 @@ Bitte nur zur lokalen Entwicklung nutzen.
 
 SQL zum erstellen einer Datenbank,
     'password' und 'user' nach Wahl.
+  
+  
+// entfernt alle aktuellen verbindungen zur db   
+select pg_terminate_backend(pid) from pg_stat_activity where datname='calendar';
+// löscht die Database
+DROP DATABASE calendar;
 ----------------------------------------------
-CREATE DATABASE calendar;
 CREATE USER cal_user WITH createdb;
 ALTER USER cal_user WITH password 'password';
+CREATE DATABASE calendar;
 GRANT all ON database calendar TO cal_user;
 ----------------------------------------------
+
+aqueduct auth add-client --id com.calendar.app
+
+
 // dockercompose
 
 

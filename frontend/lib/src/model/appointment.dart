@@ -1,23 +1,23 @@
 class Appointment {
   // constructor
-  Appointment(this.id,this.contactCodes, this.name, this.year, this.month, this.day, this.time,
-      this.duration, this.location);
+  Appointment(this.id, this.name, this.year, this.month, this.day, this.time,
+      this.duration, this.location, this.note);
 
   // leeres Appointment
   Appointment.zero();
 
   factory Appointment.fromJson(Map<String, dynamic> appointment) => Appointment(
-      _toInt(appointment['id']),
-      appointment['contactCodes'] as List<String>,
+      appointment['id'] as int,
       appointment['name'] as String,
       appointment['year'] as int,
       appointment['month'] as int,
       appointment['day'] as int,
       appointment['time'] as String,
       appointment['duration'] as String,
-      appointment['location'] as String);
+      appointment['location'] as String,
+      appointment['note'] as String);
 
-  List<String> contactCodes;
+  List<String> contactCodes = [];
   int id;
   String name;
   int year;
@@ -25,30 +25,46 @@ class Appointment {
   int day;
   String time = "";
   String duration = "";
-  String location;
+  String location = "";
+  String note = "";
 
-  Map toJson() => {
-        'contactCodes': contactCodes,
+  Map<String, dynamic> toJson() => {
+        'id': id,
         'name': name,
         'year': year,
         'month': month,
         "day": day,
         'time': time,
         'duration': duration,
-        'location': location
+        'location': location,
+        'note': note
       };
 
   ///date like 'yyyy-mm-dd'
   set date(String str) {
-    final List split = str.split("-");
-    year = _toInt(split[0]);
-    month = _toInt(split[1]);
-    day = _toInt(split[2]);
+    final List<String> split = str.split("-");
+    year = int.parse(split[0]);
+    month = int.parse(split[1]);
+    day = int.parse(split[2]);
   }
 
   String get date {
     return "$year-$month-$day";
   }
-}
 
-int _toInt(id) => id is int ? id : int.parse(id as String);
+  bool equals(Appointment app) {
+    return id == app.id &&
+        year == app.year &&
+        month == app.month &&
+        day == app.day &&
+        name == app.name &&
+        time == app.time &&
+        duration == app.duration &&
+        location == app.location;
+  }
+
+  @override
+  String toString() {
+    return "ID: $id Name: $name Date: $date Time: $time Duration: $duration Location: $location Note: $note";
+  }
+}

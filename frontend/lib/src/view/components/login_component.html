@@ -2,10 +2,10 @@
 <h3>Login</h3>
 <form class="form">
     <div class="form-group">
-        <label for="nickname">Nickname/Email&nbsp;</label>
-        <input type="text" class="form-control" id="nickname" placeholder="Nickname"
-               [(ngModel)]="nickname"
-               ngControl="nickname">
+        <label for="username">Username/Email&nbsp;</label>
+        <input type="text" class="form-control" id="username" placeholder="Username"
+               [(ngModel)]="username"
+               ngControl="username">
     </div>
     <div class="form-group">
         <label for="password">Password&nbsp;</label>
@@ -13,7 +13,7 @@
                [(ngModel)]="password"
                ngControl="password">
         <div [hidden]="!loginFailure" class="loginFailure">
-            Nickname/Email oder Passwort falsch
+            Username/Email oder Passwort falsch
         </div>
     </div>
     <button type="submit" class="btn btn-success" (click)="login()">Login</button>

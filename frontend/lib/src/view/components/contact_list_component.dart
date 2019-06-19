@@ -9,11 +9,14 @@ import 'package:demo/src/view/components/login_component.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/contact_service.dart';
 
+import 'contact_component.dart';
+import 'contact_search_component.dart';
+
 @Component(
   selector: 'contacts',
   templateUrl: 'contact_list_component.html',
   styleUrls: ['contact_list_component.css'],
-  directives: [coreDirectives, routerDirectives, formDirectives],
+  directives: [coreDirectives, routerDirectives, formDirectives, ContactComponent, ContactSearchComponent],
 )
 
 ///Klasse zum anzeigen aller contacte
@@ -23,11 +26,10 @@ class ContactListComponent implements OnInit, OnActivate {
   final ContactService _contactService;
   final Router _router;
   List<Contact> contacts;
-  Contact selected;
   String contactCode ="";
-
-  ///Methode zum auswählen eines contacts
-  void onSelect(Contact contact) => selected = contact;
+  bool valid = true;
+  bool exists = false;
+  bool deleteControl = false;
 
   ///Methode die eine Liste aller appointments zurückgibt
   Future<void> _getContacts() async {
@@ -53,16 +55,41 @@ class ContactListComponent implements OnInit, OnActivate {
 
   ///Methode die den ausgewählten contact aufruft
 
-  Future<NavigationResult> gotoDetail() =>_router.navigate(_contactUrl(selected.contactCode));
+  Future<NavigationResult> gotoDetail(Contact contact) =>_router.navigate(_contactUrl(contact.contactCode));
 
   Future<void> addContact() async {
-    await _contactService.create(await _contactService.find(contactCode));
+    if (contacts.any((h) => h.contactCode == contactCode)) {
+      exists = true;
+      valid = true;
+    } else {
+      final Contact contact = await _contactService.find(contactCode);
+      if (contact == null) {
+        valid = false;
+        exists = false;
+      } else {
+        print(contacts);
+        await _contactService.create(contact);
+        await _getContacts();
+        valid = true;
+        exists = false;
+      }
+    }
   }
 
   @override
   Future onActivate(RouterState previous, RouterState current) async {
     if (!LoginComponent.loggedIn) {
       await _router.navigate('/login');
+    }
+  }
+
+  Future<void> delete(Contact contact) async {
+    if (deleteControl==true) {
+      await _contactService.delete(contact.contactCode);
+      await _getContacts();
+      deleteControl = false;
+    } else {
+      deleteControl = true;
     }
   }
 

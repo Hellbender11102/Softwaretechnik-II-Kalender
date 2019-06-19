@@ -22,7 +22,7 @@ class ContactComponent implements OnActivate {
 
   ContactComponent(this._contactService, this._location, this._router);
 
-  Contact contact = Contact('lauri','Schindler','Laurenz','lauri.s@web.de','295145','Er ist einer');
+  Contact contact = Contact(1,'lauri','Schindler','Laurenz','lauri.s@web.de','295145','Er ist einer');
   final Location _location;
   final Router _router;
   String note;
@@ -44,10 +44,9 @@ class ContactComponent implements OnActivate {
     }
   }
 
-  /// Methode zum speichern, der änderungen die man im Termin vorgenommen hat
+  /// Methode zum speichern, der änderungen die man im Kontakt vorgenommen hat
   Future<void> save() async {
-    contact.note = note;
-    //await _contactService.update(contact);
+    await _contactService.update(contact);
     goBack();
   }
 

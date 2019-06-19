@@ -1,8 +1,4 @@
-
-.selected {
-    background-color: #CFD8DC !important;
-    color:#00302f;
-}
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css');
 
 button {
     background-color: #eee;
@@ -21,18 +17,43 @@ h3{
     text-align: center;
 }
 li{
+    border-bottom: solid;
+    cursor: pointer;
     margin-top: 2%;
+    margin-left: 2%;
 }
-ol{
+ul{
+    list-style-type: none;
     overflow-y:scroll;
     height: 70%;
     border: 1px #484848 solid;
     background: #758EB7;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 div>button{
     float: left;
 }
-ol{
-    margin-left: 2%;
-    margin-right: 2%;
+
+.form-control {
+    margin:5px;
+    width: 97%;
+    float: left;
 }
+
+table{
+    overflow-y:scroll;
+}
+
+table tr{
+    cursor: pointer;
+}
+
+#header{
+    cursor: default;
+}
+
+#con {
+    color: red;
+}
+

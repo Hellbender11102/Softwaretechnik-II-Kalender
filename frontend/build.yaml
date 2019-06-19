@@ -6,13 +6,8 @@ targets:
         generate_for:
           - web/main.dart
         options:
-          compiler: dart2js
-          # List any dart2js specific args here, or omit it.
-          dart2js_args:
-            - --minify
-            - -O2
-            - -Dhost=http://localhost:8888/
         release_options:
+          compiler: dart2js
           dart2js_args:
             - --minify
-            - -Dhost=https://projects.mylab.th-luebeck.de:443/calendar/mm
+            - -Dhost=http://localhost:8888

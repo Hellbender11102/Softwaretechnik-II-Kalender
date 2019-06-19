@@ -10,13 +10,16 @@
                     [routerLinkActive]="'active'">Calendar
                 </li>
                 <li [routerLink]="RoutePaths.appointments.toUrl()"
-                    [routerLinkActive]="'active'">Agenda
+                    [routerLinkActive]="'active'">All Appointments (Agenda)
                 </li>
                 <li [routerLink]="RoutePaths.appointmentNew.toUrl()"
                     [routerLinkActive]="'active'">New Appointment
                 </li>
                 <li [routerLink]="RoutePaths.contacts.toUrl()"
                     [routerLinkActive]="'active'">Contacts
+                </li>
+                <li [routerLink]="RoutePaths.account.toUrl()"
+                    [routerLinkActive]="'active'">Account
                 </li>
                 <li (click)="logout()" [routerLink]="RoutePaths.login.toUrl()">Logout</li>
             </nav>

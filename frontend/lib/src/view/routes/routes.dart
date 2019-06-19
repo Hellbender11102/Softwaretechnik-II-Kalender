@@ -1,6 +1,7 @@
 import 'package:angular/angular.dart';
 import 'package:angular/core.dart';
 import 'package:angular_router/angular_router.dart';
+import '../components/account_component.template.dart' as account_template;
 import '../components/appointment_component.template.dart' as appointment_template;
 import '../components/appointment_list_component.template.dart' as appointment_list_template;
 import '../components/appointment_new_component.template.dart' as appointment_new_template;
@@ -55,6 +56,7 @@ class Routes {
   static final RouteDefinition login = RouteDefinition(
     routePath: RoutePaths.login,
     component: login_template.LoginComponentNgFactory as ComponentFactory,
+    useAsDefault: true,
   );
   static final RouteDefinition contacts = RouteDefinition(
     routePath: RoutePaths.contacts,
@@ -63,6 +65,10 @@ class Routes {
   static final RouteDefinition contact = RouteDefinition(
     routePath: RoutePaths.contact,
     component: contact_template.ContactComponentNgFactory as ComponentFactory,
+  );
+  static final RouteDefinition account = RouteDefinition(
+    routePath: RoutePaths.account,
+    component: account_template.AccountComponentNgFactory as ComponentFactory,
   );
   // routing auf diese Component
   static final List<RouteDefinition> all = <RouteDefinition>[
@@ -77,9 +83,10 @@ class Routes {
     contact,
     register,
     login,
+    account,
     RouteDefinition.redirect(
       path: '',
-      redirectTo: RoutePaths.dashboard.toUrl(),
+      redirectTo: RoutePaths.login.toUrl(),
     ),
   ];
 }

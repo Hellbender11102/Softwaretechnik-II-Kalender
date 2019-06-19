@@ -33,7 +33,7 @@ class AppointmentListComponent implements OnInit, OnActivate {
   ///Methode die eine Liste aller appointments zurückgibt
   Future<void> _getAppointments() async {
     appointments = await _appointmentService.getAll();
-    appointments.sort((a, b) => a.id.compareTo(b.id));
+    appointments.sort((a, b) => a.date.compareTo(b.date));
   }
 
   ///Nachfolgender Code wird bei der inizialisierung der Klasse ausgeführt

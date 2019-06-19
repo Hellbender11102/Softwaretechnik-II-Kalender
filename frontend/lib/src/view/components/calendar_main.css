@@ -1,8 +1,13 @@
+.today {
+    background-color: lightgreen;
+}
+
 td{
     border-width:2px;
     border-style: solid;
     border-color: black;
     text-align: center;
+    cursor: pointer;
 
 }
 td:hover{
@@ -11,6 +16,11 @@ td:hover{
 }
 h4{
     text-align: center;
+    cursor: pointer;
+}
+
+table tr {
+    height: 10vh;
 }
 
 table{
@@ -24,6 +34,7 @@ table{
 h4:hover {
     color: #039be5;
     background-position: center;
+    cursor: hand;
 }
 .calendar{
     width: 100%;
@@ -41,12 +52,18 @@ h4:nth-child(2n){
 }
 
 td > div {
-    text-align: right;
-    font-size: small;
+    font-size: medium;
+    position: absolute;
+    margin-left: 12%;
 }
 th{
     text-align: center;
 }
+
+div .appointmentNotifier{
+    color: red;
+}
+
 
 /*
 colors to use if possible (descending) :
