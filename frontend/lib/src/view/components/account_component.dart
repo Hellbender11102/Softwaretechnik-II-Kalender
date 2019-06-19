@@ -42,7 +42,7 @@ class AccountComponent implements OnActivate {
     if (!LoginComponent.loggedIn) {
       await _router.navigate('/login');
     } else {
-      final id = 4;
+      final id = 1; // User-ID muss noch hardcoded werden
       if (id != null) {
         user = await _userService.getById(id);
       }
