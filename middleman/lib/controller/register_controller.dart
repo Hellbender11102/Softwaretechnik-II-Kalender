@@ -24,4 +24,15 @@ class RegisterController extends ResourceController {
     user.hashedPassword = authServer.hashPassword(user.password, user.salt);
     return Response.ok(await Query(context, values: user).insert());
   }
+
+  @Operation.get('number')
+  Future<Response> getUserById(@Bind.path('number') String id) async {
+    final userQuery = Query<User>(context)
+      ..where((con) => con.id).equalTo(id as int);
+    final user = await userQuery.fetchOne();
+    if (user == null) {
+      return Response.notFound();
+    }
+    return Response.ok(user);
+  }
 }

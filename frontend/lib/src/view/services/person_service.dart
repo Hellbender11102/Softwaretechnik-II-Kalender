@@ -55,6 +55,13 @@ class UserService {
     await _http.delete(url, headers: _headers);
   }
 
+  ///Löscht den User mit gegebenem contactCode
+  Future<void> deleteUser(String username) async {
+    // Add security Header
+    final url = '$_userUrl/look/$username';
+    await _http.delete(url, headers: _headers);
+  }
+
   Future<List<User>> getAll() async {
     final Response response = await _http.get('$_userUrl') as Response;
     return (_extractData(response) as List)
@@ -65,6 +72,18 @@ class UserService {
   Future<User> get(String contactCode) async {
     final Response response =
         await _http.get('$_userUrl/$contactCode') as Response;
+    return User.fromJson(_extractData(response) as Map<String, dynamic>);
+  }
+
+  Future<User> getById(int id) async {
+    final Response response =
+        await _http.get('$_userUrl/lookup/$id') as Response;
+    return User.fromJson(_extractData(response) as Map<String, dynamic>);
+  }
+
+  Future<User> getByUsername(String username) async {
+    final Response response =
+        await _http.get('$_userUrl/look/$username') as Response;
     return User.fromJson(_extractData(response) as Map<String, dynamic>);
   }
 }

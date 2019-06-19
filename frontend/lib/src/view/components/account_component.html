@@ -1,3 +1,122 @@
+<h3>Accountdetails</h3>
 <div *ngIf="user != null">
-    <h3>{{user.username}}</h3>
+    <table class="table">
+        <tr>
+            <th>Username</th>
+            <td>{{user.username}}</td>
+        </tr>
+        <tr [hidden]="editSurname">
+            <th>Surname</th>
+            <td>{{user.surname}}</td>
+            <td><button (click)="surnameEdit()" class="btn">Edit</button></td>
+        </tr>
+        <tr [hidden]="!editSurname" id="editSurname">
+                <div class="form-group">
+                    <label for="surname">Surname&nbsp;*</label>
+                    <input type="text" class="form-control" id="surname" required
+                           placeholder="Max"
+                           [(ngModel)]="user.surname"
+                           #name="ngForm">
+                </div>
+                <button type="button" class="btn btn-success" (click)="save()">Save</button>
+            </tr>
+        <tr [hidden]="editName">
+            <th>Name</th>
+            <td>{{user.name}}</td>
+            <td><button (click)="nameEdit()" class="btn">Edit</button></td>
+        </tr>
+        <tr [hidden]="!editName" id="editName">
+                <div class="form-group">
+                    <label for="name">Name&nbsp;*</label>
+                    <input type="text" class="form-control" id="name" required
+                           placeholder="Mustermann"
+                           [(ngModel)]="user.name"
+                           #name="ngForm">
+                </div>
+                <button type="button" class="btn btn-success" (click)="save()">Save</button>
+            </tr>
+        <tr [hidden]="editEmail">
+            <th>Email</th>
+            <td>{{user.email}}</td>
+            <td><button (click)="emailEdit()" class="btn">Edit</button></td>
+        </tr>
+        <tr [hidden]="!editEmail" id="editEmail">
+                <div class="form-group">
+                    <label for="email">Email&nbsp;*</label>
+                    <input type="email" class="form-control" id="email" required
+                           placeholder="max@mustermann.de"
+                           [(ngModel)]="user.email"
+                           #name="ngForm">
+                </div>
+                <button type="button" class="btn btn-success" (click)="save()">Save</button>
+            </tr>
+        <tr [hidden]="editMobileNo">
+            <th>Mobile Number</th>
+            <td>{{user.mobileNo}}</td>
+            <td><button (click)="mobileNoEdit()" class="btn">Edit</button></td>
+        </tr>
+        <tr [hidden]="!editMobileNo" id="editMobileNo">
+                <div class="form-group">
+                    <label for="mobileNo">Mobile Number&nbsp;*</label>
+                    <input type="text" class="form-control" id="mobileNo" required
+                           placeholder="0152 123456"
+                           [(ngModel)]="user.mobileNo"
+                           #name="ngForm">
+                </div>
+                <button type="button" class="btn btn-success" (click)="save()">Save</button>
+        </tr>
+        <tr [hidden]="editPassword">
+                <th>Password</th>
+                <td></td>
+                <td><button (click)="passwordEdit()" class="btn">Edit</button></td>
+            </tr>
+            <tr [hidden]="!editPassword" id="editPassword">
+                    <div class="form-group">
+                        <label for="password">Current Password&nbsp;*</label>
+                        <input type="password" class="form-control" id="password" required
+                               [(ngModel)]="user.password"
+                               #name="ngForm">
+                    </div>
+                    <div class="form-group">
+                            <label for="newPassword">New Password&nbsp;*</label>
+                            <input type="password" class="form-control" id="newPassword" required
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                   [(ngModel)]="newPassword"
+                                   #name="ngForm">
+                    </div>
+                    <div class="form-group">
+                            <label for="passwordWh">Repeat New Password&nbsp;*</label>
+                            <input type="password" class="form-control" id="passwordWh" required
+                                    pattern="{{newPassword}}"
+                                   [(ngModel)]="passwordWh"
+                                   #name="ngForm">
+                    </div>
+                    <button type="button" class="btn btn-success" (click)="savePassword()">Save</button>
+            </tr>
+            <tr [hidden]="deleteAccount">
+                    <th>Delete Account</th>
+                    <td></td>
+                    <td><button (click)="accountDelete()" class="btn">Edit</button></td>
+            </tr>
+            <tr [hidden]="!deleteAccount" id="deleteAccount">
+                    <div class="form-group">
+                            <label for="password">Password&nbsp;*</label>
+                            <input type="password" class="form-control" id="passwordDelete" required
+                                   [(ngModel)]="user.password"
+                                   #name="ngForm">
+                    </div>
+                    <div class="form-group">
+                            <label for="passwordWh">Repeat Password&nbsp;*</label>
+                            <input type="password" class="form-control" id="passwordWhDelete" required
+                                    pattern="{{user.password}}"
+                                   [(ngModel)]="passwordWh"
+                                   #name="ngForm">
+                    </div>
+                    <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+                    <div [hidden]="!deleteControl" id="delete">
+                        If you really want to delete your account click "Delete" again.
+                    </div>
+            </tr>
+    </table>
+    <button (click)="goBack()" class="btn">GoBack</button>
 </div>
