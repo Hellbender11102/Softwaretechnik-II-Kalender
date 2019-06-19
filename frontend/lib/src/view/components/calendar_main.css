@@ -52,8 +52,9 @@ h4:nth-child(2n){
 }
 
 td > div {
-    text-align: right;
-    font-size: small;
+    font-size: medium;
+    position: absolute;
+    margin-left: 12%;
 }
 th{
     text-align: center;
