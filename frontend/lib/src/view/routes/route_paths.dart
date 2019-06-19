@@ -17,6 +17,7 @@ class RoutePaths {
   static final RoutePath dayview = RoutePath(path: '${calendarMain.path}/:$yParam/:$mParam/:$dParam');
   static final RoutePath register = RoutePath(path: 'register');
   static final RoutePath login = RoutePath(path: 'login');
+  static final RoutePath account = RoutePath(path: 'account');
 
   static final RoutePath contacts = RoutePath(path: 'contacts');
   static final RoutePath contact = RoutePath(path: '${contacts.path}/:$conParam');
