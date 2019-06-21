@@ -6,6 +6,8 @@ class Appointment {
   // leeres Appointment
   Appointment.zero();
 
+
+  ///Appointment aus einer Json Datei / Respons
   factory Appointment.fromJson(Map<String, dynamic> appointment) => Appointment(
       appointment['id'] as int,
       appointment['name'] as String,
@@ -17,7 +19,7 @@ class Appointment {
       appointment['location'] as String,
       appointment['note'] as String);
 
-  List<String> contactCodes = [];
+  List<String> contactCodes = []; //wäre für einladen und geteilte termine
   int id;
   String name;
   int year;

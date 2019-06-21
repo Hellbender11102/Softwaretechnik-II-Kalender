@@ -20,7 +20,7 @@ import 'route_paths.dart';
 export 'route_paths.dart';
 
 class Routes {
-  // hier wird eine precompiled component eingebunden als sample+
+  /// Die routpaths werden den einzelnen komponenten zugewiesen
   static final RouteDefinition calendar = RouteDefinition(
     routePath: RoutePaths.calendar,
     component: calendar_template.CalendarComponentNgFactory as ComponentFactory,

@@ -26,10 +26,11 @@ class CalendarComponent implements OnActivate, OnInit {
   int today;
   int thisMonth;
 
-  // auswählen des Tages
+  /// auswählen des Tages
   Future<NavigationResult> gotoDetail(Day day) =>
       _router.navigate(dayUrl(day.year, day.month, day.day));
 
+  ///überprüft ob der Tag Termine hat
   int daysAppointments(Day day) {
     return appointments
         .where((app) =>
@@ -39,7 +40,7 @@ class CalendarComponent implements OnActivate, OnInit {
         .toList()
         .length;
   }
-  // todo bug in anderen monaten
+
   Future<void> _getAppointments() async {
     today = DateTime.now().day;
     thisMonth = DateTime.now().month;
@@ -65,6 +66,7 @@ class CalendarComponent implements OnActivate, OnInit {
     }
   }
 
+  ///erstellt immer die passende Url
   String monthURL(String year, String month) =>
       RoutePaths.calendar.toUrl(parameters: {yParam: year, mParam: month});
 
@@ -75,12 +77,14 @@ class CalendarComponent implements OnActivate, OnInit {
         dParam: "$dayInt"
       });
 
+  ///navigiert zum näcshten Monat
   // ignore: unused_element
   void next() {
     _router.navigate(monthURL(
         month.nextM().first.toString(), month.nextM().last.toString()));
   }
 
+  ///navigiert zum vorherigen Monat
   // ignore: unused_element
   void previous() {
     _router.navigate(monthURL(

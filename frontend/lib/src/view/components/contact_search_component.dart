@@ -28,7 +28,7 @@ class ContactSearchComponent implements OnInit {
   final StreamController<String> _searchTerms = StreamController<String>.broadcast();
 
 
-
+ ///sucht mit einem String nach einem Kontakt
   void search(String term) => _searchTerms.add(term);
 
   @override
@@ -41,7 +41,7 @@ class ContactSearchComponent implements OnInit {
         : _contactService.search(term).asStream()))
         .handleError(print);
   }
-
+  ///erstellt immer die passende Url
   String _contactUrl(String number) =>
       RoutePaths.contact.toUrl(parameters: {idParam: '$number'});
 
