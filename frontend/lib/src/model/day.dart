@@ -10,12 +10,12 @@ class Day {
   List<Appointment> appointments;
 
   @override
-  String toString() => weekday()+":  $month/$day/$year";
+  String toString() => "${weekday()}:  $month/$day/$year";
 
-
+///überprüft ob der Tag richtig initalisiert ist
   bool isValid()=> year != null && month != null && day != null;
 
-
+///returnd den Wochentag als String
   String weekday() {
     switch (DateTime(year, month, day).weekday) {
       case 1:

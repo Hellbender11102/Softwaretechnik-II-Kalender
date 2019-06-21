@@ -19,7 +19,7 @@ import 'contact_search_component.dart';
   directives: [coreDirectives, routerDirectives, formDirectives, ContactComponent, ContactSearchComponent],
 )
 
-///Klasse zum anzeigen aller contacte
+///Klasse zum anzeigen aller Kontakte
 class ContactListComponent implements OnInit, OnActivate {
   ContactListComponent(this._contactService, this._router);
 
@@ -36,12 +36,6 @@ class ContactListComponent implements OnInit, OnActivate {
     contacts = await _contactService.getAll();
   }
 
-  /*Future<void> add(String name) async {
-    name = name.trim();
-    if (name.isEmpty) return null;
-    appointments.add(await _appointmentService.create(name));
-    selected = null;
-  }*/
 
   ///Nachfolgender Code wird bei der inizialisierung der Klasse ausgeführt
   @override
@@ -76,6 +70,7 @@ class ContactListComponent implements OnInit, OnActivate {
     }
   }
 
+  ///Funktion die immer beim erstellen aufgerufen wird
   @override
   Future onActivate(RouterState previous, RouterState current) async {
     if (!LoginComponent.loggedIn) {
@@ -83,6 +78,7 @@ class ContactListComponent implements OnInit, OnActivate {
     }
   }
 
+  ///funktion zum löschen eines Kontakts
   Future<void> delete(Contact contact) async {
     if (deleteControl==true) {
       await _contactService.delete(contact.contactCode);

@@ -17,12 +17,12 @@ import 'package:demo/src/view/services/contact_service.dart';
   styleUrls: ['contact_component.css'],
   directives: [coreDirectives, routerDirectives, formDirectives],
 )
-/// Klasse zur verwaltung der Termine
+/// Klasse zur verwaltung der Kontakte
 class ContactComponent implements OnActivate {
 
   ContactComponent(this._contactService, this._location, this._router);
 
-  Contact contact = Contact(1,'lauri','Schindler','Laurenz','lauri.s@web.de','295145','Er ist einer');
+  Contact contact;
   final Location _location;
   final Router _router;
   String note;
@@ -50,7 +50,7 @@ class ContactComponent implements OnActivate {
     goBack();
   }
 
-  ///Methode zum löschen von Terminen
+  ///Methode zum löschen von einem Kontakt
   Future<void> delete() async {
     if (deleteControl==true) {
       await _contactService.delete(contact.contactCode);

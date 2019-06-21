@@ -60,6 +60,7 @@ class User extends Person {
       };
 
   // gets all of the ENDBENUTZER Contacts
+  // ignore: missing_return
   Map<String, Contact> getMyContacts() {}
 }
 

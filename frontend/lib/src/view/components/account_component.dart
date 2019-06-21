@@ -4,7 +4,6 @@ import 'package:angular_router/angular_router.dart';
 
 
 import 'package:demo/src/model/person.dart';
-import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/person_service.dart';
 
 import 'package:demo/src/view/components/login_component.dart';
@@ -17,7 +16,7 @@ import '../main_component.dart';
   styleUrls: ['account_component.css'],
   directives: [coreDirectives, routerDirectives, formDirectives],
 )
-/// Klasse zur verwaltung der Termine
+/// Klasse zur verwaltung des Accounts
 class AccountComponent implements OnActivate {
 
   AccountComponent(this._userService, this._location, this._router);

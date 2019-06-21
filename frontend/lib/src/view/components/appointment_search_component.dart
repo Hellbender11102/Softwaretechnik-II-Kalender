@@ -17,6 +17,7 @@ import 'package:demo/src/view/services/appointment_service.dart';
   providers: [ClassProvider(AppointmentService)],
   pipes: [commonPipes],
 )
+///Klasse zum suchen eines Termins
 class AppointmentSearchComponent implements OnInit {
 
   AppointmentSearchComponent(this._appointmentService, this._router);
@@ -28,7 +29,7 @@ class AppointmentSearchComponent implements OnInit {
   final StreamController<String> _searchTerms = StreamController<String>.broadcast();
 
 
-
+///suche im Service
   void search(String term) => _searchTerms.add(term);
 
   @override
@@ -41,10 +42,11 @@ class AppointmentSearchComponent implements OnInit {
         : _appointmentService.search(term).asStream()))
         .handleError(print);
   }
-
+  ///erstellt eine Richtige URL zum Termin
   String _appointmentUrl(int id) =>
       RoutePaths.appointment.toUrl(parameters: {idParam: '$id'});
 
+  ///öffnet ein Termin mit gegebener ID
   Future<NavigationResult> gotoDetail(Appointment appointment) =>
       _router.navigate(_appointmentUrl(appointment.id));
 }

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:aqueduct/aqueduct.dart';
 import 'package:middleman/model/person.dart';
