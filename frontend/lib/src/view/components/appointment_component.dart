@@ -1,12 +1,9 @@
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
-
-
 import 'package:demo/src/model/appointment.dart';
 import 'package:demo/src/view/routes/route_paths.dart';
 import 'package:demo/src/view/services/appointment_service.dart';
-
 import 'package:demo/src/view/components/login_component.dart';
 
 
@@ -64,6 +61,5 @@ class AppointmentComponent implements OnActivate {
 
   ///Methode, die die übergeordnete ansicht anzeigt
   void goBack() => _location.back();
-
 
 }

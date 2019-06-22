@@ -1,7 +1,7 @@
 import 'package:middleman/middleman.dart';
 
 class Appointment extends ManagedObject<_Appointment> implements _Appointment {}
-
+///Model der des Appointments in der Datenbank
 class _Appointment {
   @primaryKey
   int id;

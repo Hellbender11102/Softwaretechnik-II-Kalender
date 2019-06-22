@@ -8,6 +8,7 @@ const String dParam ="day";
 
 
 class RoutePaths {
+  ///Definition der routpaths dazu werden noch mögliche url parameter festgelegt
   static final RoutePath dashboard = RoutePath(path: 'dashboard');
   static final RoutePath appointments = RoutePath(path: 'appointments');
   static final RoutePath appointmentNew = RoutePath(path: 'appointmentNew');
@@ -18,12 +19,11 @@ class RoutePaths {
   static final RoutePath register = RoutePath(path: 'register');
   static final RoutePath login = RoutePath(path: 'login');
   static final RoutePath account = RoutePath(path: 'account');
-
   static final RoutePath contacts = RoutePath(path: 'contacts');
   static final RoutePath contact = RoutePath(path: '${contacts.path}/:$conParam');
 }
 
-
+///Funktionen die aus der Url Parameter lesen
 int getYear(Map<String, String> parameters) {
   final id = parameters[yParam];
   return id == null ? null : int.tryParse(id);

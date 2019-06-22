@@ -10,7 +10,7 @@ class User extends ManagedObject<_User> implements _User,ManagedAuthResourceOwne
 
 class Contact extends ManagedObject<_Contact> implements _Contact {}
 
-
+///Model der des Contacts in der Datenbank
 class _Contact{
   @Column(unique: false,nullable: true)
   String note;
@@ -31,7 +31,7 @@ class _Contact{
   String email;
 }
 
-
+///Model der des Users in der Datenbank
 class _User extends ResourceOwnerTableDefinition {
 
   @Column(unique: false, nullable: true)
