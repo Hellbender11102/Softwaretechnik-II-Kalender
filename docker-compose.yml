@@ -5,7 +5,7 @@ services:
 
     build:
       context: .
-      dockerfile: frontend/DockerfileCompose
+      dockerfile: frontend/Dockerfile
     ports:
       - "8080:80"
 
@@ -15,26 +15,24 @@ services:
     image: middleman
     build:
       context: .
-      dockerfile: middleman/DockerfileCompose
+      dockerfile: middleman/Dockerfile
     ports:
       - "8888:8888"
     environment:
       - CAL_DB_HOST=postgres
       - CAL_DB_PORT=5432
       - CAL_DB_USER=docker
-      - CAL_DB_NAME=calendar
+      - CAL_DB_NAME=docker
       - CAL_DB_PASS=docker
 
+
   postgres:
-    image: postgres
-    build:
-      context: .
-      dockerfile: postgres/Dockerfile
+    image: "postgres"
+    restart: always
     ports:
       - "5432:5432"
     volumes:
-          - ./pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
-      POSTGRES_USER: docker
       POSTGRES_PASSWORD: docker
-
+      POSTGRES_USER: docker

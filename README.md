@@ -1,5 +1,35 @@
 # SWTII Cal
 
+________________________________________________________________________________
+HOW TO SETUP:
+
+Es entsteht c.a. 1GByte Traffic.
+
+
+Vorbereitung: Die Docker INstanz sollte 2GB RAM haben, 1GB RAM haben, !!!! 
+Mehr RAM beschleunigt den Prozess da weniger während des Build-Prozesses weniger PAGING auftritt.
+Ab einem Punkt, ich weiß nicht wo, beschleunigt mehr RAM den Prozess nicht mehr.
+
+
+1. Navigieren Sie im Terminal ind das Root_Verzeichnis des Projektes.
+
+2. RUN: docker-compose up --build
+
+3. Machen Sie sich einen Kaffee, kommen Sie in ("1-2"/"5-10")(2/1 GB RAM) Min zurück. 
+    - während des kompilierens sehen Sie etwas wie:
+        - "[WARNING] No actions completed for 25.0s, waiting on:".
+    - Dadurch das der Build-Prozess nicht optimiert ist.
+    - Kompilieren erzeugt "minified" Kompilat
+        - "minified" bedeutet das auf Länge von Code optimiert wird.
+        - Auswirkung: z.B. durch minimieren der Funktionsnamen, werden die Dateigrößen kleiner.
+        
+4. Rufen Sie diese Adresse auf: www.localhost:8080/calendar/index.html
+
+5. Fertig.
+________________________________________________________________________________
+
+
+
 Wir (die Gruppe Mittwoch-15:15) haben uns dieses Semester für den Kalender entschieden. 
 Hierbei liegt der Fokus auf Individualisierung und Übersichtlichkeit des Kalenders, was realisiert wird, indem jeder Tag farbliche Inhalte bekommt, welche Termine repräsentieren.
 Diese Idee stammt aus dem vorherigen SWT Semester, indem wir auch schon als Gruppe gearbeitet haben.
@@ -16,34 +46,4 @@ https://itnext.io/building-restful-web-apis-with-dart-aqueduct-and-postgresql-3c
 
 Desweiteren haben wir uns dazu entschieden, uns immer Dienstags um 12.00 Uhr in der Uni zu treffen, um an dem Projekt weiter zu arbeiten. Weitere Termine Entscheiden wir von Woche zu Woche.
 
-Online https://projects.mylab.th-luebeck.de/calendar/#/login
-
-// Entwicklickung:
-!!!!ACHTUNG!!!!
-ECHTE Zugangsdaten dürfen !NIEMALS! in einem Repository auftauchen.
-Bitte nur zur lokalen Entwicklung nutzen.
-
-
-SQL zum erstellen einer Datenbank,
-    'password' und 'user' nach Wahl.
-  
-  
-// entfernt alle aktuellen verbindungen zur db   
-select pg_terminate_backend(pid) from pg_stat_activity where datname='calendar';
-// löscht die Database
-DROP DATABASE calendar;
-----------------------------------------------
-CREATE USER cal_user WITH createdb;
-ALTER USER cal_user WITH password 'password';
-CREATE DATABASE calendar;
-GRANT all ON database calendar TO cal_user;
-----------------------------------------------
-
-aqueduct auth add-client --id com.calendar.app
-
-
-// dockercompose
-
-
-docker-compose up --build
 

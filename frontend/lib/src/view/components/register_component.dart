@@ -20,7 +20,7 @@ class RegisterComponent implements OnInit, OnActivate {
 
   final Router _router;
   final RegisterService _registerService;
-  User user = User.zero();
+  User user = User(0,"cc1","username","surename","name","mail@mail.de","Password123","000010101");
   String passwordWh ="";
 
 

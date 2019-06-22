@@ -14,7 +14,7 @@ dependencies:
   angular: ^5.0.0
   angular_forms: ^2.0.0
   angular_router: ^2.0.0-alpha+19
-  build_runner: any
+  build_runner: 1.1.2
   build_web_compilers: ^1.0.0
   pedantic: ^1.0.0
   analyzer: ^0.34.3

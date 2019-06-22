@@ -1,4 +1,3 @@
 FROM postgres
-
-COPY 001_data.sql /docker-entrypoint-initdb.d/
-RUN chmod a+r /docker-entrypoint-initdb.d/*
+RUN mkdir -p /tmp/psql_data/
+COPY init.sql /tmp/psql_data/

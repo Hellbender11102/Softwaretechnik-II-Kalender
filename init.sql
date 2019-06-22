@@ -263,8 +263,6 @@ ALTER TABLE ONLY public._user ALTER COLUMN id SET DEFAULT nextval('public._user_
 --
 
 COPY public._appointment (id, name, "time", year, month, day, duration, location, note) FROM stdin;
-1	ddjjjj		2019	6	11		sss	note
-2	nnn	mmm	2019	6	11		mmm	mmm
 \.
 
 
@@ -297,16 +295,6 @@ com.calendar.app	\N	\N	\N	\N
 --
 
 COPY public._authtoken (id, code, accesstoken, refreshtoken, scope, issuedate, expirationdate, type, resourceowner_id, client_id) FROM stdin;
-1	\N	yrO8mQQAyD66rIKhjuGdP9UdOFcPDxpk	\N	\N	2019-06-11 10:08:37.086344	2019-06-12 10:08:37.086344	bearer	1	com.calendar.app
-2	\N	rZhq1AeyCHabdsTjuMe0s41n04JMp69d	\N	\N	2019-06-11 10:08:52.277794	2019-06-12 10:08:52.277794	bearer	1	com.calendar.app
-3	\N	2MlIW2ZiTQzQQrO3ObfwApxaR5BRaneg	\N	\N	2019-06-11 10:10:47.89723	2019-06-12 10:10:47.89723	bearer	1	com.calendar.app
-4	\N	ww5iS7iT3lkJyNoB4dAQx2X2tDrqhH5Z	\N	\N	2019-06-11 10:11:04.181846	2019-06-12 10:11:04.181846	bearer	1	com.calendar.app
-5	\N	k5OPYamwmFK6rvKanciu9ze5lIEn5izr	\N	\N	2019-06-11 10:12:57.272299	2019-06-12 10:12:57.272299	bearer	1	com.calendar.app
-6	\N	d0CiRc2sg8zxEbjbVtGlGQWsY19lnZFr	\N	\N	2019-06-11 11:33:21.291298	2019-06-12 11:33:21.291298	bearer	1	com.calendar.app
-7	\N	brBA3j70k5ya9kTgACfeYB19VGNUWMcC	\N	\N	2019-06-11 11:54:39.23811	2019-06-12 11:54:39.23811	bearer	1	com.calendar.app
-8	\N	cQpQX7jFjkjcc5h3f8zDCGcngJc0NzZg	\N	\N	2019-06-18 10:10:33.370172	2019-06-19 10:10:33.370172	bearer	1	com.calendar.app
-9	\N	8MMhTBWlf8WO3PnHw4rHEJyC0JCroHhG	\N	\N	2019-06-18 10:39:17.637679	2019-06-19 10:39:17.637679	bearer	6	com.calendar.app
-10	\N	SBvSLfRiD8Rf6GTusdB3kHWHdofMjSUE	\N	\N	2019-06-19 11:26:48.125859	2019-06-20 11:26:48.125859	bearer	6	com.calendar.app
 \.
 
 
@@ -327,9 +315,6 @@ COPY public._contact (note, id, contactcode, surname, name, email) FROM stdin;
 --
 
 COPY public._user (mobileno, contactcode, surname, name, email, id, username, hashedpassword, salt) FROM stdin;
-\N	\N	surname	name	email@mail.de	1	username	aIRayCsVDbFMr8qWQmMVJULMaxsxiojViprczeMmWCI=	7cV6k3TZjqeBnYFoLgjpQaaRdwy5YpWqMPif+Hu4/n0=
-\N	\N	surname	name	email2@mail.de	3	username2	l3fF53H4oOnxv5LsVbcTk9vu2bxukvBTHVixa4N7EHM=	rRjkhSV+a46YLDMGPI/ot1mVfjA/rny1suFUzIdkFSM=
-\N	\N	felix	felix	felix@felix.felix	6	felix	dvBL5ZnwHTD1uWmj12VhLL/HXec0/ddVrlLrM6C4kww=	5Zn/AS5bc2g7dLXKp6MtXVLwBm6iEmAZF6THXCMsc9I=
 \.
 
 
