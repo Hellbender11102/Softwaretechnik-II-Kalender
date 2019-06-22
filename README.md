@@ -1,4 +1,4 @@
-#HOW TO SETUP:
+# HOW TO SETUP:
 
 Es entsteht c.a. 1GByte Traffic.
 
@@ -23,7 +23,7 @@ Ab einem Punkt, ich weiß nicht wo, beschleunigt mehr RAM den Prozess nicht mehr
 
 5. Fertig.
 
-#Über Uns
+# Über Uns
 
 Wir (die Gruppe Mittwoch-15:15) haben uns dieses Semester für den Kalender entschieden. 
 Hierbei liegt der Fokus auf Individualisierung und Übersichtlichkeit des Kalenders, was realisiert wird, indem jeder Tag farbliche Inhalte bekommt, welche Termine repräsentieren.
